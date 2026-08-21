@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 60" fill="currentColor">
+  <g fill="#333" text-anchor="middle">
+    <!-- BP Helios Icon -->
+    <g transform="translate(80, 20) scale(0.6)">
+      <circle cx="0" cy="0" r="16" fill="#333"/>
+      <path d="M 0,-24 L 6,-8 L 22,-8 L 10,4 L 16,20 L 0,10 L -16,20 L -10,4 L -22,-8 L -6,-8 Z" fill="#666"/>
+    </g>
+    <!-- BP Text -->
+    <text x="80" y="52" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="900" letter-spacing="1">BP</text>
+  </g>
+</svg>

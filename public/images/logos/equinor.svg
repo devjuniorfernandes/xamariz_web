@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 60" fill="currentColor">
+  <g fill="#333" text-anchor="middle">
+    <!-- Equinor Starburst Icon -->
+    <path d="M 80 8 L 84 18 L 94 14 L 88 22 L 98 26 L 88 30 L 92 40 L 82 34 L 78 44 L 76 34 L 66 38 L 72 30 L 62 24 L 72 20 Z" fill="#444"/>
+    <!-- Equinor Text -->
+    <text x="80" y="52" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="900" letter-spacing="1">equinor</text>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 60" fill="currentColor">
+  <g fill="#333">
+    <!-- Text Left -->
+    <text x="10" y="34" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="900" letter-spacing="-0.5">ApexBrasil</text>
+    <text x="10" y="46" font-family="Arial, Helvetica, sans-serif" font-size="5" font-weight="600" letter-spacing="0.2">AGÊNCIA BRASILEIRA DE PROMOÇÃO DE EXPORTAÇÕES E INVESTIMENTOS</text>
+
+    <!-- Segmented Circle Icon Right -->
+    <g transform="translate(145, 12)">
+      <circle cx="6" cy="6" r="4.5" fill="#444"/>
+      <circle cx="18" cy="6" r="4.5" fill="#777"/>
+      <circle cx="6" cy="18" r="4.5" fill="#777"/>
+      <circle cx="18" cy="18" r="4.5" fill="#aaa"/>
+    </g>
+  </g>
+</svg>
