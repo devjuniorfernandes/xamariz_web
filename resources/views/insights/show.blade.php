@@ -49,12 +49,12 @@
         'date' => 'Agosto 2026',
         'read_time' => '5 min de leitura',
         'hero_img' => 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1800&auto=format&fit=crop&q=80',
-        'intro' => 'Estratégias de diferenciação e posicionamento comercial para empresas que pretendem dominar o mercado angolano e internacional.',
         'quote' => 'Comunicação clara e estratégica é a chave para o sucesso comercial contínuo.',
     ];
-@php
-    $finalPostTitle = is_object($post) && $post->meta_title ? $post->meta_title : $article['title'] . ' | Insights Xamariz';
-    $finalPostDesc = is_object($post) && $post->meta_description ? $post->meta_description : $article['intro'];
+
+    $postObj = $insight ?? ($post ?? null);
+    $finalPostTitle = is_object($postObj) && $postObj->meta_title ? $postObj->meta_title : $article['title'] . ' | Insights Xamariz';
+    $finalPostDesc = is_object($postObj) && $postObj->meta_description ? $postObj->meta_description : $article['intro'];
     $finalPostImg = !empty($article['hero_img']) ? (Str::startsWith($article['hero_img'], ['http://', 'https://']) ? $article['hero_img'] : asset($article['hero_img'])) : \App\Models\SiteSetting::get('seo_og_image_default');
 @endphp
 
@@ -65,25 +65,25 @@
 
 @push('schema')
 <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "{{ $article['title'] }}",
-    "description": "{{ $finalPostDesc }}",
-    "image": "{{ $finalPostImg }}",
-    "publisher": {
-        "@type": "AdvertisingAgency",
-        "name": "Xamariz",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "{{ asset('logo_xamariz.svg') }}"
-        }
-    },
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ url()->current() }}"
-    }
-}
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'BlogPosting',
+    'headline' => $article['title'],
+    'description' => $finalPostDesc,
+    'image' => $finalPostImg,
+    'publisher' => [
+        '@type' => 'AdvertisingAgency',
+        'name' => 'Xamariz',
+        'logo' => [
+            '@type' => 'ImageObject',
+            'url' => asset('logo_xamariz.svg')
+        ]
+    ],
+    'mainEntityOfPage' => [
+        '@type' => 'WebPage',
+        '@id' => url()->current()
+    ]
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
 </script>
 @endpush
 

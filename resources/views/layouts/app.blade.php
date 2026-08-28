@@ -38,8 +38,8 @@
     <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:url" content="@yield('canonical', url()->current())">
     <meta property="og:site_name" content="Xamariz Marketing 360°">
-    <meta property="og:title" content="@hasSection('og_title')@yield('og_title')@else@yield('title', $defaultTitle)@endif">
-    <meta property="og:description" content="@hasSection('og_description')@yield('og_description')@else@yield('description', $defaultDesc)@endif">
+    <meta property="og:title" content="@yield('og_title', View::hasSection('title') ? View::getSection('title') : $defaultTitle)">
+    <meta property="og:description" content="@yield('og_description', View::hasSection('description') ? View::getSection('description') : $defaultDesc)">
     <meta property="og:image" content="@yield('og_image', $defaultOgImage)">
     <meta property="og:image:alt" content="Xamariz - Agência de Publicidade e Marketing 360°">
     <meta property="og:locale" content="pt_AO">
@@ -47,8 +47,8 @@
     {{-- Twitter / X Cards --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="@yield('canonical', url()->current())">
-    <meta name="twitter:title" content="@hasSection('og_title')@yield('og_title')@else@yield('title', $defaultTitle)@endif">
-    <meta name="twitter:description" content="@hasSection('og_description')@yield('og_description')@else@yield('description', $defaultDesc)@endif">
+    <meta name="twitter:title" content="@yield('og_title', View::hasSection('title') ? View::getSection('title') : $defaultTitle)">
+    <meta name="twitter:description" content="@yield('og_description', View::hasSection('description') ? View::getSection('description') : $defaultDesc)">
     <meta name="twitter:image" content="@yield('og_image', $defaultOgImage)">
 
     {{-- Favicon & Brand Icons --}}
@@ -78,30 +78,34 @@
     @endif
 
     {{-- JSON-LD Schema.org (Organization & Local Business) --}}
+    @php
+        $schemaOrg = [
+            '@context' => 'https://schema.org',
+            '@type' => 'AdvertisingAgency',
+            'name' => \App\Models\SiteSetting::get('site_name', 'Xamariz'),
+            'url' => url('/'),
+            'logo' => asset('logo_xamariz.svg'),
+            'image' => $defaultOgImage,
+            'description' => $defaultDesc,
+            'telephone' => \App\Models\SiteSetting::get('phone', '+244 941 561 422'),
+            'email' => \App\Models\SiteSetting::get('email', 'geral@xamariz.ao'),
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => \App\Models\SiteSetting::get('address', 'Rua Francisco Sotto Mayor 18, Bairro Azul'),
+                'addressLocality' => 'Luanda',
+                'addressCountry' => 'AO'
+            ],
+            'priceRange' => '$$$',
+            'openingHours' => 'Mo-Fr 08:30-17:30',
+            'sameAs' => array_filter([
+                \App\Models\SiteSetting::get('linkedin', 'https://linkedin.com/company/xamariz'),
+                \App\Models\SiteSetting::get('instagram', 'https://instagram.com/xamariz.ao'),
+                \App\Models\SiteSetting::get('facebook'),
+            ])
+        ];
+    @endphp
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "AdvertisingAgency",
-        "name": "{{ \App\Models\SiteSetting::get('site_name', 'Xamariz') }}",
-        "url": "{{ url('/') }}",
-        "logo": "{{ asset('logo_xamariz.svg') }}",
-        "image": "{{ $defaultOgImage }}",
-        "description": "{{ $defaultDesc }}",
-        "telephone": "{{ \App\Models\SiteSetting::get('phone', '+244 941 561 422') }}",
-        "email": "{{ \App\Models\SiteSetting::get('email', 'geral@xamariz.ao') }}",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "{{ \App\Models\SiteSetting::get('address', 'Rua Francisco Sotto Mayor 18, Bairro Azul') }}",
-            "addressLocality": "Luanda",
-            "addressCountry": "AO"
-        },
-        "priceRange": "$$$",
-        "openingHours": "Mo-Fr 08:30-17:30",
-        "sameAs": [
-            "{{ \App\Models\SiteSetting::get('linkedin', 'https://linkedin.com/company/xamariz') }}",
-            "{{ \App\Models\SiteSetting::get('instagram', 'https://instagram.com/xamariz.ao') }}"
-        ]
-    }
+    {!! json_encode($schemaOrg, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
     </script>
     @stack('schema')
 

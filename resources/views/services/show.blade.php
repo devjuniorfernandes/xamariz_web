@@ -102,17 +102,17 @@
 
 @push('schema')
 <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "{{ $srvTitle }}",
-    "provider": {
-        "@type": "AdvertisingAgency",
-        "name": "Xamariz"
-    },
-    "description": "{{ (is_object($service) && $service->meta_description ? $service->meta_description : Str::limit(strip_tags($srvDesc), 160)) }}",
-    "image": "{{ $srvImage }}"
-}
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'Service',
+    'name' => $srvTitle,
+    'provider' => [
+        '@type' => 'AdvertisingAgency',
+        'name' => 'Xamariz'
+    ],
+    'description' => (is_object($service) && $service->meta_description ? $service->meta_description : Str::limit(strip_tags($srvDesc), 160)),
+    'image' => $srvImage
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
 </script>
 @endpush
 

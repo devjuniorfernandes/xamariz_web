@@ -44,18 +44,18 @@
 
 @push('schema')
 <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": "{{ $title }}",
-    "headline": "{{ $finalWorkTitle }}",
-    "description": "{{ $finalWorkDesc }}",
-    "image": "{{ $finalWorkImg }}",
-    "creator": {
-        "@type": "AdvertisingAgency",
-        "name": "Xamariz"
-    }
-}
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'CreativeWork',
+    'name' => $title,
+    'headline' => $finalWorkTitle,
+    'description' => $finalWorkDesc,
+    'image' => $finalWorkImg,
+    'creator' => [
+        '@type' => 'AdvertisingAgency',
+        'name' => 'Xamariz'
+    ]
+], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) !!}
 </script>
 @endpush
 
