@@ -30,6 +30,8 @@ Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact', [PageController::class, 'contactSubmit'])->name('contact.submit');
 Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/cookies', [PageController::class, 'cookies'])->name('cookies');
+Route::get('/oilandgas', [PageController::class, 'oilandgas'])->name('landing.oilandgas');
+Route::get('/sitemap.xml', [PageController::class, 'sitemap'])->name('sitemap');
 
 // ─── Admin Auth Routes ─────────────────────────
 Route::get('/admin/login', [AuthController::class, 'showLogin'])->name('login');

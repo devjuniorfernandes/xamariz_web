@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Contactos | Xamariz Agência de Publicidade Angola & Internacional')
-@section('description',
-    'Entre em contacto com a Xamariz em Luanda, Angola. Agência de Publicidade e Marketing 360°.
-    Agende uma reunião presencial ou virtual.')
+@section('title', \App\Models\SiteSetting::get('seo_contact_title', 'Contacte a Agência Xamariz | Luanda, Angola • Agende uma Conversa'))
+@section('description', \App\Models\SiteSetting::get('seo_contact_description', 'Fale com a equipa de especialistas da Xamariz em Luanda, Angola. Agende uma conversa estratégica e descubra como impulsionar o seu negócio.'))
 
 @section('content')
 

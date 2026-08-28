@@ -156,4 +156,30 @@ class PageController extends Controller
     {
         return view('legal.cookies');
     }
+
+    public function oilandgas()
+    {
+        $oilGasClients = Client::where(function($q) {
+                $q->where('sector', 'LIKE', '%Energia%')
+                  ->orWhere('sector', 'LIKE', '%Petróleo%')
+                  ->orWhere('sector', 'LIKE', '%Gás%')
+                  ->orWhere('sector', 'LIKE', '%Recursos%');
+            })
+            ->orderBy('display_order')
+            ->get();
+
+        return view('landing.oilandgas', compact('oilGasClients'));
+    }
+
+    public function sitemap()
+    {
+        $works = Work::where('status', 'published')->get();
+        $services = Service::where('is_active', true)->get();
+        $clients = Client::all();
+        $insights = Post::where('status', 'published')->get();
+
+        $xml = view('sitemap', compact('works', 'services', 'clients', 'insights'))->render();
+
+        return response($xml, 200)->header('Content-Type', 'text/xml');
+    }
 }

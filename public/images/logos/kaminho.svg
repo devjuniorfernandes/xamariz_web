@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <!-- Kaminho Deepwater Project Logo -->
+  <circle cx="28" cy="30" r="14" stroke="#EE5129" stroke-width="3" fill="none"/>
+  <path d="M 28 18 L 28 42 M 20 30 L 36 30" stroke="#005094" stroke-width="2.5"/>
+  <text x="56" y="38" font-family="'Inter', Arial, sans-serif" font-size="20" font-weight="900" fill="#141414" letter-spacing="0.5">
+    KAMINHO
+  </text>
+</svg>

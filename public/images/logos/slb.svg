@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 60" fill="none">
+  <!-- SLB Modern Blue Wordmark & Curve -->
+  <text x="25" y="42" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="34" font-weight="900" letter-spacing="-1" fill="#00142D">
+    slb
+  </text>
+  <path d="M 95 38 Q 120 18 155 34" stroke="#0057B8" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+</svg>

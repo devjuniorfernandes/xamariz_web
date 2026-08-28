@@ -52,10 +52,40 @@
         'intro' => 'Estratégias de diferenciação e posicionamento comercial para empresas que pretendem dominar o mercado angolano e internacional.',
         'quote' => 'Comunicação clara e estratégica é a chave para o sucesso comercial contínuo.',
     ];
+@php
+    $finalPostTitle = is_object($post) && $post->meta_title ? $post->meta_title : $article['title'] . ' | Insights Xamariz';
+    $finalPostDesc = is_object($post) && $post->meta_description ? $post->meta_description : $article['intro'];
+    $finalPostImg = !empty($article['hero_img']) ? (Str::startsWith($article['hero_img'], ['http://', 'https://']) ? $article['hero_img'] : asset($article['hero_img'])) : \App\Models\SiteSetting::get('seo_og_image_default');
 @endphp
 
-@section('title', $article['title'] . ' | Insights Xamariz')
-@section('description', $article['intro'])
+@section('title', $finalPostTitle)
+@section('description', $finalPostDesc)
+@section('og_image', $finalPostImg)
+@section('og_type', 'article')
+
+@push('schema')
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ $article['title'] }}",
+    "description": "{{ $finalPostDesc }}",
+    "image": "{{ $finalPostImg }}",
+    "publisher": {
+        "@type": "AdvertisingAgency",
+        "name": "Xamariz",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ asset('logo_xamariz.svg') }}"
+        }
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ url()->current() }}"
+    }
+}
+</script>
+@endpush
 
 @section('content')
 
@@ -155,5 +185,8 @@
         </div>
     </div>
 </section>
+
+{{-- CTA Section --}}
+<x-cta-section />
 
 @endsection

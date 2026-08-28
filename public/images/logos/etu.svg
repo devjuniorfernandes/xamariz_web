@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <!-- ETU Energias Logo -->
+  <path d="M 20 20 L 35 12 L 50 20 L 35 28 Z" fill="#E45B25"/>
+  <path d="M 35 28 L 50 36 L 35 44 L 20 36 Z" fill="#1B365D"/>
+  <text x="65" y="38" font-family="'Inter', Arial, sans-serif" font-size="24" font-weight="900" fill="#1B365D" letter-spacing="1">
+    ETU
+  </text>
+  <text x="122" y="38" font-family="'Inter', Arial, sans-serif" font-size="13" font-weight="600" fill="#E45B25">
+    ENERGIAS
+  </text>
+</svg>

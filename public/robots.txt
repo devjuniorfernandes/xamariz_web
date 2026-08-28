@@ -1,2 +1,7 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /admin/*
+Disallow: /login
+
+Sitemap: http://192.168.88.130:8000/sitemap.xml

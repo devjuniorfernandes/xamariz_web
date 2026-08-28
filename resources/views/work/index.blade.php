@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Portfólio de Projetos | Xamariz Agência de Publicidade Angola')
-@section('description', 'Explore o portfólio de campanhas de publicidade, marketing 360°, redes sociais e produção audiovisual da Xamariz em Angola e internacionalmente.')
+@section('title', \App\Models\SiteSetting::get('seo_work_title', 'Projetos e Portfólio de Campanhas Publicitárias | Xamariz'))
+@section('description', \App\Models\SiteSetting::get('seo_work_description', 'Explore os nossos projetos de Marketing 360°, Branding, Produção Audiovisual e Comunicação Estratégica desenvolvidos para marcas líderes em Angola.'))
 
 @section('content')
 
@@ -96,5 +96,8 @@
             @endif
         </div>
     </section>
+
+    {{-- CTA Section --}}
+    <x-cta-section />
 
 @endsection
