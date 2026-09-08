@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Painel CMS | Xamariz')</title>
+    {{-- Aplicar tema do CMS antes do paint (evita flash) --}}
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('admin-theme') === 'light') {
+                    document.documentElement.setAttribute('data-admin-theme', 'light');
+                }
+            } catch (e) {}
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
+        [x-cloak] { display: none !important; }
         body { font-family: var(--font-sans, 'Inter', sans-serif); }
         /* Retirar border radius de elementos estruturais e formulários */
         .admin-card, .admin-box, input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="url"], select, textarea {
@@ -19,6 +30,39 @@
         .admin-btn, button, .rounded-full {
             border-radius: 9999px !important;
         }
+
+        /* ═══════════════════════════════════════════════
+           LIGHT MODE do CMS — remapeia a paleta escura.
+           Ativo quando <html data-admin-theme="light">.
+           Os elementos de acento (laranja) mantêm-se.
+        ═══════════════════════════════════════════════ */
+        html[data-admin-theme="light"] { background-color: #eef1f4 !important; }
+
+        /* Fundos */
+        [data-admin-theme="light"] .bg-\[\#141414\] { background-color: #eef1f4 !important; }
+        [data-admin-theme="light"] .bg-\[\#1f2022\] { background-color: #ffffff !important; }
+        [data-admin-theme="light"] .bg-\[\#2c2d30\] { background-color: #e5e7eb !important; }
+        [data-admin-theme="light"] .hover\:bg-\[\#2c2d30\]:hover { background-color: #e9ebef !important; }
+        [data-admin-theme="light"] .hover\:bg-white\/10:hover { background-color: rgba(0,0,0,0.05) !important; }
+
+        /* Bordas */
+        [data-admin-theme="light"] .border-\[\#2c2d30\] { border-color: #e2e5ea !important; }
+        [data-admin-theme="light"] .border-white\/30 { border-color: #cbd0d8 !important; }
+
+        /* Texto (exclui elementos com fundo de acento laranja) */
+        [data-admin-theme="light"] .text-white:not([class*="brand-accent"]):not([class*="fe3d0a"]):not([class*="d63205"]):not([class*="e03405"]):not([class*="e5129"]),
+        [data-admin-theme="light"] .text-gray-100,
+        [data-admin-theme="light"] .text-gray-200 { color: #111827 !important; }
+        [data-admin-theme="light"] .text-gray-300 { color: #374151 !important; }
+        [data-admin-theme="light"] .text-gray-400 { color: #5b6675 !important; }
+        [data-admin-theme="light"] .text-gray-500,
+        [data-admin-theme="light"] .text-gray-600 { color: #9199a5 !important; }
+        [data-admin-theme="light"] .hover\:text-white:hover:not([class*="brand-accent"]) { color: #111827 !important; }
+
+        /* Logo: troca branco (dark) <-> escuro (light) */
+        [data-admin-theme="light"] .admin-logo-dark { display: none !important; }
+        .admin-logo-light { display: none; }
+        [data-admin-theme="light"] .admin-logo-light { display: block !important; }
     </style>
 </head>
 <body class="h-full bg-[#141414] text-gray-100 font-sans antialiased" x-data="{ sidebarOpen: false }">
@@ -34,7 +78,8 @@
                 {{-- Logo Bar --}}
                 <div class="h-20 flex items-center justify-between px-6 border-b border-[#2c2d30]">
                     <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3">
-                        <img src="{{ asset('logo_xamariz_white.svg') }}" alt="Xamariz CMS" class="h-7 w-auto">
+                        <img src="{{ asset('logo_xamariz_white.svg') }}" alt="Xamariz CMS" class="admin-logo-dark h-7 w-auto">
+                        <img src="{{ asset('logo_xamariz_mobile.svg') }}" alt="Xamariz CMS" class="admin-logo-light h-7 w-auto">
                         <span class="text-[10px] uppercase tracking-widest font-bold px-2.5 py-1 rounded-full bg-[var(--color-brand-accent)] text-white">CMS</span>
                     </a>
                     <button @click="sidebarOpen = false" class="lg:hidden text-gray-400 hover:text-white">
@@ -147,6 +192,26 @@
                 </div>
 
                 <div class="flex items-center gap-4">
+                    {{-- Theme Switcher (dark/light) — persistido por dispositivo (localStorage) --}}
+                    <button
+                        x-data="{ light: document.documentElement.getAttribute('data-admin-theme') === 'light' }"
+                        @click="light = !light;
+                                document.documentElement.setAttribute('data-admin-theme', light ? 'light' : 'dark');
+                                try { localStorage.setItem('admin-theme', light ? 'light' : 'dark'); } catch (e) {}"
+                        type="button"
+                        class="p-2.5 rounded-full border border-[#2c2d30] text-gray-400 hover:text-white hover:bg-[#2c2d30] transition-all"
+                        :title="light ? 'Mudar para modo escuro' : 'Mudar para modo claro'"
+                        aria-label="Alternar tema">
+                        {{-- Lua (mostra em dark → clicar para light) --}}
+                        <svg x-show="!light" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                        {{-- Sol (mostra em light → clicar para dark) --}}
+                        <svg x-show="light" x-cloak class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </button>
+
                     <a href="{{ route('home') }}" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-transparent border border-white/30 text-white hover:bg-white/10 text-xs font-bold uppercase tracking-wider transition-all">
                         <span>Ver Site Público</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
