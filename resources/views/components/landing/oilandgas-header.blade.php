@@ -1,12 +1,3 @@
-@php
-    $anchors = [
-        ['label' => __('oilandgas.nav.approach'), 'href' => '#abordagem'],
-        ['label' => __('oilandgas.nav.areas'), 'href' => '#areas'],
-        ['label' => __('oilandgas.nav.thinking'), 'href' => '#como-pensamos'],
-        ['label' => __('oilandgas.nav.aog'), 'href' => '#aog'],
-    ];
-@endphp
-
 <nav x-data="{
         scrolled: false,
         mobileOpen: false,
@@ -27,23 +18,11 @@
     <div class="container-myriad" x-show="!mobileOpen">
         <div class="flex items-center justify-between h-[88px]">
 
-            {{-- Logo → volta ao topo da landing --}}
+            {{-- Logo → volta ao topo da landing (mesmo logo do footer, em ambos os estados) --}}
             <a href="#top" class="flex items-center shrink-0 group">
-                <img src="{{ asset('isotipo-xamariz.png') }}" alt="Xamariz Energy"
-                    class="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <img src="{{ asset('logo_new_version.svg') }}" alt="Xamariz Energy"
+                    class="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
             </a>
-
-            {{-- Desktop Anchor Links --}}
-            <div class="hidden md:flex items-center gap-1.5 h-full font-barlow">
-                @foreach ($anchors as $anchor)
-                    <a href="{{ $anchor['href'] }}"
-                        :class="(isDarkNav && !scrolled) ? 'text-white/80 hover:text-white' : 'text-white/70 hover:text-white'"
-                        class="relative text-[0.9375rem] font-semibold uppercase tracking-wide px-3.5 py-6 transition-colors duration-200 flex items-center justify-center group">
-                        <span>{{ $anchor['label'] }}</span>
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#ff5e14] absolute bottom-4 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-70 transition-all duration-200"></span>
-                    </a>
-                @endforeach
-            </div>
 
             {{-- CTA + Language Switcher + Mobile Toggle --}}
             <div class="flex items-center gap-3">
@@ -73,7 +52,7 @@
             {{-- Top: Logo & Close --}}
             <div class="flex items-center justify-between pb-6 border-b border-white/10">
                 <a href="#top" @click="mobileOpen = false">
-                    <img src="{{ asset('isotipo-xamariz.png') }}" alt="Xamariz Energy" class="h-16 w-auto object-contain">
+                    <img src="{{ asset('logo_new_version.svg') }}" alt="Xamariz Energy" class="h-16 w-auto object-contain">
                 </a>
                 <button @click="mobileOpen = false"
                     class="p-2 text-white/80 hover:text-[#ff5e14] transition-colors focus:outline-none" aria-label="Fechar Menu">
@@ -81,21 +60,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-            </div>
-
-            {{-- Anchor Links --}}
-            <div class="space-y-1 pt-6">
-                @foreach ($anchors as $anchor)
-                    <a href="{{ $anchor['href'] }}" @click="mobileOpen = false"
-                        class="flex items-center justify-between py-3.5 text-lg sm:text-xl font-semibold uppercase tracking-wide text-white/80 hover:text-[#ff5e14] transition-colors border-b border-white/10">
-                        <span>{{ $anchor['label'] }}</span>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                            stroke-linecap="round" stroke-linejoin="round" class="text-white/40">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
-                @endforeach
             </div>
 
             {{-- Language Switcher Mobile --}}

@@ -2,54 +2,20 @@
     $isDarkNav = $isDarkNav ?? request()->routeIs('home');
 
     $navLinks = [
+        ['label' => __('nav.services'), 'pattern' => 'services.*', 'name' => 'services.index', 'url' => route('services.index')],
         ['label' => __('nav.portfolio'), 'pattern' => 'work.*', 'name' => 'work.index', 'url' => route('work.index')],
-        [
-            'label' => __('nav.services'),
-            'pattern' => 'services.*',
-            'name' => 'services.index',
-            'url' => route('services.index'),
-        ],
-        ['label' => __('nav.clients'), 'pattern' => 'clients.*', 'name' => 'clients.index', 'url' => route('clients.index')],
-        ['label' => __('nav.team'), 'pattern' => 'team.*', 'name' => 'team.index', 'url' => route('team.index')],
         ['label' => __('nav.about'), 'pattern' => 'about', 'name' => 'about', 'url' => route('about')],
-        [
-            'label' => __('nav.insights'),
-            'pattern' => 'insights.*',
-            'name' => 'insights.index',
-            'url' => route('insights.index'),
-        ],
-        [
-            'label' => __('nav.contacts'),
-            'pattern' => 'contactos.*',
-            'name' => 'contactos.index',
-            'url' => route('contact'),
-        ],
+        ['label' => __('nav.insights'), 'pattern' => 'insights.*', 'name' => 'insights.index', 'url' => route('insights.index')],
+        ['label' => __('nav.contacts'), 'pattern' => 'contactos.*', 'name' => 'contactos.index', 'url' => route('contact')],
     ];
 
     $mobileNavLinks = [
         ['label' => __('nav.home'), 'pattern' => 'home', 'name' => 'home', 'url' => route('home')],
+        ['label' => __('nav.services'), 'pattern' => 'services.*', 'name' => 'services.index', 'url' => route('services.index')],
         ['label' => __('nav.portfolio'), 'pattern' => 'work.*', 'name' => 'work.index', 'url' => route('work.index')],
-        [
-            'label' => __('nav.services'),
-            'pattern' => 'services.*',
-            'name' => 'services.index',
-            'url' => route('services.index'),
-        ],
-        ['label' => __('nav.clients'), 'pattern' => 'clients.*', 'name' => 'clients.index', 'url' => route('clients.index')],
-        ['label' => __('nav.team'), 'pattern' => 'team.*', 'name' => 'team.index', 'url' => route('team.index')],
         ['label' => __('nav.about'), 'pattern' => 'about', 'name' => 'about', 'url' => route('about')],
-        [
-            'label' => __('nav.insights'),
-            'pattern' => 'insights.*',
-            'name' => 'insights.index',
-            'url' => route('insights.index'),
-        ],
-        [
-            'label' => __('nav.contacts'),
-            'pattern' => 'contactos.*',
-            'name' => 'contactos.index',
-            'url' => route('contact'),
-        ],
+        ['label' => __('nav.insights'), 'pattern' => 'insights.*', 'name' => 'insights.index', 'url' => route('insights.index')],
+        ['label' => __('nav.contacts'), 'pattern' => 'contactos.*', 'name' => 'contactos.index', 'url' => route('contact')],
     ];
 @endphp
 
@@ -77,11 +43,20 @@
 {{-- LOGO --}}
 <a href="{{ route('home') }}" class="flex items-center shrink-0 group">
 
-    {{-- Isótipo Xamariz (funciona em fundo claro e escuro) --}}
+    {{-- Fundo transparente (home, topo): logo com letras brancas --}}
     <img
-        src="{{ asset('isotipo-xamariz.png') }}"
+        x-show="isDarkNav && !scrolled" x-cloak
+        src="{{ asset('logo_new_version.svg') }}"
         alt="Xamariz"
-        class="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+        class="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+    >
+
+    {{-- Menu fixo / páginas sem fundo transparente: logo com o nome (fundo claro) --}}
+    <img
+        x-show="!isDarkNav || scrolled" x-cloak
+        src="{{ asset('logo_xamariz_fundo_claro.svg') }}"
+        alt="Xamariz"
+        class="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
     >
 
 </a>
@@ -138,7 +113,7 @@
             {{-- Top Header inside Overlay: Logo & Close 'X' Button --}}
             <div class="flex items-center justify-between pb-6 border-b border-gray-100">
                 <a href="{{ route('home') }}" @click="mobileOpen = false">
-                    <img src="{{ asset('isotipo-xamariz.png') }}" alt="Xamariz" class="h-16 w-auto object-contain">
+                    <img src="{{ asset('logo_xamariz_fundo_claro.svg') }}" alt="Xamariz" class="h-16 w-auto object-contain">
                 </a>
                 <button @click="mobileOpen = false"
                     class="p-2 text-gray-700 hover:text-[var(--color-brand-accent)] transition-colors focus:outline-none"

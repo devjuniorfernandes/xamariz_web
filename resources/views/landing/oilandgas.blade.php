@@ -74,8 +74,8 @@
                 </span>
 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] mb-6 max-w-3xl">
-                    {{ __('oilandgas.hero.title_line1') }}
-                    <span class="text-[#ff5e14]">{{ __('oilandgas.hero.title_line2') }}</span>
+                    {{ __('oilandgas.hero.title_line1') }}<br>
+                    <span class="text-white">{{ __('oilandgas.hero.title_line2') }}</span>
                 </h1>
 
                 <p class="text-base sm:text-lg text-gray-200 font-normal leading-relaxed mb-10 max-w-xl font-roboto">
@@ -128,9 +128,6 @@
                             </div>
                         @endforeach
                     </div>
-                    <p class="mt-8 text-sm text-gray-500 italic font-roboto">
-                        {{ __('oilandgas.industry.footnote') }}
-                    </p>
                 </div>
             </div>
         </div>
@@ -139,8 +136,8 @@
     {{-- ══════════════════════════════════════════════════════════════
      2b. IMPACTO — duas colunas: conteúdo (gradiente) + imagem
     ══════════════════════════════════════════════════════════════ --}}
-    <section class="relative w-full font-barlow overflow-hidden"
-        style="background: linear-gradient(90deg, #ea580c 0%, #ef4444 50%, #facc15 100%);">
+    <section class="relative w-full font-barlow overflow-hidden bg-gradient-to-br from-[#09297a] via-[#132058] to-[#281b45]">
+        <x-blue-mesh />
         {{-- Imagem: metade direita a preencher todo o espaço (mobile: bloco no topo) --}}
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             <img src="{{ asset('luanda_picture.jpg') }}" alt="Xamariz Energy"
@@ -152,28 +149,24 @@
                 {{-- Esquerda: conteúdo no container --}}
                 <div class="py-16 lg:py-28 lg:pr-16 text-white reveal">
                     <span class="text-white text-xs font-bold uppercase tracking-widest block mb-4">
-                        {{ __('oilandgas.impact.eyebrow') }}
+                        {{ __('oilandgas.noise.eyebrow') }}
                     </span>
-                    <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15]">
-                        {{ __('oilandgas.impact.title') }}
+                    <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15] mb-8">
+                        {{ __('oilandgas.noise.title') }}
                     </h2>
-                    <p class="text-base sm:text-lg text-white/90 leading-relaxed mt-5">
-                        {{ __('oilandgas.impact.lead') }}
-                    </p>
 
-                    <div class="grid grid-cols-2 gap-8 border-t border-white/30 pt-10 mt-10">
-                        @foreach (__('oilandgas.impact.stats') as $stat)
-                            <div>
-                                <div class="impact-counter text-4xl sm:text-5xl font-black text-white tracking-tight mb-2"
-                                    data-count="{{ $stat['value'] }}">
-                                    {{ $stat['value'] }}
-                                </div>
-                                <div class="text-sm text-white/80 leading-snug">
-                                    {{ $stat['label'] }}
-                                </div>
-                            </div>
+                    <div class="space-y-2 font-roboto text-lg sm:text-xl text-white/90 leading-relaxed mb-6">
+                        @foreach (__('oilandgas.noise.lines') as $line)
+                            <p>{{ $line }}</p>
                         @endforeach
                     </div>
+
+                    <p class="text-2xl sm:text-3xl font-bold text-white mb-6">
+                        {{ __('oilandgas.noise.highlight') }}
+                    </p>
+                    <p class="text-lg sm:text-xl text-[#ff5e14] font-semibold">
+                        {{ __('oilandgas.noise.closing') }}
+                    </p>
                 </div>
 
                 {{-- Espaçador para a metade direita (onde entra a imagem absoluta) --}}
@@ -291,40 +284,6 @@
     </section>
 
     {{-- ══════════════════════════════════════════════════════════════
-     5. NO MEIO DO RUÍDO... — fotografia enorme + copy
-    ══════════════════════════════════════════════════════════════ --}}
-    <section class="relative min-h-[560px] lg:min-h-[680px] flex items-center bg-[#111215] text-white overflow-hidden font-barlow">
-        <div class="absolute inset-0 z-0">
-            <img src="{{ asset('luanda_picture.jpg') }}" alt="Luanda" class="w-full h-full object-cover opacity-40">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#111215] via-[#111215]/70 to-[#111215]/30"></div>
-        </div>
-
-        <div class="container-myriad relative z-10 py-24">
-            <div class="max-w-3xl reveal">
-                <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-4">
-                    {{ __('oilandgas.noise.eyebrow') }}
-                </span>
-                <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15] mb-8">
-                    {{ __('oilandgas.noise.title') }}
-                </h2>
-
-                <div class="space-y-2 font-roboto text-lg sm:text-xl text-gray-200 leading-relaxed mb-6">
-                    @foreach (__('oilandgas.noise.lines') as $line)
-                        <p>{{ $line }}</p>
-                    @endforeach
-                </div>
-
-                <p class="text-2xl sm:text-3xl font-bold text-white mb-6">
-                    {{ __('oilandgas.noise.highlight') }}
-                </p>
-                <p class="text-lg sm:text-xl text-[#ff5e14] font-semibold">
-                    {{ __('oilandgas.noise.closing') }}
-                </p>
-            </div>
-        </div>
-    </section>
-
-    {{-- ══════════════════════════════════════════════════════════════
      6. COMO PENSAMOS — mini-artigos
     ══════════════════════════════════════════════════════════════ --}}
     <section id="como-pensamos" class="py-20 lg:py-28 bg-white border-b border-gray-100 font-barlow scroll-mt-20">
@@ -420,8 +379,8 @@
     {{-- ══════════════════════════════════════════════════════════════
      7. AOG / CTA FINAL + formulário
     ══════════════════════════════════════════════════════════════ --}}
-    <section id="aog" class="py-24 lg:py-32 text-white relative overflow-hidden font-barlow scroll-mt-20"
-        style="background: linear-gradient(90deg, #ea580c 0%, #ef4444 50%, #facc15 100%);">
+    <section id="aog" class="py-24 lg:py-32 text-white relative overflow-hidden font-barlow scroll-mt-20 bg-gradient-to-br from-[#09297a] via-[#132058] to-[#281b45]">
+        <x-blue-mesh />
         <div class="container-myriad relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 {{-- Left --}}

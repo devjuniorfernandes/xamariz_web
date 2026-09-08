@@ -32,6 +32,22 @@ return [
         'status' => 'active',
         'sections' => [
             [
+                'title'  => 'Cabeçalho (Hero)',
+                'fields' => [
+                    'home_hero_title'        => ['type' => 'text',     'label' => 'Título — parte principal', 'default' => 'Quem comunica melhor,'],
+                    'home_hero_title_accent' => ['type' => 'text',     'label' => 'Título — parte destacada (laranja)', 'default' => 'cresce melhor.'],
+                    'home_hero_subtitle'     => ['type' => 'textarea', 'label' => 'Subtítulo', 'rows' => 3, 'help' => 'Use quebras de linha para separar em várias linhas.', 'default' => 'Ajudamos empresas a clarificar a sua mensagem para atrair clientes certos e liderar o seu mercado.'],
+                    'home_hero_cta_label'    => ['type' => 'text',     'label' => 'Texto do botão', 'help' => 'O botão liga à página de Contacto.', 'default' => 'Agende conversa'],
+                ],
+            ],
+            [
+                'title'  => 'Secção "As empresas não estão a falhar"',
+                'fields' => [
+                    'home_whoweare_title' => ['type' => 'textarea', 'label' => 'Título', 'rows' => 3, 'help' => 'Cada quebra de linha (Enter) cria uma nova linha no site.', 'default' => "As empresas não estão a falhar.\nEstão a comunicar mal."],
+                    'home_whoweare_text'  => ['type' => 'textarea', 'label' => 'Texto (coluna direita)', 'rows' => 6, 'help' => 'Cada quebra de linha (Enter) cria uma nova linha no site.', 'default' => "Investem no digital.\nPublicam conteúdo.\nFazem campanhas.\nMas o mercado não entende.\nE quando não entende, escolhe outro."],
+                ],
+            ],
+            [
                 'title'  => 'Slider de Comparação Antes / Depois',
                 'fields' => [
                     'home_slider_title'         => ['type' => 'text',  'label' => 'Título da Secção', 'default' => 'O poder de uma identidade visual que vende.'],
@@ -57,6 +73,48 @@ return [
                     'home_pillar3_desc'     => ['type' => 'textarea', 'label' => 'Pilar 3 — Descrição', 'rows' => 2, 'default' => 'Uma mensagem clara é a vantagem que a maioria não tem coragem de construir.'],
                     'home_pillar4_title'    => ['type' => 'text',     'label' => 'Pilar 4 — Título', 'default' => 'O crescimento torna-se previsível'],
                     'home_pillar4_desc'     => ['type' => 'textarea', 'label' => 'Pilar 4 — Descrição', 'rows' => 2, 'default' => 'Com uma base sólida, cada acção gera mais resultado.'],
+                ],
+            ],
+            [
+                'title'  => 'Secção "Quando a mensagem é clara"',
+                'fields' => [
+                    'home_about_title_strong' => ['type' => 'text', 'label' => 'Título — parte a negrito', 'default' => 'Quando a mensagem é clara,'],
+                    'home_about_title'        => ['type' => 'text', 'label' => 'Título — parte final', 'default' => 'as pessoas certas encontram-no.'],
+                    'home_about_item1'        => ['type' => 'text', 'label' => 'Item 1 da lista', 'default' => 'Entendem o que faz.'],
+                    'home_about_item2'        => ['type' => 'text', 'label' => 'Item 2 da lista', 'default' => 'Reconhecem o valor.'],
+                    'home_about_item3'        => ['type' => 'text', 'label' => 'Item 3 da lista', 'default' => 'E escolhem-no a si.'],
+                ],
+            ],
+            [
+                'title'  => 'Secção Serviços (cabeçalho)',
+                'fields' => [
+                    'home_services_heading'   => ['type' => 'text', 'label' => 'Título à esquerda', 'default' => 'Como podemos ajudar'],
+                    'home_services_title'     => ['type' => 'text', 'label' => 'Título à direita', 'default' => 'Soluções de Marketing 360° para dominar o mercado.'],
+                    'home_services_cta'       => ['type' => 'text', 'label' => 'Texto do botão', 'default' => 'VER TODOS OS SERVIÇOS'],
+                    'home_services_card_link' => ['type' => 'text', 'label' => 'Ligação nos cartões', 'default' => 'Explorar serviço'],
+                ],
+            ],
+            [
+                'title'  => 'Secção Projetos em Destaque',
+                'fields' => [
+                    'home_works_title'    => ['type' => 'text',     'label' => 'Título', 'default' => 'Projetos em destaque.'],
+                    'home_works_subtitle' => ['type' => 'textarea', 'label' => 'Subtítulo', 'rows' => 2, 'default' => 'Campanhas e soluções de comunicação para grandes marcas em Angola e no mercado internacional.'],
+                    'home_works_cta'      => ['type' => 'text',     'label' => 'Texto do botão', 'default' => 'VER TODOS OS PROJETOS'],
+                ],
+            ],
+            [
+                'title'  => 'Secção Marcas / Clientes (marquee)',
+                'fields' => [
+                    'home_brands_title' => ['type' => 'textarea', 'label' => 'Título', 'rows' => 2, 'default' => 'Trabalhamos com marcas audazes impulsionando o seu próximo grande salto.'],
+                    'home_brands_cta'   => ['type' => 'text',     'label' => 'Texto do botão', 'default' => 'VER CLIENTES'],
+                ],
+            ],
+            [
+                'title'  => 'Secção Insights (cabeçalho)',
+                'fields' => [
+                    'home_insights_title'    => ['type' => 'text',     'label' => 'Título', 'default' => 'Aprenda a comunicar melhor'],
+                    'home_insights_subtitle' => ['type' => 'textarea', 'label' => 'Subtítulo', 'rows' => 2, 'default' => 'Ideias simples para melhorar a sua comunicação.'],
+                    'home_insights_cta'      => ['type' => 'text',     'label' => 'Texto do botão', 'default' => 'VER TODOS OS ARTIGOS'],
                 ],
             ],
         ],

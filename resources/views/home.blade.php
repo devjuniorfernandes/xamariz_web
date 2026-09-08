@@ -54,7 +54,7 @@
         ============================================================= --}}
         <div class="absolute inset-0 z-30 flex items-center pointer-events-none">
 
-            <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-12">
+            <div class="container-myriad">
 
                 <div class="max-w-3xl text-white">
 
@@ -83,10 +83,8 @@
                         drop-shadow-2xl
                     ">
 
-                        Quem comunica melhor ,
-                        <span class="text-[var(--color-brand-accent)]">
-                            cresce melhor.
-                        </span>
+                        <span class="block whitespace-nowrap">{{ \App\Models\SiteSetting::get('home_hero_title', 'Quem comunica melhor,') }}</span>
+                        <span class="block text-[var(--color-brand-accent)]">{{ \App\Models\SiteSetting::get('home_hero_title_accent', 'cresce melhor.') }}</span>
 
                     </h1>
 
@@ -103,18 +101,17 @@
                         drop-shadow-lg
                     ">
 
-                        Ajudamos empresas a clarificar a sua mensagem <br /> para atrair clientes certos e liderar o seu
-                        mercado.
+                        {!! nl2br(e(\App\Models\SiteSetting::get('home_hero_subtitle', 'Ajudamos empresas a clarificar a sua mensagem para atrair clientes certos e liderar o seu mercado.'))) !!}
 
                     </p>
 
                     <div class="mt-8">
-                        <a href="{{ route('contact') }}" class="inline-flex items-center gap-3 px-7 py-3 rounded-full
+                        <a href="{{ route('contact') }}" class="pointer-events-auto inline-flex items-center gap-3 px-7 py-3 rounded-full
                    text-white text-xs font-semibold uppercase tracking-wider
                    transition-all duration-300 group shrink-0
-                   bg-[var(--color-brand-accent)]">
+                   bg-[var(--color-brand-accent)] hover:bg-[var(--color-brand-accent-hover)]">
 
-                            <span>Agende conversa</span>
+                            <span>{{ \App\Models\SiteSetting::get('home_hero_cta_label', 'Agende conversa') }}</span>
 
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
@@ -259,18 +256,15 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-7 reveal">
                     <h2 class="font-serif text-white font-bold leading-[1.08]"
-                        style="font-size: clamp(2.25rem, 4.5vw, 3.75rem); letter-spacing: -0.035em;">
-                        As empresas não estão a <br />falhar. Estão a comunicar mal.
+                        style="font-size: clamp(1.75rem, 3.4vw, 3rem); letter-spacing: -0.035em;">
+                        {!! nl2br(e(\App\Models\SiteSetting::get('home_whoweare_title', "As empresas não estão a falhar.\nEstão a comunicar mal."))) !!}
                     </h2>
                 </div>
 
                 <div class="lg:col-span-5 space-y-10 reveal delay-200 lg:pt-2">
                     <div class="border-l-2 border-white/20 hover:border-[var(--color-brand-accent)] transition-colors pl-6">
                         <p class="font-sans text-white/80 text-base sm:text-lg leading-relaxed">
-                            Investem no digital. <br />
-                            Publicam conteúdo. <br />
-                            Fazem campanhas.<br />
-                            Mas o mercado não entende. <br /> E quando não entende, escolhe outro.<br />
+                            {!! nl2br(e(\App\Models\SiteSetting::get('home_whoweare_text', "Investem no digital.\nPublicam conteúdo.\nFazem campanhas.\nMas o mercado não entende.\nE quando não entende, escolhe outro."))) !!}
                         </p>
                         <div class="pt-8">
                             <!--<a href="{{ route('about') }}"-->
@@ -310,9 +304,7 @@
                 <div class="lg:col-span-6 reveal">
                     <h2
                         class="font-sans text-4xl sm:text-6xl md:text-4xl font-normal text-gray-900 tracking-tight leading-[1.08] mb-8 sm:mb-10">
-                        <p class="font-extrabold">Quando a mensagem
-                            é clara,</p> <span>as pessoas
-                            certas encontram-no.</span>
+                        <p class="font-extrabold">{{ \App\Models\SiteSetting::get('home_about_title_strong', 'Quando a mensagem é clara,') }}</p> <span>{{ \App\Models\SiteSetting::get('home_about_title', 'as pessoas certas encontram-no.') }}</span>
 
                     </h2>
                     <ul class="border-t border-gray-300">
@@ -326,7 +318,7 @@
                             </svg>
 
                             <span>
-                                Entendem o que faz.
+                                {{ \App\Models\SiteSetting::get('home_about_item1', 'Entendem o que faz.') }}
                             </span>
                         </li>
 
@@ -340,7 +332,7 @@
                             </svg>
 
                             <span>
-                                Reconhecem o valor.
+                                {{ \App\Models\SiteSetting::get('home_about_item2', 'Reconhecem o valor.') }}
                             </span>
                         </li>
 
@@ -354,7 +346,7 @@
                             </svg>
 
                             <span>
-                                E escolhem-no a si.
+                                {{ \App\Models\SiteSetting::get('home_about_item3', 'E escolhem-no a si.') }}
                             </span>
                         </li>
 
@@ -623,7 +615,7 @@
                     <div class="lg:col-span-7 reveal">
 
                         <h2 class="font-sans text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.06]">
-                            Como podemos ajudar
+                            {{ \App\Models\SiteSetting::get('home_services_heading', 'Como podemos ajudar') }}
                         </h2>
 
                     </div>
@@ -632,7 +624,7 @@
                     <div class="flex flex-col items-start sm:items-end gap-5 max-w-lg">
 
                         <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight text-left sm:text-right">
-                            Soluções de Marketing 360° para dominar o mercado<span class="text-white">.</span>
+                            {{ \App\Models\SiteSetting::get('home_services_title', 'Soluções de Marketing 360° para dominar o mercado.') }}
                         </h2>
 
 
@@ -641,7 +633,7 @@
                             class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-white text-white hover:bg-white hover:text-[#d63205] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group"
                         >
 
-                            <span>VER TODOS OS SERVIÇOS</span>
+                            <span>{{ \App\Models\SiteSetting::get('home_services_cta', 'VER TODOS OS SERVIÇOS') }}</span>
 
                             <svg
                                 width="16"
@@ -770,7 +762,7 @@
                                             class="inline-flex items-center gap-2.5 text-sm font-semibold text-white hover:text-[var(--color-brand-accent)] transition-colors group/btn"
                                         >
 
-                                            <span>Explorar serviço</span>
+                                            <span>{{ \App\Models\SiteSetting::get('home_services_card_link', 'Explorar serviço') }}</span>
 
 
                                             <svg
@@ -846,15 +838,15 @@
                     <div>
                         <h2 class="font-serif font-black text-[var(--color-brand-dark)]"
                             style="font-size: clamp(1.75rem, 3.5vw, 2.75rem); letter-spacing: -0.03em;">
-                            Projetos em destaque.
+                            {{ \App\Models\SiteSetting::get('home_works_title', 'Projetos em destaque.') }}
                         </h2>
                         <p class="font-sans text-[var(--color-muted)] mt-3 max-w-md">
-                            Campanhas e soluções de comunicação para grandes marcas em Angola e no mercado internacional.
+                            {{ \App\Models\SiteSetting::get('home_works_subtitle', 'Campanhas e soluções de comunicação para grandes marcas em Angola e no mercado internacional.') }}
                         </p>
                     </div>
                     <a href="{{ route('work.index') }}"
                         class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-gray-900 text-gray-900 hover:border-[var(--color-brand-accent)] hover:text-[var(--color-brand-accent)] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group shrink-0">
-                        <span>VER TODOS OS PROJETOS</span>
+                        <span>{{ \App\Models\SiteSetting::get('home_works_cta', 'VER TODOS OS PROJETOS') }}</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                             stroke-linecap="round" stroke-linejoin="round"
                             class="text-[var(--color-brand-accent)] group-hover:translate-x-1 transition-transform">
@@ -919,7 +911,7 @@
                 <div class="reveal max-w-4xl mb-16 sm:mb-20">
                     <h2
                         class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12]">
-                        Trabalhamos com marcas audazes impulsionando o seu próximo grande salto.
+                        {{ \App\Models\SiteSetting::get('home_brands_title', 'Trabalhamos com marcas audazes impulsionando o seu próximo grande salto.') }}
                     </h2>
                 </div>
 
@@ -969,7 +961,7 @@
                 <div class="reveal delay-200 flex justify-start">
                     <a href="{{ route('clients.index') }}"
                         class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-gray-900 text-gray-900 hover:border-[var(--color-brand-accent)] hover:text-[var(--color-brand-accent)] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group">
-                        <span>VER CLIENTES</span>
+                        <span>{{ \App\Models\SiteSetting::get('home_brands_cta', 'VER CLIENTES') }}</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                             stroke-linecap="round" stroke-linejoin="round"
                             class="text-[var(--color-brand-accent)] group-hover:translate-x-1 transition-transform">
@@ -991,15 +983,15 @@
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12 sm:mb-16 reveal">
                     <div>
                         <h2 class="font-sans text-3xl sm:text-5xl font-bold text-gray-900 tracking-tight">
-                            Aprenda a comunicar melhor
+                            {{ \App\Models\SiteSetting::get('home_insights_title', 'Aprenda a comunicar melhor') }}
                         </h2>
                         <p class="font-sans text-gray-700 text-lg sm:text-xl leading-relaxed max-w-lg mt-2">
-                            Ideias simples para melhorar a sua comunicação.
+                            {{ \App\Models\SiteSetting::get('home_insights_subtitle', 'Ideias simples para melhorar a sua comunicação.') }}
                         </p>
                     </div>
                     <a href="{{ route('insights.index') }}"
                         class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-gray-900 text-gray-900 hover:border-[var(--color-brand-accent)] hover:text-[var(--color-brand-accent)] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group shrink-0">
-                        <span>VER TODOS OS ARTIGOS</span>
+                        <span>{{ \App\Models\SiteSetting::get('home_insights_cta', 'VER TODOS OS ARTIGOS') }}</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                             stroke-linecap="round" stroke-linejoin="round"
                             class="text-[var(--color-brand-accent)] group-hover:translate-x-1 transition-transform">
