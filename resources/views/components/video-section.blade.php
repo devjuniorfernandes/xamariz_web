@@ -34,10 +34,9 @@
 
                 <div class="mt-8">
 
-                    <button
-                        type="button"
+                    <a
+                        href="{{ route('contact') }}"
                         class="
-                            showreel-trigger
                             inline-flex
                             items-center
                             gap-3
@@ -78,7 +77,7 @@
 
                         </svg>
 
-                    </button>
+                    </a>
 
                 </div>
 
