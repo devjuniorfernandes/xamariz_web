@@ -17,7 +17,7 @@
 
             <div class="max-w reveal">
                 <h1
-                    class="font-sans text-4xl sm:text-6xl md:text-7xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-8">
+                    class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-8">
                     {!! nl2br(e(\App\Models\SiteSetting::get('about_hero_title', "Além da criatividade.\nAlém da imaginação.\nO parceiro de Marketing 360° que a sua empresa precisa."))) !!}
                 </h1>
                 <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed mb-4">

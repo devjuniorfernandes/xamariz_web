@@ -1,42 +1,54 @@
 @php
-    $isDarkNav = $isDarkNav ?? request()->routeIs('home') || request()->routeIs('landing.oilandgas');
+    $isDarkNav = $isDarkNav ?? request()->routeIs('home');
 
     $navLinks = [
-        ['label' => 'Portfólio', 'pattern' => 'work.*', 'name' => 'work.index', 'url' => route('work.index')],
+        ['label' => __('nav.portfolio'), 'pattern' => 'work.*', 'name' => 'work.index', 'url' => route('work.index')],
         [
-            'label' => 'Serviços',
+            'label' => __('nav.services'),
             'pattern' => 'services.*',
             'name' => 'services.index',
             'url' => route('services.index'),
         ],
-        ['label' => 'Clientes', 'pattern' => 'clients.*', 'name' => 'clients.index', 'url' => route('clients.index')],
-        ['label' => 'Equipa', 'pattern' => 'team.*', 'name' => 'team.index', 'url' => route('team.index')],
-        ['label' => 'Sobre Nós', 'pattern' => 'about', 'name' => 'about', 'url' => route('about')],
+        ['label' => __('nav.clients'), 'pattern' => 'clients.*', 'name' => 'clients.index', 'url' => route('clients.index')],
+        ['label' => __('nav.team'), 'pattern' => 'team.*', 'name' => 'team.index', 'url' => route('team.index')],
+        ['label' => __('nav.about'), 'pattern' => 'about', 'name' => 'about', 'url' => route('about')],
         [
-            'label' => 'Insights',
+            'label' => __('nav.insights'),
             'pattern' => 'insights.*',
             'name' => 'insights.index',
             'url' => route('insights.index'),
+        ],
+        [
+            'label' => __('nav.contacts'),
+            'pattern' => 'contactos.*',
+            'name' => 'contactos.index',
+            'url' => route('contact'),
         ],
     ];
 
     $mobileNavLinks = [
-        ['label' => 'Início', 'pattern' => 'home', 'name' => 'home', 'url' => route('home')],
-        ['label' => 'Portfólio', 'pattern' => 'work.*', 'name' => 'work.index', 'url' => route('work.index')],
+        ['label' => __('nav.home'), 'pattern' => 'home', 'name' => 'home', 'url' => route('home')],
+        ['label' => __('nav.portfolio'), 'pattern' => 'work.*', 'name' => 'work.index', 'url' => route('work.index')],
         [
-            'label' => 'Serviços',
+            'label' => __('nav.services'),
             'pattern' => 'services.*',
             'name' => 'services.index',
             'url' => route('services.index'),
         ],
-        ['label' => 'Clientes', 'pattern' => 'clients.*', 'name' => 'clients.index', 'url' => route('clients.index')],
-        ['label' => 'Equipa', 'pattern' => 'team.*', 'name' => 'team.index', 'url' => route('team.index')],
-        ['label' => 'Sobre Nós', 'pattern' => 'about', 'name' => 'about', 'url' => route('about')],
+        ['label' => __('nav.clients'), 'pattern' => 'clients.*', 'name' => 'clients.index', 'url' => route('clients.index')],
+        ['label' => __('nav.team'), 'pattern' => 'team.*', 'name' => 'team.index', 'url' => route('team.index')],
+        ['label' => __('nav.about'), 'pattern' => 'about', 'name' => 'about', 'url' => route('about')],
         [
-            'label' => 'Insights',
+            'label' => __('nav.insights'),
             'pattern' => 'insights.*',
             'name' => 'insights.index',
             'url' => route('insights.index'),
+        ],
+        [
+            'label' => __('nav.contacts'),
+            'pattern' => 'contactos.*',
+            'name' => 'contactos.index',
+            'url' => route('contact'),
         ],
     ];
 @endphp
@@ -50,29 +62,34 @@
             this.scrolled = window.scrollY > 40;
         });
     }
-}" x-effect="document.body.style.overflow = mobileOpen ? 'hidden' : ''"
-    :class="mobileOpen ? 'fixed inset-0 w-full h-full min-h-screen bg-white z-[999999] overflow-y-auto' : ((isDarkNav && !
+}" x-effect="document.body.style.overflow = mobileOpen ? 'hidden' : ''" :class="mobileOpen ? 'fixed inset-0 w-full h-full min-h-screen bg-white z-[999999] overflow-y-auto' : ((isDarkNav && !
             scrolled) ?
         'fixed top-0 left-0 right-0 bg-transparent border-b border-transparent z-[999999] transition-all duration-300' :
         'fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm z-[999999] transition-all duration-300'
         )">
     {{-- Header Bar (shows on desktop & normal mobile when menu is CLOSED) --}}
     <div class="container-myriad" x-show="!mobileOpen">
-        <div class="flex items-center justify-between h-[72px]">
+        <div class="flex items-center justify-between h-[88px]">
 
             {{-- Logo --}}
-            <a href="{{ route('home') }}" class="flex items-center shrink-0 group">
-                <template x-if="isDarkNav && !scrolled">
-                    <img src="{{ asset('logo_xamariz_white.svg') }}" alt="Xamariz"
-                        class="hidden md:block h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
-                </template>
-                <template x-if="!(isDarkNav && !scrolled)">
-                    <img src="{{ asset('logo_xamariz.svg') }}" alt="Xamariz"
-                        class="hidden md:block h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
-                </template>
-                <img src="{{ asset('logo_xamariz_mobile.svg') }}" alt="Xamariz"
-                    class="block md:hidden h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
-            </a>
+
+
+{{-- LOGO --}}
+<a href="{{ route('home') }}" class="flex items-center shrink-0 group">
+
+    {{-- Isótipo Xamariz (funciona em fundo claro e escuro) --}}
+    <img
+        src="{{ asset('isotipo-xamariz.png') }}"
+        alt="Xamariz"
+        class="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+    >
+
+</a>
+
+
+
+
+
 
             {{-- Desktop Nav Links with Active Circle Indicator --}}
             <div class="hidden md:flex items-center gap-1.5 h-full">
@@ -80,10 +97,9 @@
                     @php
                         $isActive = request()->routeIs($link['pattern']) || request()->routeIs($link['name']);
                     @endphp
-                    <a href="{{ $link['url'] }}"
-                        :class="(isDarkNav && !scrolled) ?
-                        '{{ $isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white' }}' :
-                        '{{ $isActive ? 'text-gray-900 font-bold' : 'text-gray-700 hover:text-gray-900' }}'"
+                    <a href="{{ $link['url'] }}" :class="(isDarkNav && !scrolled) ?
+                                '{{ $isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white' }}' :
+                                '{{ $isActive ? 'text-gray-900 font-bold' : 'text-gray-700 hover:text-gray-900' }}'"
                         class="relative font-sans text-[0.9375rem] font-medium px-3.5 py-6 transition-colors duration-200 flex flex-col items-center justify-center group">
                         <span>{{ $link['label'] }}</span>
                         @if ($isActive)
@@ -97,21 +113,9 @@
                 @endforeach
             </div>
 
-            {{-- CTA + Mobile Toggle --}}
+            {{-- CTA + Language Switcher + Mobile Toggle --}}
             <div class="flex items-center gap-3">
-                <a href="{{ route('contact') }}"
-                    :class="(isDarkNav && !scrolled) ?
-                    'border-white/30 text-white hover:bg-white hover:text-[var(--color-brand-dark)]' :
-                    'border-[var(--color-brand-dark)] text-[var(--color-brand-dark)] hover:bg-[var(--color-brand-dark)] hover:text-white'"
-                    class="hidden sm:inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold border rounded-full transition-all duration-200
-                           {{ request()->routeIs('contact') ? 'bg-[var(--color-brand-accent)] text-white border-[var(--color-brand-accent)]' : '' }}">
-                    AGENDE UMA CONVERSA
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                    </svg>
-                </a>
+                <x-language-switcher />
 
                 <button @click="mobileOpen = true"
                     :class="(isDarkNav && !scrolled) ? 'text-white' : 'text-[var(--color-brand-dark)]'"
@@ -134,8 +138,7 @@
             {{-- Top Header inside Overlay: Logo & Close 'X' Button --}}
             <div class="flex items-center justify-between pb-6 border-b border-gray-100">
                 <a href="{{ route('home') }}" @click="mobileOpen = false">
-                    <img src="{{ asset('logo_xamariz_mobile.svg') }}" alt="Xamariz"
-                        class="h-10 w-auto object-contain">
+                    <img src="{{ asset('isotipo-xamariz.png') }}" alt="Xamariz" class="h-16 w-auto object-contain">
                 </a>
                 <button @click="mobileOpen = false"
                     class="p-2 text-gray-700 hover:text-[var(--color-brand-accent)] transition-colors focus:outline-none"
@@ -167,8 +170,8 @@
                             @endif
                             <span>{{ $link['label'] }}</span>
                         </div>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round"
                             class="{{ $isActive ? 'text-[var(--color-brand-accent)]' : 'text-gray-400' }}">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
@@ -177,11 +180,19 @@
                 @endforeach
             </div>
 
-            {{-- Full Width Pill CTA Button --}}
+            {{-- Language Switcher Mobile --}}
             <div class="pt-6">
+                <p class="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-2 px-1">
+                    {{ __('common.language') }}
+                </p>
+                <x-language-switcher :mobile="true" />
+            </div>
+
+            {{-- Full Width Pill CTA Button --}}
+            <div class="pt-4">
                 <a href="{{ route('contact') }}" @click="mobileOpen = false"
                     class="w-full inline-flex items-center justify-center gap-2 py-4 rounded-full bg-[var(--color-brand-accent)] hover:bg-[var(--color-brand-accent-hover)] text-white text-base font-semibold text-center transition-all duration-300 active:scale-95 shadow-none">
-                    <span>Fale Connosco</span>
+                    <span>{{ __('nav.start_project') }}</span>
                 </a>
             </div>
         </div>

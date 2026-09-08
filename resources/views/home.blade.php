@@ -6,122 +6,383 @@
 @section('content')
 
     {{-- ══════════════════════════════════════════════
-     HERO — Video Slider (video_base.mp4 & video_base_2.mp4)
-════════════════════════════════════════════════ --}}
+    HERO — Video Slider (video_base.mp4 & video_base_2.mp4)
+    ════════════════════════════════════════════════ --}}
     <section x-data="{
-        activeSlide: 0,
-        totalSlides: 2,
-        timer: null,
-        init() {
-            this.startAutoplay();
-        },
-        startAutoplay() {
-            this.timer = setInterval(() => {
-                this.next();
-            }, 9000);
-        },
-        resetAutoplay() {
-            if (this.timer) clearInterval(this.timer);
-            this.startAutoplay();
-        },
-        goTo(index) {
-            this.activeSlide = index;
-            this.resetAutoplay();
-        },
-        next() {
-            this.activeSlide = (this.activeSlide + 1) % this.totalSlides;
-        },
-        prev() {
-            this.activeSlide = (this.activeSlide - 1 + this.totalSlides) % this.totalSlides;
-        }
-    }" class="relative min-h-screen overflow-hidden bg-black select-none">
+            activeSlide: 0,
+            totalSlides: 2,
+            timer: null,
 
-        {{-- Slide 1: video_base.mp4 --}}
+            init() {
+                this.startAutoplay();
+            },
+
+            startAutoplay() {
+                this.timer = setInterval(() => {
+                    this.next();
+                }, 9000);
+            },
+
+            resetAutoplay() {
+                if (this.timer) clearInterval(this.timer);
+                this.startAutoplay();
+            },
+
+            goTo(index) {
+                this.activeSlide = index;
+                this.resetAutoplay();
+            },
+
+            next() {
+                this.activeSlide = (this.activeSlide + 1) % this.totalSlides;
+            },
+
+            prev() {
+                this.activeSlide = (this.activeSlide - 1 + this.totalSlides) % this.totalSlides;
+            }
+        }" class="relative min-h-screen overflow-hidden bg-black select-none">
+
+        {{-- ============================================================
+        SLIDE 1
+        ============================================================= --}}
         <div class="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
             :class="activeSlide === 0 ? 'opacity-100 z-0' : 'opacity-0 -z-10'">
-            <video class="w-full h-full object-cover" autoplay muted loop playsinline preload="auto"
-                poster="https://images.unsplash.com/photo-1518135714426-c18f5ffb6f4d?w=1800&auto=format&fit=crop&q=60">
-                <source src="{{ asset('video_base.mp4') }}" type="video/mp4">
-            </video>
+
+            <x-video mode="background"
+                :src="\App\Models\SiteSetting::get('home_hero_video1', 'video_base.mp4')"
+                poster="{{ \App\Models\SiteSetting::get('home_hero_poster1', 'https://images.unsplash.com/photo-1518135714426-c18f5ffb6f4d?w=1800&auto=format&fit=crop&q=60') }}"
+                class="w-full h-full object-cover" />
         </div>
 
-        {{-- Slide 2: video_base_2.mp4 --}}
+
+        {{-- ============================================================
+        SLIDE 2
+        ============================================================= --}}
         <div class="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
             :class="activeSlide === 1 ? 'opacity-100 z-0' : 'opacity-0 -z-10'">
-            <video class="w-full h-full object-cover" autoplay muted loop playsinline preload="auto">
-                <source src="{{ asset('video_base_2.mp4') }}" type="video/mp4">
-            </video>
+
+            <x-video mode="background"
+                :src="\App\Models\SiteSetting::get('home_hero_video2', 'video_base_2.mp4')"
+                :poster="\App\Models\SiteSetting::get('home_hero_poster2', null)"
+                class="w-full h-full object-cover" />
         </div>
 
-        {{-- Gradiente apenas no topo — destaque para o menu navbar --}}
-        <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/70 to-transparent pointer-events-none z-10">
+
+        {{-- ============================================================
+        OVERLAY ESCURO
+        Escurece o vídeo para melhorar a leitura do texto
+        ============================================================= --}}
+        <div class="absolute inset-0 bg-black/45 z-10 pointer-events-none"></div>
+
+
+        {{-- ============================================================
+        GRADIENTE CINEMATOGRÁFICO
+        Mais escuro no lado esquerdo, onde fica o texto
+        ============================================================= --}}
+        <div class="absolute inset-0 z-10 pointer-events-none
+            bg-gradient-to-r from-black/70 via-black/35 to-transparent">
         </div>
 
-        {{-- Overlay de Controlos do Slider --}}
-        <div class="absolute inset-0 z-20 pointer-events-none flex flex-col justify-between p-6 sm:p-10 md:p-12">
-            {{-- Contador de slides no topo direito --}}
+
+        {{-- ============================================================
+        GRADIENTE SUPERIOR
+        Ajuda a destacar o navbar
+        ============================================================= --}}
+        <div class="absolute inset-x-0 top-0 h-40
+            bg-gradient-to-b from-black/75 to-transparent
+            pointer-events-none z-20">
+        </div>
+
+
+        {{-- ============================================================
+        TÍTULO + SUBTÍTULO
+        ============================================================= --}}
+        <div class="absolute inset-0 z-30 flex items-center pointer-events-none">
+
+            <div class="w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-12">
+
+                <div class="max-w-3xl text-white">
+
+                    {{-- Pequeno título --}}
+                    <!--<p class="mb-4-->
+                    <!--    text-xs sm:text-sm-->
+                    <!--    font-semibold-->
+                    <!--    uppercase-->
+                    <!--    tracking-[0.3em]-->
+                    <!--    text-white/75">-->
+
+                    <!--    Descubra algo extraordinário-->
+                    <!--</p>-->
+
+
+                    {{-- Título principal --}}
+                    <h1 class="
+                        text-4xl
+                        sm:text-5xl
+                        md:text-6xl
+                        lg:text-7xl
+                        font-sans
+                        font-bold
+                        leading-[0.95]
+                        tracking-tight
+                        drop-shadow-2xl
+                    ">
+
+                        Quem comunica melhor ,
+                        <span class="text-[var(--color-brand-accent)]">
+                            cresce melhor.
+                        </span>
+
+                    </h1>
+
+
+                    {{-- Subtítulo --}}
+                    <p class="
+                        mt-6
+                        max-w-xl
+                        text-sm
+                        sm:text-base
+                        md:text-lg
+                        leading-relaxed
+                        text-white/80
+                        drop-shadow-lg
+                    ">
+
+                        Ajudamos empresas a clarificar a sua mensagem <br /> para atrair clientes certos e liderar o seu
+                        mercado.
+
+                    </p>
+
+                    <div class="mt-8">
+                        <a href="{{ route('contact') }}" class="inline-flex items-center gap-3 px-7 py-3 rounded-full
+                   text-white text-xs font-semibold uppercase tracking-wider
+                   transition-all duration-300 group shrink-0
+                   bg-[var(--color-brand-accent)]">
+
+                            <span>Agende conversa</span>
+
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                                class="text-white group-hover:translate-x-1 transition-transform">
+
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+
+                            </svg>
+
+                        </a>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        {{-- ============================================================
+        CONTROLOS DO SLIDER
+        ============================================================= --}}
+        <div class="
+            absolute
+            inset-0
+            z-40
+            pointer-events-none
+            flex
+            flex-col
+            justify-between
+            p-6
+            sm:p-10
+            md:p-12
+        ">
+
+
+            {{-- ========================================================
+            CONTADOR
+            ========================================================= --}}
             <div class="flex justify-end pt-16 sm:pt-20">
-                <div
-                    class="font-sans text-white/90 text-xs font-semibold tracking-widest px-3.5 py-1.5 pointer-events-auto">
-                    <span x-text="String(activeSlide + 1).padStart(2, '0')">01</span>
-                    <span class="text-white/40 mx-1">/</span>
-                    <span x-text="String(totalSlides).padStart(2, '0')">02</span>
+
+                <div class="
+                    font-sans
+                    text-white/90
+                    text-xs
+                    font-semibold
+                    tracking-widest
+                    px-3.5
+                    py-1.5
+                    pointer-events-auto
+                ">
+
+                    <span x-text="String(activeSlide + 1).padStart(2, '0')">
+                        01
+                    </span>
+
+                    <span class="text-white/40 mx-1">
+                        /
+                    </span>
+
+                    <span x-text="String(totalSlides).padStart(2, '0')">
+                        02
+                    </span>
+
                 </div>
+
             </div>
 
-            {{-- Barra inferior: Controlo dos slides & Scroll --}}
+
+            {{-- ========================================================
+            BARRA INFERIOR
+            ========================================================= --}}
             <div class="flex items-end justify-between w-full">
-                {{-- Botões Anterior/Seguinte e Barras de Progresso --}}
-                <div class="pointer-events-auto flex items-center gap-4 sm:gap-6  p-2.5 sm:px-4 sm:py-3">
+
+
+                {{-- ====================================================
+                CONTROLOS + PROGRESSO
+                ===================================================== --}}
+                <div class="
+                    pointer-events-auto
+                    flex
+                    items-center
+                    gap-4
+                    sm:gap-6
+                    p-2.5
+                    sm:px-4
+                    sm:py-3
+                ">
+
+
+                    {{-- Botões --}}
                     <div class="flex items-center gap-1.5">
-                        <button @click="prev(); resetAutoplay()"
-                            class="p-1.5 text-white/70 hover:text-white hover:bg-white/10 transition-all rounded-xs"
-                            aria-label="Slide anterior">
+
+                        {{-- Anterior --}}
+                        <button @click="prev(); resetAutoplay()" class="
+                                p-1.5
+                                text-white/70
+                                hover:text-white
+                                hover:bg-white/10
+                                transition-all
+                                rounded-xs
+                            " aria-label="Slide anterior">
+
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
+
                                 <path d="m15 18-6-6 6-6" />
+
                             </svg>
+
                         </button>
-                        <button @click="next(); resetAutoplay()"
-                            class="p-1.5 text-white/70 hover:text-white hover:bg-white/10 transition-all rounded-xs"
-                            aria-label="Slide seguinte">
+
+
+                        {{-- Seguinte --}}
+                        <button @click="next(); resetAutoplay()" class="
+                                p-1.5
+                                text-white/70
+                                hover:text-white
+                                hover:bg-white/10
+                                transition-all
+                                rounded-xs
+                            " aria-label="Slide seguinte">
+
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
+
                                 <path d="m9 18 6-6-6-6" />
+
                             </svg>
+
                         </button>
+
                     </div>
 
-                    {{-- Linhas Indicadoras de Slide --}}
+
+                    {{-- =================================================
+                    INDICADORES
+                    ================================================== --}}
                     <div class="flex items-center gap-2">
+
                         <template x-for="(slide, index) in totalSlides" :key="index">
-                            <button @click="goTo(index)"
-                                class="relative h-1 transition-all duration-500 overflow-hidden cursor-pointer"
-                                :class="activeSlide === index ? 'w-10 bg-[var(--color-brand-accent)]' :
-                                    'w-5 bg-white/30 hover:bg-white/60'"
-                                :aria-label="'Ir para slide ' + (index + 1)"></button>
+
+                            <button @click="goTo(index)" class="
+                                    relative
+                                    h-1
+                                    transition-all
+                                    duration-500
+                                    overflow-hidden
+                                    cursor-pointer
+                                " :class="activeSlide === index
+                                    ? 'w-10 bg-[var(--color-brand-accent)]'
+                                    : 'w-5 bg-white/30 hover:bg-white/60'" :aria-label="'Ir para slide ' + (index + 1)">
+                            </button>
+
                         </template>
+
                     </div>
+
                 </div>
 
-                {{-- Indicador de Scroll no canto inferior direito --}}
-                <div
-                    class="pointer-events-auto flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
-                    <span
-                        class="font-sans text-white text-[10px] tracking-widest uppercase rotate-90 origin-center translate-x-6">Scroll</span>
-                    <div class="w-px h-12 bg-white/40 relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-1/2 bg-white animate-bounce"></div>
+
+                {{-- ====================================================
+                INDICADOR DE SCROLL
+                ===================================================== --}}
+                <div class="
+                    pointer-events-auto
+                    flex
+                    flex-col
+                    items-center
+                    gap-2
+                    opacity-60
+                    hover:opacity-100
+                    transition-opacity
+                ">
+
+                    <span class="
+                        font-sans
+                        text-white
+                        text-[10px]
+                        tracking-widest
+                        uppercase
+                        rotate-90
+                        origin-center
+                        translate-x-6
+                    ">
+                        Scroll
+                    </span>
+
+
+                    <div class="
+                        w-px
+                        h-12
+                        bg-white/40
+                        relative
+                        overflow-hidden
+                    ">
+
+                        <div class="
+                            absolute
+                            top-0
+                            left-0
+                            w-full
+                            h-1/2
+                            bg-white
+                            animate-bounce
+                        "></div>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
 
     </section>
 
 
     {{-- ══════════════════════════════════════════════
-     WHAT WE DO
-════════════════════════════════════════════════ --}}
+    WHAT WE DO
+    ════════════════════════════════════════════════ --}}
     <section
         class="relative bg-gradient-to-br from-[#09297a] via-[#132058] to-[#281b45] py-28 md:py-36 overflow-hidden text-white"
         id="whoweare">
@@ -159,29 +420,28 @@
                 <div class="lg:col-span-7 reveal">
                     <h2 class="font-serif text-white font-bold leading-[1.08]"
                         style="font-size: clamp(2.25rem, 4.5vw, 3.75rem); letter-spacing: -0.035em;">
-                        Algumas empresas <br>não estão a falhar.<br>
-                        Estão a comunicar mal.
+                        As empresas não estão a <br />falhar. Estão a comunicar mal.
                     </h2>
                 </div>
 
                 <div class="lg:col-span-5 space-y-10 reveal delay-200 lg:pt-2">
                     <div class="border-l-2 border-white/20 hover:border-[var(--color-brand-accent)] transition-colors pl-6">
                         <p class="font-sans text-white/80 text-base sm:text-lg leading-relaxed">
-                            Investem no digital.<br>
-                            Publicam conteúdo.<br>
-                            Fazem campanhas.<br>
-                            Mas o mercado não entende. E quando não entende, escolhe outro.
+                            Investem no digital. <br />
+                            Publicam conteúdo. <br />
+                            Fazem campanhas.<br />
+                            Mas o mercado não entende. <br /> E quando não entende, escolhe outro.<br />
                         </p>
                         <div class="pt-8">
-                            <a href="{{ route('about') }}"
-                                class="inline-flex items-center gap-2.5 font-sans text-sm font-bold uppercase tracking-widest text-[var(--color-brand-accent)] hover:text-white transition-colors group">
-                                <span>Saber mais sobre nós</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" class="group-hover:translate-x-1 transition-transform">
-                                    <path d="M5 12h14" />
-                                    <path d="m12 5 7 7-7 7" />
-                                </svg>
-                            </a>
+                            <!--<a href="{{ route('about') }}"-->
+                            <!--    class="inline-flex items-center gap-2.5 font-sans text-sm font-bold uppercase tracking-widest text-[var(--color-brand-accent)] hover:text-white transition-colors group">-->
+                            <!--    <span>Saber mais sobre nós</span>-->
+                            <!--    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"-->
+                            <!--        stroke-width="2" class="group-hover:translate-x-1 transition-transform">-->
+                            <!--        <path d="M5 12h14" />-->
+                            <!--        <path d="m12 5 7 7-7 7" />-->
+                            <!--    </svg>-->
+                            <!--</a>-->
                         </div>
                     </div>
                 </div>
@@ -190,8 +450,555 @@
     </section>
 
     {{-- ══════════════════════════════════════════════
-     SELECTED WORK (Dinamico da BD)
-════════════════════════════════════════════════ --}}
+    SELECTED WORK (Dinamico da BD)
+    ════════════════════════════════════════════════ --}}
+
+
+    {{-- ══════════════════════════════════════════════
+    FULL VIDEO SECTION WITH OVERLAY (OUR TEAM & CULTURE)
+    ════════════════════════════════════════════════ --}}
+
+
+    {{-- ══════════════════════════════════════════════
+    ABOUT US
+    ════════════════════════════════════════════════ --}}
+    <section class="py-16 sm:py-20 bg-white text-gray-900 overflow-hidden">
+        <div class="container-myriad">
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+                <div class="lg:col-span-6 reveal">
+                    <h2
+                        class="font-sans text-4xl sm:text-6xl md:text-4xl font-normal text-gray-900 tracking-tight leading-[1.08] mb-8 sm:mb-10">
+                        <p class="font-extrabold">Quando a mensagem
+                            é clara,</p> <span>as pessoas
+                            certas encontram-no.</span>
+
+                    </h2>
+                    <ul class="border-t border-gray-300">
+
+                        <li class="flex items-center py-4 border-b border-gray-300" style="column-gap: 24px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                                style="flex-shrink: 0; color: var(--color-brand-accent);">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+
+                            <span>
+                                Entendem o que faz.
+                            </span>
+                        </li>
+
+
+                        <li class="flex items-center py-4 border-b border-gray-300" style="column-gap: 24px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                                style="flex-shrink: 0; color: var(--color-brand-accent);">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+
+                            <span>
+                                Reconhecem o valor.
+                            </span>
+                        </li>
+
+
+                        <li class="flex items-center py-4 border-b border-gray-300" style="column-gap: 24px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                                style="flex-shrink: 0; color: var(--color-brand-accent);">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+
+                            <span>
+                                E escolhem-no a si.
+                            </span>
+                        </li>
+
+                    </ul>
+
+
+                    <style>
+                        .about-button {
+                            display: inline-flex !important;
+                            margin-top: 20px !important;
+                        }
+                    </style>
+
+
+                </div>
+
+                <div class="lg:col-span-6 reveal delay-200 relative">
+
+                    <div x-data="{
+                position: 50,
+                autoPosition: 50,
+                direction: -1,
+                hovering: false,
+                dragging: false,
+                timer: null,
+
+                init() {
+
+                    this.autoPosition = this.position;
+
+                    this.timer = setInterval(() => {
+
+                        // Se o utilizador estiver a interagir,
+                        // não executa a animação automática.
+                        if (this.hovering || this.dragging) {
+                            return;
+                        }
+
+                        this.autoPosition += this.direction * 0.15;
+
+                        // Limite esquerdo do automático
+                        if (this.autoPosition <= 30) {
+                            this.autoPosition = 30;
+                            this.direction = 1;
+                        }
+
+                        // Limite direito do automático
+                        if (this.autoPosition >= 70) {
+                            this.autoPosition = 70;
+                            this.direction = -1;
+                        }
+
+                        this.position = this.autoPosition;
+
+                    }, 16);
+                }
+            }" x-init="init()" @mouseenter="hovering = true" @mouseleave="
+                hovering = false;
+                dragging = false;
+            " class="relative aspect-[16/10] select-none overflow-hidden rounded-none bg-gray-900 shadow-2xl group cursor-ew-resize">
+
+                        {{-- Imagem Base (Depois / Resultado Real) --}}
+                        <img src="{{ \App\Models\SiteSetting::get(
+        'home_slider_after_img',
+        'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&auto=format&fit=crop&q=80'
+    ) }}" alt="Depois — Experiência Real"
+                            class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+
+
+                        {{-- Tag Badge: Depois / Resultados --}}
+                        <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-black/70 backdrop-blur-md rounded-full text-[10px] font-sans font-bold tracking-widest text-white uppercase pointer-events-none transition-opacity duration-200"
+                            :class="position > 85 ? 'opacity-0' : 'opacity-100'">
+                            {{ \App\Models\SiteSetting::get(
+        'home_slider_result_tag',
+        'Resultado'
+    ) }}
+                        </div>
+
+
+                        {{-- Imagem Sobreposta (Antes / Conceito / Preparação) --}}
+                        <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden"
+                            :style="`clip-path: inset(0 calc(100% - ${position}%) 0 0);`">
+
+                            <img src="{{ \App\Models\SiteSetting::get(
+        'home_slider_before_img',
+        'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200&auto=format&fit=crop&q=80'
+    ) }}" alt="Antes — Conceito & Estrutura"
+                                class="absolute inset-0 w-full h-full object-cover grayscale brightness-90 contrast-125">
+
+
+                            {{-- Tag Badge: Antes / Conceito --}}
+                            <div class="absolute top-4 left-4 z-10 px-3 py-1 bg-black/70 backdrop-blur-md rounded-full text-[10px] font-sans font-bold tracking-widest text-white uppercase pointer-events-none transition-opacity duration-200"
+                                :class="position < 15 ? 'opacity-0' : 'opacity-100'">
+                                {{ \App\Models\SiteSetting::get(
+        'home_slider_concept_tag',
+        'Conceito'
+    ) }}
+                            </div>
+
+                        </div>
+
+
+                        {{-- Barra Divisória e Pega Central --}}
+                        <div class="absolute top-0 bottom-0 pointer-events-none z-20"
+                            :style="`left: ${position}%; transform: translateX(-50%);`">
+
+                            {{-- Linha vertical --}}
+                            <div class="w-[2px] h-full bg-white shadow-[0_0_12px_rgba(0,0,0,0.8)] mx-auto"></div>
+
+
+                            {{-- Botão Central com Setas --}}
+                            <div
+                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white text-gray-900 shadow-[0_4px_20px_rgba(0,0,0,0.4)] flex items-center justify-center border-2 border-[var(--color-brand-accent)] transition-transform duration-200 group-hover:scale-110">
+
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-gray-900">
+                                    <path d="m8 7-5 5 5 5"></path>
+                                    <path d="m16 7 5 5-5 5"></path>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+
+                        {{-- Input Range Transparente para Controlo Táctil e Rato --}}
+                        <input type="range" min="0" max="100" step="0.1" x-model.number="position"
+                            @mousedown="dragging = true" @mouseup="dragging = false" @touchstart="dragging = true"
+                            @touchend="dragging = false" @input="
+                    autoPosition = position;
+                    dragging = true;
+                " @change="dragging = false" aria-label="Comparar antes e depois"
+                            class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30 m-0 p-0">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- ══════════════════════════════════════════════
+    O QUE MUDA — 4 PILARES DE RESULTADO
+    ════════════════════════════════════════════════ --}}
+    <section class="border-t border-b-2 border-[var(--color-brand-accent)] bg-[#fbfbfb]/80 py-16 sm:py-20 text-gray-900">
+        <div class="container-myriad">
+            <style>
+                .pillars-grid>.pillar-item {
+                    border-right: 1px solid #d1d5db !important;
+                }
+
+                .pillars-grid>.pillar-item:last-child {
+                    border-right: none !important;
+                }
+
+                @media (max-width: 1023px) {
+                    .pillars-grid>.pillar-item {
+                        border-right: none !important;
+                    }
+                }
+            </style>
+
+
+            <div class="pillars-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
+
+                {{-- 01 --}}
+                <div class="pillar-item reveal border-r border-gray-600 lg:px-8 first:lg:pl-0 pb-8 lg:pb-0">
+
+                    <span
+                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
+                        01
+                    </span>
+
+                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
+                        {{ \App\Models\SiteSetting::get('home_pillar1_title', 'Deixa de lutar pela atenção') }}
+                    </h3>
+
+                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
+                        {{ \App\Models\SiteSetting::get('home_pillar1_desc', 'A mensagem certa chega às pessoas certas sem esforço desperdiçado.') }}
+                    </p>
+
+                </div>
+
+
+                {{-- 02 --}}
+                <div class="pillar-item reveal delay-100 lg:px-8 pb-8 lg:pb-0">
+
+                    <span
+                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
+                        02
+                    </span>
+
+                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
+                        {{ \App\Models\SiteSetting::get('home_pillar2_title', 'Os clientes certos aproximam-se') }}
+                    </h3>
+
+                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
+                        {{ \App\Models\SiteSetting::get('home_pillar2_desc', 'Quando entendem o que faz, os que precisam de si procuram-no.') }}
+                    </p>
+
+                </div>
+
+
+                {{-- 03 --}}
+                <div class="pillar-item reveal delay-200 lg:px-8 pb-8 lg:pb-0">
+
+                    <span
+                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
+                        03
+                    </span>
+
+                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
+                        {{ \App\Models\SiteSetting::get('home_pillar3_title', 'A concorrência fica para trás') }}
+                    </h3>
+
+                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
+                        {{ \App\Models\SiteSetting::get('home_pillar3_desc', 'Uma mensagem clara é a vantagem que a maioria não tem coragem de construir.') }}
+                    </p>
+
+                </div>
+
+
+                {{-- 04 --}}
+                <div class="pillar-item reveal delay-300 lg:px-8 last:lg:pr-0">
+
+                    <span
+                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
+                        04
+                    </span>
+
+                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
+                        {{ \App\Models\SiteSetting::get('home_pillar4_title', 'O crescimento torna-se previsível') }}
+                    </h3>
+
+                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
+                        {{ \App\Models\SiteSetting::get('home_pillar4_desc', 'Com uma base sólida, cada acção gera mais resultado.') }}
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+        @include('components.video-section')
+
+    {{-- ══════════════════════════════════════════════
+    SERVICES — Interactive Expanding Cards (Dinamico da BD)
+    ════════════════════════════════════════════════ --}}
+
+@if (isset($servicesList) && $servicesList->count() > 0)
+
+    <div class="relative w-full">
+
+        <section
+            class="relative w-full py-24 sm:py-32 text-white overflow-hidden"
+            style="background: linear-gradient(90deg, #ea580c 0%, #ef4444 50%, #facc15 100%);"
+        >
+
+            <div class="container-myriad">
+
+                {{-- HEADER --}}
+                <div class="reveal flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-12 lg:mb-16">
+
+                    <div class="lg:col-span-7 reveal">
+
+                        <h2 class="font-sans text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.06]">
+                            Como podemos ajudar
+                        </h2>
+
+                    </div>
+
+
+                    <div class="flex flex-col items-start sm:items-end gap-5 max-w-lg">
+
+                        <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight text-left sm:text-right">
+                            Soluções de Marketing 360° para dominar o mercado<span class="text-white">.</span>
+                        </h2>
+
+
+                        <a
+                            href="{{ route('services.index') }}"
+                            class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-white text-white hover:bg-white hover:text-[#d63205] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group"
+                        >
+
+                            <span>VER TODOS OS SERVIÇOS</span>
+
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="group-hover:translate-x-1 transition-transform"
+                            >
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                {{-- SERVICES --}}
+                <div
+                    class="reveal delay-100"
+                    x-data="{ active: 0 }"
+                >
+
+                    <div class="flex flex-col lg:flex-row gap-4 h-auto lg:h-[540px] w-full">
+
+                        @foreach ($servicesList as $index => $item)
+
+                            @php
+
+                                $numCode = $item->number_code ?? sprintf('%02d', $index + 1);
+
+                                $title = $item->title;
+
+                                $slug = $item->slug;
+
+                                $desc = $item->short_description ?? $item->full_description;
+
+                                $img = $item->image_path
+                                    ? asset($item->image_path)
+                                    : 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&auto=format&fit=crop&q=80';
+
+                            @endphp
+
+
+                            {{-- SERVICE CARD --}}
+                            <div
+                                @mouseenter="active = {{ $index }}"
+                                @click="active = {{ $index }}"
+
+                                class="relative overflow-hidden rounded-none cursor-pointer transition-all duration-700 ease-in-out group min-h-[300px] lg:min-h-0"
+
+                                :class="
+                                    active === {{ $index }}
+                                        ? 'lg:flex-[3.5] bg-black/40'
+                                        : 'lg:flex-1 bg-black/80 hover:bg-black/60'
+                                "
+                            >
+
+                                {{-- IMAGE --}}
+                                <img
+                                    src="{{ $img }}"
+                                    alt="{{ $title }}"
+
+                                    class="absolute inset-0 w-full h-full object-cover transition-all duration-700"
+
+                                    :class="
+                                        active === {{ $index }}
+                                            ? 'scale-100 opacity-80 brightness-90'
+                                            : 'scale-105 opacity-30 brightness-50 group-hover:opacity-50 group-hover:brightness-75'
+                                    "
+                                >
+
+
+                                {{-- IMAGE OVERLAY --}}
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/60 pointer-events-none"
+                                ></div>
+
+
+                                {{-- ACTIVE CONTENT --}}
+                                <div
+                                    class="relative z-10 h-full p-8 lg:p-10 flex flex-col justify-between transition-opacity duration-500"
+
+                                    x-show="active === {{ $index }}"
+
+                                    x-transition:enter="transition ease-out duration-300 delay-150"
+
+                                    x-transition:enter-start="opacity-0 translate-y-4"
+
+                                    x-transition:enter-end="opacity-100 translate-y-0"
+                                >
+
+                                    {{-- TITLE + NUMBER --}}
+                                    <div class="flex items-start justify-between w-full">
+
+                                        <h3 class="font-sans font-extrabold text-2xl sm:text-3xl text-white tracking-tight max-w-sm">
+                                            {{ $title }}<span class="text-[var(--color-brand-accent)]">.</span>
+                                        </h3>
+
+
+                                        <span class="font-mono text-xs font-semibold text-gray-300/80 tracking-widest pt-1">
+                                            {{ $numCode }}
+                                        </span>
+
+                                    </div>
+
+
+                                    {{-- DESCRIPTION --}}
+                                    <div class="max-w-md mt-auto pt-16">
+
+                                        <p class="font-sans text-sm sm:text-base text-gray-200 leading-relaxed mb-6">
+                                            {{ $desc }}
+                                        </p>
+
+
+                                        {{-- SERVICE LINK --}}
+                                        <a
+                                            href="{{ route('services.show', $slug) }}"
+
+                                            class="inline-flex items-center gap-2.5 text-sm font-semibold text-white hover:text-[var(--color-brand-accent)] transition-colors group/btn"
+                                        >
+
+                                            <span>Explorar serviço</span>
+
+
+                                            <svg
+                                                width="18"
+                                                height="18"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2.5"
+
+                                                class="text-[var(--color-brand-accent)] group-hover/btn:translate-x-1 transition-transform"
+                                            >
+
+                                                <line
+                                                    x1="5"
+                                                    y1="12"
+                                                    x2="19"
+                                                    y2="12"
+                                                ></line>
+
+                                                <polyline
+                                                    points="12 5 19 12 12 19"
+                                                ></polyline>
+
+                                            </svg>
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+
+                                {{-- INACTIVE CONTENT --}}
+                                <div
+                                    class="relative z-10 h-full p-6 hidden lg:flex items-center justify-center transition-opacity duration-300"
+
+                                    x-show="active !== {{ $index }}"
+                                >
+
+                                    <h3
+                                        class="font-sans font-semibold text-lg text-white tracking-tight text-center whitespace-normal leading-snug px-2"
+                                    >
+                                        {{ $title }}
+                                    </h3>
+
+                                </div>
+
+                            </div>
+
+                        @endforeach
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+@endif
+
+
+
+
+
     @if (isset($featuredWorks) && $featuredWorks->count() > 0)
         <section class="py-12 bg-white">
             <div class="container-myriad">
@@ -208,8 +1015,8 @@
                     <a href="{{ route('work.index') }}"
                         class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-gray-900 text-gray-900 hover:border-[var(--color-brand-accent)] hover:text-[var(--color-brand-accent)] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group shrink-0">
                         <span>VER TODOS OS PROJETOS</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round"
                             class="text-[var(--color-brand-accent)] group-hover:translate-x-1 transition-transform">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
@@ -238,18 +1045,19 @@
                             <img src="{{ $cover }}" alt="{{ $work->title }}">
                             <div class="card-overlay">
                                 <div class="card-arrow">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
                                         <path d="M7 17L17 7" />
                                         <path d="M7 7h10v10" />
                                     </svg>
                                 </div>
                                 @if ($clientName)
                                     <p class="font-sans text-white/70 text-xs mb-1 font-semibold uppercase tracking-wider">
-                                        {{ $clientName }}</p>
+                                        {{ $clientName }}
+                                    </p>
                                 @endif
-                                <h3 class="font-serif text-white font-black text-2xl mb-2"
-                                    style="letter-spacing: -0.02em;">{{ $work->title }}</h3>
+                                <h3 class="font-serif text-white font-black text-2xl mb-2" style="letter-spacing: -0.02em;">
+                                    {{ $work->title }}</h3>
                                 <p class="font-sans text-white/70 text-sm leading-relaxed max-w-sm">
                                     {{ Str::limit($work->summary ?? $work->description, 120) }}
                                 </p>
@@ -262,289 +1070,15 @@
     @endif
 
     {{-- ══════════════════════════════════════════════
-     FULL VIDEO SECTION WITH OVERLAY (OUR TEAM & CULTURE)
-════════════════════════════════════════════════ --}}
-    @include('components.video-section')
-
-    {{-- ══════════════════════════════════════════════
-     ABOUT US
-════════════════════════════════════════════════ --}}
-    <section class="py-16 sm:py-20 bg-white text-gray-900 overflow-hidden">
-        <div class="container-myriad">
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
-                <div class="lg:col-span-6 reveal">
-                    <h2
-                        class="font-sans text-4xl sm:text-6xl md:text-7xl font-normal text-gray-900 tracking-tight leading-[1.08] mb-8 sm:mb-10">
-                        O que muda quando a sua mensagem é clara
-                    </h2>
-
-                    <p class="font-sans text-gray-700 text-lg sm:text-xl leading-relaxed max-w-lg mb-10">
-                        As pessoas certas encontram-no.<br> Entendem o que faz.<br> E escolhem-no a si.
-                    </p>
-
-                    <a href="{{ route('about') }}"
-                        class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-gray-900 text-gray-900 hover:border-[var(--color-brand-accent)] hover:text-[var(--color-brand-accent)] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group">
-                        <span>SOBRE NÓS</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                            class="text-[var(--color-brand-accent)] group-hover:translate-x-1 transition-transform">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="lg:col-span-6 reveal delay-200 relative">
-
-                    <div x-data="{
-                        position: 50
-                    }"
-                        class="relative aspect-[16/10] select-none overflow-hidden rounded-none bg-gray-900 shadow-2xl group cursor-ew-resize">
-
-                        {{-- Imagem Base (Depois / Resultado Real) --}}
-                        <img src="{{ \App\Models\SiteSetting::get('home_slider_after_img', 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&auto=format&fit=crop&q=80') }}"
-                            alt="Depois — Experiência Real"
-                            class="absolute inset-0 w-full h-full object-cover pointer-events-none">
-
-                        {{-- Tag Badge: Depois / Resultados --}}
-                        <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-black/70 backdrop-blur-md rounded-full text-[10px] font-sans font-bold tracking-widest text-white uppercase pointer-events-none transition-opacity duration-200"
-                            :class="position > 85 ? 'opacity-0' : 'opacity-100'">
-                            {{ \App\Models\SiteSetting::get('home_slider_result_tag', 'Resultado') }}
-                        </div>
-
-                        {{-- Imagem Sobreposta (Antes / Conceito / Preparação) --}}
-                        <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden"
-                            :style="`clip-path: inset(0 calc(100% - ${position}%) 0 0);`">
-                            <img src="{{ \App\Models\SiteSetting::get('home_slider_before_img', 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200&auto=format&fit=crop&q=80') }}"
-                                alt="Antes — Conceito & Estrutura"
-                                class="absolute inset-0 w-full h-full object-cover grayscale brightness-90 contrast-125">
-
-                            {{-- Tag Badge: Antes / Conceito --}}
-                            <div class="absolute top-4 left-4 z-10 px-3 py-1 bg-black/70 backdrop-blur-md rounded-full text-[10px] font-sans font-bold tracking-widest text-white uppercase pointer-events-none transition-opacity duration-200"
-                                :class="position < 15 ? 'opacity-0' : 'opacity-100'">
-                                {{ \App\Models\SiteSetting::get('home_slider_concept_tag', 'Conceito') }}
-                            </div>
-                        </div>
-
-                        {{-- Barra Divisória e Pega Central --}}
-                        <div class="absolute top-0 bottom-0 pointer-events-none z-20"
-                            :style="`left: ${position}%; transform: translateX(-50%);`">
-
-                            {{-- Linha vertical --}}
-                            <div class="w-[2px] h-full bg-white shadow-[0_0_12px_rgba(0,0,0,0.8)] mx-auto"></div>
-
-                            {{-- Botão Central com Setas --}}
-                            <div
-                                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white text-gray-900 shadow-[0_4px_20px_rgba(0,0,0,0.4)] flex items-center justify-center border-2 border-[var(--color-brand-accent)] transition-transform duration-200 group-hover:scale-110">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                                    stroke-linejoin="round" class="text-gray-900">
-                                    <path d="m8 7-5 5 5 5"></path>
-                                    <path d="m16 7 5 5-5 5"></path>
-                                </svg>
-                            </div>
-                        </div>
-
-                        {{-- Input Range Transparente para Controlo Táctil e Rato --}}
-                        <input type="range" min="0" max="100" step="0.1" x-model="position"
-                            aria-label="Comparar antes e depois"
-                            class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30 m-0 p-0">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    {{-- ══════════════════════════════════════════════
-     O QUE MUDA — 4 PILARES DE RESULTADO
-════════════════════════════════════════════════ --}}
-    <section class="border-t border-b border-gray-100 bg-[#fbfbfb]/80 py-16 sm:py-20 text-gray-900">
-        <div class="container-myriad">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
-
-                {{-- 01 --}}
-                <div class="reveal lg:px-8 first:lg:pl-0 pb-8 lg:pb-0">
-                    <span
-                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
-                        01
-                    </span>
-                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
-                        {{ \App\Models\SiteSetting::get('home_pillar1_title', 'Deixa de lutar pela atenção') }}
-                    </h3>
-                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
-                        {{ \App\Models\SiteSetting::get('home_pillar1_desc', 'A mensagem certa chega às pessoas certas sem esforço desperdiçado.') }}
-                    </p>
-                </div>
-
-                {{-- 02 --}}
-                <div class="reveal delay-100 lg:px-8 pb-8 lg:pb-0">
-                    <span
-                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
-                        02
-                    </span>
-                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
-                        {{ \App\Models\SiteSetting::get('home_pillar2_title', 'Os clientes certos aproximam-se') }}
-                    </h3>
-                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
-                        {{ \App\Models\SiteSetting::get('home_pillar2_desc', 'Quando entendem o que faz, os que precisam de si procuram-no.') }}
-                    </p>
-                </div>
-
-                {{-- 03 --}}
-                <div class="reveal delay-200  lg:px-8 pb-8 lg:pb-0">
-                    <span
-                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
-                        03
-                    </span>
-                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
-                        {{ \App\Models\SiteSetting::get('home_pillar3_title', 'A concorrência fica para trás') }}
-                    </h3>
-                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
-                        {{ \App\Models\SiteSetting::get('home_pillar3_desc', 'Uma mensagem clara é a vantagem que a maioria não tem coragem de construir.') }}
-                    </p>
-                </div>
-
-                {{-- 04 --}}
-                <div class="reveal delay-300 lg:px-8 last:lg:pr-0">
-                    <span
-                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
-                        04
-                    </span>
-                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
-                        {{ \App\Models\SiteSetting::get('home_pillar4_title', 'O crescimento torna-se previsível') }}
-                    </h3>
-                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
-                        {{ \App\Models\SiteSetting::get('home_pillar4_desc', 'Com uma base sólida, cada acção gera mais resultado.') }}
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    {{-- ══════════════════════════════════════════════
-     SERVICES — Interactive Expanding Cards (Dinamico da BD)
-════════════════════════════════════════════════ --}}
-    @if (isset($servicesList) && $servicesList->count() > 0)
-        <section
-            class="py-24 sm:py-32 bg-gradient-to-br from-[#fe3d0a] via-[#d63205] to-[#801200] text-white overflow-hidden">
-            <div class="container-myriad">
-
-                <div
-                    class="reveal flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-12 lg:mb-16">
-                    <div class="lg:col-span-7 reveal">
-                        <h2
-                            class="font-sans text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.06]">
-                            Como podemos ajudar
-                        </h2>
-                    </div>
-
-                    <div class="flex flex-col items-start sm:items-end gap-5 max-w-lg">
-                        <h2
-                            class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight text-left sm:text-right">
-                            Soluções de Marketing 360° para dominar o mercado<span class="text-white">.</span>
-                        </h2>
-
-                        <a href="{{ route('services.index') }}"
-                            class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-white text-white hover:bg-white hover:text-[#d63205] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group">
-                            <span>VER TODOS OS SERVIÇOS</span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                                class="group-hover:translate-x-1 transition-transform">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="reveal delay-100" x-data="{ active: 0 }">
-                    <div class="flex flex-col lg:flex-row gap-4 h-auto lg:h-[540px] w-full">
-                        @foreach ($servicesList as $index => $item)
-                            @php
-                                $numCode = $item->number_code ?? sprintf('%02d', $index + 1);
-                                $title = $item->title;
-                                $slug = $item->slug;
-                                $desc = $item->short_description ?? $item->full_description;
-                                $img = $item->image_path
-                                    ? asset($item->image_path)
-                                    : 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&auto=format&fit=crop&q=80';
-                            @endphp
-                            <div @mouseenter="active = {{ $index }}" @click="active = {{ $index }}"
-                                class="relative overflow-hidden rounded-none cursor-pointer transition-all duration-700 ease-in-out group min-h-[300px] lg:min-h-0"
-                                :class="active === {{ $index }} ? 'lg:flex-[3.5] bg-black/40' :
-                                    'lg:flex-1 bg-black/80 hover:bg-black/60'">
-                                <img src="{{ $img }}" alt="{{ $title }}"
-                                    class="absolute inset-0 w-full h-full object-cover transition-all duration-700"
-                                    :class="active === {{ $index }} ? 'scale-100 opacity-80 brightness-90' :
-                                        'scale-105 opacity-30 brightness-50 group-hover:opacity-50 group-hover:brightness-75'">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/60 pointer-events-none">
-                                </div>
-
-                                <div class="relative z-10 h-full p-8 lg:p-10 flex flex-col justify-between transition-opacity duration-500"
-                                    x-show="active === {{ $index }}"
-                                    x-transition:enter="transition ease-out duration-300 delay-150"
-                                    x-transition:enter-start="opacity-0 translate-y-4"
-                                    x-transition:enter-end="opacity-100 translate-y-0">
-                                    <div class="flex items-start justify-between w-full">
-                                        <h3
-                                            class="font-sans font-extrabold text-2xl sm:text-3xl text-white tracking-tight max-w-sm">
-                                            {{ $title }}<span class="text-[var(--color-brand-accent)]">.</span>
-                                        </h3>
-                                        <span
-                                            class="font-mono text-xs font-semibold text-gray-300/80 tracking-widest pt-1">
-                                            {{ $numCode }}
-                                        </span>
-                                    </div>
-
-                                    <div class="max-w-md mt-auto pt-16">
-                                        <p class="font-sans text-sm sm:text-base text-gray-200 leading-relaxed mb-6">
-                                            {{ $desc }}
-                                        </p>
-                                        <a href="{{ route('services.show', $slug) }}"
-                                            class="inline-flex items-center gap-2.5 text-sm font-semibold text-white hover:text-[var(--color-brand-accent)] transition-colors group/btn">
-                                            <span>Explorar serviço</span>
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                                                stroke="currentColor" stroke-width="2.5"
-                                                class="text-[var(--color-brand-accent)] group-hover/btn:translate-x-1 transition-transform">
-                                                <line x1="5" y1="12" x2="19" y2="12">
-                                                </line>
-                                                <polyline points="12 5 19 12 12 19"></polyline>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="relative z-10 h-full p-6 hidden lg:flex items-center justify-center transition-opacity duration-300"
-                                    x-show="active !== {{ $index }}">
-                                    <h3
-                                        class="font-sans font-semibold text-lg text-white tracking-tight text-center whitespace-normal leading-snug px-2">
-                                        {{ $title }}
-                                    </h3>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-
-                </div>
-            </div>
-        </section>
-    @endif
-
-    {{-- ══════════════════════════════════════════════
-     OUR WORK & BRANDS (Dinamico da BD)
-════════════════════════════════════════════════ --}}
+    OUR WORK & BRANDS (Dinamico da BD)
+    ════════════════════════════════════════════════ --}}
     @if (isset($brandLogos) && $brandLogos->count() > 0)
         <section class="py-16 sm:py-20 bg-white text-gray-900 overflow-hidden">
             <div class="container-myriad">
 
                 <div class="reveal max-w-4xl mb-16 sm:mb-20">
                     <h2
-                        class="font-sans text-4xl sm:text-6xl md:text-7xl font-normal text-gray-900 tracking-tight leading-[1.12]">
+                        class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12]">
                         Trabalhamos com marcas audazes impulsionando o seu próximo grande salto.
                     </h2>
                 </div>
@@ -596,8 +1130,8 @@
                     <a href="{{ route('clients.index') }}"
                         class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-gray-900 text-gray-900 hover:border-[var(--color-brand-accent)] hover:text-[var(--color-brand-accent)] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group">
                         <span>VER CLIENTES</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round"
                             class="text-[var(--color-brand-accent)] group-hover:translate-x-1 transition-transform">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
@@ -609,8 +1143,8 @@
     @endif
 
     {{-- ══════════════════════════════════════════════
-     INSIGHTS & ARTIGOS (Dinamico da BD)
-════════════════════════════════════════════════ --}}
+    INSIGHTS & ARTIGOS (Dinamico da BD)
+    ════════════════════════════════════════════════ --}}
     @if (isset($latestInsights) && $latestInsights->count() > 0)
         <section class="py-24 bg-gray-50 text-gray-900 border-t border-gray-200">
             <div class="container-myriad">
@@ -626,8 +1160,8 @@
                     <a href="{{ route('insights.index') }}"
                         class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-gray-900 text-gray-900 hover:border-[var(--color-brand-accent)] hover:text-[var(--color-brand-accent)] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group shrink-0">
                         <span>VER TODOS OS ARTIGOS</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round"
                             class="text-[var(--color-brand-accent)] group-hover:translate-x-1 transition-transform">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
@@ -667,8 +1201,8 @@
 
 
     {{-- ══════════════════════════════════════════════
-     CTA FINAL — Vamos começar.
-════════════════════════════════════════════════ --}}
+    CTA FINAL — Vamos começar.
+    ════════════════════════════════════════════════ --}}
     <x-cta-section />
 
 @endsection

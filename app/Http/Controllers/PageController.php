@@ -144,7 +144,7 @@ class PageController extends Controller
             'status'     => 'new',
         ]);
 
-        return redirect()->route('contact')->with('success', 'Obrigado pelo seu contacto. A nossa equipa irá responder em breve.');
+        return redirect()->route('contact')->with('success', __('contact.success_message'));
     }
 
     public function privacy()
@@ -159,16 +159,9 @@ class PageController extends Controller
 
     public function oilandgas()
     {
-        $oilGasClients = Client::where(function($q) {
-                $q->where('sector', 'LIKE', '%Energia%')
-                  ->orWhere('sector', 'LIKE', '%Petróleo%')
-                  ->orWhere('sector', 'LIKE', '%Gás%')
-                  ->orWhere('sector', 'LIKE', '%Recursos%');
-            })
-            ->orderBy('display_order')
-            ->get();
-
-        return view('landing.oilandgas', compact('oilGasClients'));
+        // Landing page autónoma (layout dedicado). Os logos dos clientes
+        // são uma lista fixa e específica de marcas, definida na própria view.
+        return view('landing.oilandgas');
     }
 
     public function sitemap()

@@ -11,17 +11,16 @@
             <div class="reveal flex items-center gap-3 text-xs uppercase font-sans tracking-widest mb-6 sm:mb-8">
                 <a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-900 transition-colors">Xamariz</a>
                 <span class="text-gray-300">/</span>
-                <span class="text-gray-400">Soluções & Serviços 360°</span>
+                <span class="text-gray-400">{{ \App\Models\SiteSetting::get('services_breadcrumb', 'Soluções & Serviços 360°') }}</span>
             </div>
 
             <div class="max-w-4xl reveal">
                 <h1
                     class="font-sans text-4xl sm:text-6xl md:text-7xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
-                    Organizados pelo problema, focados em resultados reais.
+                    {{ \App\Models\SiteSetting::get('services_hero_title', 'Organizados pelo problema, focados em resultados reais.') }}
                 </h1>
                 <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed">
-                    Atrair clientes num mercado competitivo exige uma comunicação clara e uma estratégia de diferenciação.
-                    Desenvolvemos ecossistemas de Marketing 360° desenhados para colocar a sua empresa no topo do seu setor.
+                    {{ \App\Models\SiteSetting::get('services_hero_subtitle', 'Atrair clientes num mercado competitivo exige uma comunicação clara e uma estratégia de diferenciação. Desenvolvemos ecossistemas de Marketing 360° desenhados para colocar a sua empresa no topo do seu setor.') }}
                 </p>
             </div>
         </div>
@@ -91,7 +90,7 @@
                 </div>
             @else
                 <div class="py-16 text-center">
-                    <p class="font-sans text-gray-500 text-lg">Nenhum serviço cadastrado de momento.</p>
+                    <p class="font-sans text-gray-500 text-lg">{{ \App\Models\SiteSetting::get('services_empty', 'Nenhum serviço cadastrado de momento.') }}</p>
                 </div>
             @endif
         </div>
@@ -99,7 +98,7 @@
 
     {{-- CTA Section --}}
     <x-cta-section
-        title="Não tem a certeza de qual o serviço ideal para o seu projeto?"
-        subtitle="Apresente-nos o seu desafio comercial. Nós desenvolvemos a solução ideal." />
+        :title="\App\Models\SiteSetting::get('services_cta_title', 'Não tem a certeza de qual o serviço ideal para o seu projeto?')"
+        :subtitle="\App\Models\SiteSetting::get('services_cta_subtitle', 'Apresente-nos o seu desafio comercial. Nós desenvolvemos a solução ideal.')" />
 
 @endsection

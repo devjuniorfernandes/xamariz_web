@@ -18,35 +18,11 @@ class SiteSettingController extends Controller
     public function update(Request $request)
     {
         $textFields = [
-            // Geral
+            // Geral & Contactos
             'site_name', 'address', 'phone', 'email', 'linkedin', 'instagram', 'twitter', 'facebook', 'whatsapp',
 
-            // Sobre Nós
-            'about_hero_title', 'about_hero_p1', 'about_hero_p2',
-            'about_cause_title', 'about_cause_p1', 'about_cause_p2', 'about_cause_quote',
-            'about_offer_title', 'about_offer_text',
-            'about_promise_title', 'about_promise_text',
-            'about_beliefs_title', 'about_beliefs_text',
-            'about_history_title', 'about_history_p1',
-            'about_gallery_img1', 'about_gallery_img2', 'about_gallery_img3',
-
-            // Home Interativos
-            'home_slider_title', 'home_slider_subtitle',
-            'home_slider_before_img', 'home_slider_after_img',
-            'home_slider_concept_tag', 'home_slider_result_tag',
-            'home_slider_metric1_val', 'home_slider_metric1_label',
-            'home_slider_metric2_val', 'home_slider_metric2_label',
-            'home_pillars_title', 'home_pillars_subtitle',
-            'home_pillar1_title', 'home_pillar1_desc',
-            'home_pillar2_title', 'home_pillar2_desc',
-            'home_pillar3_title', 'home_pillar3_desc',
-            'home_pillar4_title', 'home_pillar4_desc',
-
-            // Mídia & Vídeos
-            'showreel_video_url', 'culture_video_url', 'culture_video_title', 'culture_video_desc',
-
-            // Páginas Legais
-            'legal_privacy_policy', 'legal_cookies_policy',
+            // NOTA: O conteúdo das páginas (Sobre, Home, Média, Legal) foi movido
+            // para o menu "Páginas" (App\Http\Controllers\Admin\PageContentController).
 
             // SEO & Metadados
             'seo_meta_title_default', 'seo_meta_description_default', 'seo_meta_keywords_default', 'seo_og_image_default',
@@ -70,11 +46,6 @@ class SiteSettingController extends Controller
 
         // Handle file uploads for images
         $fileFields = [
-            'about_gallery_file1' => 'about_gallery_img1',
-            'about_gallery_file2' => 'about_gallery_img2',
-            'about_gallery_file3' => 'about_gallery_img3',
-            'home_slider_before_file' => 'home_slider_before_img',
-            'home_slider_after_file' => 'home_slider_after_img',
             'seo_og_image_file' => 'seo_og_image_default',
         ];
 

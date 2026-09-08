@@ -16,7 +16,7 @@
 
             <div class="max-w-3xl reveal">
                 <h1
-                    class="font-sans text-4xl sm:text-6xl md:text-7xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
+                    class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
                     Pensamento estratégico sobre publicidade, diferenciação & marketing 360°.
                 </h1>
                 <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed">

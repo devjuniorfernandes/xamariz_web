@@ -11,18 +11,17 @@
             <div class="reveal flex items-center gap-3 text-xs uppercase font-sans tracking-widest mb-6 sm:mb-8">
                 <a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-900 transition-colors">Xamariz</a>
                 <span class="text-gray-300">/</span>
-                <span class="text-gray-400">Parcerias e Clientes</span>
+                <span class="text-gray-400">{{ \App\Models\SiteSetting::get('clients_breadcrumb', 'Parcerias e Clientes') }}</span>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end">
                 <div class="lg:col-span-8 reveal">
                     <h1
-                        class="font-sans text-4xl sm:text-6xl md:text-7xl font-normal text-gray-900 tracking-tight leading-[1.1] mb-6">
-                        Marcas líderes que confiam na Xamariz.
+                        class="font-sans  text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.1] mb-6">
+                        {{ \App\Models\SiteSetting::get('clients_hero_title', 'Marcas líderes que confiam na Xamariz.') }}
                     </h1>
                     <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed max-w-3xl">
-                        Trabalhamos com empresas corporativas, instituições e líderes globais em Angola e no mundo. Clique
-                        num logótipo para ver os trabalhos realizados.
+                        {{ \App\Models\SiteSetting::get('clients_hero_subtitle', 'Trabalhamos com empresas corporativas, instituições e líderes globais em Angola e no mundo. Clique num logótipo para ver os trabalhos realizados.') }}
                     </p>
                 </div>
             </div>
@@ -65,7 +64,7 @@
                 </div>
             @else
                 <div class="py-16 text-center">
-                    <p class="font-sans text-gray-500 text-lg">Nenhum cliente cadastrado de momento.</p>
+                    <p class="font-sans text-gray-500 text-lg">{{ \App\Models\SiteSetting::get('clients_empty', 'Nenhum cliente cadastrado de momento.') }}</p>
                 </div>
             @endif
         </div>
@@ -73,7 +72,7 @@
 
     {{-- CTA Section --}}
     <x-cta-section
-        title="Pronto para transformar a comunicação da sua marca?"
-        subtitle="Junte-se às maiores empresas e marcas do mercado. Desenvolvemos estratégias de Marketing 360° sob medida para o seu setor." />
+        :title="\App\Models\SiteSetting::get('clients_cta_title', 'Pronto para transformar a comunicação da sua marca?')"
+        :subtitle="\App\Models\SiteSetting::get('clients_cta_subtitle', 'Junte-se às maiores empresas e marcas do mercado. Desenvolvemos estratégias de Marketing 360° sob medida para o seu setor.')" />
 
 @endsection

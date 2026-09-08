@@ -11,17 +11,16 @@
             <div class="reveal flex items-center gap-3 text-xs uppercase font-sans tracking-widest mb-6 sm:mb-8">
                 <a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-900 transition-colors">Xamariz</a>
                 <span class="text-gray-300">/</span>
-                <span class="text-gray-400">Equipa & Liderança</span>
+                <span class="text-gray-400">{{ \App\Models\SiteSetting::get('team_breadcrumb', 'Equipa & Liderança') }}</span>
             </div>
 
             <div class="max-w-3xl reveal">
                 <h1
-                    class="font-sans text-4xl sm:text-6xl md:text-7xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
-                    Liderança criativa e estratégica ao serviço da sua marca.
+                    class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
+                    {{ \App\Models\SiteSetting::get('team_hero_title', 'Liderança criativa e estratégica ao serviço da sua marca.') }}
                 </h1>
                 <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed">
-                    Conheça a nossa liderança executiva e os especialistas que transformam ideias em campanhas de alto
-                    impacto que dominam o mercado em Angola e internacionalmente.
+                    {{ \App\Models\SiteSetting::get('team_hero_subtitle', 'Conheça a nossa liderança executiva e os especialistas que transformam ideias em campanhas de alto impacto que dominam o mercado em Angola e internacionalmente.') }}
                 </p>
             </div>
         </div>
@@ -132,7 +131,7 @@
                         @if ($ceoMember->bio)
                             <div class="border-t border-gray-200 pt-6 space-y-4">
                                 <h3 class="font-sans text-lg font-bold text-gray-900 tracking-tight">
-                                    Experiência & Visão de Liderança
+                                    {{ \App\Models\SiteSetting::get('team_ceo_bio_title', 'Experiência & Visão de Liderança') }}
                                 </h3>
                                 <p class="font-sans text-gray-600 text-sm leading-relaxed">
                                     {{ $ceoMember->bio }}
@@ -155,15 +154,14 @@
                     <div>
                         <div class="flex items-center gap-2 mb-3">
                             <span class="w-2.5 h-2.5 rounded-full bg-[var(--color-brand-accent)] inline-block"></span>
-                            <span class="font-sans text-xs font-bold uppercase tracking-widest text-gray-700">DIREÇÃO &
-                                EQUIPA</span>
+                            <span class="font-sans text-xs font-bold uppercase tracking-widest text-gray-700">{{ \App\Models\SiteSetting::get('team_grid_eyebrow', 'DIREÇÃO & EQUIPA') }}</span>
                         </div>
                         <h2 class="font-sans text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
-                            Conselho de Direção & Especialistas
+                            {{ \App\Models\SiteSetting::get('team_grid_title', 'Conselho de Direção & Especialistas') }}
                         </h2>
                     </div>
                     <p class="font-sans text-gray-600 text-sm max-w-md">
-                        Uma equipa integrada de especialistas dedicados à excelência comercial e criativa da sua marca.
+                        {{ \App\Models\SiteSetting::get('team_grid_subtitle', 'Uma equipa integrada de especialistas dedicados à excelência comercial e criativa da sua marca.') }}
                     </p>
                 </div>
 
@@ -217,14 +215,14 @@
     @elseif(!isset($ceoMember) || !$ceoMember)
         <section class="py-24 bg-white text-center">
             <div class="container-myriad">
-                <p class="font-sans text-gray-500 text-lg">Nenhum membro da equipa registado de momento.</p>
+                <p class="font-sans text-gray-500 text-lg">{{ \App\Models\SiteSetting::get('team_empty', 'Nenhum membro da equipa registado de momento.') }}</p>
             </div>
         </section>
     @endif
 
     {{-- CTA Section --}}
     <x-cta-section
-        title="Pronto para impulsionar o seu negócio?"
-        subtitle="A nossa equipa de especialistas está pronta para desenhar a estratégia de Marketing 360° ideal para a sua empresa." />
+        :title="\App\Models\SiteSetting::get('team_cta_title', 'Pronto para impulsionar o seu negócio?')"
+        :subtitle="\App\Models\SiteSetting::get('team_cta_subtitle', 'A nossa equipa de especialistas está pronta para desenhar a estratégia de Marketing 360° ideal para a sua empresa.')" />
 
 @endsection

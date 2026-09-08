@@ -11,16 +11,16 @@
             <div class="reveal flex items-center gap-3 text-xs uppercase font-sans tracking-widest mb-6 sm:mb-8">
                 <a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-900 transition-colors">Xamariz</a>
                 <span class="text-gray-300">/</span>
-                <span class="text-gray-400">Portfólio de Projetos</span>
+                <span class="text-gray-400">{{ \App\Models\SiteSetting::get('work_breadcrumb', 'Portfólio de Projetos') }}</span>
             </div>
 
             <div class="max-w-3xl reveal">
                 <h1
                     class="font-sans text-4xl sm:text-6xl md:text-7xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
-                    Campanhas audazes e resultados que dominam o mercado.
+                    {{ \App\Models\SiteSetting::get('work_hero_title', 'Campanhas audazes e resultados que dominam o mercado.') }}
                 </h1>
                 <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed">
-                    Cada projeto começou como um desafio estratégico de comunicação. Explore como transformámos a visão dos nossos clientes em posições de liderança no setor.
+                    {{ \App\Models\SiteSetting::get('work_hero_subtitle', 'Cada projeto começou como um desafio estratégico de comunicação. Explore como transformámos a visão dos nossos clientes em posições de liderança no setor.') }}
                 </p>
             </div>
         </div>
@@ -28,12 +28,12 @@
 
     {{-- Filters (Dynamic from DB) --}}
     @if(isset($categories) && $categories->count() > 0)
-    <section class="bg-white sticky top-[72px] z-40 py-4 border-b border-gray-100">
+    <section class="bg-white sticky top-[88px] z-40 py-4 border-b border-gray-100">
         <div class="container-myriad">
             <div class="flex flex-wrap gap-3">
                 <button data-filter="all"
                     class="font-sans text-xs font-semibold uppercase tracking-wider px-5 py-2.5 rounded-full transition-all duration-200 bg-[var(--color-brand-accent)] text-white">
-                    Todos os Projetos
+                    {{ \App\Models\SiteSetting::get('work_filter_all', 'Todos os Projetos') }}
                 </button>
                 @foreach ($categories as $cat)
                     <button data-filter="{{ $cat->filter_key }}"
@@ -91,7 +91,7 @@
                 </div>
             @else
                 <div class="py-16 text-center">
-                    <p class="font-sans text-gray-500 text-lg">Nenhum projeto encontrado de momento.</p>
+                    <p class="font-sans text-gray-500 text-lg">{{ \App\Models\SiteSetting::get('work_empty', 'Nenhum projeto encontrado de momento.') }}</p>
                 </div>
             @endif
         </div>

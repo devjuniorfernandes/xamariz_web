@@ -1,27 +1,37 @@
-<footer class="bg-[var(--color-brand-dark)] text-white">
+<footer   class=" text-white relative bg-gradient-to-br from-[#09297a] via-[#132058] to-[#281b45]">
     {{-- Main footer content --}}
+    
     <div class="container-myriad pt-20 pb-12">
+        
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
 
             {{-- Brand --}}
             <div class="lg:col-span-3">
                 <a href="{{ route('home') }}" class="inline-block mb-4 group">
-                    <img src="{{ asset('logo_xamariz_white.svg') }}" alt="Xamariz" class="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                    <img src="{{ asset('logo_new_version.svg') }}" alt="Xamariz" class="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
                 </a>
-                <p class="text-[var(--color-muted)] text-sm leading-relaxed max-w-xs">
-                    Agência de Publicidade Angola e Internacional com Marketing 360°. Comunicação clara e estratégias que dominam o mercado.
+                <p class="text-white text-sm leading-relaxed max-w-xs">
+                    {{ __('common.agency_description') }}
                 </p>
             </div>
 
             {{-- Company links --}}
             <div class="lg:col-span-3">
-                <h4 class="font-sans text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] mb-5">
-                    Navegação</h4>
+                <h4 class="font-sans text-xs font-semibold uppercase tracking-widest text-white mb-5">
+                    {{ __('common.quick_links') }}</h4>
                 <ul class="space-y-3">
-                    @foreach ([['Sobre Nós', 'about'], ['Equipa', 'team.index'], ['Clientes', 'clients.index'], ['Portfólio (Work)', 'work.index'], ['Serviços 360°', 'services.index'], ['Insights', 'insights.index'], ['Contactos', 'contact']] as [$label, $route])
+                    @foreach ([
+                        [__('nav.about'), 'about'],
+                        [__('nav.team'), 'team.index'],
+                        [__('nav.clients'), 'clients.index'],
+                        [__('nav.portfolio'), 'work.index'],
+                        [__('nav.services'), 'services.index'],
+                        [__('nav.insights'), 'insights.index'],
+                        [__('nav.contacts'), 'contact']
+                    ] as [$label, $route])
                         <li>
                             <a href="{{ route($route) }}"
-                                class="text-[var(--color-muted)] hover:text-white text-sm transition-colors duration-200">
+                                class="text-white hover:text-white text-sm transition-colors duration-200">
                                 {{ $label }}
                             </a>
                         </li>
@@ -31,13 +41,13 @@
 
             {{-- Services links --}}
             <div class="lg:col-span-3">
-                <h4 class="font-sans text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] mb-5">
-                    Serviços</h4>
+                <h4 class="font-sans text-xs font-semibold uppercase tracking-widest text-white mb-5">
+                    {{ __('nav.services') }}</h4>
                 <ul class="space-y-3">
                     @foreach ([['Estratégia & Marketing 360°', 'services.index'], ['Publicidade & Branding', 'services.index'], ['Desenvolvimento Web & SEO', 'services.index'], ['Fotografia & Audiovisual', 'services.index'], ['Marketing de Performance', 'services.index']] as [$label, $route])
                         <li>
                             <a href="{{ route($route) }}"
-                                class="text-[var(--color-muted)] hover:text-white text-sm transition-colors duration-200">
+                                class="text-white hover:text-white text-sm transition-colors duration-200">
                                 {{ $label }}
                             </a>
                         </li>
@@ -47,30 +57,30 @@
 
             {{-- Contact Information Column --}}
             <div class="lg:col-span-3 space-y-4">
-                <h4 class="font-sans text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] mb-5">
-                    Contactos
+                <h4 class="font-sans text-xs font-semibold uppercase tracking-widest text-white mb-5">
+                    {{ __('nav.contacts') }}
                 </h4>
                 
                 {{-- Address --}}
                 <div>
-                    <p class="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-accent)] mb-1">Sede Luanda</p>
-                    <p class="text-[var(--color-muted)] text-sm leading-relaxed">
+                    <p class="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-accent)] mb-1">{{ __('common.address') }}</p>
+                    <p class="text-white text-sm leading-relaxed">
                         Rua Francisco Sotto Mayor 18, Bairro Azul, Luanda, Angola
                     </p>
                 </div>
 
                 {{-- Phone --}}
                 <div>
-                    <p class="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-accent)] mb-1">Telefone</p>
-                    <a href="tel:+244941561422" class="text-[var(--color-muted)] hover:text-white text-sm font-medium transition-colors duration-200">
+                    <p class="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-accent)] mb-1">{{ __('contact.phone_label') }}</p>
+                    <a href="tel:+244941561422" class="text-white hover:text-[var(--color-brand-accent)] text-sm font-medium transition-colors duration-200">
                         +244 941 561 422
                     </a>
                 </div>
 
                 {{-- Email --}}
                 <div>
-                    <p class="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-accent)] mb-1">Email</p>
-                    <a href="mailto:info@xamarizmarketing.com" class="text-[var(--color-muted)] hover:text-white text-sm font-medium transition-colors duration-200">
+                    <p class="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-accent)] mb-1">{{ __('contact.email_label') }}</p>
+                    <a href="mailto:info@xamarizmarketing.com" class="text-white hover:text-[var(--color-brand-accent)] text-sm font-medium transition-colors duration-200">
                         info@xamarizmarketing.com
                     </a>
                 </div>
@@ -133,16 +143,16 @@
 
         {{-- Bottom bar --}}
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 pt-8 border-t border-white/10">
-            <p class="text-xs text-[var(--color-muted)]">
-                &copy; {{ date('Y') }} Xamariz (Visualclick, Lda). Todos os direitos reservados.
+            <p class="text-xs text-white">
+                &copy; {{ date('Y') }} Xamariz (Visualclick, Lda). {{ __('common.all_rights_reserved') }}
             </p>
             <div class="flex items-center gap-6">
                 <a href="{{ route('privacy') }}"
-                    class="text-xs text-[var(--color-muted)] hover:text-white transition-colors">Privacidade</a>
+                    class="text-xs text-white hover:text-[var(--color-brand-accent)] transition-colors">{{ __('common.privacy_policy') }}</a>
                 <a href="{{ route('cookies') }}"
-                    class="text-xs text-[var(--color-muted)] hover:text-white transition-colors">Cookies</a>
+                    class="text-xs text-white hover:text-[var(--color-brand-accent)] transition-colors">{{ __('common.cookie_policy') }}</a>
                 <a href="mailto:contacto@xamariz.ao"
-                    class="text-xs text-[var(--color-muted)] hover:text-white transition-colors">
+                    class="text-xs text-white hover:text-[var(--color-brand-accent)] transition-colors">
                     contacto@xamariz.ao
                 </a>
             </div>

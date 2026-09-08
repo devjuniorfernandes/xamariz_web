@@ -13,6 +13,11 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ContactLeadController;
 use App\Http\Controllers\Admin\HeroSlideController;
 use App\Http\Controllers\Admin\SiteSettingController;
+use App\Http\Controllers\Admin\PageContentController;
+use App\Http\Controllers\LocaleController;
+
+// ─── Locale Switcher ───────────────────────────
+Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
 
 // ─── Public Routes ─────────────────────────────
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -50,6 +55,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('posts', PostController::class);
     Route::resource('contact-leads', ContactLeadController::class)->only(['index', 'show', 'update', 'destroy']);
     Route::resource('hero-slides', HeroSlideController::class);
+
+    Route::get('/pages', [PageContentController::class, 'index'])->name('pages.index');
+    Route::post('/pages', [PageContentController::class, 'update'])->name('pages.update');
 
     Route::get('/settings', [SiteSettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SiteSettingController::class, 'update'])->name('settings.update');

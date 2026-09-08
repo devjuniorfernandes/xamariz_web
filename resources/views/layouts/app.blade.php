@@ -136,14 +136,9 @@
                 <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
             </svg>
         </button>
-        <div class="w-full max-w-5xl aspect-video bg-black">
-            <iframe
-                class="w-full h-full"
-                src="{{ \App\Models\SiteSetting::get('showreel_video_url', 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1') }}"
-                frameborder="0"
-                allow="autoplay; fullscreen"
-                allowfullscreen>
-            </iframe>
+        <div id="showreel-player" class="w-full max-w-5xl aspect-video bg-black">
+            <x-video mode="embed" deferred
+                :src="\App\Models\SiteSetting::get('showreel_video_url', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ')" />
         </div>
     </div>
 

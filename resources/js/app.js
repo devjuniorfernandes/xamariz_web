@@ -112,26 +112,67 @@ document.addEventListener('DOMContentLoaded', () => {
     const showreelClose = document.getElementById('showreel-close');
 
     if (showreelTriggers.length && showreelModal) {
+        // Ativa o player (define o src diferido) — funciona para iframe (YouTube/Vimeo/outro) e <video> local.
+        const activateShowreel = () => {
+            const iframe = showreelModal.querySelector('[data-video-embed]');
+            if (iframe && iframe.dataset.src) {
+                iframe.src = iframe.dataset.src;
+            }
+            const video = showreelModal.querySelector('[data-video-file]');
+            if (video) {
+                if (video.dataset.src && !video.querySelector('source')) {
+                    const source = document.createElement('source');
+                    source.src = video.dataset.src;
+                    video.appendChild(source);
+                    video.load();
+                }
+                video.play().catch(() => {});
+            }
+        };
+
+        // Desativa (pára a reprodução ao fechar).
+        const deactivateShowreel = () => {
+            const iframe = showreelModal.querySelector('[data-video-embed]');
+            if (iframe) {
+                iframe.src = '';
+            }
+            const video = showreelModal.querySelector('[data-video-file]');
+            if (video) {
+                video.pause();
+            }
+        };
+
+        const openShowreel = () => {
+            showreelModal.classList.remove('hidden');
+            showreelModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            activateShowreel();
+        };
+
+        const closeShowreel = () => {
+            showreelModal.classList.add('hidden');
+            showreelModal.classList.remove('flex');
+            document.body.style.overflow = '';
+            deactivateShowreel();
+        };
+
         showreelTriggers.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                showreelModal.classList.remove('hidden');
-                showreelModal.classList.add('flex');
-                document.body.style.overflow = 'hidden';
+                openShowreel();
             });
         });
         if (showreelClose) {
-            showreelClose.addEventListener('click', () => {
-                showreelModal.classList.add('hidden');
-                showreelModal.classList.remove('flex');
-                document.body.style.overflow = '';
-            });
+            showreelClose.addEventListener('click', closeShowreel);
         }
         showreelModal.addEventListener('click', (e) => {
             if (e.target === showreelModal) {
-                showreelModal.classList.add('hidden');
-                showreelModal.classList.remove('flex');
-                document.body.style.overflow = '';
+                closeShowreel();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !showreelModal.classList.contains('hidden')) {
+                closeShowreel();
             }
         });
     }
