@@ -50,7 +50,7 @@
                 <x-language-switcher />
 
                 <a href="#aog"
-                    class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#ff5e14] hover:bg-[#e04e0b] text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] font-barlow">
+                    class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-[#ff5e14] hover:bg-[#e04e0b] text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 font-barlow">
                     <span>{{ __('oilandgas.nav.cta') }}</span>
                 </a>
 
@@ -109,7 +109,7 @@
             {{-- CTA --}}
             <div class="pt-6">
                 <a href="#aog" @click="mobileOpen = false"
-                    class="w-full inline-flex items-center justify-center gap-2 py-4 rounded-full bg-[#ff5e14] hover:bg-[#e04e0b] text-white text-base font-bold uppercase tracking-wider text-center transition-all duration-300 active:scale-95">
+                    class="w-full inline-flex items-center justify-center gap-2 py-4 bg-[#ff5e14] hover:bg-[#e04e0b] text-white text-base font-bold uppercase tracking-wider text-center transition-all duration-300 active:scale-95">
                     <span>{{ __('oilandgas.nav.cta') }}</span>
                 </a>
             </div>

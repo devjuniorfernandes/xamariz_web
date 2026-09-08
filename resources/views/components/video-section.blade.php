@@ -4,6 +4,7 @@
     {{-- Full Width Video Background (local, YouTube, Vimeo ou outro) --}}
     <x-video mode="background"
         :src="\App\Models\SiteSetting::get('culture_video_url', 'office.mp4')"
+        :loop="\App\Models\SiteSetting::get('culture_video_loop', '1') !== '0'"
         class="z-0" />
 
     {{-- Dark Opacity Overlay --}}

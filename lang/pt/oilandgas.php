@@ -47,32 +47,66 @@ return [
 
     // ─── 4. Onde ajudamos ──────────────────────────
     'areas' => [
-        'eyebrow' => 'Áreas de actuação',
-        'title' => 'Onde ajudamos empresas da indústria.',
+        'eyebrow' => 'Focus',
+        'title' => 'Onde ajudamos empresas da indústria energética.',
+        'intro' => 'Criamos e aplicamos a comunicação necessária para posicionar, proteger e fazer crescer organizações do sector — do primeiro concurso à operação, das comunidades aos reguladores.',
+        'approach_link' => 'Explorar a nossa abordagem',
+        'explore' => 'Explorar',
+        'deliverables_label' => 'O que entregamos',
         'items' => [
             'corporate' => [
                 'title' => 'Comunicação Corporativa',
                 'desc' => 'Posicionamento institucional, mensagem de marca e gestão de reputação para operadoras e prestadores de serviços.',
+                'deliverables' => [
+                    'Relatórios anuais e institucionais',
+                    'Identidade e narrativa corporativa',
+                    'Media relations e gestão de reputação',
+                ],
             ],
             'projects' => [
                 'title' => 'Comunicação de Projectos',
                 'desc' => 'Narrativas claras para grandes projectos — do licenciamento à operação — que alinham parceiros e comunidades.',
+                'deliverables' => [
+                    'Dossiers de concurso e pré-qualificação',
+                    'Comunicação de licenciamento e FID',
+                    'Conteúdo local e relação com comunidades',
+                ],
             ],
             'executive' => [
                 'title' => 'Conteúdo Executivo',
                 'desc' => 'Apresentações, relatórios e dossiers de concurso de alta precisão para decisores e conselhos de administração.',
+                'deliverables' => [
+                    'Apresentações para conselho e investidores',
+                    'Relatórios de sustentabilidade e ESG',
+                    'Memorandos técnicos e data rooms',
+                ],
             ],
             'digital' => [
                 'title' => 'Comunicação Digital',
                 'desc' => 'Presença digital, conteúdo técnico e campanhas orientadas ao mercado angolano e internacional.',
+                'deliverables' => [
+                    'Websites e portais técnicos',
+                    'LinkedIn e thought leadership',
+                    'Campanhas para o mercado angolano',
+                ],
             ],
             'employer' => [
                 'title' => 'Employer Branding',
                 'desc' => 'Atracção e retenção de talento técnico, comunicação interna e cultura para equipas industriais.',
+                'deliverables' => [
+                    'Comunicação de recrutamento técnico',
+                    'Onboarding e comunicação interna QHSE',
+                    'Cultura, segurança e retenção de talento',
+                ],
             ],
             'stakeholder' => [
                 'title' => 'Stakeholder Engagement',
                 'desc' => 'Gestão de relações com governo, reguladores, parceiros e comunidades ao longo do ciclo de vida do projecto.',
+                'deliverables' => [
+                    'Relações com governo e reguladores (ANPG)',
+                    'Engajamento de parceiros e joint-ventures',
+                    'Comunicação de crise e gestão de incidentes',
+                ],
             ],
         ],
     ],
@@ -92,7 +126,9 @@ return [
     // ─── 6. Como pensamos ──────────────────────────
     'thinking' => [
         'eyebrow' => 'Como pensamos',
-        'title' => 'Perspectivas sobre comunicação no sector energético.',
+        'title' => 'Últimas notícias e perspectivas.',
+        'all_link' => 'Ver todas as notícias',
+        'empty' => 'Sem artigos publicados de momento.',
         'articles' => [
             'one' => [
                 'tag' => 'Estratégia',

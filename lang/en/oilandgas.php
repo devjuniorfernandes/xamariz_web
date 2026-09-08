@@ -47,32 +47,66 @@ return [
 
     // ─── 4. Where we help ──────────────────────────
     'areas' => [
-        'eyebrow' => 'Areas of expertise',
-        'title' => 'Where we help industry companies.',
+        'eyebrow' => 'Focus',
+        'title' => 'Where we help energy industry companies.',
+        'intro' => 'We create and apply the communication needed to position, protect and grow organisations in the sector — from the first tender to operation, from communities to regulators.',
+        'approach_link' => 'Explore our approach',
+        'explore' => 'Explore',
+        'deliverables_label' => 'What we deliver',
         'items' => [
             'corporate' => [
                 'title' => 'Corporate Communication',
                 'desc' => 'Institutional positioning, brand messaging and reputation management for operators and service providers.',
+                'deliverables' => [
+                    'Annual and institutional reports',
+                    'Corporate identity and narrative',
+                    'Media relations and reputation management',
+                ],
             ],
             'projects' => [
                 'title' => 'Project Communication',
                 'desc' => 'Clear narratives for major projects — from licensing to operation — aligning partners and communities.',
+                'deliverables' => [
+                    'Tender and pre-qualification dossiers',
+                    'Licensing and FID communication',
+                    'Local content and community relations',
+                ],
             ],
             'executive' => [
                 'title' => 'Executive Content',
                 'desc' => 'High-precision presentations, reports and tender dossiers for decision-makers and boards.',
+                'deliverables' => [
+                    'Board and investor presentations',
+                    'Sustainability and ESG reports',
+                    'Technical memos and data rooms',
+                ],
             ],
             'digital' => [
                 'title' => 'Digital Communication',
                 'desc' => 'Digital presence, technical content and campaigns geared to the Angolan and international market.',
+                'deliverables' => [
+                    'Websites and technical portals',
+                    'LinkedIn and thought leadership',
+                    'Campaigns for the Angolan market',
+                ],
             ],
             'employer' => [
                 'title' => 'Employer Branding',
                 'desc' => 'Attracting and retaining technical talent, internal communication and culture for industrial teams.',
+                'deliverables' => [
+                    'Technical recruitment communication',
+                    'Onboarding and internal QHSE communication',
+                    'Culture, safety and talent retention',
+                ],
             ],
             'stakeholder' => [
                 'title' => 'Stakeholder Engagement',
                 'desc' => 'Managing relations with government, regulators, partners and communities across the project lifecycle.',
+                'deliverables' => [
+                    'Government and regulator relations (ANPG)',
+                    'Partner and joint-venture engagement',
+                    'Crisis communication and incident management',
+                ],
             ],
         ],
     ],
@@ -92,7 +126,9 @@ return [
     // ─── 6. How we think ───────────────────────────
     'thinking' => [
         'eyebrow' => 'How we think',
-        'title' => 'Perspectives on communication in the energy sector.',
+        'title' => 'Latest news and perspectives.',
+        'all_link' => 'See all news',
+        'empty' => 'No articles published at the moment.',
         'articles' => [
             'one' => [
                 'tag' => 'Strategy',

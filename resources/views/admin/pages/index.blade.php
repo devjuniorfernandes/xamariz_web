@@ -85,6 +85,15 @@
                                             <input type="file" name="{{ $key }}_file" accept="image/*"
                                                 class="w-full text-xs text-gray-400 file:mr-2 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-xs file:bg-gray-800 file:text-white">
 
+                                        @elseif($type === 'toggle')
+                                            @php $checked = filter_var(old($key, $settings[$key] ?? ($field['default'] ?? '1')), FILTER_VALIDATE_BOOLEAN); @endphp
+                                            <label class="flex items-center gap-3 cursor-pointer select-none">
+                                                <input type="hidden" name="{{ $key }}" value="0">
+                                                <input type="checkbox" name="{{ $key }}" value="1" {{ $checked ? 'checked' : '' }}
+                                                    class="h-5 w-5 rounded border-[#2c2d30] bg-[#141414] text-[var(--color-brand-accent)] focus:ring-[var(--color-brand-accent)] focus:ring-offset-0">
+                                                <span class="text-xs text-gray-300">Ativado</span>
+                                            </label>
+
                                         @elseif($type === 'video')
                                             @php $vtype = \App\Support\VideoEmbed::type($value); @endphp
                                             <div class="flex items-center gap-2">

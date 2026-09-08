@@ -120,12 +120,11 @@ return [
         'note'   => 'Todos os campos de vídeo aceitam qualquer fonte: ficheiro local (ex.: office.mp4), URL do YouTube, Vimeo ou outro link de vídeo — a fonte é detetada automaticamente. Pode ainda carregar um ficheiro local diretamente. Para vídeos de fundo (hero e cultura), recomenda-se MP4 para melhor desempenho.',
         'sections' => [
             [
-                'title'  => 'Vídeos do Cabeçalho (Hero da Página Inicial)',
+                'title'  => 'Vídeo do Cabeçalho (Hero da Página Inicial)',
                 'fields' => [
-                    'home_hero_video1'  => ['type' => 'video', 'label' => 'Vídeo do Hero — Slide 1', 'help' => 'Local, YouTube, Vimeo ou outro. Recomendado: MP4.', 'default' => 'video_base.mp4'],
-                    'home_hero_poster1' => ['type' => 'image', 'label' => 'Imagem de Cartaz — Slide 1 (mostrada enquanto o vídeo carrega)', 'default' => 'https://images.unsplash.com/photo-1518135714426-c18f5ffb6f4d?w=1800&auto=format&fit=crop&q=60'],
-                    'home_hero_video2'  => ['type' => 'video', 'label' => 'Vídeo do Hero — Slide 2', 'help' => 'Local, YouTube, Vimeo ou outro. Recomendado: MP4.', 'default' => 'video_base_2.mp4'],
-                    'home_hero_poster2' => ['type' => 'image', 'label' => 'Imagem de Cartaz — Slide 2 (opcional)', 'default' => ''],
+                    'home_hero_video1'  => ['type' => 'video', 'label' => 'Vídeo principal do Hero', 'help' => 'Local, YouTube, Vimeo ou outro. Recomendado: MP4.', 'default' => 'video_base.mp4'],
+                    'home_hero_poster1' => ['type' => 'image', 'label' => 'Imagem de Fallback (mostrada enquanto o vídeo carrega)', 'default' => 'https://images.unsplash.com/photo-1518135714426-c18f5ffb6f4d?w=1800&auto=format&fit=crop&q=60'],
+                    'home_hero_loop'    => ['type' => 'toggle', 'label' => 'Reproduzir em contínuo (loop)', 'help' => 'Repete o vídeo do hero sem parar.', 'default' => '1'],
                 ],
             ],
             [
@@ -137,7 +136,8 @@ return [
             [
                 'title'  => 'Secção de Cultura ("Pronto para comunicar melhor?")',
                 'fields' => [
-                    'culture_video_url'  => ['type' => 'video',    'label' => 'Vídeo de Fundo', 'help' => 'Local, YouTube, Vimeo ou outro. Reproduz em loop, sem som, como fundo. Recomendado: MP4.', 'default' => 'office.mp4'],
+                    'culture_video_url'  => ['type' => 'video',    'label' => 'Vídeo de Fundo', 'help' => 'Local, YouTube, Vimeo ou outro. Sem som, como fundo. Recomendado: MP4.', 'default' => 'office.mp4'],
+                    'culture_video_loop' => ['type' => 'toggle',   'label' => 'Reproduzir em contínuo (loop)', 'help' => 'Repete o vídeo de fundo sem parar.', 'default' => '1'],
                     'culture_video_title'=> ['type' => 'textarea', 'label' => 'Título do Bloco de Vídeo', 'rows' => 2, 'default' => "Juntos,\ntransformamos visão\nem realidade."],
                     'culture_video_desc' => ['type' => 'textarea', 'label' => 'Descrição do Bloco de Vídeo', 'rows' => 2, 'default' => 'Somos estrategistas, criativos, contadores de histórias e especialistas em performance dedicados à excelência em Angola e no mundo.'],
                 ],

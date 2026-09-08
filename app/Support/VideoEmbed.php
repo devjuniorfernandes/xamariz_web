@@ -94,7 +94,7 @@ class VideoEmbed
      * URL de embed normalizada (iframe) para youtube/vimeo/embed.
      * $context: 'modal' (reproduz com controlos) ou 'background' (loop mudo sem controlos).
      */
-    public static function embedUrl(string $src, string $context = 'modal'): string
+    public static function embedUrl(string $src, string $context = 'modal', bool $loop = true): string
     {
         $type = static::type($src);
 
@@ -103,9 +103,20 @@ class VideoEmbed
             if (! $id) {
                 return $src;
             }
-            $params = $context === 'background'
-                ? ['autoplay' => 1, 'mute' => 1, 'loop' => 1, 'playlist' => $id, 'controls' => 0, 'showinfo' => 0, 'modestbranding' => 1, 'rel' => 0, 'playsinline' => 1]
-                : ['autoplay' => 1, 'rel' => 0, 'modestbranding' => 1, 'playsinline' => 1];
+            if ($context === 'background') {
+                $params = ['autoplay' => 1, 'mute' => 1, 'controls' => 0, 'showinfo' => 0, 'modestbranding' => 1, 'rel' => 0, 'playsinline' => 1];
+                if ($loop) {
+                    // O YouTube exige playlist=ID para que loop=1 funcione.
+                    $params['loop'] = 1;
+                    $params['playlist'] = $id;
+                }
+            } else {
+                $params = ['autoplay' => 1, 'rel' => 0, 'modestbranding' => 1, 'playsinline' => 1];
+                if ($loop) {
+                    $params['loop'] = 1;
+                    $params['playlist'] = $id;
+                }
+            }
 
             return 'https://www.youtube-nocookie.com/embed/' . $id . '?' . http_build_query($params);
         }
@@ -116,8 +127,8 @@ class VideoEmbed
                 return $src;
             }
             $params = $context === 'background'
-                ? ['background' => 1, 'autoplay' => 1, 'muted' => 1, 'loop' => 1]
-                : ['autoplay' => 1];
+                ? ['background' => 1, 'autoplay' => 1, 'muted' => 1, 'loop' => $loop ? 1 : 0]
+                : ['autoplay' => 1, 'loop' => $loop ? 1 : 0];
 
             return 'https://player.vimeo.com/video/' . $id . '?' . http_build_query($params);
         }

@@ -47,32 +47,66 @@ return [
 
     // ─── 4. Où nous aidons ─────────────────────────
     'areas' => [
-        'eyebrow' => 'Domaines d\'intervention',
-        'title' => 'Où nous aidons les entreprises du secteur.',
+        'eyebrow' => 'Focus',
+        'title' => 'Où nous aidons les entreprises du secteur énergétique.',
+        'intro' => 'Nous créons et déployons la communication nécessaire pour positionner, protéger et faire croître les organisations du secteur — du premier appel d\'offres à l\'exploitation, des communautés aux régulateurs.',
+        'approach_link' => 'Découvrir notre approche',
+        'explore' => 'Découvrir',
+        'deliverables_label' => 'Ce que nous livrons',
         'items' => [
             'corporate' => [
                 'title' => 'Communication Corporate',
                 'desc' => 'Positionnement institutionnel, message de marque et gestion de réputation pour opérateurs et prestataires.',
+                'deliverables' => [
+                    'Rapports annuels et institutionnels',
+                    'Identité et récit corporate',
+                    'Relations médias et gestion de réputation',
+                ],
             ],
             'projects' => [
                 'title' => 'Communication de Projets',
                 'desc' => 'Des récits clairs pour les grands projets — de l\'octroi de licence à l\'exploitation — qui alignent partenaires et communautés.',
+                'deliverables' => [
+                    'Dossiers d\'appel d\'offres et pré-qualification',
+                    'Communication de licence et FID',
+                    'Contenu local et relations communautaires',
+                ],
             ],
             'executive' => [
                 'title' => 'Contenu Exécutif',
                 'desc' => 'Présentations, rapports et dossiers d\'appel d\'offres de haute précision pour dirigeants et conseils d\'administration.',
+                'deliverables' => [
+                    'Présentations conseil et investisseurs',
+                    'Rapports de durabilité et ESG',
+                    'Notes techniques et data rooms',
+                ],
             ],
             'digital' => [
                 'title' => 'Communication Digitale',
                 'desc' => 'Présence numérique, contenu technique et campagnes orientées vers le marché angolais et international.',
+                'deliverables' => [
+                    'Sites web et portails techniques',
+                    'LinkedIn et leadership éclairé',
+                    'Campagnes pour le marché angolais',
+                ],
             ],
             'employer' => [
                 'title' => 'Marque Employeur',
                 'desc' => 'Attirer et fidéliser les talents techniques, communication interne et culture pour les équipes industrielles.',
+                'deliverables' => [
+                    'Communication de recrutement technique',
+                    'Intégration et communication interne QHSE',
+                    'Culture, sécurité et fidélisation des talents',
+                ],
             ],
             'stakeholder' => [
                 'title' => 'Engagement des Parties Prenantes',
                 'desc' => 'Gestion des relations avec le gouvernement, les régulateurs, les partenaires et les communautés tout au long du projet.',
+                'deliverables' => [
+                    'Relations gouvernement et régulateurs (ANPG)',
+                    'Engagement des partenaires et coentreprises',
+                    'Communication de crise et gestion d\'incidents',
+                ],
             ],
         ],
     ],
@@ -92,7 +126,9 @@ return [
     // ─── 6. Notre vision ───────────────────────────
     'thinking' => [
         'eyebrow' => 'Notre vision',
-        'title' => 'Regards sur la communication dans le secteur de l\'énergie.',
+        'title' => 'Dernières actualités et perspectives.',
+        'all_link' => 'Voir toutes les actualités',
+        'empty' => 'Aucun article publié pour le moment.',
         'articles' => [
             'one' => [
                 'tag' => 'Stratégie',

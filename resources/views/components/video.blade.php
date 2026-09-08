@@ -1,7 +1,8 @@
 @props([
     'src' => '',
-    'mode' => 'embed',      {{-- 'background' (loop mudo, cobre o contentor) | 'embed' (modal com controlos) --}}
+    'mode' => 'embed',      {{-- 'background' (mudo, cobre o contentor) | 'embed' (modal com controlos) --}}
     'deferred' => false,    {{-- true: não carrega/reproduz até ser ativado por JS (modais) --}}
+    'loop' => true,         {{-- reproduzir em contínuo (replay) --}}
     'poster' => null,
 ])
 
@@ -9,13 +10,15 @@
     use App\Support\VideoEmbed;
     $type = VideoEmbed::type($src);
     $isBg = $mode === 'background';
+    $loop = filter_var($loop, FILTER_VALIDATE_BOOLEAN);
 @endphp
 
 @if($type === 'file')
     @php $fileUrl = $deferred ? '' : VideoEmbed::fileUrl($src); @endphp
     <video
         {{ $attributes->class($isBg ? 'absolute inset-0 w-full h-full object-cover' : 'w-full h-full') }}
-        @if($isBg) autoplay muted loop playsinline @else controls playsinline @endif
+        @if($isBg) autoplay muted playsinline @else controls playsinline @endif
+        @if($loop) loop @endif
         preload="{{ $deferred ? 'none' : 'auto' }}"
         @if($poster) poster="{{ $poster }}" @endif
         @if($deferred) data-video-file data-src="{{ VideoEmbed::fileUrl($src) }}" @endif>
@@ -25,7 +28,7 @@
     </video>
 
 @elseif(in_array($type, ['youtube', 'vimeo', 'embed']))
-    @php $embedUrl = VideoEmbed::embedUrl($src, $isBg ? 'background' : 'modal'); @endphp
+    @php $embedUrl = VideoEmbed::embedUrl($src, $isBg ? 'background' : 'modal', $loop); @endphp
 
     @if($isBg)
         {{-- Iframe escalado para cobrir o contentor como fundo (16:9). --}}

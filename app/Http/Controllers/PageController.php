@@ -161,7 +161,10 @@ class PageController extends Controller
     {
         // Landing page autónoma (layout dedicado). Os logos dos clientes
         // são uma lista fixa e específica de marcas, definida na própria view.
-        return view('landing.oilandgas');
+        // Os artigos da secção "Como pensamos" vêm do site principal (Posts publicados).
+        $insights = Post::where('status', 'published')->latest('published_at')->take(4)->get();
+
+        return view('landing.oilandgas', compact('insights'));
     }
 
     public function sitemap()

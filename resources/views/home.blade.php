@@ -6,64 +6,19 @@
 @section('content')
 
     {{-- ══════════════════════════════════════════════
-    HERO — Video Slider (video_base.mp4 & video_base_2.mp4)
+    HERO — Vídeo principal (com imagem de fallback)
     ════════════════════════════════════════════════ --}}
-    <section x-data="{
-            activeSlide: 0,
-            totalSlides: 2,
-            timer: null,
-
-            init() {
-                this.startAutoplay();
-            },
-
-            startAutoplay() {
-                this.timer = setInterval(() => {
-                    this.next();
-                }, 9000);
-            },
-
-            resetAutoplay() {
-                if (this.timer) clearInterval(this.timer);
-                this.startAutoplay();
-            },
-
-            goTo(index) {
-                this.activeSlide = index;
-                this.resetAutoplay();
-            },
-
-            next() {
-                this.activeSlide = (this.activeSlide + 1) % this.totalSlides;
-            },
-
-            prev() {
-                this.activeSlide = (this.activeSlide - 1 + this.totalSlides) % this.totalSlides;
-            }
-        }" class="relative min-h-screen overflow-hidden bg-black select-none">
+    <section class="relative min-h-screen overflow-hidden bg-black select-none">
 
         {{-- ============================================================
-        SLIDE 1
+        VÍDEO DE FUNDO (com poster como fallback enquanto carrega)
         ============================================================= --}}
-        <div class="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
-            :class="activeSlide === 0 ? 'opacity-100 z-0' : 'opacity-0 -z-10'">
+        <div class="absolute inset-0 w-full h-full">
 
             <x-video mode="background"
                 :src="\App\Models\SiteSetting::get('home_hero_video1', 'video_base.mp4')"
+                :loop="\App\Models\SiteSetting::get('home_hero_loop', '1') !== '0'"
                 poster="{{ \App\Models\SiteSetting::get('home_hero_poster1', 'https://images.unsplash.com/photo-1518135714426-c18f5ffb6f4d?w=1800&auto=format&fit=crop&q=60') }}"
-                class="w-full h-full object-cover" />
-        </div>
-
-
-        {{-- ============================================================
-        SLIDE 2
-        ============================================================= --}}
-        <div class="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out"
-            :class="activeSlide === 1 ? 'opacity-100 z-0' : 'opacity-0 -z-10'">
-
-            <x-video mode="background"
-                :src="\App\Models\SiteSetting::get('home_hero_video2', 'video_base_2.mp4')"
-                :poster="\App\Models\SiteSetting::get('home_hero_poster2', null)"
                 class="w-full h-full object-cover" />
         </div>
 
@@ -198,129 +153,14 @@
         ">
 
 
-            {{-- ========================================================
-            CONTADOR
-            ========================================================= --}}
-            <div class="flex justify-end pt-16 sm:pt-20">
-
-                <div class="
-                    font-sans
-                    text-white/90
-                    text-xs
-                    font-semibold
-                    tracking-widest
-                    px-3.5
-                    py-1.5
-                    pointer-events-auto
-                ">
-
-                    <span x-text="String(activeSlide + 1).padStart(2, '0')">
-                        01
-                    </span>
-
-                    <span class="text-white/40 mx-1">
-                        /
-                    </span>
-
-                    <span x-text="String(totalSlides).padStart(2, '0')">
-                        02
-                    </span>
-
-                </div>
-
-            </div>
+            {{-- espaçador superior (mantém a barra inferior alinhada em baixo) --}}
+            <div class="pt-16 sm:pt-20"></div>
 
 
             {{-- ========================================================
             BARRA INFERIOR
             ========================================================= --}}
-            <div class="flex items-end justify-between w-full">
-
-
-                {{-- ====================================================
-                CONTROLOS + PROGRESSO
-                ===================================================== --}}
-                <div class="
-                    pointer-events-auto
-                    flex
-                    items-center
-                    gap-4
-                    sm:gap-6
-                    p-2.5
-                    sm:px-4
-                    sm:py-3
-                ">
-
-
-                    {{-- Botões --}}
-                    <div class="flex items-center gap-1.5">
-
-                        {{-- Anterior --}}
-                        <button @click="prev(); resetAutoplay()" class="
-                                p-1.5
-                                text-white/70
-                                hover:text-white
-                                hover:bg-white/10
-                                transition-all
-                                rounded-xs
-                            " aria-label="Slide anterior">
-
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-
-                                <path d="m15 18-6-6 6-6" />
-
-                            </svg>
-
-                        </button>
-
-
-                        {{-- Seguinte --}}
-                        <button @click="next(); resetAutoplay()" class="
-                                p-1.5
-                                text-white/70
-                                hover:text-white
-                                hover:bg-white/10
-                                transition-all
-                                rounded-xs
-                            " aria-label="Slide seguinte">
-
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-
-                                <path d="m9 18 6-6-6-6" />
-
-                            </svg>
-
-                        </button>
-
-                    </div>
-
-
-                    {{-- =================================================
-                    INDICADORES
-                    ================================================== --}}
-                    <div class="flex items-center gap-2">
-
-                        <template x-for="(slide, index) in totalSlides" :key="index">
-
-                            <button @click="goTo(index)" class="
-                                    relative
-                                    h-1
-                                    transition-all
-                                    duration-500
-                                    overflow-hidden
-                                    cursor-pointer
-                                " :class="activeSlide === index
-                                    ? 'w-10 bg-[var(--color-brand-accent)]'
-                                    : 'w-5 bg-white/30 hover:bg-white/60'" :aria-label="'Ir para slide ' + (index + 1)">
-                            </button>
-
-                        </template>
-
-                    </div>
-
-                </div>
+            <div class="flex items-end justify-end w-full">
 
 
                 {{-- ====================================================
