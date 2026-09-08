@@ -7,13 +7,13 @@ return [
         'approach' => 'Approach',
         'areas' => 'Areas',
         'thinking' => 'How we think',
-        'aog' => 'AOG',
+        'aog' => 'Contact',
         'cta' => 'Schedule a conversation at AOG',
     ],
 
     // ─── 1. Hero ───────────────────────────────────
     'hero' => [
-        'eyebrow' => 'Xamariz Energy · Oil & Gas',
+        'eyebrow' => 'Xamariz Energy',
         'title_line1' => 'Your company does not need more marketing.',
         'title_line2' => 'It needs to communicate better.',
         'subtitle' => 'In a sector where trust, reputation and clarity shape decisions, communication is no longer an add-on. It has become a strategic asset.',
@@ -39,6 +39,25 @@ return [
     ],
 
     // ─── 3. Real industry experience ───────────────
+    // ─── Impact (dark stats band) ──────────────────
+    'impact' => [
+        'eyebrow' => 'Our impact',
+        'title' => 'Communication that builds trust and progress in the energy sector.',
+        'lead' => 'We work with operators, service providers and institutions to turn complex messages into clarity, reputation and decisions.',
+        'stats' => [
+            ['value' => '+40', 'label' => 'Sector brands supported'],
+            ['value' => '+15', 'label' => 'Years of communication experience'],
+        ],
+    ],
+
+    // ─── CTA banner ────────────────────────────────
+    'cta_banner' => [
+        'eyebrow' => 'Let us work together',
+        'title' => 'From communication comes the trust that moves energy.',
+        'lead' => 'If you believe communication can create more value for your organisation, let us talk.',
+        'button' => 'Schedule a conversation',
+    ],
+
     'clients' => [
         'eyebrow' => 'Track record',
         'title' => 'Real experience in the industry.',
@@ -170,6 +189,7 @@ return [
             'message' => 'Topic of interest or availability',
             'message_ph' => 'Let us know your preferred day during AOG or your organisation\'s main communication challenges...',
             'submit' => 'Schedule a conversation during AOG',
+            'error' => 'Something went wrong. Please check your details and try again.',
         ],
     ],
 

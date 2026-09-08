@@ -5,14 +5,19 @@
 
 @push('head')
     <style>
-        .font-barlow { font-family: 'Barlow', sans-serif !important; }
-        .font-roboto { font-family: 'Roboto', sans-serif !important; }
+        /* Uma única fonte em toda a landing: Barlow (a fonte dos títulos). */
+        body { font-family: 'Barlow', sans-serif; }
+        .font-barlow, .font-roboto { font-family: 'Barlow', sans-serif !important; }
         .oil-orange { color: #ff5e14; }
 
         /* Design system O&G: botões sem cantos arredondados.
            Entra na layer 'base' para vencer a regra global button{border-radius:9999px} por especificidade. */
         @layer base {
             main button, main a { border-radius: 0 !important; }
+            /* Forçar Barlow também nos títulos (o app.css define Inter como fonte base dos headings). */
+            main h1, main h2, main h3, main h4, main h5, main h6,
+            footer h1, footer h2, footer h3, footer h4,
+            nav h1, nav h2, nav h3 { font-family: 'Barlow', sans-serif !important; }
         }
 
         @keyframes oil-marquee {
@@ -27,19 +32,15 @@
 @section('content')
 
     @php
-        // Clientes do wireframe — "mostrar discretamente".
-        // Logos disponíveis em public/images/logos/*.svg
+        // Logos reais das marcas O&G (ficheiros em public/).
         $oilGasLogos = [
-            ['name' => 'TotalEnergies', 'logo' => 'images/logos/total.svg'],
-            ['name' => 'Kaminho',       'logo' => 'images/logos/kaminho.svg'],
-            ['name' => 'ENI / Azule',   'logo' => 'images/logos/azule.svg'],
-            ['name' => 'Sonangol',      'logo' => 'images/logos/sonangol.svg'],
-            ['name' => 'IFC',           'logo' => 'images/logos/ifc.svg'],
-            ['name' => 'AES',           'logo' => 'images/logos/aes.svg'],
-            ['name' => 'ETU Energias',  'logo' => 'images/logos/etu.svg'],
-            ['name' => 'SLB',           'logo' => 'images/logos/slb.svg'],
-            ['name' => 'ABS',           'logo' => 'images/logos/abs.svg'],
-            ['name' => 'EasyPeople',    'logo' => 'images/logos/easypeople.svg'],
+            ['name' => 'SLB',           'logo' => 'SLBPrancheta 1.png'],
+            ['name' => 'TotalEnergies', 'logo' => 'Total Energies.png'],
+            ['name' => 'Chitotolo',     'logo' => 'Chitotolo.png'],
+            ['name' => 'ENI',           'logo' => 'eni.png'],
+            ['name' => 'ETU Energias',  'logo' => 'ETU ENERGIAS.png'],
+            ['name' => 'ILS',           'logo' => 'ILS.png'],
+            ['name' => 'Kaminho',       'logo' => 'KAMINHO.png'],
         ];
 
         // Secção "Focus" — separadores (tabs). Imagens são placeholders O&G a substituir por fotografia real.
@@ -59,7 +60,7 @@
     <section class="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between bg-[#111215] text-white overflow-hidden pt-28 pb-12 select-none font-barlow">
         {{-- Background Image --}}
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('oil_gas_hero.jpg') }}" alt="Xamariz Energy — Oil & Gas"
+            <img src="{{ asset('oil.jpg') }}" alt="Xamariz Energy"
                 class="w-full h-full object-cover">
             {{-- Overlay equilibrado: escurece o lado do texto e desvanece para revelar a imagem --}}
             <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/10"></div>
@@ -67,12 +68,12 @@
         </div>
 
         <div class="container-myriad relative z-10 pt-12 sm:pt-20 lg:pt-24 my-auto">
-            <div class="max-w-4xl">
+            <div class="max-w-4xl reveal">
                 <span class="inline-block text-[#ff5e14] text-xs sm:text-sm font-bold uppercase tracking-widest mb-6">
                     {{ __('oilandgas.hero.eyebrow') }}
                 </span>
 
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.12] mb-6 max-w-2xl">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] mb-6 max-w-3xl">
                     {{ __('oilandgas.hero.title_line1') }}
                     <span class="text-[#ff5e14]">{{ __('oilandgas.hero.title_line2') }}</span>
                 </h1>
@@ -92,7 +93,7 @@
         </div>
 
         {{-- Scroll hint --}}
-        <div class="container-myriad relative z-10 pt-10 pb-4 border-t border-white/10 mt-12">
+        <div class="container-myriad relative z-10 pt-10 pb-4 border-t border-white/10 mt-12 flex justify-end">
             <a href="#abordagem" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gray-400 hover:text-white transition-colors group">
                 <span>{{ __('oilandgas.hero.scroll') }}</span>
                 <span class="group-hover:translate-y-1 transition-transform duration-300">&darr;</span>
@@ -105,12 +106,12 @@
     ══════════════════════════════════════════════════════════════ --}}
     <section id="abordagem" class="py-20 lg:py-28 bg-white text-gray-900 border-b border-gray-100 font-barlow scroll-mt-20">
         <div class="container-myriad">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start reveal">
                 <div class="lg:col-span-6">
-                    <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-3">
+                    <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-4">
                         {{ __('oilandgas.industry.eyebrow') }}
                     </span>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-[1.14] mb-6">
+                    <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-gray-900 tracking-tight leading-[1.15] mb-6">
                         {{ __('oilandgas.industry.title') }}
                     </h2>
                     <p class="font-roboto text-base sm:text-lg text-gray-600 leading-relaxed">
@@ -136,15 +137,61 @@
     </section>
 
     {{-- ══════════════════════════════════════════════════════════════
+     2b. IMPACTO — duas colunas: conteúdo (gradiente) + imagem
+    ══════════════════════════════════════════════════════════════ --}}
+    <section class="relative w-full font-barlow overflow-hidden"
+        style="background: linear-gradient(90deg, #ea580c 0%, #ef4444 50%, #facc15 100%);">
+        {{-- Imagem: metade direita a preencher todo o espaço (mobile: bloco no topo) --}}
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+            <img src="{{ asset('luanda_picture.jpg') }}" alt="Xamariz Energy"
+                class="w-full h-72 sm:h-96 lg:h-full object-cover">
+        </div>
+
+        <div class="container-myriad relative">
+            <div class="lg:grid lg:grid-cols-2">
+                {{-- Esquerda: conteúdo no container --}}
+                <div class="py-16 lg:py-28 lg:pr-16 text-white reveal">
+                    <span class="text-white text-xs font-bold uppercase tracking-widest block mb-4">
+                        {{ __('oilandgas.impact.eyebrow') }}
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15]">
+                        {{ __('oilandgas.impact.title') }}
+                    </h2>
+                    <p class="text-base sm:text-lg text-white/90 leading-relaxed mt-5">
+                        {{ __('oilandgas.impact.lead') }}
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-8 border-t border-white/30 pt-10 mt-10">
+                        @foreach (__('oilandgas.impact.stats') as $stat)
+                            <div>
+                                <div class="impact-counter text-4xl sm:text-5xl font-black text-white tracking-tight mb-2"
+                                    data-count="{{ $stat['value'] }}">
+                                    {{ $stat['value'] }}
+                                </div>
+                                <div class="text-sm text-white/80 leading-snug">
+                                    {{ $stat['label'] }}
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                {{-- Espaçador para a metade direita (onde entra a imagem absoluta) --}}
+                <div class="hidden lg:block" aria-hidden="true"></div>
+            </div>
+        </div>
+    </section>
+
+    {{-- ══════════════════════════════════════════════════════════════
      3. EXPERIÊNCIA REAL NA INDÚSTRIA — logos discretos
     ══════════════════════════════════════════════════════════════ --}}
     <section class="py-20 lg:py-24 bg-[#fafafa] border-b border-gray-200 font-barlow">
         <div class="container-myriad">
-            <div class="max-w-3xl mb-12">
-                <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-2">
+            <div class="max-w-3xl mb-12 reveal">
+                <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-4">
                     {{ __('oilandgas.clients.eyebrow') }}
                 </span>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-[1.14] mb-4">
+                <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-gray-900 tracking-tight leading-[1.15] mb-4">
                     {{ __('oilandgas.clients.title') }}
                 </h2>
                 <p class="font-roboto text-sm sm:text-base text-gray-600 leading-relaxed">
@@ -152,18 +199,16 @@
                 </p>
             </div>
 
-            {{-- Slider contínuo de logos (sem cards).
-                 PLACEHOLDERS: cada item mostra um marcador cinza com o nome da empresa.
-                 Para usar os logos reais, troque o bloco do placeholder por:
-                 <img src="{{ '{{' }} asset($client['logo']) {{ '}}' }}" alt="{{ '{{' }} $client['name'] {{ '}}' }}" class="max-h-11 w-auto object-contain"> --}}
-            <div class="relative w-full overflow-hidden py-4">
-                <div class="absolute left-0 top-0 bottom-0 w-16 sm:w-40 bg-gradient-to-r from-[#fafafa] to-transparent z-10 pointer-events-none"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-40 bg-gradient-to-l from-[#fafafa] to-transparent z-10 pointer-events-none"></div>
-                <div class="flex items-center gap-8 sm:gap-12 w-max animate-oil-marquee hover:[animation-play-state:paused]">
+            {{-- Slider contínuo de logos. Efeito: cor real ao centro, monocromático nas extremidades (via JS). --}}
+            <div id="oil-logo-slider" class="relative w-full overflow-hidden py-4">
+                <div class="absolute left-0 top-0 bottom-0 w-16 sm:w-40 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-40 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+                <div class="flex items-center gap-10 sm:gap-14 w-max animate-oil-marquee hover:[animation-play-state:paused]">
                     @foreach (array_merge($oilGasLogos, $oilGasLogos) as $client)
-                        {{-- Placeholder do logo — substituir por <img> real (ver comentário acima) --}}
-                        <div class="shrink-0 flex items-center justify-center h-14 w-40 sm:w-48 bg-gray-100 border border-dashed border-gray-300 text-gray-400 hover:text-gray-600 font-barlow font-bold text-sm uppercase tracking-wide transition-colors">
-                            {{ $client['name'] }}
+                        <div class="shrink-0 flex items-center justify-center h-20 px-2">
+                            <img src="{{ asset(rawurlencode($client['logo'])) }}" alt="{{ $client['name'] }}"
+                                class="oil-logo max-h-14 sm:max-h-16 w-auto object-contain"
+                                style="filter: grayscale(1); opacity: .55;">
                         </div>
                     @endforeach
                 </div>
@@ -179,12 +224,12 @@
         <div class="container-myriad">
 
             {{-- Eyebrow --}}
-            <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-6">
+            <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-4">
                 {{ __('oilandgas.areas.eyebrow') }}
             </span>
 
             {{-- Heading + Approach link --}}
-            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6 reveal">
                 <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-gray-900 tracking-tight leading-[1.15] max-w-3xl">
                     {{ __('oilandgas.areas.title') }}
                 </h2>
@@ -214,7 +259,7 @@
             </div>
 
             {{-- Image + overlay card (muda por tab) --}}
-            <div class="relative w-full">
+            <div class="relative w-full reveal">
                 @foreach ($areaTabs as $i => $tab)
                     <div x-show="tab === {{ $i }}" x-transition:enter="transition ease-out duration-300"
                         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
@@ -239,25 +284,6 @@
                                 </a>
                             </div>
                         </div>
-
-                        {{-- Serviços concretos (O&G) sob a imagem --}}
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 mt-8">
-                            <p class="lg:col-span-4 text-xs font-bold uppercase tracking-widest text-gray-400">
-                                {{ __('oilandgas.areas.deliverables_label') }}
-                            </p>
-                            <ul class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3 font-roboto">
-                                @foreach (__("oilandgas.areas.items.{$tab['key']}.deliverables") as $deliverable)
-                                    <li class="flex items-start gap-3 text-sm font-semibold text-gray-800">
-                                        <span class="text-[#ff5e14] mt-0.5 shrink-0">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                                            </svg>
-                                        </span>
-                                        <span>{{ $deliverable }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
                     </div>
                 @endforeach
             </div>
@@ -274,11 +300,11 @@
         </div>
 
         <div class="container-myriad relative z-10 py-24">
-            <div class="max-w-3xl">
+            <div class="max-w-3xl reveal">
                 <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-4">
                     {{ __('oilandgas.noise.eyebrow') }}
                 </span>
-                <h2 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.05] mb-8">
+                <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15] mb-8">
                     {{ __('oilandgas.noise.title') }}
                 </h2>
 
@@ -304,12 +330,12 @@
     <section id="como-pensamos" class="py-20 lg:py-28 bg-white border-b border-gray-100 font-barlow scroll-mt-20">
         <div class="container-myriad">
             {{-- Heading + link "ver todas" --}}
-            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 lg:mb-16">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 lg:mb-16 reveal">
                 <div class="max-w-2xl">
-                    <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-2">
+                    <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-4">
                         {{ __('oilandgas.thinking.eyebrow') }}
                     </span>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight leading-[1.14]">
+                    <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-gray-900 tracking-tight leading-[1.15]">
                         {{ __('oilandgas.thinking.title') }}
                     </h2>
                 </div>
@@ -323,7 +349,7 @@
             </div>
 
             @if (isset($insights) && $insights->count() > 0)
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 reveal">
                     @foreach ($insights as $post)
                         @php
                             $cover = $post->cover_image
@@ -364,6 +390,34 @@
     </section>
 
     {{-- ══════════════════════════════════════════════════════════════
+     6b. CTA BANNER — imagem full width + apelo à ação
+    ══════════════════════════════════════════════════════════════ --}}
+    <section class="relative w-full overflow-hidden font-barlow">
+        <img src="{{ asset('oil_gas_hero.jpg') }}" alt="Xamariz Energy" class="absolute inset-0 w-full h-full object-cover scale-105">
+        {{-- Overlay: escurecimento base + gradiente vertical para profundidade e foco no texto --}}
+        <div class="absolute inset-0 bg-[#111215]/75"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#111215]/80 via-[#111215]/40 to-[#111215]/80"></div>
+        <div class="container-myriad relative z-10 py-28 lg:py-40 flex flex-col items-center text-center text-white">
+            <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-6 reveal">
+                {{ __('oilandgas.cta_banner.eyebrow') }}
+            </span>
+            <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15] max-w-3xl reveal">
+                {{ __('oilandgas.cta_banner.title') }}
+            </h2>
+            <p class="text-base sm:text-lg text-white/80 max-w-xl leading-relaxed mt-6 reveal">
+                {{ __('oilandgas.cta_banner.lead') }}
+            </p>
+            <a href="#aog"
+                class="inline-flex items-center gap-3 px-8 py-4 bg-[#ff5e14] text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors duration-300 hover:bg-[#e04e0b] group reveal mt-10">
+                <span>{{ __('oilandgas.cta_banner.button') }}</span>
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    {{-- ══════════════════════════════════════════════════════════════
      7. AOG / CTA FINAL + formulário
     ══════════════════════════════════════════════════════════════ --}}
     <section id="aog" class="py-24 lg:py-32 text-white relative overflow-hidden font-barlow scroll-mt-20"
@@ -371,11 +425,11 @@
         <div class="container-myriad relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 {{-- Left --}}
-                <div class="lg:col-span-6">
+                <div class="lg:col-span-6 reveal">
                     <span class="inline-block text-white text-xs font-bold uppercase tracking-widest mb-4">
                         {{ __('oilandgas.aog.eyebrow') }}
                     </span>
-                    <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.1] mb-6">
+                    <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15] mb-6">
                         {{ __('oilandgas.aog.title') }}
                     </h2>
                     <p class="font-roboto text-lg text-white/90 leading-relaxed mb-10">
@@ -395,7 +449,7 @@
                 </div>
 
                 {{-- Right: Form --}}
-                <div class="lg:col-span-6 bg-white p-8 sm:p-10 shadow-2xl">
+                <div class="lg:col-span-6 bg-white p-8 sm:p-10 shadow-2xl reveal">
                     <h3 class="text-2xl font-bold text-gray-900 mb-2">
                         {{ __('oilandgas.aog.form.title') }}
                     </h3>
@@ -409,7 +463,8 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('contact.submit') }}" method="POST" class="space-y-5">
+                    <form id="aog-form" action="{{ route('contact.submit') }}" method="POST" class="space-y-5"
+                        data-error-msg="{{ __('oilandgas.aog.form.error') }}">
                         @csrf
                         <input type="hidden" name="sectors[]" value="Angola Oil &amp; Gas – Reunião AOG">
 
@@ -445,14 +500,175 @@
                                 class="w-full bg-white border border-gray-300 focus:border-[#141518] text-gray-900 placeholder-gray-400 text-sm px-4 py-3 outline-none transition-colors"></textarea>
                         </div>
 
-                        <button type="submit"
-                            class="w-full py-4 bg-[#141518] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#ff5e14] transition-colors duration-300 cursor-pointer">
-                            {{ __('oilandgas.aog.form.submit') }}
+                        <button type="submit" id="aog-submit"
+                            class="w-full py-4 bg-[#141518] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#ff5e14] transition-colors duration-300 cursor-pointer disabled:opacity-70 disabled:cursor-wait flex items-center justify-center gap-3">
+                            <svg data-spinner class="hidden animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                            </svg>
+                            <span data-label>{{ __('oilandgas.aog.form.submit') }}</span>
                         </button>
                     </form>
+
+                    {{-- Notificação (toast) --}}
+                    <div id="aog-toast" class="fixed top-6 right-6 z-[999999] hidden max-w-sm font-roboto">
+                        <div data-toast-box class="flex items-start gap-3 p-4 pr-5 shadow-2xl text-sm text-white">
+                            <svg data-toast-icon class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"></svg>
+                            <span data-toast-msg></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
 @endsection
+
+@push('scripts')
+    <script>
+        // Logos: cor real ao passar no centro, monocromático (cinza) nas extremidades.
+        (function () {
+            const slider = document.getElementById('oil-logo-slider');
+            if (!slider) return;
+            const logos = Array.from(slider.querySelectorAll('.oil-logo'));
+            if (!logos.length) return;
+
+            const REVEAL_RADIUS = 240; // px a partir do centro onde o logo fica a cores
+
+            function frame() {
+                const box = slider.getBoundingClientRect();
+                const centerX = box.left + box.width / 2;
+
+                for (const img of logos) {
+                    const r = img.getBoundingClientRect();
+                    const imgCenter = r.left + r.width / 2;
+                    const dist = Math.abs(imgCenter - centerX);
+
+                    // t = 1 no centro, 0 longe (com suavização smoothstep)
+                    let t = 1 - Math.min(dist / REVEAL_RADIUS, 1);
+                    t = t * t * (3 - 2 * t);
+
+                    img.style.filter = 'grayscale(' + (1 - t).toFixed(3) + ')';
+                    img.style.opacity = (0.5 + 0.5 * t).toFixed(3);
+                }
+                requestAnimationFrame(frame);
+            }
+            requestAnimationFrame(frame);
+        })();
+
+        // Formulário AOG: submissão AJAX com spinner + notificação (sucesso/erro).
+        (function () {
+            const form = document.getElementById('aog-form');
+            if (!form) return;
+            const btn = document.getElementById('aog-submit');
+            const spinner = btn.querySelector('[data-spinner]');
+            const label = btn.querySelector('[data-label]');
+            const labelDefault = label.textContent;
+
+            const toast = document.getElementById('aog-toast');
+            const toastBox = toast.querySelector('[data-toast-box]');
+            const toastIcon = toast.querySelector('[data-toast-icon]');
+            const toastMsg = toast.querySelector('[data-toast-msg]');
+            const ICONS = {
+                success: '<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />',
+                error: '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />',
+            };
+            let toastTimer = null;
+
+            function showToast(type, message) {
+                toastBox.style.background = type === 'success' ? '#141518' : '#b91c1c';
+                toastIcon.innerHTML = ICONS[type] || ICONS.success;
+                toastMsg.textContent = message;
+                toast.classList.remove('hidden');
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(-8px)';
+                toast.style.transition = 'opacity .3s ease, transform .3s ease';
+                requestAnimationFrame(() => {
+                    toast.style.opacity = '1';
+                    toast.style.transform = 'translateY(0)';
+                });
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateY(-8px)';
+                    setTimeout(() => toast.classList.add('hidden'), 300);
+                }, 5000);
+            }
+
+            function loading(on) {
+                btn.disabled = on;
+                spinner.classList.toggle('hidden', !on);
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                loading(true);
+                try {
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
+                        },
+                    });
+                    const data = await res.json().catch(() => ({}));
+                    if (res.ok) {
+                        showToast('success', data.message || 'OK');
+                        form.reset();
+                    } else {
+                        // Mensagens de validação podem vir como chaves cruas (ex.: "validation.required");
+                        // nesse caso mostramos a mensagem genérica amigável.
+                        let msg = data.errors ? Object.values(data.errors)[0][0] : (data.message || '');
+                        if (!msg || /validation\./.test(msg)) msg = form.dataset.errorMsg;
+                        showToast('error', msg);
+                    }
+                } catch (err) {
+                    showToast('error', form.dataset.errorMsg);
+                } finally {
+                    loading(false);
+                }
+            });
+        })();
+
+        // Contador (count-up) nos números da secção "O nosso impacto".
+        (function () {
+            const counters = Array.from(document.querySelectorAll('.impact-counter'));
+            if (!counters.length) return;
+
+            function parse(raw) {
+                const m = String(raw).match(/^(\D*)(\d[\d.,]*)(\D*)$/);
+                if (!m) return null;
+                return { prefix: m[1], suffix: m[3], target: parseFloat(m[2].replace(',', '.')) || 0 };
+            }
+
+            // Estado inicial a zero (com prefixo/sufixo), para animar ao entrar em vista.
+            counters.forEach(el => {
+                const p = parse(el.dataset.count);
+                if (p) el.textContent = p.prefix + '0' + p.suffix;
+            });
+
+            function animate(el) {
+                const p = parse(el.dataset.count);
+                if (!p) return;
+                const dur = 1400, start = performance.now();
+                function tick(now) {
+                    const t = Math.min((now - start) / dur, 1);
+                    const eased = 1 - Math.pow(1 - t, 3);
+                    el.textContent = p.prefix + Math.round(p.target * eased) + p.suffix;
+                    if (t < 1) requestAnimationFrame(tick);
+                    else el.textContent = el.dataset.count; // valor final exacto
+                }
+                requestAnimationFrame(tick);
+            }
+
+            const io = new IntersectionObserver((entries, obs) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { animate(e.target); obs.unobserve(e.target); }
+                });
+            }, { threshold: 0.4 });
+            counters.forEach(c => io.observe(c));
+        })();
+    </script>
+@endpush

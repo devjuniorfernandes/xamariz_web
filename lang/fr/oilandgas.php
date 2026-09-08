@@ -7,13 +7,13 @@ return [
         'approach' => 'Approche',
         'areas' => 'Domaines',
         'thinking' => 'Notre vision',
-        'aog' => 'AOG',
+        'aog' => 'Contact',
         'cta' => 'Planifier un échange à l\'AOG',
     ],
 
     // ─── 1. Hero ───────────────────────────────────
     'hero' => [
-        'eyebrow' => 'Xamariz Energy · Oil & Gas',
+        'eyebrow' => 'Xamariz Energy',
         'title_line1' => 'Votre entreprise n\'a pas besoin de plus de marketing.',
         'title_line2' => 'Elle a besoin de mieux communiquer.',
         'subtitle' => 'Dans un secteur où la confiance, la réputation et la clarté influencent les décisions, la communication n\'est plus un complément. Elle est devenue un actif stratégique.',
@@ -39,6 +39,25 @@ return [
     ],
 
     // ─── 3. Expérience réelle ──────────────────────
+    // ─── Impact (bande sombre de statistiques) ─────
+    'impact' => [
+        'eyebrow' => 'Notre impact',
+        'title' => 'Une communication qui bâtit la confiance et le progrès dans le secteur de l\'énergie.',
+        'lead' => 'Nous travaillons avec opérateurs, prestataires et institutions pour transformer des messages complexes en clarté, réputation et décisions.',
+        'stats' => [
+            ['value' => '+40', 'label' => 'Marques du secteur accompagnées'],
+            ['value' => '+15', 'label' => 'Ans d\'expérience en communication'],
+        ],
+    ],
+
+    // ─── Bannière CTA ──────────────────────────────
+    'cta_banner' => [
+        'eyebrow' => 'Travaillons ensemble',
+        'title' => 'De la communication naît la confiance qui fait avancer l\'énergie.',
+        'lead' => 'Si vous pensez que la communication peut créer plus de valeur pour votre organisation, parlons-en.',
+        'button' => 'Planifier un échange',
+    ],
+
     'clients' => [
         'eyebrow' => 'Références',
         'title' => 'Une expérience réelle dans l\'industrie.',
@@ -170,6 +189,7 @@ return [
             'message' => 'Sujet d\'intérêt ou disponibilité',
             'message_ph' => 'Indiquez votre jour de préférence pendant l\'AOG ou les principaux défis de communication de votre organisation...',
             'submit' => 'Planifier un échange pendant l\'AOG',
+            'error' => 'Une erreur s\'est produite. Vérifiez vos informations et réessayez.',
         ],
     ],
 

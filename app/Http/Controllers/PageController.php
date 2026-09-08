@@ -130,7 +130,7 @@ class PageController extends Controller
             'last_name'  => 'required|string|max:100',
             'email'      => 'required|email|max:255',
             'company'    => 'nullable|string|max:255',
-            'message'    => 'required|string|min:10|max:5000',
+            'message'    => 'nullable|string|max:5000',
             'sectors'    => 'nullable|array',
         ]);
 
@@ -139,10 +139,18 @@ class PageController extends Controller
             'last_name'  => $validated['last_name'],
             'email'      => $validated['email'],
             'company'    => $validated['company'] ?? null,
-            'message'    => $validated['message'],
+            'message'    => $validated['message'] ?? null,
             'sectors'    => $validated['sectors'] ?? [],
             'status'     => 'new',
         ]);
+
+        // Pedidos AJAX (ex.: landing /energy) recebem JSON; validação falhada devolve 422 automaticamente.
+        if ($request->expectsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => __('contact.success_message'),
+            ]);
+        }
 
         return redirect()->route('contact')->with('success', __('contact.success_message'));
     }

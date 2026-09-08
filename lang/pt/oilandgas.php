@@ -7,13 +7,13 @@ return [
         'approach' => 'Abordagem',
         'areas' => 'Áreas',
         'thinking' => 'Como pensamos',
-        'aog' => 'AOG',
+        'aog' => 'Contacto',
         'cta' => 'Agende uma conversa no AOG',
     ],
 
     // ─── 1. Hero ───────────────────────────────────
     'hero' => [
-        'eyebrow' => 'Xamariz Energy · Oil & Gas',
+        'eyebrow' => 'Xamariz Energy',
         'title_line1' => 'A sua empresa não precisa de mais marketing.',
         'title_line2' => 'Precisa de comunicar melhor.',
         'subtitle' => 'Num sector onde confiança, reputação e clareza influenciam decisões, a comunicação deixou de ser um complemento. Tornou-se um activo estratégico.',
@@ -39,6 +39,25 @@ return [
     ],
 
     // ─── 3. Experiência real na indústria ──────────
+    // ─── Impacto (banda escura de estatísticas) ────
+    'impact' => [
+        'eyebrow' => 'O nosso impacto',
+        'title' => 'Comunicação que gera confiança e progresso no sector energético.',
+        'lead' => 'Trabalhamos com operadoras, prestadores de serviços e instituições para transformar mensagens complexas em clareza, reputação e decisões.',
+        'stats' => [
+            ['value' => '+40', 'label' => 'Marcas do sector apoiadas'],
+            ['value' => '+15', 'label' => 'Anos de experiência em comunicação'],
+        ],
+    ],
+
+    // ─── CTA banner ────────────────────────────────
+    'cta_banner' => [
+        'eyebrow' => 'Vamos trabalhar juntos',
+        'title' => 'Da comunicação nasce a confiança que move a energia.',
+        'lead' => 'Se acredita que a comunicação pode gerar mais valor para a sua organização, falemos.',
+        'button' => 'Agende uma conversa',
+    ],
+
     'clients' => [
         'eyebrow' => 'Track record',
         'title' => 'Experiência real na indústria.',
@@ -170,6 +189,7 @@ return [
             'message' => 'Tema de interesse ou disponibilidade',
             'message_ph' => 'Indique o dia preferencial durante o AOG ou os principais desafios de comunicação da sua organização...',
             'submit' => 'Agendar conversa durante o AOG',
+            'error' => 'Ocorreu um erro ao enviar. Verifique os dados e tente novamente.',
         ],
     ],
 
