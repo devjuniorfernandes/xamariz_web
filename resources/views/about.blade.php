@@ -39,44 +39,26 @@
         </div>
     </section>
 
-    {{-- Section: O Que Nos Move & A Nossa Causa --}}
+    {{-- Section: O que nos move --}}
     <section class="py-20 bg-white border-t border-gray-100">
         <div class="container-myriad">
-            <div class="max-w reveal space-y-12">
-
-                {{-- O QUE NOS MOVE --}}
-                <div>
-                    <h2 class="font-sans text-3xl sm:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
-                        {{ \App\Models\SiteSetting::get('about_cause_title', 'Mensagem clara, diferenciação e atração de clientes.') }}
-                    </h2>
-                    <p class="font-sans text-gray-700 text-lg sm:text-xl leading-relaxed font-medium mb-4">
-                        {{ \App\Models\SiteSetting::get('about_cause_p1', 'Existem empresas focadas em oferecer produtos e serviços que resolvam problemas na vida dos consumidores. Acreditamos verdadeiramente que se tiverem uma mensagem clara e convincente têm um enorme potencial para serem bem sucedidos e tornarem-se a principal referência no seu mercado. Torne-se uma verdadeira atração de clientes.') }}
-                    </p>
-                    <p class="font-sans text-gray-600 text-base sm:text-lg leading-relaxed">
-                        A Xamariz é uma marca da empresa Visualclick, Lda cujo propósito é ajudar empresas a amplificar o
-                        crescimento dos seus negócios através da comunicação digital e do
-                        <a href="{{ route('services.index') }}"
-                            class="text-[var(--color-brand-accent)] font-semibold hover:underline">marketing de
-                            diferenciação</a>.
-                    </p>
-                </div>
-
-                {{-- A NOSSA CAUSA --}}
-                <div class="pt-10 border-t border-gray-200 space-y-6">
-                    <p class="font-sans text-gray-700 text-base sm:text-lg leading-relaxed">
-                        Vivemos numa era com tanta informação e distrações que cada vez torna-se mais difícil às empresas e
-                        instituições transmitirem a sua mensagem com sucesso.
-                    </p>
-                    <p class="font-sans text-gray-700 text-base sm:text-lg leading-relaxed">
-                        Neste contexto, é imperativo que as empresas que almejam ser bem sucedidas tenham uma forte presença
-                        online e comuniquem de uma forma cativante.
-                    </p>
-                    <p
-                        class="font-sans text-gray-900 font-semibold text-base sm:text-lg leading-relaxed border-l-4 border-[var(--color-brand-accent)] pl-5">
-                        {{ \App\Models\SiteSetting::get('about_cause_quote', 'Na Xamariz acreditamos no talento e valor das empresas, instituições e comunidades angolanas e esmeramo-nos por contribuir para o seu crescimento.') }}
-                    </p>
-                </div>
-
+            <div class="max-w reveal space-y-6">
+                <h2 class="font-sans text-3xl sm:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
+                    {{ \App\Models\SiteSetting::get('about_cause_title', 'O que nos move') }}
+                </h2>
+                <p class="font-sans text-gray-700 text-lg sm:text-xl leading-relaxed">
+                    {{ \App\Models\SiteSetting::get('about_cause_p1', 'Existem empresas focadas em oferecer produtos e serviços que resolvam problemas na vida dos consumidores.') }}
+                </p>
+                <p class="font-sans text-gray-700 text-lg sm:text-xl leading-relaxed">
+                    {{ \App\Models\SiteSetting::get('about_cause_p2', 'Acreditamos verdadeiramente que se tiverem uma mensagem clara e convincente têm um enorme potencial para serem bem sucedidos e tornarem-se a principal referência no seu mercado. Torne-se uma verdadeira atração de clientes.') }}
+                </p>
+                <p class="font-sans text-gray-600 text-base sm:text-lg leading-relaxed">
+                    A Xamariz é uma marca da empresa Visualclick, Lda cujo propósito é ajudar empresas a amplificar o
+                    crescimento dos seus negócios através da comunicação digital e do
+                    <a href="{{ route('services.index') }}"
+                        class="text-[var(--color-brand-accent)] font-semibold hover:underline">marketing de
+                        diferenciação</a>.
+                </p>
             </div>
         </div>
     </section>
@@ -325,12 +307,12 @@
                             $logoRaw = $client->logo_path ?? '';
                             $logoUrl = $logoRaw ? (Str::startsWith($logoRaw, ['http://', 'https://']) ? $logoRaw : asset(ltrim($logoRaw, '/'))) : null;
                         @endphp
-                        <a href="{{ route('clients.show', $client->slug) }}" title="{{ $client->name }}" class="group flex items-center justify-center h-36 p-6 select-none">
+                        <a href="{{ route('clients.show', $client->slug) }}" title="{{ $client->name }}" class="group flex items-center justify-center h-36 p-4 select-none">
                             <div class="filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 flex items-center justify-center">
                                 @if (Str::startsWith($logoRaw, '<svg'))
                                     {!! $logoRaw !!}
                                 @elseif ($logoUrl)
-                                    <img src="{{ $logoUrl }}" alt="{{ $client->name }}" class="max-w-full max-h-16 object-contain">
+                                    <img src="{{ $logoUrl }}" alt="{{ $client->name }}" class="max-w-full max-h-24 object-contain">
                                 @else
                                     <span class="font-sans font-bold text-gray-800 text-lg">{{ $client->name }}</span>
                                 @endif

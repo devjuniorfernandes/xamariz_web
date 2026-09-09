@@ -134,7 +134,7 @@ class PageController extends Controller
     {
         $validated = $request->validate([
             'first_name' => 'required|string|max:100',
-            'last_name'  => 'required|string|max:100',
+            'last_name'  => 'nullable|string|max:100',
             'email'      => 'required|email|max:255',
             'company'    => 'nullable|string|max:255',
             'message'    => 'nullable|string|max:5000',
@@ -143,7 +143,7 @@ class PageController extends Controller
 
         ContactLead::create([
             'first_name' => $validated['first_name'],
-            'last_name'  => $validated['last_name'],
+            'last_name'  => $validated['last_name'] ?? null,
             'email'      => $validated['email'],
             'company'    => $validated['company'] ?? null,
             'message'    => $validated['message'] ?? null,

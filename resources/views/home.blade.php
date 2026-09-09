@@ -934,12 +934,12 @@
                                 : null;
                         @endphp
                         <a href="{{ route('clients.show', $lSlug) }}" title="{{ $lName }}"
-                            class="shrink-0 w-36 sm:w-44 h-16 flex items-center justify-center cursor-pointer opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:scale-110 hover:-translate-y-1 transition-all duration-300 ease-out">
+                            class="shrink-0 w-40 sm:w-52 h-20 flex items-center justify-center cursor-pointer opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:scale-110 hover:-translate-y-1 transition-all duration-300 ease-out">
                             @if (Str::startsWith($lPath, '<svg'))
                                 {!! $lPath !!}
                             @elseif($lUrl)
                                 <img src="{{ $lUrl }}" alt="{{ $lName }}"
-                                    class="max-w-full max-h-12 object-contain pointer-events-none">
+                                    class="max-w-full max-h-16 sm:max-h-20 object-contain pointer-events-none">
                             @else
                                 <span class="font-sans font-bold text-gray-800 text-sm">{{ $lName }}</span>
                             @endif

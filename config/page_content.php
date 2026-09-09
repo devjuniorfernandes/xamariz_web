@@ -135,11 +135,11 @@ return [
                 ],
             ],
             [
-                'title'  => 'O que nos move & A Nossa Causa',
+                'title'  => 'O que nos move',
                 'fields' => [
-                    'about_cause_title' => ['type' => 'text',     'label' => 'Título da Secção', 'default' => 'Mensagem clara, diferenciação e atração de clientes.'],
-                    'about_cause_p1'    => ['type' => 'textarea', 'label' => 'Texto Explicativo Principal', 'rows' => 4, 'default' => 'Existem empresas focadas em oferecer produtos e serviços que resolvam problemas na vida dos consumidores. Acreditamos verdadeiramente que se tiverem uma mensagem clara e convincente têm um enorme potencial para serem bem sucedidos e tornarem-se a principal referência no seu mercado.'],
-                    'about_cause_quote' => ['type' => 'textarea', 'label' => 'Citação em Destaque', 'rows' => 2, 'default' => 'Na Xamariz acreditamos no talento e valor das empresas, instituições e comunidades angolanas e esmeramo-nos por contribuir para o seu crescimento.'],
+                    'about_cause_title' => ['type' => 'text',     'label' => 'Título da Secção', 'default' => 'O que nos move'],
+                    'about_cause_p1'    => ['type' => 'textarea', 'label' => 'Parágrafo 1', 'rows' => 3, 'default' => 'Existem empresas focadas em oferecer produtos e serviços que resolvam problemas na vida dos consumidores.'],
+                    'about_cause_p2'    => ['type' => 'textarea', 'label' => 'Parágrafo 2', 'rows' => 4, 'default' => 'Acreditamos verdadeiramente que se tiverem uma mensagem clara e convincente têm um enorme potencial para serem bem sucedidos e tornarem-se a principal referência no seu mercado. Torne-se uma verdadeira atração de clientes.'],
                 ],
             ],
             [

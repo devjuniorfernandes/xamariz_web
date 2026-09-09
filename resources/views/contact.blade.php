@@ -8,12 +8,6 @@
     {{-- Header --}}
     <section class="pt-20 pb-20 bg-white text-gray-900">
         <div class="container-myriad">
-            <div class="reveal flex items-center gap-3 text-xs uppercase font-sans tracking-widest mb-6 sm:mb-8">
-                <a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-900 transition-colors">Xamariz</a>
-                <span class="text-gray-300">/</span>
-                <span class="text-gray-400">{{ __('contact.breadcrumb') }}</span>
-            </div>
-
             <div class="max-w-3xl reveal">
                 <h1 class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
                     {{ __('contact.hero_title') }}
@@ -24,33 +18,6 @@
             </div>
         </div>
     </section>
-
-
-
-<section class="pt-10 pb-20 bg-white text-gray-900">
-
-    <div class="container-myriad">
-
-        <div class="aspect-[21/9] overflow-hidden rounded-none">
-
-            <img
-                src="{{ asset('luanda_picture.jpg') }}"
-                alt="Contact Image"
-                class="w-full h-full object-cover"
-            >
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-
-
-
-
 
     {{-- Form + Offices --}}
     <section class="py-20 bg-white border-t border-gray-200">
@@ -68,28 +35,12 @@
                     <form action="{{ route('contact.submit') }}" method="POST" class="space-y-8">
                         @csrf
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                            <div>
-                                <label
-                                    class="font-sans text-xs font-bold uppercase tracking-widest text-gray-700 block mb-2">{{ __('contact.first_name') }}</label>
-                                <input type="text" name="first_name" placeholder="{{ __('contact.first_name_placeholder') }}"
-                                    class="w-full px-4 py-3.5 border border-gray-300 rounded-none focus:outline-none focus:border-[var(--color-brand-accent)] font-sans text-base transition-colors"
-                                    required>
-                            </div>
-                            <div>
-                                <label
-                                    class="font-sans text-xs font-bold uppercase tracking-widest text-gray-700 block mb-2">{{ __('contact.last_name') }}</label>
-                                <input type="text" name="last_name" placeholder="{{ __('contact.last_name_placeholder') }}"
-                                    class="w-full px-4 py-3.5 border border-gray-300 rounded-none focus:outline-none focus:border-[var(--color-brand-accent)] font-sans text-base transition-colors"
-                                    required>
-                            </div>
-                        </div>
-
                         <div>
                             <label
-                                class="font-sans text-xs font-bold uppercase tracking-widest text-gray-700 block mb-2">{{ __('contact.company') }}</label>
-                            <input type="text" name="company" placeholder="{{ __('contact.company_placeholder') }}"
-                                class="w-full px-4 py-3.5 border border-gray-300 rounded-none focus:outline-none focus:border-[var(--color-brand-accent)] font-sans text-base transition-colors">
+                                class="font-sans text-xs font-bold uppercase tracking-widest text-gray-700 block mb-2">{{ __('contact.first_name') }}</label>
+                            <input type="text" name="first_name" placeholder="{{ __('contact.first_name_placeholder') }}"
+                                class="w-full px-4 py-3.5 border border-gray-300 rounded-none focus:outline-none focus:border-[var(--color-brand-accent)] font-sans text-base transition-colors"
+                                required>
                         </div>
 
                         <div>

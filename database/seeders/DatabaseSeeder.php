@@ -241,6 +241,9 @@ class DatabaseSeeder extends Seeder
         // 5. Team Members — geridos pelo TeamMemberSeeder (fotos em public/equipa)
         $this->call(TeamMemberSeeder::class);
 
+        // 5b. Clientes — geridos pelo ClientSeeder (logótipos em public/clientes)
+        $this->call(ClientSeeder::class);
+
         // 6. Services — geridos pelo ServiceSeeder
         $this->call(ServiceSeeder::class);
 
