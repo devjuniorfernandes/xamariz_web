@@ -16,7 +16,7 @@ return [
         'eyebrow' => 'Xamariz Energy',
         'title_line1' => 'A sua empresa não precisa de mais marketing.',
         'title_line2' => 'Precisa de comunicar melhor.',
-        'subtitle' => 'Num sector onde confiança, reputação e clareza influenciam decisões, a comunicação deixou de ser um complemento. Tornou-se um activo estratégico.',
+        'subtitle' => "Num sector onde confiança, reputação e clareza influenciam decisões, a comunicação deixou de ser um complemento.\nTornou-se um activo estratégico.",
         'cta' => 'Agende uma conversa durante o AOG',
         'scroll' => 'Descer',
     ],
@@ -162,7 +162,7 @@ return [
     // ─── Footer ────────────────────────────────────
     'footer' => [
         'tagline' => 'Transformamos complexidade em clareza, e clareza em confiança, para organizações que movem a energia.',
-        'areas_title' => 'Áreas',
+        'areas_title' => 'Links',
         'contact_title' => 'Contactos',
         'energy_team' => 'Equipa de Energia',
         'back_to_site' => 'Voltar ao site Xamariz',

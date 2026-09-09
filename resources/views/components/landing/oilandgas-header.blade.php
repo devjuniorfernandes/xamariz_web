@@ -10,9 +10,7 @@
     x-effect="document.body.style.overflow = mobileOpen ? 'hidden' : ''"
     :class="mobileOpen
         ? 'fixed inset-0 w-full h-full min-h-screen bg-[#111215] z-[999999] overflow-y-auto'
-        : ((isDarkNav && !scrolled)
-            ? 'fixed top-0 left-0 right-0 bg-transparent border-b border-transparent z-[999999] transition-all duration-300'
-            : 'fixed top-0 left-0 right-0 bg-[#111215]/95 backdrop-blur-md border-b border-white/10 shadow-sm z-[999999] transition-all duration-300')">
+        : 'absolute top-0 left-0 right-0 bg-transparent z-[999999]'">
 
     {{-- Header Bar --}}
     <div class="container-myriad" x-show="!mobileOpen">

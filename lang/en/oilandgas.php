@@ -16,7 +16,7 @@ return [
         'eyebrow' => 'Xamariz Energy',
         'title_line1' => 'Your company does not need more marketing.',
         'title_line2' => 'It needs to communicate better.',
-        'subtitle' => 'In a sector where trust, reputation and clarity shape decisions, communication is no longer an add-on. It has become a strategic asset.',
+        'subtitle' => "In a sector where trust, reputation and clarity shape decisions, communication is no longer an add-on.\nIt has become a strategic asset.",
         'cta' => 'Schedule a conversation during AOG',
         'scroll' => 'Scroll',
     ],
@@ -162,7 +162,7 @@ return [
     // ─── Footer ────────────────────────────────────
     'footer' => [
         'tagline' => 'We turn complexity into clarity, and clarity into trust, for organisations that move energy.',
-        'areas_title' => 'Areas',
+        'areas_title' => 'Links',
         'contact_title' => 'Contact',
         'energy_team' => 'Energy Team',
         'back_to_site' => 'Back to Xamariz website',

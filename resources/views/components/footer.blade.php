@@ -61,27 +61,33 @@
                     {{ __('nav.contacts') }}
                 </h4>
                 
+                @php
+                    $footerAddress = \App\Models\SiteSetting::get('address', 'Rua Francisco Sotto Mayor 18, Bairro Azul, Luanda, Angola');
+                    $footerPhone   = \App\Models\SiteSetting::get('phone', '+244 941 561 422');
+                    $footerEmail   = \App\Models\SiteSetting::get('email', 'info@xamarizmarketing.com');
+                @endphp
+
                 {{-- Address --}}
                 <div>
                     <p class="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-accent)] mb-1">{{ __('common.address') }}</p>
                     <p class="text-white text-sm leading-relaxed">
-                        Rua Francisco Sotto Mayor 18, Bairro Azul, Luanda, Angola
+                        {{ $footerAddress }}
                     </p>
                 </div>
 
                 {{-- Phone --}}
                 <div>
                     <p class="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-accent)] mb-1">{{ __('contact.phone_label') }}</p>
-                    <a href="tel:+244941561422" class="text-white hover:text-[var(--color-brand-accent)] text-sm font-medium transition-colors duration-200">
-                        +244 941 561 422
+                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', $footerPhone) }}" class="text-white hover:text-[var(--color-brand-accent)] text-sm font-medium transition-colors duration-200">
+                        {{ $footerPhone }}
                     </a>
                 </div>
 
                 {{-- Email --}}
                 <div>
                     <p class="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-accent)] mb-1">{{ __('contact.email_label') }}</p>
-                    <a href="mailto:info@xamarizmarketing.com" class="text-white hover:text-[var(--color-brand-accent)] text-sm font-medium transition-colors duration-200">
-                        info@xamarizmarketing.com
+                    <a href="mailto:{{ $footerEmail }}" class="text-white hover:text-[var(--color-brand-accent)] text-sm font-medium transition-colors duration-200">
+                        {{ $footerEmail }}
                     </a>
                 </div>
             </div>

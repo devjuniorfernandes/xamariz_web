@@ -48,7 +48,6 @@ return [
     [
         'title' => 'Hero',
         'fields' => [
-            'hero.eyebrow'     => ['type' => 'text', 'label' => 'Eyebrow'],
             'hero.title_line1' => ['type' => 'text', 'label' => 'Título — linha 1'],
             'hero.title_line2' => ['type' => 'text', 'label' => 'Título — linha 2'],
             'hero.subtitle'    => ['type' => 'textarea', 'label' => 'Subtítulo'],
@@ -81,7 +80,6 @@ return [
     [
         'title' => 'Experiência real (Clientes)',
         'fields' => [
-            'clients.eyebrow'  => ['type' => 'text', 'label' => 'Eyebrow'],
             'clients.title'    => ['type' => 'text', 'label' => 'Título'],
             'clients.subtitle' => ['type' => 'textarea', 'label' => 'Subtítulo'],
         ],
@@ -90,7 +88,6 @@ return [
     [
         'title' => 'Onde ajudamos (Áreas)',
         'fields' => [
-            'areas.eyebrow'            => ['type' => 'text', 'label' => 'Eyebrow'],
             'areas.title'              => ['type' => 'textarea', 'label' => 'Título'],
             'areas.intro'             => ['type' => 'textarea', 'label' => 'Introdução'],
             'areas.approach_link'      => ['type' => 'text', 'label' => 'Link "Explorar abordagem"'],

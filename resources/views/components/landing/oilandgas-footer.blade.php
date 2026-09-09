@@ -47,29 +47,33 @@
                     {{ __('oilandgas.footer.contact_title') }}
                 </h4>
 
-                <div>
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-[#ff5e14] mb-1">
-                        {{ __('oilandgas.footer.energy_team') }}
-                    </p>
-                    <a href="mailto:aog@xamariz.ao"
-                        class="text-white/80 hover:text-[#ff5e14] text-sm font-medium transition-colors duration-200 font-roboto">
-                        aog@xamariz.ao
-                    </a>
-                </div>
-
-                <div>
-                    <p class="text-[11px] font-bold uppercase tracking-widest text-[#ff5e14] mb-1">{{ __('contact.phone_label') }}</p>
-                    <a href="tel:+244941561422"
-                        class="text-white/80 hover:text-[#ff5e14] text-sm font-medium transition-colors duration-200 font-roboto">
-                        +244 941 561 422
-                    </a>
-                </div>
+                @php
+                    $footerAddress = \App\Models\SiteSetting::get('address', 'Rua Francisco Sotto Mayor 18, Bairro Azul, Luanda, Angola');
+                    $footerPhone   = \App\Models\SiteSetting::get('phone', '+244 941 561 422');
+                    $footerEmail   = \App\Models\SiteSetting::get('email', 'info@xamarizmarketing.com');
+                @endphp
 
                 <div>
                     <p class="text-[11px] font-bold uppercase tracking-widest text-[#ff5e14] mb-1">{{ __('common.address') }}</p>
                     <p class="text-white/80 text-sm leading-relaxed font-roboto">
-                        Rua Francisco Sotto Mayor 18, Bairro Azul, Luanda, Angola
+                        {{ $footerAddress }}
                     </p>
+                </div>
+
+                <div>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-[#ff5e14] mb-1">{{ __('contact.phone_label') }}</p>
+                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', $footerPhone) }}"
+                        class="text-white/80 hover:text-[#ff5e14] text-sm font-medium transition-colors duration-200 font-roboto">
+                        {{ $footerPhone }}
+                    </a>
+                </div>
+
+                <div>
+                    <p class="text-[11px] font-bold uppercase tracking-widest text-[#ff5e14] mb-1">{{ __('contact.email_label') }}</p>
+                    <a href="mailto:{{ $footerEmail }}"
+                        class="text-white/80 hover:text-[#ff5e14] text-sm font-medium transition-colors duration-200 font-roboto">
+                        {{ $footerEmail }}
+                    </a>
                 </div>
             </div>
 
@@ -93,6 +97,12 @@
                 class="text-white/70 hover:text-[#ff5e14] transition-all duration-300 transform hover:scale-110" aria-label="LinkedIn">
                 <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
+            </a>
+            <a href="https://www.tiktok.com/@xamarizmarketing" target="_blank" rel="noopener noreferrer"
+                class="text-white/70 hover:text-[#ff5e14] transition-all duration-300 transform hover:scale-110" aria-label="TikTok">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.83.57-1.31 1.56-1.3 2.56.02 1.04.59 2.01 1.49 2.53.94.55 2.15.58 3.11.08.97-.5 1.57-1.53 1.57-2.63.01-5.69.01-11.39.01-17.09z" />
                 </svg>
             </a>
             <a href="https://www.youtube.com/channel/UC7D322m8PQBtP4nyRqJFFeg" target="_blank" rel="noopener noreferrer"

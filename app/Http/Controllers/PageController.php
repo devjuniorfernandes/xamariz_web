@@ -24,7 +24,7 @@ class PageController extends Controller
             ->take(5)
             ->get();
         
-        $servicesList = Service::where('is_active', true)->orderBy('display_order')->take(4)->get();
+        $servicesList = Service::where('is_active', true)->orderBy('display_order')->take(5)->get();
         $brandLogos = Client::where('show_in_marquee', true)->orderBy('display_order')->get();
         $teamMembers = TeamMember::where('is_active', true)->orderBy('display_order')->take(4)->get();
         $latestInsights = Post::where('status', 'published')->latest('published_at')->take(3)->get();

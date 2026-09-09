@@ -606,7 +606,7 @@
                     <div class="lg:col-span-7 reveal">
 
                         <h2 class="font-sans text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.06]">
-                            {{ \App\Models\SiteSetting::get('home_services_heading', 'Como podemos ajudar') }}
+                            {{ \App\Models\SiteSetting::get('home_services_heading', 'Transformamos ideias em comunicação que faz sentido.') }}
                         </h2>
 
                     </div>
@@ -615,7 +615,7 @@
                     <div class="flex flex-col items-start sm:items-end gap-5 max-w-lg">
 
                         <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight text-left sm:text-right">
-                            {{ \App\Models\SiteSetting::get('home_services_title', 'Soluções de Marketing 360° para dominar o mercado.') }}
+                            {!! nl2br(e(\App\Models\SiteSetting::get('home_services_title', "COMUNICAÇÃO CLARA.\nIMPACTO REAL."))) !!}
                         </h2>
 
 

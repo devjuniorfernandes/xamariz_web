@@ -69,17 +69,13 @@
 
         <div class="container-myriad relative z-10 pt-12 sm:pt-20 lg:pt-24 my-auto">
             <div class="max-w-4xl reveal">
-                <span class="inline-block text-[#ff5e14] text-xs sm:text-sm font-bold uppercase tracking-widest mb-6">
-                    {{ __('oilandgas.hero.eyebrow') }}
-                </span>
-
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] mb-6 max-w-3xl">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-[1.1] mb-6 max-w-3xl">
                     {{ __('oilandgas.hero.title_line1') }}<br>
                     <span class="text-white">{{ __('oilandgas.hero.title_line2') }}</span>
                 </h1>
 
                 <p class="text-base sm:text-lg text-gray-200 font-normal leading-relaxed mb-10 max-w-xl font-roboto">
-                    {{ __('oilandgas.hero.subtitle') }}
+                    {!! nl2br(e(__('oilandgas.hero.subtitle'))) !!}
                 </p>
 
                 <a href="#aog"
@@ -136,8 +132,12 @@
     {{-- ══════════════════════════════════════════════════════════════
      2b. IMPACTO — duas colunas: conteúdo (gradiente) + imagem
     ══════════════════════════════════════════════════════════════ --}}
-    <section class="relative w-full font-barlow overflow-hidden bg-gradient-to-br from-[#09297a] via-[#132058] to-[#281b45]">
-        <x-blue-mesh />
+    <section class="relative w-full font-barlow overflow-hidden bg-[#0f1f4a]">
+        {{-- Gradiente + malha apenas na metade do texto (esquerda); a direita é a imagem --}}
+        <div class="absolute inset-0 lg:right-1/2 z-0 bg-[#0f1f4a]"
+            style="background-image:url('{{ asset('grad.jfif') }}');background-size:cover;background-position:center;background-repeat:no-repeat;">
+            <x-blue-mesh />
+        </div>
         {{-- Imagem: metade direita a preencher todo o espaço (mobile: bloco no topo) --}}
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             @php $impactImg = \App\Models\SiteSetting::get('landing_impact_image', 'luanda_picture.jpg'); @endphp
@@ -145,7 +145,7 @@
                 class="w-full h-72 sm:h-96 lg:h-full object-cover">
         </div>
 
-        <div class="container-myriad relative">
+        <div class="container-myriad relative z-10">
             <div class="lg:grid lg:grid-cols-2">
                 {{-- Esquerda: conteúdo no container --}}
                 <div class="py-16 lg:py-28 lg:pr-16 text-white reveal">
@@ -182,9 +182,6 @@
     <section class="py-20 lg:py-24 bg-[#fafafa] border-b border-gray-200 font-barlow">
         <div class="container-myriad">
             <div class="max-w-3xl mb-12 reveal">
-                <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-4">
-                    {{ __('oilandgas.clients.eyebrow') }}
-                </span>
                 <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-gray-900 tracking-tight leading-[1.15] mb-4">
                     {{ __('oilandgas.clients.title') }}
                 </h2>
@@ -216,11 +213,6 @@
     <section id="areas" class="w-full py-20 lg:py-28 bg-white border-b border-gray-100 font-barlow scroll-mt-20"
         x-data="{ tab: 0 }">
         <div class="container-myriad">
-
-            {{-- Eyebrow --}}
-            <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-4">
-                {{ __('oilandgas.areas.eyebrow') }}
-            </span>
 
             {{-- Heading + Approach link --}}
             <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6 reveal">
@@ -352,7 +344,8 @@
     {{-- ══════════════════════════════════════════════════════════════
      7. AOG / CTA FINAL + formulário
     ══════════════════════════════════════════════════════════════ --}}
-    <section id="aog" class="py-24 lg:py-32 text-white relative overflow-hidden font-barlow scroll-mt-20 bg-gradient-to-br from-[#09297a] via-[#132058] to-[#281b45]">
+    <section id="aog" class="py-24 lg:py-32 text-white relative overflow-hidden font-barlow scroll-mt-20 bg-[#0f1f4a]"
+        style="background-image:url('{{ asset('grad.jfif') }}');background-size:cover;background-position:center;background-repeat:no-repeat;">
         <x-blue-mesh />
         <div class="container-myriad relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
