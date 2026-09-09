@@ -21,13 +21,10 @@
                     {{ __('common.quick_links') }}</h4>
                 <ul class="space-y-3">
                     @foreach ([
-                        [__('nav.about'), 'about'],
-                        [__('nav.team'), 'team.index'],
-                        [__('nav.clients'), 'clients.index'],
-                        [__('nav.portfolio'), 'work.index'],
-                        [__('nav.services'), 'services.index'],
-                        [__('nav.insights'), 'insights.index'],
-                        [__('nav.contacts'), 'contact']
+                        ['Marketing de Diferenciação', 'services.index'],
+                        ['Marketing de Conteúdo', 'services.index'],
+                        ['Marketing Digital', 'services.index'],
+                        ['SEO', 'services.index'],
                     ] as [$label, $route])
                         <li>
                             <a href="{{ route($route) }}"
@@ -153,10 +150,6 @@
                 &copy; {{ date('Y') }} Xamariz (Visualclick, Lda). {{ __('common.all_rights_reserved') }}
             </p>
             <div class="flex items-center gap-6">
-                <a href="{{ route('privacy') }}"
-                    class="text-xs text-white hover:text-[var(--color-brand-accent)] transition-colors">{{ __('common.privacy_policy') }}</a>
-                <a href="{{ route('cookies') }}"
-                    class="text-xs text-white hover:text-[var(--color-brand-accent)] transition-colors">{{ __('common.cookie_policy') }}</a>
                 <a href="mailto:contacto@xamariz.ao"
                     class="text-xs text-white hover:text-[var(--color-brand-accent)] transition-colors">
                     contacto@xamariz.ao

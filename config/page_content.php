@@ -88,8 +88,8 @@ return [
             [
                 'title'  => 'Secção Serviços (cabeçalho)',
                 'fields' => [
-                    'home_services_heading'   => ['type' => 'text', 'label' => 'Título à esquerda', 'default' => 'Como podemos ajudar'],
-                    'home_services_title'     => ['type' => 'text', 'label' => 'Título à direita', 'default' => 'Soluções de Marketing 360° para dominar o mercado.'],
+                    'home_services_heading'   => ['type' => 'text', 'label' => 'Título à esquerda', 'default' => 'Transformamos ideias em comunicação que faz sentido.'],
+                    'home_services_title'     => ['type' => 'text', 'label' => 'Título à direita', 'default' => 'COMUNICAÇÃO CLARA. IMPACTO REAL.'],
                     'home_services_cta'       => ['type' => 'text', 'label' => 'Texto do botão', 'default' => 'VER TODOS OS SERVIÇOS'],
                     'home_services_card_link' => ['type' => 'text', 'label' => 'Ligação nos cartões', 'default' => 'Explorar serviço'],
                 ],
