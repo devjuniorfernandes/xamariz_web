@@ -145,16 +145,10 @@
         </div>
 
         {{-- Bottom bar --}}
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 pt-8 border-t border-white/10">
+        <div class="mt-8 pt-8 border-t border-white/10 text-center">
             <p class="text-xs text-white">
                 &copy; {{ date('Y') }} Xamariz (Visualclick, Lda). {{ __('common.all_rights_reserved') }}
             </p>
-            <div class="flex items-center gap-6">
-                <a href="mailto:contacto@xamariz.ao"
-                    class="text-xs text-white hover:text-[var(--color-brand-accent)] transition-colors">
-                    contacto@xamariz.ao
-                </a>
-            </div>
         </div>
     </div>
 </footer>

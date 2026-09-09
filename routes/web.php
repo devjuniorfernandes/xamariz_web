@@ -23,12 +23,16 @@ Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('local
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/work', [PageController::class, 'workIndex'])->name('work.index');
 Route::get('/work/{slug}', [PageController::class, 'workShow'])->name('work.show');
-Route::get('/team', [PageController::class, 'teamIndex'])->name('team.index');
-Route::get('/clients', [PageController::class, 'clientsIndex'])->name('clients.index');
 Route::get('/clients/{slug}', [PageController::class, 'clientsShow'])->name('clients.show');
 Route::get('/services', [PageController::class, 'servicesIndex'])->name('services.index');
 Route::get('/services/{slug}', [PageController::class, 'servicesShow'])->name('services.show');
-Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/quem-somos', [PageController::class, 'about'])->name('about');
+
+// Clientes e Equipa foram consolidados na página "Quem Somos".
+// (A gestão de Clientes e Equipa continua disponível no CMS.)
+Route::redirect('/clients', '/quem-somos', 301)->name('clients.index');
+Route::redirect('/team', '/quem-somos', 301)->name('team.index');
+Route::redirect('/about', '/quem-somos', 301);
 Route::get('/insights', [PageController::class, 'insightsIndex'])->name('insights.index');
 Route::get('/insights/{slug}', [PageController::class, 'insightsShow'])->name('insights.show');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');

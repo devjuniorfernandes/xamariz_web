@@ -950,7 +950,7 @@
 
             <div class="container-myriad">
                 <div class="reveal delay-200 flex justify-start">
-                    <a href="{{ route('clients.index') }}"
+                    <a href="{{ route('about') }}"
                         class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-gray-900 text-gray-900 hover:border-[var(--color-brand-accent)] hover:text-[var(--color-brand-accent)] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group">
                         <span>{{ \App\Models\SiteSetting::get('home_brands_cta', 'VER CLIENTES') }}</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"

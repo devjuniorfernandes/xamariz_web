@@ -33,8 +33,8 @@
             </div>
 
             <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Cliente / Marca *</label>
-                <select name="client_id" required class="w-full px-4 py-3 rounded-none bg-[#141414] border border-[#2c2d30] text-white focus:outline-none focus:border-[var(--color-brand-accent)] text-sm">
+                <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Cliente / Marca</label>
+                <select name="client_id" class="w-full px-4 py-3 rounded-none bg-[#141414] border border-[#2c2d30] text-white focus:outline-none focus:border-[var(--color-brand-accent)] text-sm">
                     <option value="">-- Selecionar Cliente --</option>
                     @foreach($clients as $client)
                         <option value="{{ $client->id }}" {{ old('client_id') == $client->id ? 'selected' : '' }}>{{ $client->name }}</option>
@@ -44,7 +44,7 @@
 
             <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Filtro / Sector *</label>
-                <select name="work_category_id" required class="w-full px-4 py-3 rounded-none bg-[#141414] border border-[#2c2d30] text-white focus:outline-none focus:border-[var(--color-brand-accent)] text-sm">
+                <select name="work_category_id" class="w-full px-4 py-3 rounded-none bg-[#141414] border border-[#2c2d30] text-white focus:outline-none focus:border-[var(--color-brand-accent)] text-sm">
                     <option value="">-- Selecionar Categoria / Filtro --</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}" {{ old('work_category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }} ({{ $category->filter_key }})</option>
@@ -76,13 +76,13 @@
             </div>
 
             <div class="md:col-span-2">
-                <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Resumo Curto (Exibido nos Cards) *</label>
-                <textarea name="summary" rows="3" required class="w-full px-4 py-3 rounded-none bg-[#141414] border border-[#2c2d30] text-white focus:outline-none focus:border-[var(--color-brand-accent)] text-sm">{{ old('summary') }}</textarea>
+                <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Resumo Curto (Exibido nos Cards)</label>
+                <textarea name="summary" rows="3" class="w-full px-4 py-3 rounded-none bg-[#141414] border border-[#2c2d30] text-white focus:outline-none focus:border-[var(--color-brand-accent)] text-sm">{{ old('summary') }}</textarea>
             </div>
 
             <div class="md:col-span-2">
-                <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Descrição Completa / Case Study *</label>
-                <textarea name="description" rows="6" required class="w-full px-4 py-3 rounded-none bg-[#141414] border border-[#2c2d30] text-white focus:outline-none focus:border-[var(--color-brand-accent)] text-sm">{{ old('description') }}</textarea>
+                <label class="block text-xs font-bold uppercase tracking-wider text-gray-300 mb-2">Descrição Completa / Case Study</label>
+                <textarea name="description" rows="6" class="w-full px-4 py-3 rounded-none bg-[#141414] border border-[#2c2d30] text-white focus:outline-none focus:border-[var(--color-brand-accent)] text-sm">{{ old('description') }}</textarea>
             </div>
 
             {{-- Dynamic Image Gallery Builder with Sizes --}}

@@ -18,7 +18,13 @@
     <meta name="title" content="@yield('title', $defaultTitle)">
     <meta name="description" content="@yield('description', $defaultDesc)">
     <meta name="author" content="Xamariz (Visualclick, Lda)">
-    <meta name="robots" content="@yield('meta_robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1')">
+    @php
+        $seoIsProd = in_array(request()->getHost(), ['xamariz.ao', 'www.xamariz.ao'], true);
+        $seoRobots = $seoIsProd
+            ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+            : 'noindex, nofollow';
+    @endphp
+    <meta name="robots" content="@yield('meta_robots', $seoRobots)">
     <link rel="canonical" href="@yield('canonical', url()->current())">
 
     {{-- Geo Tags (Local SEO Angola) --}}

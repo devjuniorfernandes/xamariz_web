@@ -167,7 +167,7 @@
                         </div>
                         <div>
                             <label class="block text-[11px] font-bold uppercase text-gray-300 mb-1">Meta Descrição</label>
-                            <input type="text" name="seo_about_description" value="{{ old('seo_about_description', $settings['seo_about_description'] ?? 'A Xamariz (marca da Visualclick, Lda) é a agência líder em Publicidade, Comunicação e Marketing 360° em Luanda, Angola. Comunicação clara e atração de clientes.') }}" class="w-full px-3 py-2 bg-[#1f2022] border border-[#2c2d30] text-white text-xs">
+                            <input type="text" name="seo_about_description" value="{{ old('seo_about_description', $settings['seo_about_description'] ?? 'A Xamariz ajuda empresas a transformar complexidade em clareza e a clareza em impacto. Comunicação clara e atração de clientes.') }}" class="w-full px-3 py-2 bg-[#1f2022] border border-[#2c2d30] text-white text-xs">
                         </div>
                     </div>
                 </div>

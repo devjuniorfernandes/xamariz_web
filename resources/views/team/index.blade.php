@@ -157,7 +157,7 @@
                             <span class="font-sans text-xs font-bold uppercase tracking-widest text-gray-700">{{ \App\Models\SiteSetting::get('team_grid_eyebrow', 'DIREÇÃO & EQUIPA') }}</span>
                         </div>
                         <h2 class="font-sans text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
-                            {{ \App\Models\SiteSetting::get('team_grid_title', 'Conselho de Direção & Especialistas') }}
+                            {{ \App\Models\SiteSetting::get('team_grid_title', 'Equipa') }}
                         </h2>
                     </div>
                     <p class="font-sans text-gray-600 text-sm max-w-md">

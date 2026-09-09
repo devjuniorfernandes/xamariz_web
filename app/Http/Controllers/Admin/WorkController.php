@@ -58,10 +58,21 @@ class WorkController extends Controller
             'gallery' => 'nullable|array',
             'is_featured_home' => 'boolean',
             'display_order' => 'integer',
-            'status' => 'required|in:draft,published',
+            'status' => 'nullable|in:draft,published',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
         ]);
+
+        // Obrigatórios: apenas o nome (title) e uma imagem — capa (URL/upload) OU galeria.
+        $hasCover = $request->hasFile('cover_image') || $request->filled('cover_url');
+        $hasGallery = collect($request->input('gallery', []))->contains(fn ($i) => !empty($i['url']));
+        if (! $hasCover && ! $hasGallery) {
+            return back()->withInput()->withErrors([
+                'cover_image' => 'Adicione uma imagem de capa (URL ou upload) ou pelo menos uma imagem na galeria.',
+            ]);
+        }
+
+        $validated['status'] = $validated['status'] ?? 'published';
 
         $validated['slug'] = Str::slug($request->title);
         $count = Work::where('slug', 'like', $validated['slug'] . '%')->count();
@@ -121,10 +132,21 @@ class WorkController extends Controller
             'gallery' => 'nullable|array',
             'is_featured_home' => 'boolean',
             'display_order' => 'integer',
-            'status' => 'required|in:draft,published',
+            'status' => 'nullable|in:draft,published',
             'meta_title' => 'nullable|string|max:255',
             'meta_description' => 'nullable|string',
         ]);
+
+        // Obrigatórios: apenas o nome (title) e uma imagem — capa (URL/upload/existente) OU galeria.
+        $hasCover = $request->hasFile('cover_image') || $request->filled('cover_url') || ! empty($work->cover_image);
+        $hasGallery = collect($request->input('gallery', []))->contains(fn ($i) => !empty($i['url']));
+        if (! $hasCover && ! $hasGallery) {
+            return back()->withInput()->withErrors([
+                'cover_image' => 'Adicione uma imagem de capa (URL ou upload) ou pelo menos uma imagem na galeria.',
+            ]);
+        }
+
+        $validated['status'] = $validated['status'] ?? $work->status ?? 'published';
 
         if ($request->title !== $work->title) {
             $validated['slug'] = Str::slug($request->title);

@@ -6,7 +6,7 @@ return [
     'services' => 'Serviços',
     'clients' => 'Clientes',
     'team' => 'Equipa',
-    'about' => 'Sobre Nós',
+    'about' => 'Quem Somos',
     'insights' => 'Insights',
     'contacts' => 'Contactos',
     'start_project' => 'Fale Connosco',

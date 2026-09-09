@@ -26,18 +26,6 @@
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>{{ route('clients.index') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>{{ route('team.index') }}</loc>
-        <lastmod>{{ now()->toDateString() }}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
         <loc>{{ route('insights.index') }}</loc>
         <lastmod>{{ now()->toDateString() }}</lastmod>
         <changefreq>daily</changefreq>

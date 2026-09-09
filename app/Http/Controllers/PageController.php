@@ -102,8 +102,15 @@ class PageController extends Controller
 
     public function about()
     {
-        $teamMembers = TeamMember::where('is_active', true)->orderBy('display_order')->take(8)->get();
-        return view('about', compact('teamMembers'));
+        // Página "Quem Somos" — consolida também a informação de Equipa e Clientes.
+        $ceoMember = TeamMember::where('department', 'ceo')->where('is_active', true)->first();
+        $teamMembers = TeamMember::where('is_active', true)
+            ->where('department', '!=', 'ceo')
+            ->orderBy('display_order')
+            ->get();
+        $clients = Client::withCount('works')->orderBy('display_order')->get();
+
+        return view('about', compact('ceoMember', 'teamMembers', 'clients'));
     }
 
     public function insightsIndex()

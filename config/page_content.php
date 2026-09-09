@@ -311,7 +311,7 @@ return [
                 'title'  => 'Secção Direção & Equipa',
                 'fields' => [
                     'team_grid_eyebrow'  => ['type' => 'text',     'label' => 'Etiqueta (eyebrow)', 'default' => 'DIREÇÃO & EQUIPA'],
-                    'team_grid_title'    => ['type' => 'text',     'label' => 'Título da Secção', 'default' => 'Conselho de Direção & Especialistas'],
+                    'team_grid_title'    => ['type' => 'text',     'label' => 'Título da Secção', 'default' => 'Equipa'],
                     'team_grid_subtitle' => ['type' => 'textarea', 'label' => 'Descrição da Secção', 'rows' => 2, 'default' => 'Uma equipa integrada de especialistas dedicados à excelência comercial e criativa da sua marca.'],
                     'team_empty'         => ['type' => 'text',     'label' => 'Mensagem quando não há equipa', 'default' => 'Nenhum membro da equipa registado de momento.'],
                 ],

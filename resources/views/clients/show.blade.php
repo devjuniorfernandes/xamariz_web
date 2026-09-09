@@ -139,7 +139,7 @@
 
             {{-- Design System Breadcrumb --}}
             <div class="reveal flex items-center gap-3 text-xs uppercase font-sans tracking-widest mb-8">
-                <a href="{{ route('clients.index') }}" class="text-gray-600 hover:text-gray-900 transition-colors">
+                <a href="{{ route('about') }}" class="text-gray-600 hover:text-gray-900 transition-colors">
                     Parcerias e Clientes
                 </a>
                 <span class="text-gray-300">/</span>
