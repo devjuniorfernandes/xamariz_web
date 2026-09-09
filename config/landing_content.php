@@ -95,56 +95,42 @@ return [
             'areas.intro'             => ['type' => 'textarea', 'label' => 'Introdução'],
             'areas.approach_link'      => ['type' => 'text', 'label' => 'Link "Explorar abordagem"'],
             'areas.explore'            => ['type' => 'text', 'label' => 'Etiqueta "Explorar"'],
-            'areas.deliverables_label' => ['type' => 'text', 'label' => 'Etiqueta "O que entregamos"'],
         ],
     ],
 
     [
         'title' => 'Áreas — Comunicação Corporativa',
         'fields' => [
-            'areas.items.corporate.title'        => ['type' => 'text', 'label' => 'Título'],
-            'areas.items.corporate.desc'         => ['type' => 'textarea', 'label' => 'Descrição'],
-            'areas.items.corporate.deliverables' => ['type' => 'list', 'label' => 'Entregáveis (um por linha)'],
+            'areas.items.corporate.title' => ['type' => 'text', 'label' => 'Título'],
+            'areas.items.corporate.desc'  => ['type' => 'textarea', 'label' => 'Descrição'],
         ],
     ],
     [
         'title' => 'Áreas — Comunicação de Projectos',
         'fields' => [
-            'areas.items.projects.title'        => ['type' => 'text', 'label' => 'Título'],
-            'areas.items.projects.desc'         => ['type' => 'textarea', 'label' => 'Descrição'],
-            'areas.items.projects.deliverables' => ['type' => 'list', 'label' => 'Entregáveis (um por linha)'],
+            'areas.items.projects.title' => ['type' => 'text', 'label' => 'Título'],
+            'areas.items.projects.desc'  => ['type' => 'textarea', 'label' => 'Descrição'],
         ],
     ],
     [
-        'title' => 'Áreas — Conteúdo Executivo',
+        'title' => 'Áreas — Comunicação de Liderança',
         'fields' => [
-            'areas.items.executive.title'        => ['type' => 'text', 'label' => 'Título'],
-            'areas.items.executive.desc'         => ['type' => 'textarea', 'label' => 'Descrição'],
-            'areas.items.executive.deliverables' => ['type' => 'list', 'label' => 'Entregáveis (um por linha)'],
+            'areas.items.executive.title' => ['type' => 'text', 'label' => 'Título'],
+            'areas.items.executive.desc'  => ['type' => 'textarea', 'label' => 'Descrição'],
         ],
     ],
     [
-        'title' => 'Áreas — Comunicação Digital',
+        'title' => 'Áreas — Comunicação Digital & Conteúdo',
         'fields' => [
-            'areas.items.digital.title'        => ['type' => 'text', 'label' => 'Título'],
-            'areas.items.digital.desc'         => ['type' => 'textarea', 'label' => 'Descrição'],
-            'areas.items.digital.deliverables' => ['type' => 'list', 'label' => 'Entregáveis (um por linha)'],
-        ],
-    ],
-    [
-        'title' => 'Áreas — Employer Branding',
-        'fields' => [
-            'areas.items.employer.title'        => ['type' => 'text', 'label' => 'Título'],
-            'areas.items.employer.desc'         => ['type' => 'textarea', 'label' => 'Descrição'],
-            'areas.items.employer.deliverables' => ['type' => 'list', 'label' => 'Entregáveis (um por linha)'],
+            'areas.items.digital.title' => ['type' => 'text', 'label' => 'Título'],
+            'areas.items.digital.desc'  => ['type' => 'textarea', 'label' => 'Descrição'],
         ],
     ],
     [
         'title' => 'Áreas — Stakeholder Engagement',
         'fields' => [
-            'areas.items.stakeholder.title'        => ['type' => 'text', 'label' => 'Título'],
-            'areas.items.stakeholder.desc'         => ['type' => 'textarea', 'label' => 'Descrição'],
-            'areas.items.stakeholder.deliverables' => ['type' => 'list', 'label' => 'Entregáveis (um por linha)'],
+            'areas.items.stakeholder.title' => ['type' => 'text', 'label' => 'Título'],
+            'areas.items.stakeholder.desc'  => ['type' => 'textarea', 'label' => 'Descrição'],
         ],
     ],
 

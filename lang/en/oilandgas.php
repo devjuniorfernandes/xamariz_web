@@ -75,57 +75,23 @@ return [
         'items' => [
             'corporate' => [
                 'title' => 'Corporate Communication',
-                'desc' => 'Institutional positioning, brand messaging and reputation management for operators and service providers.',
-                'deliverables' => [
-                    'Annual and institutional reports',
-                    'Corporate identity and narrative',
-                    'Media relations and reputation management',
-                ],
+                'desc' => 'Positioning, reputation and institutional communication for organisations operating in a highly complex sector.',
             ],
             'projects' => [
                 'title' => 'Project Communication',
-                'desc' => 'Clear narratives for major projects — from licensing to operation — aligning partners and communities.',
-                'deliverables' => [
-                    'Tender and pre-qualification dossiers',
-                    'Licensing and FID communication',
-                    'Local content and community relations',
-                ],
+                'desc' => 'We turn complex projects into clear, coherent and relevant stories for those who need to understand them.',
             ],
             'executive' => [
-                'title' => 'Executive Content',
-                'desc' => 'High-precision presentations, reports and tender dossiers for decision-makers and boards.',
-                'deliverables' => [
-                    'Board and investor presentations',
-                    'Sustainability and ESG reports',
-                    'Technical memos and data rooms',
-                ],
+                'title' => 'Leadership Communication',
+                'desc' => 'We help leaders turn knowledge, vision and experience into communication that builds trust.',
             ],
             'digital' => [
-                'title' => 'Digital Communication',
-                'desc' => 'Digital presence, technical content and campaigns geared to the Angolan and international market.',
-                'deliverables' => [
-                    'Websites and technical portals',
-                    'LinkedIn and thought leadership',
-                    'Campaigns for the Angolan market',
-                ],
-            ],
-            'employer' => [
-                'title' => 'Employer Branding',
-                'desc' => 'Attracting and retaining technical talent, internal communication and culture for industrial teams.',
-                'deliverables' => [
-                    'Technical recruitment communication',
-                    'Onboarding and internal QHSE communication',
-                    'Culture, safety and talent retention',
-                ],
+                'title' => 'Digital Communication & Content',
+                'desc' => 'We create digital experiences and content that make complex organisations easier to find, understand and get to know.',
             ],
             'stakeholder' => [
                 'title' => 'Stakeholder Engagement',
-                'desc' => 'Managing relations with government, regulators, partners and communities across the project lifecycle.',
-                'deliverables' => [
-                    'Government and regulator relations (ANPG)',
-                    'Partner and joint-venture engagement',
-                    'Crisis communication and incident management',
-                ],
+                'desc' => 'We create relevant communication to build trusting relationships with the stakeholders who influence a project\'s success.',
             ],
         ],
     ],
@@ -195,7 +161,7 @@ return [
 
     // ─── Footer ────────────────────────────────────
     'footer' => [
-        'tagline' => 'Strategic communication, institutional positioning and reputation management for the Oil & Gas sector in Angola and worldwide.',
+        'tagline' => 'We turn complexity into clarity, and clarity into trust, for organisations that move energy.',
         'areas_title' => 'Areas',
         'contact_title' => 'Contact',
         'energy_team' => 'Energy Team',

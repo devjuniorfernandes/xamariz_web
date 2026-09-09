@@ -75,57 +75,23 @@ return [
         'items' => [
             'corporate' => [
                 'title' => 'Comunicação Corporativa',
-                'desc' => 'Posicionamento institucional, mensagem de marca e gestão de reputação para operadoras e prestadores de serviços.',
-                'deliverables' => [
-                    'Relatórios anuais e institucionais',
-                    'Identidade e narrativa corporativa',
-                    'Media relations e gestão de reputação',
-                ],
+                'desc' => 'Posicionamento, reputação e comunicação institucional para organizações que operam num sector de elevada complexidade.',
             ],
             'projects' => [
                 'title' => 'Comunicação de Projectos',
-                'desc' => 'Narrativas claras para grandes projectos — do licenciamento à operação — que alinham parceiros e comunidades.',
-                'deliverables' => [
-                    'Dossiers de concurso e pré-qualificação',
-                    'Comunicação de licenciamento e FID',
-                    'Conteúdo local e relação com comunidades',
-                ],
+                'desc' => 'Transformamos projectos complexos em histórias claras, coerentes e relevantes para quem precisa de os compreender.',
             ],
             'executive' => [
-                'title' => 'Conteúdo Executivo',
-                'desc' => 'Apresentações, relatórios e dossiers de concurso de alta precisão para decisores e conselhos de administração.',
-                'deliverables' => [
-                    'Apresentações para conselho e investidores',
-                    'Relatórios de sustentabilidade e ESG',
-                    'Memorandos técnicos e data rooms',
-                ],
+                'title' => 'Comunicação de Liderança',
+                'desc' => 'Ajudamos líderes a transformar conhecimento, visão e experiência em comunicação que gera confiança.',
             ],
             'digital' => [
-                'title' => 'Comunicação Digital',
-                'desc' => 'Presença digital, conteúdo técnico e campanhas orientadas ao mercado angolano e internacional.',
-                'deliverables' => [
-                    'Websites e portais técnicos',
-                    'LinkedIn e thought leadership',
-                    'Campanhas para o mercado angolano',
-                ],
-            ],
-            'employer' => [
-                'title' => 'Employer Branding',
-                'desc' => 'Atracção e retenção de talento técnico, comunicação interna e cultura para equipas industriais.',
-                'deliverables' => [
-                    'Comunicação de recrutamento técnico',
-                    'Onboarding e comunicação interna QHSE',
-                    'Cultura, segurança e retenção de talento',
-                ],
+                'title' => 'Comunicação Digital & Conteúdo',
+                'desc' => 'Criamos experiências digitais e conteúdos que tornam organizações complexas mais fáceis de encontrar, compreender e conhecer.',
             ],
             'stakeholder' => [
                 'title' => 'Stakeholder Engagement',
-                'desc' => 'Gestão de relações com governo, reguladores, parceiros e comunidades ao longo do ciclo de vida do projecto.',
-                'deliverables' => [
-                    'Relações com governo e reguladores (ANPG)',
-                    'Engajamento de parceiros e joint-ventures',
-                    'Comunicação de crise e gestão de incidentes',
-                ],
+                'desc' => 'Criamos comunicação relevante para construir relações de confiança com os stakeholders que influenciam o sucesso de um projecto.',
             ],
         ],
     ],
@@ -195,7 +161,7 @@ return [
 
     // ─── Footer ────────────────────────────────────
     'footer' => [
-        'tagline' => 'Comunicação estratégica, posicionamento institucional e gestão de reputação para o sector de Oil & Gas em Angola e no mundo.',
+        'tagline' => 'Transformamos complexidade em clareza, e clareza em confiança, para organizações que movem a energia.',
         'areas_title' => 'Áreas',
         'contact_title' => 'Contactos',
         'energy_team' => 'Equipa de Energia',

@@ -49,7 +49,6 @@
             ['key' => 'projects',    'img' => 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&auto=format&fit=crop&q=80'],
             ['key' => 'executive',   'img' => 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1400&auto=format&fit=crop&q=80'],
             ['key' => 'digital',     'img' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1400&auto=format&fit=crop&q=80'],
-            ['key' => 'employer',    'img' => 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&auto=format&fit=crop&q=80'],
             ['key' => 'stakeholder', 'img' => 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&auto=format&fit=crop&q=80'],
         ];
     @endphp
