@@ -17,11 +17,10 @@
             <div class="max-w-3xl reveal">
                 <h1
                     class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
-                    Pensamento estratégico sobre publicidade, diferenciação & marketing 360°.
+                    Pensar melhor. Comunicar melhor.
                 </h1>
                 <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed">
-                    Artigos, análises de mercado e perspetivas dos nossos especialistas em comunicação e atração de clientes
-                    em Luanda e no mundo.
+                    Ideias e perspectivas da Xamariz sobre comunicação, marketing, tecnologia e os desafios que estão a transformar as empresas.
                 </p>
             </div>
         </div>
