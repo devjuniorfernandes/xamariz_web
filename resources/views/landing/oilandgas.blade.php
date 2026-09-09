@@ -34,13 +34,21 @@
     @php
         // Logos reais das marcas O&G (ficheiros em public/).
         $oilGasLogos = [
+            ['name' => 'AES',           'logo' => 'AES.png'],
+            ['name' => 'ABS',           'logo' => 'ABS.png'],
+            ['name' => 'Cavisa',        'logo' => 'Cavisa Oil Lda.png'],
+            ['name' => 'Easy People',        'logo' => 'easypeople.png'],
             ['name' => 'SLB',           'logo' => 'SLBPrancheta 1.png'],
             ['name' => 'TotalEnergies', 'logo' => 'Total Energies.png'],
-            ['name' => 'Chitotolo',     'logo' => 'Chitotolo.png'],
             ['name' => 'ENI',           'logo' => 'eni.png'],
+            ['name' => 'Famar',        'logo' => 'famar.png'],
             ['name' => 'ETU Energias',  'logo' => 'ETU ENERGIAS.png'],
             ['name' => 'ILS',           'logo' => 'ILS.png'],
             ['name' => 'Kaminho',       'logo' => 'KAMINHO.png'],
+             ['name' => 'Pumangol',       'logo' => 'Pumangol.png'],
+            ['name' => 'Sonagalp',       'logo' => 'Sonagalp.png'],
+            ['name' => 'Sonangol',       'logo' => 'Sonangol.png'],
+            ['name' => 'Stylus',       'logo' => 'stylus.png'],
         ];
 
         // Secção "Focus" — separadores (tabs). Imagens são placeholders O&G a substituir por fotografia real.
