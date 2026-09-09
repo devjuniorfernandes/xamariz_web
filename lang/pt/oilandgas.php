@@ -171,8 +171,8 @@ return [
     // ─── 7. AOG / CTA final + formulário ───────────
     'aog' => [
         'eyebrow' => 'Angola Oil & Gas',
-        'title' => 'Vamos estar presentes no Angola Oil & Gas.',
-        'lead' => 'Se acredita que a comunicação pode gerar mais valor para a sua organização, teremos todo o gosto em conversar consigo.',
+        'title' => 'Da comunicação nasce a confiança que move a energia.',
+        'lead' => 'Encontre-se connosco no Angola Oil & Gas. Estaremos presentes no Angola Oil & Gas e teremos todo o gosto em conversar consigo.',
         'point_meetings' => 'Reuniões executivas presenciais durante o evento em Luanda',
         'point_contact' => 'Contacto directo da equipa de energia: aog@xamariz.ao',
         'form' => [

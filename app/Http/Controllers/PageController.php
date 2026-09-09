@@ -167,6 +167,9 @@ class PageController extends Controller
 
     public function oilandgas()
     {
+        // Aplica os overrides multilingues do CMS sobre as traduções da landing.
+        \App\Support\LandingContent::apply();
+
         // Landing page autónoma (layout dedicado). Os logos dos clientes
         // são uma lista fixa e específica de marcas, definida na própria view.
         // Os artigos da secção "Como pensamos" vêm do site principal (Posts publicados).

@@ -31,15 +31,6 @@
 
 
         {{-- ============================================================
-        GRADIENTE CINEMATOGRÁFICO
-        Mais escuro no lado esquerdo, onde fica o texto
-        ============================================================= --}}
-        <div class="absolute inset-0 z-10 pointer-events-none
-            bg-gradient-to-r from-black/70 via-black/35 to-transparent">
-        </div>
-
-
-        {{-- ============================================================
         GRADIENTE SUPERIOR
         Ajuda a destacar o navbar
         ============================================================= --}}

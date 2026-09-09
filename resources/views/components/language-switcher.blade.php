@@ -7,7 +7,6 @@
     $locales = config('app.available_locales', [
         'pt' => ['name' => 'Português', 'code' => 'PT', 'flag' => '🇵🇹'],
         'en' => ['name' => 'English', 'code' => 'EN', 'flag' => '🇬🇧'],
-        'fr' => ['name' => 'Français', 'code' => 'FR', 'flag' => '🇫🇷'],
     ]);
     $current = $locales[$currentLocale] ?? $locales['pt'];
 @endphp

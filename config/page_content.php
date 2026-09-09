@@ -196,8 +196,8 @@ return [
                 'fields' => [
                     'culture_video_url'  => ['type' => 'video',    'label' => 'Vídeo de Fundo', 'help' => 'Local, YouTube, Vimeo ou outro. Sem som, como fundo. Recomendado: MP4.', 'default' => 'office.mp4'],
                     'culture_video_loop' => ['type' => 'toggle',   'label' => 'Reproduzir em contínuo (loop)', 'help' => 'Repete o vídeo de fundo sem parar.', 'default' => '1'],
-                    'culture_video_title'=> ['type' => 'textarea', 'label' => 'Título do Bloco de Vídeo', 'rows' => 2, 'default' => "Juntos,\ntransformamos visão\nem realidade."],
-                    'culture_video_desc' => ['type' => 'textarea', 'label' => 'Descrição do Bloco de Vídeo', 'rows' => 2, 'default' => 'Somos estrategistas, criativos, contadores de histórias e especialistas em performance dedicados à excelência em Angola e no mundo.'],
+                    'culture_video_title'=> ['type' => 'text',     'label' => 'Título da secção', 'default' => 'Pronto para comunicar melhor?'],
+                    'culture_video_cta'  => ['type' => 'text',     'label' => 'Texto do botão', 'help' => 'O botão liga à página de Contacto.', 'default' => 'Agende uma conversa'],
                 ],
             ],
         ],

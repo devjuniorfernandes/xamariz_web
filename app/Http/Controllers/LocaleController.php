@@ -15,7 +15,6 @@ class LocaleController extends Controller
         $availableLocales = array_keys(config('app.available_locales', [
             'pt' => [],
             'en' => [],
-            'fr' => [],
         ]));
 
         if (!in_array($locale, $availableLocales)) {

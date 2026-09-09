@@ -29,7 +29,7 @@
                     tracking-tight
                     leading-[1.06]
                 ">
-                    Pronto para comunicar melhor?
+                    {{ \App\Models\SiteSetting::get('culture_video_title', 'Pronto para comunicar melhor?') }}
                 </h2>
 
                 <div class="mt-8">
@@ -58,7 +58,7 @@
                             cursor-pointer
                         ">
 
-                        <span>Agende uma conversa</span>
+                        <span>{{ \App\Models\SiteSetting::get('culture_video_cta', 'Agende uma conversa') }}</span>
 
                         <svg
                             width="16"

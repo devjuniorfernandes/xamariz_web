@@ -85,7 +85,6 @@ return [
     'available_locales' => [
         'pt' => ['name' => 'Português', 'code' => 'PT', 'flag' => '🇵🇹'],
         'en' => ['name' => 'English', 'code' => 'EN', 'flag' => '🇬🇧'],
-        'fr' => ['name' => 'Français', 'code' => 'FR', 'flag' => '🇫🇷'],
     ],
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'pt_PT'),

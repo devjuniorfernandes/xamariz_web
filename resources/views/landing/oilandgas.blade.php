@@ -60,7 +60,8 @@
     <section class="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between bg-[#111215] text-white overflow-hidden pt-28 pb-12 select-none font-barlow">
         {{-- Background Image --}}
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('oil.jpg') }}" alt="Xamariz Energy"
+            @php $heroImg = \App\Models\SiteSetting::get('landing_hero_image', 'oil.jpg'); @endphp
+            <img src="{{ \Illuminate\Support\Str::startsWith($heroImg, ['http://','https://','/']) ? $heroImg : asset($heroImg) }}" alt="Xamariz Energy"
                 class="w-full h-full object-cover">
             {{-- Overlay equilibrado: escurece o lado do texto e desvanece para revelar a imagem --}}
             <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/10"></div>
@@ -140,7 +141,8 @@
         <x-blue-mesh />
         {{-- Imagem: metade direita a preencher todo o espaço (mobile: bloco no topo) --}}
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <img src="{{ asset('luanda_picture.jpg') }}" alt="Xamariz Energy"
+            @php $impactImg = \App\Models\SiteSetting::get('landing_impact_image', 'luanda_picture.jpg'); @endphp
+            <img src="{{ \Illuminate\Support\Str::startsWith($impactImg, ['http://','https://','/']) ? $impactImg : asset($impactImg) }}" alt="Xamariz Energy"
                 class="w-full h-72 sm:h-96 lg:h-full object-cover">
         </div>
 
@@ -148,7 +150,7 @@
             <div class="lg:grid lg:grid-cols-2">
                 {{-- Esquerda: conteúdo no container --}}
                 <div class="py-16 lg:py-28 lg:pr-16 text-white reveal">
-                    <span class="text-white text-xs font-bold uppercase tracking-widest block mb-4">
+                    <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-4">
                         {{ __('oilandgas.noise.eyebrow') }}
                     </span>
                     <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15] mb-8">
@@ -349,34 +351,6 @@
     </section>
 
     {{-- ══════════════════════════════════════════════════════════════
-     6b. CTA BANNER — imagem full width + apelo à ação
-    ══════════════════════════════════════════════════════════════ --}}
-    <section class="relative w-full overflow-hidden font-barlow">
-        <img src="{{ asset('oil_gas_hero.jpg') }}" alt="Xamariz Energy" class="absolute inset-0 w-full h-full object-cover scale-105">
-        {{-- Overlay: escurecimento base + gradiente vertical para profundidade e foco no texto --}}
-        <div class="absolute inset-0 bg-[#111215]/75"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-[#111215]/80 via-[#111215]/40 to-[#111215]/80"></div>
-        <div class="container-myriad relative z-10 py-28 lg:py-40 flex flex-col items-center text-center text-white">
-            <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-6 reveal">
-                {{ __('oilandgas.cta_banner.eyebrow') }}
-            </span>
-            <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15] max-w-3xl reveal">
-                {{ __('oilandgas.cta_banner.title') }}
-            </h2>
-            <p class="text-base sm:text-lg text-white/80 max-w-xl leading-relaxed mt-6 reveal">
-                {{ __('oilandgas.cta_banner.lead') }}
-            </p>
-            <a href="#aog"
-                class="inline-flex items-center gap-3 px-8 py-4 bg-[#ff5e14] text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors duration-300 hover:bg-[#e04e0b] group reveal mt-10">
-                <span>{{ __('oilandgas.cta_banner.button') }}</span>
-                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-            </a>
-        </div>
-    </section>
-
-    {{-- ══════════════════════════════════════════════════════════════
      7. AOG / CTA FINAL + formulário
     ══════════════════════════════════════════════════════════════ --}}
     <section id="aog" class="py-24 lg:py-32 text-white relative overflow-hidden font-barlow scroll-mt-20 bg-gradient-to-br from-[#09297a] via-[#132058] to-[#281b45]">
@@ -385,7 +359,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 {{-- Left --}}
                 <div class="lg:col-span-6 reveal">
-                    <span class="inline-block text-white text-xs font-bold uppercase tracking-widest mb-4">
+                    <span class="inline-block text-[#ff5e14] text-xs font-bold uppercase tracking-widest mb-4">
                         {{ __('oilandgas.aog.eyebrow') }}
                     </span>
                     <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15] mb-6">
@@ -397,11 +371,11 @@
 
                     <div class="space-y-4 pt-6 border-t border-white/25 font-roboto">
                         <div class="flex items-center gap-4 text-sm text-white">
-                            <span class="w-2.5 h-2.5 rounded-full bg-[#141518] shrink-0"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5e14] shrink-0"></span>
                             <span>{{ __('oilandgas.aog.point_meetings') }}</span>
                         </div>
                         <div class="flex items-center gap-4 text-sm text-white">
-                            <span class="w-2.5 h-2.5 rounded-full bg-[#141518] shrink-0"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5e14] shrink-0"></span>
                             <span>{{ __('oilandgas.aog.point_contact') }}</span>
                         </div>
                     </div>

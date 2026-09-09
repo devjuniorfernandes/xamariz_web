@@ -171,8 +171,8 @@ return [
     // ─── 7. AOG / final CTA + form ─────────────────
     'aog' => [
         'eyebrow' => 'Angola Oil & Gas',
-        'title' => 'We will be at Angola Oil & Gas.',
-        'lead' => 'If you believe communication can generate more value for your organisation, we would be glad to talk with you.',
+        'title' => 'From communication comes the trust that moves energy.',
+        'lead' => 'Meet us at Angola Oil & Gas. We will be present at Angola Oil & Gas and would be glad to talk with you.',
         'point_meetings' => 'In-person executive meetings during the event in Luanda',
         'point_contact' => 'Direct contact with the energy team: aog@xamariz.ao',
         'form' => [

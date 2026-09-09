@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Limita o comprimento das strings indexadas para compatibilidade
+        // com MySQL/MariaDB com limite de chave de 1000 bytes (utf8mb4).
+        Schema::defaultStringLength(191);
     }
 }

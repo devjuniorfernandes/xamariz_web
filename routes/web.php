@@ -60,6 +60,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::get('/pages', [PageContentController::class, 'index'])->name('pages.index');
     Route::post('/pages', [PageContentController::class, 'update'])->name('pages.update');
 
+    Route::get('/landing', [\App\Http\Controllers\Admin\LandingContentController::class, 'index'])->name('landing.index');
+    Route::post('/landing', [\App\Http\Controllers\Admin\LandingContentController::class, 'update'])->name('landing.update');
+
     Route::get('/settings', [SiteSettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SiteSettingController::class, 'update'])->name('settings.update');
 });

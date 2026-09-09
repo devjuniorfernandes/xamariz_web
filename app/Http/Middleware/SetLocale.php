@@ -18,7 +18,6 @@ class SetLocale
         $availableLocales = array_keys(config('app.available_locales', [
             'pt' => [],
             'en' => [],
-            'fr' => [],
         ]));
 
         $defaultLocale = config('app.locale', 'pt');
