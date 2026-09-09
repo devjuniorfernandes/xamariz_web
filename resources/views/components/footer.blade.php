@@ -41,11 +41,11 @@
                 <h4 class="font-sans text-xs font-semibold uppercase tracking-widest text-white mb-5">
                     {{ __('nav.services') }}</h4>
                 <ul class="space-y-3">
-                    @foreach ([['Estratégia & Marketing 360°', 'services.index'], ['Publicidade & Branding', 'services.index'], ['Desenvolvimento Web & SEO', 'services.index'], ['Fotografia & Audiovisual', 'services.index'], ['Marketing de Performance', 'services.index']] as [$label, $route])
+                    @foreach (\App\Models\Service::where('is_active', true)->orderBy('display_order')->get() as $footerService)
                         <li>
-                            <a href="{{ route($route) }}"
+                            <a href="{{ route('services.show', $footerService->slug) }}"
                                 class="text-white hover:text-white text-sm transition-colors duration-200">
-                                {{ $label }}
+                                {{ $footerService->title }}
                             </a>
                         </li>
                     @endforeach

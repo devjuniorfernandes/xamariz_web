@@ -668,9 +668,14 @@
 
                                 $desc = $item->short_description ?? $item->full_description;
 
-                                $img = $item->image_path
-                                    ? asset($item->image_path)
-                                    : 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&auto=format&fit=crop&q=80';
+                                $serviceImages = [
+                                    'estrategia-comunicacao' => 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&auto=format&fit=crop&q=80',
+                                    'websites-plataformas-digitais-seo' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80',
+                                    'conteudo-redes-sociais' => 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80',
+                                    'audiovisual' => 'https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=1200&auto=format&fit=crop&q=80',
+                                    'performance-digital' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80',
+                                ];
+                                $img = $item->image_path ? asset($item->image_path) : ($serviceImages[$slug] ?? $serviceImages['estrategia-comunicacao']);
 
                             @endphp
 
@@ -901,7 +906,7 @@
 
                 <div class="reveal max-w-4xl mb-16 sm:mb-20">
                     <h2
-                        class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12]">
+                        class="font-sans text-2xl sm:text-4xl font-normal text-gray-900 tracking-tight leading-[1.12]">
                         {{ \App\Models\SiteSetting::get('home_brands_title', 'Trabalhamos com marcas audazes impulsionando o seu próximo grande salto.') }}
                     </h2>
                 </div>
@@ -921,7 +926,7 @@
                     $duplicatedLogos = $brandLogos->concat($brandLogos);
                 @endphp
 
-                <div class="flex items-center gap-12 sm:gap-20 w-max animate-marquee hover:[animation-play-state:paused]">
+                <div class="flex items-center gap-6 sm:gap-10 w-max animate-marquee hover:[animation-play-state:paused]">
                     @foreach ($duplicatedLogos as $logoItem)
                         @php
                             $lPath = is_object($logoItem) ? $logoItem->logo_path : $logoItem['logo_path'] ?? '';
@@ -934,12 +939,12 @@
                                 : null;
                         @endphp
                         <a href="{{ route('clients.show', $lSlug) }}" title="{{ $lName }}"
-                            class="shrink-0 w-36 sm:w-44 h-16 flex items-center justify-center cursor-pointer opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:scale-110 hover:-translate-y-1 transition-all duration-300 ease-out">
+                            class="shrink-0 w-40 sm:w-52 h-20 flex items-center justify-center cursor-pointer opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:scale-110 hover:-translate-y-1 transition-all duration-300 ease-out">
                             @if (Str::startsWith($lPath, '<svg'))
                                 {!! $lPath !!}
                             @elseif($lUrl)
                                 <img src="{{ $lUrl }}" alt="{{ $lName }}"
-                                    class="max-w-full max-h-12 object-contain pointer-events-none">
+                                    class="max-w-full max-h-16 object-contain pointer-events-none">
                             @else
                                 <span class="font-sans font-bold text-gray-800 text-sm">{{ $lName }}</span>
                             @endif

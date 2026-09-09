@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Models\Work;
 use App\Models\Client;
 use App\Models\WorkCategory;
@@ -132,9 +133,20 @@ class PageController extends Controller
 
     public function contactSubmit(Request $request)
     {
+        $captchaResponse = $request->input('g-recaptcha-response');
+        $captchaSecret = config('services.recaptcha.secret_key');
+
+        if (!$captchaSecret || !$captchaResponse || !Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => $captchaSecret,
+            'response' => $captchaResponse,
+            'remoteip' => $request->ip(),
+        ])->json('success')) {
+            return back()->withErrors(['g-recaptcha-response' => 'Confirme que não é um robô.'])->withInput();
+        }
+
         $validated = $request->validate([
             'first_name' => 'required|string|max:100',
-            'last_name'  => 'required|string|max:100',
+            'last_name'  => 'nullable|string|max:100',
             'email'      => 'required|email|max:255',
             'company'    => 'nullable|string|max:255',
             'message'    => 'nullable|string|max:5000',
@@ -143,7 +155,7 @@ class PageController extends Controller
 
         ContactLead::create([
             'first_name' => $validated['first_name'],
-            'last_name'  => $validated['last_name'],
+            'last_name'  => $validated['last_name'] ?? null,
             'email'      => $validated['email'],
             'company'    => $validated['company'] ?? null,
             'message'    => $validated['message'] ?? null,

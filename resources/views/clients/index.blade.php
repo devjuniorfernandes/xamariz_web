@@ -20,9 +20,11 @@
                         class="font-sans  text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.1] mb-6">
                         {{ \App\Models\SiteSetting::get('clients_hero_title', 'Marcas líderes que confiam na Xamariz.') }}
                     </h1>
-                    <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed max-w-3xl">
-                        {{ \App\Models\SiteSetting::get('clients_hero_subtitle', 'Trabalhamos com empresas corporativas, instituições e líderes globais em Angola e no mundo. Clique num logótipo para ver os trabalhos realizados.') }}
-                    </p>
+                    @php
+                        $clientsSubtitle = \App\Models\SiteSetting::get('clients_hero_subtitle', 'Trabalhamos com empresas corporativas, instituições e líderes globais em Angola e no mundo.');
+                        $clientsSubtitle = trim(str_replace(['Clique num logótipo para ver os trabalhos realizados.', 'Clique num logotipo para ver os trabalhos realizados.'], '', $clientsSubtitle));
+                    @endphp
+                    <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed max-w-3xl">{{ $clientsSubtitle }}</p>
                 </div>
             </div>
         </div>

@@ -45,6 +45,12 @@
                     <input type="text" name="title" value="{{ old('title', $service->title) }}" required class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-[#fe3d0a] text-sm">
                 </div>
 
+                <div class="flex items-center gap-3">
+                    <input type="hidden" name="is_active" value="0">
+                    <input type="checkbox" name="is_active" value="1" {{ old('is_active', $service->is_active) ? 'checked' : '' }} class="h-5 w-5 rounded border-slate-700 bg-slate-950 text-[#fe3d0a] focus:ring-[#fe3d0a]">
+                    <label class="text-xs font-bold uppercase tracking-wider text-slate-300">Serviço ativo</label>
+                </div>
+
                 <div class="md:col-span-2">
                     <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Subtítulo / Tagline Estratégico (Hero)</label>
                     <input type="text" name="tagline" value="{{ old('tagline', $service->tagline) }}" placeholder="Ex: Transformamos mensagens corporativas complexas em posicionamentos claros..." class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-[#fe3d0a] text-sm">

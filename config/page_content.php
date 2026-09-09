@@ -194,6 +194,7 @@ return [
             [
                 'title'  => 'Secção de Cultura ("Pronto para comunicar melhor?")',
                 'fields' => [
+                    'culture_image_url'  => ['type' => 'image',   'label' => 'Imagem de Fundo (opcional)', 'help' => 'Carregue uma imagem para usar como fundo. Para usar vídeo, deixe este campo vazio.', 'default' => 'equipa.png'],
                     'culture_video_url'  => ['type' => 'video',    'label' => 'Vídeo de Fundo', 'help' => 'Local, YouTube, Vimeo ou outro. Sem som, como fundo. Recomendado: MP4.', 'default' => 'office.mp4'],
                     'culture_video_loop' => ['type' => 'toggle',   'label' => 'Reproduzir em contínuo (loop)', 'help' => 'Repete o vídeo de fundo sem parar.', 'default' => '1'],
                     'culture_video_title'=> ['type' => 'text',     'label' => 'Título da secção', 'default' => 'Pronto para comunicar melhor?'],

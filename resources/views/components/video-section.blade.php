@@ -1,11 +1,22 @@
 <section
     class="relative w-full min-h-[600px] lg:min-h-[750px] bg-black overflow-hidden flex items-center py-20 lg:py-28 select-none">
 
-    {{-- Full Width Video Background (local, YouTube, Vimeo ou outro) --}}
-    <x-video mode="background"
-        :src="\App\Models\SiteSetting::get('culture_video_url', 'office.mp4')"
-        :loop="\App\Models\SiteSetting::get('culture_video_loop', '1') !== '0'"
-        class="z-0" />
+    @php
+        $cultureImage = \App\Models\SiteSetting::get('culture_image_url', 'equipa.png');
+        $cultureVideo = \App\Models\SiteSetting::get('culture_video_url', 'office.mp4');
+        $cultureImageSrc = \Illuminate\Support\Str::startsWith($cultureImage, ['http://', 'https://', '/'])
+            ? $cultureImage
+            : asset($cultureImage);
+    @endphp
+
+    @if ($cultureImage)
+        <img src="{{ $cultureImageSrc }}" alt="" class="absolute inset-0 w-full h-full object-cover z-0" />
+    @else
+        <x-video mode="background"
+            :src="$cultureVideo"
+            :loop="\App\Models\SiteSetting::get('culture_video_loop', '1') !== '0'"
+            class="z-0" />
+    @endif
 
     {{-- Dark Opacity Overlay --}}
     <div class="absolute inset-0 bg-black/60 z-10 pointer-events-none"></div>

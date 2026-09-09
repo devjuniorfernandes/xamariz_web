@@ -24,8 +24,10 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/work', [PageController::class, 'workIndex'])->name('work.index');
 Route::get('/work/{slug}', [PageController::class, 'workShow'])->name('work.show');
 Route::get('/clients/{slug}', [PageController::class, 'clientsShow'])->name('clients.show');
-Route::get('/services', [PageController::class, 'servicesIndex'])->name('services.index');
-Route::get('/services/{slug}', [PageController::class, 'servicesShow'])->name('services.show');
+Route::get('/servico', [PageController::class, 'servicesIndex'])->name('services.index');
+Route::get('/servico/{slug}', [PageController::class, 'servicesShow'])->name('services.show');
+Route::redirect('/services', '/servico', 301);
+Route::get('/services/{slug}', fn (string $slug) => redirect('/servico/' . $slug, 301));
 Route::get('/quem-somos', [PageController::class, 'about'])->name('about');
 
 // Clientes e Equipa foram consolidados na página "Quem Somos".
@@ -53,6 +55,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resource('works', WorkController::class);
+    Route::post('/clients/reorder', [ClientController::class, 'reorder'])->name('clients.reorder');
     Route::resource('clients', ClientController::class);
     Route::resource('work-categories', WorkCategoryController::class);
     Route::resource('team-members', TeamMemberController::class);

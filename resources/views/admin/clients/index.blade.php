@@ -9,7 +9,7 @@
     <div class="flex items-center justify-between bg-slate-900 border border-slate-800/80 p-5 rounded-2xl">
         <div>
             <h2 class="text-lg font-bold text-white">Marcas Parceiras</h2>
-            <p class="text-xs text-slate-400">Clientes com logotipos no marquee e projetos associados</p>
+            <p class="text-xs text-slate-400">Arraste os clientes para definir a ordem visual no site.</p>
         </div>
         <a href="{{ route('admin.clients.create') }}" class="px-5 py-2.5 rounded-xl bg-[#fe3d0a] hover:bg-[#d63205] text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-[#fe3d0a]/20 transition-all">
             + Novo Cliente
@@ -27,9 +27,9 @@
                     <th class="py-4 px-6 text-right">Ações</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-slate-800 text-slate-300">
+            <tbody id="clients-sortable" class="divide-y divide-slate-800 text-slate-300">
                 @forelse($clients as $client)
-                    <tr class="hover:bg-slate-800/40 transition-colors">
+                    <tr draggable="true" data-client-id="{{ $client->id }}" class="hover:bg-slate-800/40 transition-colors cursor-grab active:cursor-grabbing">
                         <td class="py-4 px-6">
                             <div class="flex items-center gap-3">
                                 @php
@@ -88,5 +88,46 @@
         </table>
     </div>
 
+    <p id="clients-sort-status" class="text-xs text-slate-500 hidden">Ordem guardada.</p>
+
 </div>
+
+@push('scripts')
+<script>
+    const clientsTable = document.getElementById('clients-sortable');
+    const sortStatus = document.getElementById('clients-sort-status');
+    let draggedClient = null;
+
+    clientsTable?.querySelectorAll('tr[draggable="true"]').forEach(row => {
+        row.addEventListener('dragstart', () => {
+            draggedClient = row;
+            row.classList.add('opacity-40');
+        });
+        row.addEventListener('dragend', () => {
+            row.classList.remove('opacity-40');
+            draggedClient = null;
+        });
+        row.addEventListener('dragover', event => {
+            event.preventDefault();
+            if (draggedClient && draggedClient !== row) {
+                const box = row.getBoundingClientRect();
+                row.parentNode.insertBefore(draggedClient, event.clientY < box.top + box.height / 2 ? row : row.nextSibling);
+            }
+        });
+        row.addEventListener('drop', async event => {
+            event.preventDefault();
+            const clientIds = [...clientsTable.querySelectorAll('tr[data-client-id]')].map(item => item.dataset.clientId);
+            const response = await fetch('{{ route('admin.clients.reorder') }}', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}', 'Accept': 'application/json'},
+                body: JSON.stringify({client_ids: clientIds})
+            });
+            if (response.ok) {
+                sortStatus.classList.remove('hidden');
+                setTimeout(() => sortStatus.classList.add('hidden'), 2000);
+            }
+        });
+    });
+</script>
+@endpush
 @endsection

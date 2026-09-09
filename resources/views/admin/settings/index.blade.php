@@ -174,7 +174,7 @@
 
                 {{-- Página de Serviços --}}
                 <div class="p-4 bg-[#141414] border border-[#2c2d30] space-y-3">
-                    <span class="text-xs font-bold text-[var(--color-brand-accent)] uppercase">Página de Serviços (/services)</span>
+                    <span class="text-xs font-bold text-[var(--color-brand-accent)] uppercase">Página de Serviços (/servico)</span>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-[11px] font-bold uppercase text-gray-300 mb-1">Título SEO</label>

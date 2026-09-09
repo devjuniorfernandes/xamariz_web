@@ -21,6 +21,20 @@ class ClientController extends Controller
         return view('admin.clients.create');
     }
 
+    public function reorder(Request $request)
+    {
+        $validated = $request->validate([
+            'client_ids' => ['required', 'array'],
+            'client_ids.*' => ['integer', 'exists:clients,id'],
+        ]);
+
+        foreach ($validated['client_ids'] as $position => $clientId) {
+            Client::whereKey($clientId)->update(['display_order' => $position + 1]);
+        }
+
+        return response()->json(['success' => true]);
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([

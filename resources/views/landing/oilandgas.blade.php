@@ -4,6 +4,7 @@
 @section('description', \App\Models\SiteSetting::get('seo_oilandgas_description', 'A sua empresa não precisa de mais marketing. Precisa de comunicar melhor. Comunicação estratégica, posicionamento institucional e gestão de reputação para o sector de Oil & Gas em Angola.'))
 
 @push('head')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
         /* Uma única fonte em toda a landing: Barlow (a fonte dos títulos). */
         body { font-family: 'Barlow', sans-serif; }
@@ -51,13 +52,13 @@
             ['name' => 'Stylus',       'logo' => 'stylus.png'],
         ];
 
-        // Secção "Focus" — separadores (tabs). Imagens são placeholders O&G a substituir por fotografia real.
+        // Secção "Focus" — imagens gratuitas do Unsplash alinhadas a cada serviço.
         $areaTabs = [
-            ['key' => 'corporate',   'img' => 'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?w=1400&auto=format&fit=crop&q=80'],
-            ['key' => 'projects',    'img' => 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&auto=format&fit=crop&q=80'],
-            ['key' => 'executive',   'img' => 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1400&auto=format&fit=crop&q=80'],
-            ['key' => 'digital',     'img' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1400&auto=format&fit=crop&q=80'],
-            ['key' => 'stakeholder', 'img' => 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&auto=format&fit=crop&q=80'],
+            ['key' => 'corporate',   'img' => 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1400&auto=format&fit=crop&q=85'],
+            ['key' => 'projects',    'img' => 'https://images.unsplash.com/photo-1516939884455-1445c8652f83?w=1400&auto=format&fit=crop&q=85'],
+            ['key' => 'executive',   'img' => 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=1400&auto=format&fit=crop&q=85'],
+            ['key' => 'digital',     'img' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&auto=format&fit=crop&q=85'],
+            ['key' => 'stakeholder', 'img' => 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1400&auto=format&fit=crop&q=85'],
         ];
     @endphp
 
@@ -432,6 +433,8 @@
                             <textarea name="message" rows="3" placeholder="{{ __('oilandgas.aog.form.message_ph') }}"
                                 class="w-full bg-white border border-gray-300 focus:border-[#141518] text-gray-900 placeholder-gray-400 text-sm px-4 py-3 outline-none transition-colors"></textarea>
                         </div>
+
+                        <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
 
                         <button type="submit" id="aog-submit"
                             class="w-full py-4 bg-[#141518] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#ff5e14] transition-colors duration-300 cursor-pointer disabled:opacity-70 disabled:cursor-wait flex items-center justify-center gap-3">

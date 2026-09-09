@@ -16,13 +16,16 @@
             <div class="max-w reveal">
                 <h1
                     class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-8">
-                    {!! nl2br(e(\App\Models\SiteSetting::get('about_hero_title', "Além da criatividade.\nAlém da imaginação.\nO parceiro de Marketing 360° que a sua empresa precisa."))) !!}
+                    O que nos move.
                 </h1>
                 <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed mb-4">
-                    {{ \App\Models\SiteSetting::get('about_hero_p1', 'A Xamariz (marca da empresa Visualclick, Lda) é uma agência de publicidade e comunicação focada em conectar marcas a resultados tangíveis em Angola e no mercado internacional.') }}
+                    Existem empresas focadas em oferecer produtos e serviços que resolvam problemas na vida dos consumidores.
+                </p>
+                <p class="font-sans text-gray-600 text-base sm:text-lg leading-relaxed mb-4">
+                    Acreditamos verdadeiramente que se tiverem uma mensagem clara e convincente têm um enorme potencial para serem bem sucedidos e tornarem-se a principal referência no seu mercado. Torna-se uma verdadeira atração de clientes.
                 </p>
                 <p class="font-sans text-gray-600 text-base sm:text-lg leading-relaxed">
-                    {{ \App\Models\SiteSetting::get('about_hero_p2', 'Num mercado onde atrair clientes é cada vez mais desafiador, transformamos a sua mensagem em clareza, diferenciação e liderança comercial.') }}
+                    A Xamariz é uma marca da empresa Visualclick, Lda cujo propósito é ajudar empresas a amplificar o crescimento dos seus negócios através da comunicação digital e marketing de diferenciação.
                 </p>
             </div>
         </div>
@@ -32,9 +35,10 @@
     <section class="bg-white py-12">
         <div class="container-myriad">
             <div class="aspect-[21/9] overflow-hidden rounded-none reveal">
-                <img src="{{ \App\Models\SiteSetting::get('about_gallery_img1', 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1800&auto=format&fit=crop&q=80') }}"
-                    alt="Equipa Xamariz Marketing em reunião criativa"
+                <img src="{{ asset('equipa.png') }}"
+                    alt="Equipa Xamariz"
                     class="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-1000">
+                <p class="mt-2 text-[10px] text-gray-400">Foto: Erik Cleves Kristensen / Wikimedia Commons (CC BY 2.0)</p>
             </div>
         </div>
     </section>
@@ -43,23 +47,6 @@
     <section class="py-20 bg-white border-t border-gray-100">
         <div class="container-myriad">
             <div class="max-w reveal space-y-12">
-
-                {{-- O QUE NOS MOVE --}}
-                <div>
-                    <h2 class="font-sans text-3xl sm:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
-                        {{ \App\Models\SiteSetting::get('about_cause_title', 'Mensagem clara, diferenciação e atração de clientes.') }}
-                    </h2>
-                    <p class="font-sans text-gray-700 text-lg sm:text-xl leading-relaxed font-medium mb-4">
-                        {{ \App\Models\SiteSetting::get('about_cause_p1', 'Existem empresas focadas em oferecer produtos e serviços que resolvam problemas na vida dos consumidores. Acreditamos verdadeiramente que se tiverem uma mensagem clara e convincente têm um enorme potencial para serem bem sucedidos e tornarem-se a principal referência no seu mercado. Torne-se uma verdadeira atração de clientes.') }}
-                    </p>
-                    <p class="font-sans text-gray-600 text-base sm:text-lg leading-relaxed">
-                        A Xamariz é uma marca da empresa Visualclick, Lda cujo propósito é ajudar empresas a amplificar o
-                        crescimento dos seus negócios através da comunicação digital e do
-                        <a href="{{ route('services.index') }}"
-                            class="text-[var(--color-brand-accent)] font-semibold hover:underline">marketing de
-                            diferenciação</a>.
-                    </p>
-                </div>
 
                 {{-- A NOSSA CAUSA --}}
                 <div class="pt-10 border-t border-gray-200 space-y-6">

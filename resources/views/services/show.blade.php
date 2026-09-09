@@ -8,13 +8,21 @@
     $srvDesc = is_object($service)
         ? $service->full_description ?? $service->short_description
         : 'O Marketing 360° da Xamariz conecta todos os pontos de contacto da sua empresa ao seu público-alvo em Angola e no mercado internacional.';
+    $slug = is_object($service) ? $service->slug : null;
 
     $imgPath = is_object($service) ? $service->image_path : null;
+    $serviceImages = [
+        'estrategia-comunicacao' => 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1800&auto=format&fit=crop&q=80',
+        'websites-plataformas-digitais-seo' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1800&auto=format&fit=crop&q=80',
+        'conteudo-redes-sociais' => 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1800&auto=format&fit=crop&q=80',
+        'audiovisual' => 'https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=1800&auto=format&fit=crop&q=80',
+        'performance-digital' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1800&auto=format&fit=crop&q=80',
+    ];
     $srvImage = $imgPath
         ? (Str::startsWith($imgPath, 'http')
             ? $imgPath
             : asset($imgPath))
-        : 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1800&auto=format&fit=crop&q=80';
+        : ($serviceImages[$slug] ?? $serviceImages['estrategia-comunicacao']);
 
     $para1 = is_object($service) ? $service->strategic_value_para1 : null;
     $para2 = is_object($service) ? $service->strategic_value_para2 : null;
