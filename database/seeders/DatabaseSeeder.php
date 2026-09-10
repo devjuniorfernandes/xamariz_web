@@ -137,13 +137,9 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        // Os clientes deste seeder são dados de demonstração: substituir sempre
-        // o conjunto existente para evitar registos antigos ou duplicados.
-        Client::query()->delete();
-
         $clients = [];
         foreach ($clientsData as $c) {
-            $clients[$c['slug']] = Client::create($c);
+            $clients[$c['slug']] = Client::updateOrCreate(['slug' => $c['slug']], $c);
         }
 
         // 4. Works (Linked to Client and WorkCategory)

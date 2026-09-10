@@ -10,13 +10,11 @@ class ClientSeeder extends Seeder
 {
     /**
      * Cadastra os clientes a partir dos logótipos em public/clientes.
-     * O nome do ficheiro é o nome da marca. A lista existente é apagada
-     * e recriada a cada execução (works ficam com client_id null — nullOnDelete).
+     * O nome do ficheiro é o nome da marca. Os clientes existentes são
+     * atualizados e os novos são criados, sem apagar dados.
      */
     public function run(): void
     {
-        Client::query()->delete();
-
         $dir = public_path('clientes');
 
         $files = array_merge(
@@ -36,7 +34,7 @@ class ClientSeeder extends Seeder
             $name = preg_replace('/\s*Prancheta\s*\d*/i', '', $name);
             $name = trim(preg_replace('/\s+/', ' ', $name));
 
-            Client::create([
+            Client::updateOrCreate(['slug' => Str::slug($name)], [
                 'name' => $name,
                 'slug' => Str::slug($name),
                 'logo_path' => 'clientes/' . $filename,
