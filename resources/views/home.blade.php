@@ -945,6 +945,7 @@
                             @elseif($lUrl)
                                 <img src="{{ $lUrl }}" alt="{{ $lName }}"
                                     class="max-w-full max-h-16 object-contain pointer-events-none">
+                                    class="max-w-full max-h-16 sm:max-h-20 object-contain pointer-events-none">
                             @else
                                 <span class="font-sans font-bold text-gray-800 text-sm">{{ $lName }}</span>
                             @endif

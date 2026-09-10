@@ -30,7 +30,7 @@ class LocaleTest extends TestCase
         $response = $this->withSession(['locale' => 'en'])->get('/contact');
 
         $response->assertStatus(200);
-        $response->assertSee('Get in Touch');
+        $response->assertSee(__('contact.hero_title', [], 'en'));
         $response->assertSee('SEND MESSAGE');
     }
 }
