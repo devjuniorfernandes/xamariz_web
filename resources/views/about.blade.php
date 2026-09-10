@@ -64,24 +64,6 @@
                     </p>
                 </div>
 
-            <div class="max-w reveal space-y-6">
-                <h2 class="font-sans text-3xl sm:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
-                    {{ \App\Models\SiteSetting::get('about_cause_title', 'O que nos move') }}
-                </h2>
-                <p class="font-sans text-gray-700 text-lg sm:text-xl leading-relaxed">
-                    {{ \App\Models\SiteSetting::get('about_cause_p1', 'Existem empresas focadas em oferecer produtos e serviços que resolvam problemas na vida dos consumidores.') }}
-                </p>
-                <p class="font-sans text-gray-700 text-lg sm:text-xl leading-relaxed">
-                    {{ \App\Models\SiteSetting::get('about_cause_p2', 'Acreditamos verdadeiramente que se tiverem uma mensagem clara e convincente têm um enorme potencial para serem bem sucedidos e tornarem-se a principal referência no seu mercado. Torne-se uma verdadeira atração de clientes.') }}
-                </p>
-                <p class="font-sans text-gray-600 text-base sm:text-lg leading-relaxed">
-                    A Xamariz é uma marca da empresa Visualclick, Lda cujo propósito é ajudar empresas a amplificar o
-                    crescimento dos seus negócios através da comunicação digital e do
-                    <a href="{{ route('services.index') }}"
-                        class="text-[var(--color-brand-accent)] font-semibold hover:underline">marketing de
-                        diferenciação</a>.
-                </p>
-            </div>
         </div>
     </section>
 

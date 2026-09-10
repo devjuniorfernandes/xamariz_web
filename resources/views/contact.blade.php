@@ -47,11 +47,6 @@
                                     class="w-full px-4 py-3.5 border border-gray-300 rounded-none focus:outline-none focus:border-[var(--color-brand-accent)] font-sans text-base transition-colors"
                                     required>
                             </div>
-                            <label
-                                class="font-sans text-xs font-bold uppercase tracking-widest text-gray-700 block mb-2">{{ __('contact.first_name') }}</label>
-                            <input type="text" name="first_name" placeholder="{{ __('contact.first_name_placeholder') }}"
-                                class="w-full px-4 py-3.5 border border-gray-300 rounded-none focus:outline-none focus:border-[var(--color-brand-accent)] font-sans text-base transition-colors"
-                                required>
                         </div>
 
                         <div>
