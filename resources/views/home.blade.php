@@ -607,7 +607,7 @@
 
                     <div class="lg:col-span-7 reveal">
 
-                        <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
+                        <h2 class="font-sans text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
                             {{ \App\Models\SiteSetting::get('home_services_heading', 'Da estratégia à execução, tudo começa pela clareza.') }}
                         </h2>
 
@@ -616,7 +616,7 @@
 
                     <div class="flex flex-col items-start sm:items-end gap-5 max-w-lg">
 
-                        <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight text-left sm:text-right whitespace-nowrap">
+                        <h2 class="font-sans text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight text-left sm:text-right whitespace-nowrap">
                             {{ \App\Models\SiteSetting::get('home_services_title', 'Como podemos ajudar') }}
                         </h2>
 
