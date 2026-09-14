@@ -616,8 +616,8 @@
 
                     <div class="flex flex-col items-start sm:items-end gap-5 max-w-lg">
 
-                        <h2 class="font-sans text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight text-left sm:text-right whitespace-nowrap">
-                            {{ \App\Models\SiteSetting::get('home_services_title', 'Como podemos ajudar') }}
+                        <h2 class="font-sans text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight text-left sm:text-right">
+                            {!! nl2br(e(\App\Models\SiteSetting::get('home_services_title', 'Como podemos ajudar'))) !!}
                         </h2>
 
 

@@ -87,7 +87,7 @@ return [
                 'title'  => 'Secção Serviços (cabeçalho)',
                 'fields' => [
                     'home_services_heading'   => ['type' => 'text', 'label' => 'Título à esquerda', 'default' => 'Da estratégia à execução, tudo começa pela clareza.'],
-                    'home_services_title'     => ['type' => 'text', 'label' => 'Título à direita', 'help' => 'Deve caber numa só linha.', 'default' => 'Como podemos ajudar'],
+                    'home_services_title'     => ['type' => 'textarea', 'label' => 'Título à direita', 'rows' => 2, 'help' => 'Use Enter para quebrar a linha.', 'default' => 'Como podemos ajudar'],
                     'home_services_cta'       => ['type' => 'text', 'label' => 'Texto do botão', 'default' => 'VER TODOS OS SERVIÇOS'],
                     'home_services_card_link' => ['type' => 'text', 'label' => 'Ligação nos cartões', 'default' => 'Explorar serviço'],
                 ],
