@@ -7,7 +7,7 @@ return [
     'clients' => 'Clients',
     'team' => 'Team',
     'about' => 'Who We Are',
-    'insights' => 'Insights',
+    'insights' => 'Articles',
     'contacts' => 'Contacts',
     'start_project' => 'Contact Us',
     'schedule_meeting' => 'Schedule Meeting',

@@ -137,9 +137,13 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
+        // Os clientes deste seeder são dados de demonstração: substituir sempre
+        // o conjunto existente para evitar registos antigos ou duplicados.
+        Client::query()->delete();
+
         $clients = [];
         foreach ($clientsData as $c) {
-            $clients[$c['slug']] = Client::updateOrCreate(['slug' => $c['slug']], $c);
+            $clients[$c['slug']] = Client::create($c);
         }
 
         // 4. Works (Linked to Client and WorkCategory)
@@ -241,49 +245,12 @@ class DatabaseSeeder extends Seeder
         // 5. Team Members — geridos pelo TeamMemberSeeder (fotos em public/equipa)
         $this->call(TeamMemberSeeder::class);
 
-        // 5b. Clientes — geridos pelo ClientSeeder (logótipos em public/clientes)
-        $this->call(ClientSeeder::class);
-
         // 6. Services — geridos pelo ServiceSeeder
         $this->call(ServiceSeeder::class);
 
-        // 7. Posts / Insights
-        $postsData = [
-            [
-                'title' => 'Como a comunicação transparente é a chave para a diferenciação no mercado angolano',
-                'slug' => 'stakeholder-communication-2026',
-                'category' => 'Estratégia 360°',
-                'summary' => 'Num ambiente competitivo, a clareza e a estratégia de marca são os fatores decisivos para atrair e reter clientes.',
-                'content' => 'Num mercado em rápida aceleração como o angolano, as marcas que se destacam não são apenas as que investem mais em publicidade, mas sim as que comunicam com maior clareza e transparência. Neste artigo, exploramos as 5 pilares do marketing de diferenciação.',
-                'cover_image' => 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80',
-                'published_at' => '2026-08-01 10:00:00',
-                'status' => 'published',
-            ],
-            [
-                'title' => 'Construir marcas fortes que resistem às mudanças de mercado e geram valor',
-                'slug' => 'greenwashing-how-to-avoid',
-                'category' => 'Branding & Reputação',
-                'summary' => 'Como estabelecer uma reputação sólida e inesquecível junto de clientes e parceiros estratégicos.',
-                'content' => 'A reputação corporativa constrói-se com coerência visual, mensagem estratégica alinhada e compromisso real de valor para a sociedade.',
-                'cover_image' => 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&auto=format&fit=crop&q=80',
-                'published_at' => '2026-07-15 14:30:00',
-                'status' => 'published',
-            ],
-            [
-                'title' => 'Desmistificar o tráfego pago e o SEO para gerar leads qualificadas',
-                'slug' => 'deep-tech-communication',
-                'category' => 'Marketing Digital',
-                'summary' => 'Estratégias digitais orientadas a resultados que colocam a sua empresa no topo das pesquisas do Google.',
-                'content' => 'Gerar tráfego é apenas o primeiro passo. O grande trunfo de um sistema de vendas online é converter visitantes casuais em clientes fieis.',
-                'cover_image' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80',
-                'published_at' => '2026-06-20 09:00:00',
-                'status' => 'published',
-            ],
-        ];
-
-        foreach ($postsData as $p) {
-            Post::updateOrCreate(['slug' => $p['slug']], $p);
-        }
+        // 7. Posts / Insights — artigos reais do blog alinhados com a Knowledge Base 2026.
+        // (Os antigos posts de demonstração foram removidos; o BlogArticlesSeeder trata da limpeza.)
+        $this->call(BlogArticlesSeeder::class);
 
         // 8. Hero Slides
         HeroSlide::updateOrCreate(

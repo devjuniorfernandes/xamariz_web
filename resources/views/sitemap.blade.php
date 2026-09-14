@@ -43,6 +43,46 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+
+    {{-- Páginas SEO /marketing (críticas) --}}
+    <url>
+        <loc>{{ route('marketing.digital') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>{{ route('marketing.seo') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>{{ route('marketing.diferenciacao') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>{{ route('marketing.conteudo') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    {{-- Versão inglesa --}}
+    <url>
+        <loc>{{ route('home.en') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>{{ route('contact.en') }}</loc>
+        <lastmod>{{ now()->toDateString() }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
     <url>
         <loc>{{ route('privacy') }}</loc>
         <lastmod>{{ now()->toDateString() }}</lastmod>
@@ -66,15 +106,7 @@
     </url>
     @endforeach
 
-    {{-- Dynamic Works / Portfolio --}}
-    @foreach ($works as $work)
-    <url>
-        <loc>{{ route('work.show', $work->slug) }}</loc>
-        <lastmod>{{ $work->updated_at ? $work->updated_at->toDateString() : now()->toDateString() }}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    @endforeach
+    {{-- Projetos: a página individual foi anulada (lightbox da imagem); sem URLs próprias. --}}
 
     {{-- Dynamic Clients --}}
     @foreach ($clients as $client)
@@ -89,7 +121,7 @@
     {{-- Dynamic Insights / Blog Posts --}}
     @foreach ($insights as $insight)
     <url>
-        <loc>{{ route('insights.show', $insight->slug) }}</loc>
+        <loc>{{ $insight->url }}</loc>
         <lastmod>{{ $insight->updated_at ? $insight->updated_at->toDateString() : now()->toDateString() }}</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>

@@ -6,19 +6,16 @@
 @section('content')
 
     {{-- Header --}}
-    <section class="pt-40 pb-20 bg-white text-gray-900 border-b border-gray-100">
-        <div class="container-myriad">
-            <div class="reveal flex items-center gap-3 text-xs uppercase font-sans tracking-widest mb-6 sm:mb-8">
-                <a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-900 transition-colors">Xamariz</a>
-                <span class="text-gray-300">/</span>
-                <span class="text-gray-400">{{ \App\Models\SiteSetting::get('services_breadcrumb', 'Soluções & Serviços 360°') }}</span>
-            </div>
+    <x-page-hero :title="\App\Models\SiteSetting::get('services_banner_title', 'Serviços')"
+        :subtitle="\App\Models\SiteSetting::get('services_banner_subtitle', 'Da estratégia à execução.')" />
 
+    {{-- Título editorial da página --}}
+    <section class="py-16 sm:py-20 bg-white text-gray-900 border-b border-gray-100">
+        <div class="container-myriad">
             <div class="max-w-4xl reveal">
-                <h1
-                    class="font-sans text-4xl sm:text-6xl md:text-7xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
-                    {{ \App\Models\SiteSetting::get('services_hero_title', 'Organizados pelo problema, focados em resultados reais.') }}
-                </h1>
+                <h2 class="font-sans text-2xl sm:text-4xl md:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
+                    {!! str_replace(', ', ', <br>', \App\Models\SiteSetting::get('services_hero_title', 'Organizados pelo problema, focados em resultados reais.')) !!}
+                </h2>
                 <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed">
                     {{ \App\Models\SiteSetting::get('services_hero_subtitle', 'Atrair clientes num mercado competitivo exige uma comunicação clara e uma estratégia de diferenciação. Desenvolvemos ecossistemas de Marketing 360° desenhados para colocar a sua empresa no topo do seu setor.') }}
                 </p>

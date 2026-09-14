@@ -61,18 +61,16 @@ return [
                 ],
             ],
             [
-                'title'  => 'Os 4 Pilares de Benefícios ("O que muda")',
+                'title'  => 'Secção "Clareza exige método" (3 passos)',
                 'fields' => [
-                    'home_pillars_title'    => ['type' => 'text',     'label' => 'Título da Secção', 'default' => 'O que muda com uma comunicação estratégica'],
-                    'home_pillars_subtitle' => ['type' => 'text',     'label' => 'Subtítulo', 'default' => 'Metodologia testada para gerar valor mensurável.'],
-                    'home_pillar1_title'    => ['type' => 'text',     'label' => 'Pilar 1 — Título', 'default' => 'Deixa de lutar pela atenção'],
-                    'home_pillar1_desc'     => ['type' => 'textarea', 'label' => 'Pilar 1 — Descrição', 'rows' => 2, 'default' => 'A mensagem certa chega às pessoas certas sem esforço desperdiçado.'],
-                    'home_pillar2_title'    => ['type' => 'text',     'label' => 'Pilar 2 — Título', 'default' => 'Os clientes certos aproximam-se'],
-                    'home_pillar2_desc'     => ['type' => 'textarea', 'label' => 'Pilar 2 — Descrição', 'rows' => 2, 'default' => 'Quando entendem o que faz, os que precisam de si procuram-no.'],
-                    'home_pillar3_title'    => ['type' => 'text',     'label' => 'Pilar 3 — Título', 'default' => 'A concorrência fica para trás'],
-                    'home_pillar3_desc'     => ['type' => 'textarea', 'label' => 'Pilar 3 — Descrição', 'rows' => 2, 'default' => 'Uma mensagem clara é a vantagem que a maioria não tem coragem de construir.'],
-                    'home_pillar4_title'    => ['type' => 'text',     'label' => 'Pilar 4 — Título', 'default' => 'O crescimento torna-se previsível'],
-                    'home_pillar4_desc'     => ['type' => 'textarea', 'label' => 'Pilar 4 — Descrição', 'rows' => 2, 'default' => 'Com uma base sólida, cada acção gera mais resultado.'],
+                    'home_method_kicker'     => ['type' => 'text',     'label' => 'Antetítulo (laranja)', 'default' => 'Clareza exige método.'],
+                    'home_method_title'      => ['type' => 'text',     'label' => 'Título da Secção', 'default' => 'É assim que transformamos clareza em impacto.'],
+                    'home_method_step1_title' => ['type' => 'text',     'label' => 'Passo 1 — Título', 'default' => 'Compreender'],
+                    'home_method_step1_desc'  => ['type' => 'textarea', 'label' => 'Passo 1 — Descrição', 'rows' => 3, 'default' => 'Analisamos o seu negócio, o mercado, o público e a concorrência para identificar oportunidades reais de diferenciação.'],
+                    'home_method_step2_title' => ['type' => 'text',     'label' => 'Passo 2 — Título', 'default' => 'Clarificar'],
+                    'home_method_step2_desc'  => ['type' => 'textarea', 'label' => 'Passo 2 — Descrição', 'rows' => 3, 'default' => 'Encontramos o posicionamento, a mensagem e a estratégia que tornam o valor da sua empresa mais claro e relevante para as pessoas certas.'],
+                    'home_method_step3_title' => ['type' => 'text',     'label' => 'Passo 3 — Título', 'default' => 'Comunicar'],
+                    'home_method_step3_desc'  => ['type' => 'textarea', 'label' => 'Passo 3 — Descrição', 'rows' => 3, 'default' => 'Criamos e executamos comunicação, conteúdos e experiências que chegam às pessoas certas e geram resultados para o seu negócio.'],
                 ],
             ],
             [
@@ -88,8 +86,8 @@ return [
             [
                 'title'  => 'Secção Serviços (cabeçalho)',
                 'fields' => [
-                    'home_services_heading'   => ['type' => 'text', 'label' => 'Título à esquerda', 'default' => 'Transformamos ideias em comunicação que faz sentido.'],
-                    'home_services_title'     => ['type' => 'text', 'label' => 'Título à direita', 'default' => 'COMUNICAÇÃO CLARA. IMPACTO REAL.'],
+                    'home_services_heading'   => ['type' => 'text', 'label' => 'Título à esquerda', 'default' => 'Da estratégia à execução, tudo começa pela clareza.'],
+                    'home_services_title'     => ['type' => 'text', 'label' => 'Título à direita', 'help' => 'Deve caber numa só linha.', 'default' => 'Como podemos ajudar'],
                     'home_services_cta'       => ['type' => 'text', 'label' => 'Texto do botão', 'default' => 'VER TODOS OS SERVIÇOS'],
                     'home_services_card_link' => ['type' => 'text', 'label' => 'Ligação nos cartões', 'default' => 'Explorar serviço'],
                 ],
@@ -112,8 +110,6 @@ return [
             [
                 'title'  => 'Secção Insights (cabeçalho)',
                 'fields' => [
-                    'home_insights_title'    => ['type' => 'text',     'label' => 'Título', 'default' => 'Aprenda a comunicar melhor'],
-                    'home_insights_subtitle' => ['type' => 'textarea', 'label' => 'Subtítulo', 'rows' => 2, 'default' => 'Ideias simples para melhorar a sua comunicação.'],
                     'home_insights_cta'      => ['type' => 'text',     'label' => 'Texto do botão', 'default' => 'VER TODOS OS ARTIGOS'],
                 ],
             ],
@@ -127,28 +123,10 @@ return [
         'status' => 'active',
         'sections' => [
             [
-                'title'  => 'Cabeçalho Editorial (Hero)',
+                'title'  => 'Cabeçalho (Banner azul no topo)',
                 'fields' => [
-                    'about_hero_title' => ['type' => 'textarea', 'label' => 'Título Principal do Hero', 'rows' => 3, 'help' => 'Cada quebra de linha vira uma linha no site.', 'default' => "Além da criatividade.\nAlém da imaginação.\nO parceiro de Marketing 360° que a sua empresa precisa."],
-                    'about_hero_p1'    => ['type' => 'textarea', 'label' => 'Parágrafo 1', 'rows' => 3, 'default' => 'A Xamariz (marca da empresa Visualclick, Lda) é uma agência de publicidade e comunicação focada em conectar marcas a resultados tangíveis em Angola e no mercado internacional.'],
-                    'about_hero_p2'    => ['type' => 'textarea', 'label' => 'Parágrafo 2', 'rows' => 3, 'default' => 'Num mercado onde atrair clientes é cada vez mais desafiador, transformamos a sua mensagem em clareza, diferenciação e liderança comercial.'],
-                ],
-            ],
-            [
-                'title'  => 'O que nos move',
-                'fields' => [
-                    'about_cause_title' => ['type' => 'text',     'label' => 'Título da Secção', 'default' => 'O que nos move'],
-                    'about_cause_p1'    => ['type' => 'textarea', 'label' => 'Parágrafo 1', 'rows' => 3, 'default' => 'Existem empresas focadas em oferecer produtos e serviços que resolvam problemas na vida dos consumidores.'],
-                    'about_cause_p2'    => ['type' => 'textarea', 'label' => 'Parágrafo 2', 'rows' => 4, 'default' => 'Acreditamos verdadeiramente que se tiverem uma mensagem clara e convincente têm um enorme potencial para serem bem sucedidos e tornarem-se a principal referência no seu mercado. Torne-se uma verdadeira atração de clientes.'],
-                ],
-            ],
-            [
-                'title'  => 'A Nossa Oferta & A Nossa Promessa',
-                'fields' => [
-                    'about_offer_title'   => ['type' => 'text',     'label' => 'Título: A Nossa Oferta', 'default' => 'A Nossa Oferta.'],
-                    'about_offer_text'    => ['type' => 'textarea', 'label' => 'Texto da Oferta', 'rows' => 3, 'default' => 'Oferecemos soluções de Marketing 360°, Branding, Produção Audiovisual e Estratégia Digital focadas em gerar autoridade e vendas.'],
-                    'about_promise_title' => ['type' => 'text',     'label' => 'Título: A Nossa Promessa', 'default' => 'A Nossa Promessa.'],
-                    'about_promise_text'  => ['type' => 'textarea', 'label' => 'Texto da Promessa', 'rows' => 3, 'default' => 'Comprometemo-nos com a excelência criativa, cumprimento rigoroso de prazos e métricas transparentes que comprovam o retorno do seu investimento.'],
+                    'about_hero_title'    => ['type' => 'text', 'label' => 'Título do Banner', 'default' => 'Quem Somos'],
+                    'about_hero_subtitle' => ['type' => 'text', 'label' => 'Subtítulo do Banner', 'default' => 'Ajudamos empresas a serem compreendidas.'],
                 ],
             ],
             [
@@ -194,6 +172,7 @@ return [
             [
                 'title'  => 'Secção de Cultura ("Pronto para comunicar melhor?")',
                 'fields' => [
+                    'culture_image_url'  => ['type' => 'image',   'label' => 'Imagem de Fundo (opcional)', 'help' => 'Carregue uma imagem para usar como fundo. Para usar vídeo, deixe este campo vazio.', 'default' => 'equipa.png'],
                     'culture_video_url'  => ['type' => 'video',    'label' => 'Vídeo de Fundo', 'help' => 'Local, YouTube, Vimeo ou outro. Sem som, como fundo. Recomendado: MP4.', 'default' => 'office.mp4'],
                     'culture_video_loop' => ['type' => 'toggle',   'label' => 'Reproduzir em contínuo (loop)', 'help' => 'Repete o vídeo de fundo sem parar.', 'default' => '1'],
                     'culture_video_title'=> ['type' => 'text',     'label' => 'Título da secção', 'default' => 'Pronto para comunicar melhor?'],
@@ -227,6 +206,13 @@ return [
         'note'   => 'A lista de serviços é gerida no menu "Serviços 360°". Aqui edita apenas os textos fixos da página.',
         'sections' => [
             [
+                'title'  => 'Cabeçalho (Banner azul no topo)',
+                'fields' => [
+                    'services_banner_title'    => ['type' => 'text', 'label' => 'Título do Banner', 'default' => 'Serviços'],
+                    'services_banner_subtitle' => ['type' => 'text', 'label' => 'Subtítulo do Banner', 'default' => 'Da estratégia à execução.'],
+                ],
+            ],
+            [
                 'title'  => 'Cabeçalho da Página',
                 'fields' => [
                     'services_breadcrumb'   => ['type' => 'text',     'label' => 'Migalha de Pão (Breadcrumb)', 'default' => 'Soluções & Serviços 360°'],
@@ -245,6 +231,100 @@ return [
         ],
     ],
 
+    // ─── MARKETING (Páginas SEO /marketing) ──────────────────
+    'marketing' => [
+        'label'  => 'Marketing SEO',
+        'icon'   => 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
+        'status' => 'active',
+        'note'   => 'Páginas de aterragem críticas para SEO (/marketing/...). Os H1/H2 seguem a folha "H1-H2 SEO Lock" do plano de migração. Não devem ser eliminadas nem colapsadas na página de Serviços.',
+        'sections' => [
+            [
+                'title'  => 'Marketing Digital  (/marketing/marketing-digital/)',
+                'fields' => [
+                    'md_hero_title'     => ['type' => 'text',     'label' => 'H1 — Título', 'default' => 'Marketing Digital'],
+                    'md_hero_subtitle'  => ['type' => 'textarea', 'label' => 'Subtítulo / Introdução', 'rows' => 3, 'default' => 'O conjunto de ações em meios digitais para promover a sua empresa, captar a atenção dos clientes certos e mostrar que a sua oferta resolve os problemas deles.'],
+                    'md_b1_title'       => ['type' => 'text',     'label' => 'H2 — Bloco 1 (Título)', 'default' => 'O que é o Marketing Digital?'],
+                    'md_b1_text'        => ['type' => 'textarea', 'label' => 'Bloco 1 (Texto)', 'rows' => 6, 'default' => 'O marketing digital reúne as ações de marketing realizadas em meios digitais para promover empresas, produtos ou serviços. O foco está em captar a atenção de potenciais clientes e demonstrar que a sua oferta é a solução para os problemas deles. Com a estratégia certa, o digital alcança milhares de potenciais clientes, muitas vezes com um investimento inferior ao do marketing tradicional. O princípio é simples: comunique onde está a atenção dos consumidores.'],
+                    'md_b2_title'       => ['type' => 'text',     'label' => 'H2 — Bloco 2 (Título)', 'default' => 'O que ganha com o Marketing Digital'],
+                    'md_b2_text'        => ['type' => 'textarea', 'label' => 'Bloco 2 (Texto)', 'rows' => 6, 'default' => "Uma estratégia bem definida permite atrair a atenção de potenciais clientes, aumentar a visibilidade e as interações, criar relacionamentos e fidelidade, destacar-se da concorrência e procurar um maior retorno do investimento (ROI).\nOs principais tipos incluem Marketing de Conteúdo, Search Engine Marketing (com SEO, PPC e remarketing), E-mail Marketing, Redes Sociais, Mobile, Afiliados, Influência e Realidade Virtual."],
+                    'md_faq1_q'         => ['type' => 'text',     'label' => 'FAQ 1 — Pergunta', 'default' => 'Quais são os principais tipos de marketing digital?'],
+                    'md_faq1_a'         => ['type' => 'textarea', 'label' => 'FAQ 1 — Resposta', 'rows' => 2, 'default' => 'Marketing de Conteúdo, Search Engine Marketing, E-mail Marketing, Redes Sociais, Mobile, Afiliados, Influência e Realidade Virtual.'],
+                    'md_faq2_q'         => ['type' => 'text',     'label' => 'FAQ 2 — Pergunta', 'default' => 'O SEO faz parte do marketing digital?'],
+                    'md_faq2_a'         => ['type' => 'textarea', 'label' => 'FAQ 2 — Resposta', 'rows' => 2, 'default' => 'Sim. O SEO integra o Search Engine Marketing, a par do pay-per-click (PPC) e do remarketing.'],
+                    'md_faq3_q'         => ['type' => 'text',     'label' => 'FAQ 3 — Pergunta', 'default' => 'Qual é o objetivo do marketing digital?'],
+                    'md_faq3_a'         => ['type' => 'textarea', 'label' => 'FAQ 3 — Resposta', 'rows' => 2, 'default' => 'Promover a sua oferta, captar a atenção dos clientes certos e contribuir para o crescimento do negócio.'],
+                    'md_faq4_q'         => ['type' => 'text',     'label' => 'FAQ 4 — Pergunta (opcional)', 'default' => ''],
+                    'md_faq4_a'         => ['type' => 'textarea', 'label' => 'FAQ 4 — Resposta (opcional)', 'rows' => 2, 'default' => ''],
+                    'md_cta_title'      => ['type' => 'text',     'label' => 'CTA — Título', 'default' => 'Pronto para crescer no digital?'],
+                    'md_cta_subtitle'   => ['type' => 'textarea', 'label' => 'CTA — Subtítulo', 'rows' => 2, 'default' => 'Agende um encontro e vamos definir a estratégia de Marketing Digital ideal para a sua empresa.'],
+                ],
+            ],
+            [
+                'title'  => 'SEO  (/marketing/seo-search-engine-optimization/)',
+                'fields' => [
+                    'seo_hero_title'    => ['type' => 'text',     'label' => 'H1 — Título', 'default' => 'SEO — Search Engine Optimization'],
+                    'seo_hero_subtitle' => ['type' => 'textarea', 'label' => 'Subtítulo / Introdução', 'rows' => 3, 'default' => 'Otimize o seu website para aparecer em destaque nos motores de pesquisa e ser encontrado por quem procura aquilo que oferece.'],
+                    'seo_b1_title'      => ['type' => 'text',     'label' => 'H2 — Bloco 1 (Título)', 'default' => 'O que é o SEO?'],
+                    'seo_b1_text'       => ['type' => 'textarea', 'label' => 'Bloco 1 (Texto)', 'rows' => 6, 'default' => 'SEO (Search Engine Optimization) é o conjunto de atividades que usa análise digital e marketing para melhorar a sua presença online. O foco está em otimizar o website para obter destaque nos resultados dos motores de pesquisa como o Google, o Bing e o Yahoo. Ter um website não basta se ninguém o encontra online.'],
+                    'seo_b2_title'      => ['type' => 'text',     'label' => 'H2 — Bloco 2 (Título)', 'default' => 'Porque é que o SEO é importante'],
+                    'seo_b2_text'       => ['type' => 'textarea', 'label' => 'Bloco 2 (Texto)', 'rows' => 6, 'default' => 'A otimização aumenta a probabilidade de o seu negócio aparecer quando alguém pesquisa temas relacionados com a sua oferta. Assim, melhora a presença online, aumenta a visibilidade nas pesquisas e facilita a descoberta da sua empresa pelas pessoas certas.'],
+                    'seo_faq1_q'        => ['type' => 'text',     'label' => 'FAQ 1 — Pergunta', 'default' => 'O que é o SEO?'],
+                    'seo_faq1_a'        => ['type' => 'textarea', 'label' => 'FAQ 1 — Resposta', 'rows' => 2, 'default' => 'A otimização de websites para melhorar a presença e a visibilidade nos resultados de pesquisa.'],
+                    'seo_faq2_q'        => ['type' => 'text',     'label' => 'FAQ 2 — Pergunta', 'default' => 'Porque é importante?'],
+                    'seo_faq2_a'        => ['type' => 'textarea', 'label' => 'FAQ 2 — Resposta', 'rows' => 2, 'default' => 'Porque um website pode existir sem ser encontrado pelos potenciais clientes.'],
+                    'seo_faq3_q'        => ['type' => 'text',     'label' => 'FAQ 3 — Pergunta', 'default' => 'Que motores de pesquisa?'],
+                    'seo_faq3_a'        => ['type' => 'textarea', 'label' => 'FAQ 3 — Resposta', 'rows' => 2, 'default' => 'Google, Bing e Yahoo.'],
+                    'seo_faq4_q'        => ['type' => 'text',     'label' => 'FAQ 4 — Pergunta', 'default' => 'O SEO garante o primeiro lugar?'],
+                    'seo_faq4_a'        => ['type' => 'textarea', 'label' => 'FAQ 4 — Resposta', 'rows' => 2, 'default' => 'Não. Trabalhamos por destaque e melhores posições — não prometemos a primeira posição garantida.'],
+                    'seo_cta_title'     => ['type' => 'text',     'label' => 'CTA — Título', 'default' => 'Quer ser encontrado no Google?'],
+                    'seo_cta_subtitle'  => ['type' => 'textarea', 'label' => 'CTA — Subtítulo', 'rows' => 2, 'default' => 'Agende um encontro e vamos definir a sua estratégia de SEO para fomentar o crescimento.'],
+                ],
+            ],
+            [
+                'title'  => 'Marketing de Diferenciação  (/marketing/marketing-de-diferenciacao/)',
+                'fields' => [
+                    'dif_hero_title'    => ['type' => 'text',     'label' => 'H1 — Título', 'default' => 'Marketing de Diferenciação'],
+                    'dif_hero_subtitle' => ['type' => 'textarea', 'label' => 'Subtítulo / Introdução', 'rows' => 3, 'default' => 'Num mercado onde tantas empresas parecem cópias umas das outras, a diferenciação é o que faz a sua marca ser reconhecida e escolhida.'],
+                    'dif_b1_title'      => ['type' => 'text',     'label' => 'H2 — Bloco 1 (Título)', 'default' => 'O que é o Marketing de Diferenciação?'],
+                    'dif_b1_text'       => ['type' => 'textarea', 'label' => 'Bloco 1 (Texto)', 'rows' => 6, 'default' => 'É o conjunto de estratégias de comunicação que torna a sua empresa reconhecida pelas suas particularidades e pela forma diferente como resolve os problemas do mercado. O diferencial pode estar na unicidade dos produtos e serviços, na originalidade do atendimento ou em qualquer outro aspeto do negócio. Muitas empresas têm vantagens competitivas reais — mas não as reconhecem, nem as comunicam.'],
+                    'dif_b2_title'      => ['type' => 'text',     'label' => 'H2 — Bloco 2 (Título)', 'default' => 'Porque é importante diferenciar-se'],
+                    'dif_b2_text'       => ['type' => 'textarea', 'label' => 'Bloco 2 (Texto)', 'rows' => 6, 'default' => "Os consumidores estão cansados de marcas que parecem todas iguais e procuram empresas originais, com soluções diferentes.\nAjudamos a sua empresa a definir e comunicar o seu diferencial, a atrair e fidelizar o público-alvo e a destacar-se claramente da concorrência."],
+                    'dif_faq1_q'        => ['type' => 'text',     'label' => 'FAQ 1 — Pergunta', 'default' => 'O que é o Marketing de Diferenciação?'],
+                    'dif_faq1_a'        => ['type' => 'textarea', 'label' => 'FAQ 1 — Resposta', 'rows' => 2, 'default' => 'Uma abordagem de comunicação focada em tornar clara a particularidade que distingue a sua empresa.'],
+                    'dif_faq2_q'        => ['type' => 'text',     'label' => 'FAQ 2 — Pergunta', 'default' => 'Para que serve?'],
+                    'dif_faq2_a'        => ['type' => 'textarea', 'label' => 'FAQ 2 — Resposta', 'rows' => 2, 'default' => 'Para comunicar as suas vantagens competitivas e fortalecer o posicionamento da marca.'],
+                    'dif_faq3_q'        => ['type' => 'text',     'label' => 'FAQ 3 — Pergunta', 'default' => 'Onde pode estar o meu diferencial?'],
+                    'dif_faq3_a'        => ['type' => 'textarea', 'label' => 'FAQ 3 — Resposta', 'rows' => 2, 'default' => 'No produto, no serviço, no atendimento, na experiência ou noutros aspetos específicos do negócio.'],
+                    'dif_faq4_q'        => ['type' => 'text',     'label' => 'FAQ 4 — Pergunta (opcional)', 'default' => ''],
+                    'dif_faq4_a'        => ['type' => 'textarea', 'label' => 'FAQ 4 — Resposta (opcional)', 'rows' => 2, 'default' => ''],
+                    'dif_cta_title'     => ['type' => 'text',     'label' => 'CTA — Título', 'default' => 'Pronto para destacar a sua marca?'],
+                    'dif_cta_subtitle'  => ['type' => 'textarea', 'label' => 'CTA — Subtítulo', 'rows' => 2, 'default' => 'Agende um encontro e vamos definir a estratégia de Marketing de Diferenciação certa para o seu crescimento.'],
+                ],
+            ],
+            [
+                'title'  => 'Marketing de Conteúdo  (/marketing-de-conteudo/)',
+                'fields' => [
+                    'cont_hero_title'   => ['type' => 'text',     'label' => 'H1 — Título', 'default' => 'Marketing de Conteúdo'],
+                    'cont_hero_subtitle'=> ['type' => 'textarea', 'label' => 'Subtítulo / Introdução', 'rows' => 3, 'default' => 'Atraia clientes criando conteúdo que o seu público valoriza, em vez de depender apenas da prospeção direta.'],
+                    'cont_b1_title'     => ['type' => 'text',     'label' => 'H2 — Bloco 1 (Título)', 'default' => 'O que é o Marketing de Conteúdo?'],
+                    'cont_b1_text'      => ['type' => 'textarea', 'label' => 'Bloco 1 (Texto)', 'rows' => 6, 'default' => 'É uma estratégia de marketing digital baseada na criação e distribuição consistente de conteúdo relevante, que procura atrair e conectar-se com um grupo específico de consumidores e conduzi-los à sua oferta. Os formatos incluem textos, vídeos e fotografia — e o conteúdo deve educar, informar ou entreter.'],
+                    'cont_b2_title'     => ['type' => 'text',     'label' => 'H2 — Bloco 2 (Título)', 'default' => 'Conteúdo + SEO, no contexto angolano'],
+                    'cont_b2_text'      => ['type' => 'textarea', 'label' => 'Bloco 2 (Texto)', 'rows' => 6, 'default' => 'Quando combinado com SEO, o conteúdo passa a ser descoberto através das pesquisas no Google. Em Angola, o crescimento do uso de smartphones e do consumo de conteúdo online torna esta estratégia ainda mais eficaz. A regra é simples: comunique nos canais onde os seus consumidores estão.'],
+                    'cont_faq1_q'       => ['type' => 'text',     'label' => 'FAQ 1 — Pergunta', 'default' => 'O que é o marketing de conteúdo?'],
+                    'cont_faq1_a'       => ['type' => 'textarea', 'label' => 'FAQ 1 — Resposta', 'rows' => 2, 'default' => 'A criação e distribuição consistente de conteúdo relevante para atrair e conectar uma audiência.'],
+                    'cont_faq2_q'       => ['type' => 'text',     'label' => 'FAQ 2 — Pergunta', 'default' => 'Que formatos posso usar?'],
+                    'cont_faq2_a'       => ['type' => 'textarea', 'label' => 'FAQ 2 — Resposta', 'rows' => 2, 'default' => 'Textos, vídeos, fotografias e outros.'],
+                    'cont_faq3_q'       => ['type' => 'text',     'label' => 'FAQ 3 — Pergunta', 'default' => 'Qual a relação com o SEO?'],
+                    'cont_faq3_a'       => ['type' => 'textarea', 'label' => 'FAQ 3 — Resposta', 'rows' => 2, 'default' => 'Conteúdo otimizado pode ser encontrado através das pesquisas no Google.'],
+                    'cont_faq4_q'       => ['type' => 'text',     'label' => 'FAQ 4 — Pergunta', 'default' => 'Funciona em Angola?'],
+                    'cont_faq4_a'       => ['type' => 'textarea', 'label' => 'FAQ 4 — Resposta', 'rows' => 2, 'default' => 'Sim — o uso crescente de smartphones e o consumo digital tornam-no muito eficaz.'],
+                    'cont_cta_title'    => ['type' => 'text',     'label' => 'CTA — Título', 'default' => 'Quer preparar o futuro do seu negócio?'],
+                    'cont_cta_subtitle' => ['type' => 'textarea', 'label' => 'CTA — Subtítulo', 'rows' => 2, 'default' => 'Agende um encontro e vamos construir a sua estratégia de Marketing de Conteúdo.'],
+                ],
+            ],
+        ],
+    ],
+
     // ─── PORTFÓLIO ───────────────────────────────────────────
     'work' => [
         'label'  => 'Portfólio',
@@ -252,6 +332,13 @@ return [
         'status' => 'active',
         'note'   => 'Os projetos e filtros são geridos nos menus "Projetos / Portfólio" e "Filtros do Portfólio". Aqui edita os textos fixos.',
         'sections' => [
+            [
+                'title'  => 'Cabeçalho (Banner azul no topo)',
+                'fields' => [
+                    'work_banner_title'    => ['type' => 'text', 'label' => 'Título do Banner', 'default' => 'Portfólio'],
+                    'work_banner_subtitle' => ['type' => 'text', 'label' => 'Subtítulo do Banner', 'default' => 'Trabalho que transforma estratégia em impacto.'],
+                ],
+            ],
             [
                 'title'  => 'Cabeçalho da Página',
                 'fields' => [
@@ -331,7 +418,32 @@ return [
         'label'  => 'Contacto',
         'icon'   => 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
         'status' => 'active',
-        'note'   => 'Os textos do cabeçalho e do formulário desta página são geridos pelas Traduções (PT/EN/FR). Os dados de contacto apresentados na barra lateral (morada, telefone, e-mail) vêm de Definições do Site » Geral & Contactos e são partilhados por todo o site.',
-        'sections' => [],
+        'note'   => 'O formulário e a barra lateral desta página usam as Traduções (PT/EN/FR) e os dados de Definições do Site » Geral & Contactos. Aqui edita o banner azul do topo.',
+        'sections' => [
+            [
+                'title'  => 'Cabeçalho (Banner azul no topo)',
+                'fields' => [
+                    'contact_hero_title'    => ['type' => 'text', 'label' => 'Título do Banner', 'default' => 'Contactos'],
+                    'contact_hero_subtitle' => ['type' => 'text', 'label' => 'Subtítulo do Banner', 'default' => 'Vamos conversar sobre o próximo passo da comunicação da sua marca.'],
+                ],
+            ],
+        ],
+    ],
+
+    // ─── ARTIGOS / INSIGHTS ──────────────────────────────────
+    'insights' => [
+        'label'  => 'Artigos',
+        'icon'   => 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z',
+        'status' => 'active',
+        'note'   => 'Os artigos são geridos no menu "Artigos / Insights". Aqui edita o banner azul do topo.',
+        'sections' => [
+            [
+                'title'  => 'Cabeçalho (Banner azul no topo)',
+                'fields' => [
+                    'insights_hero_title'    => ['type' => 'text', 'label' => 'Título do Banner', 'default' => 'Artigos'],
+                    'insights_hero_subtitle' => ['type' => 'text', 'label' => 'Subtítulo do Banner', 'default' => 'Pensar melhor. Comunicar melhor.'],
+                ],
+            ],
+        ],
     ],
 ];

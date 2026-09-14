@@ -21,10 +21,10 @@
                     {{ __('common.quick_links') }}</h4>
                 <ul class="space-y-3">
                     @foreach ([
-                        ['Marketing de Diferenciação', 'services.index'],
-                        ['Marketing de Conteúdo', 'services.index'],
-                        ['Marketing Digital', 'services.index'],
-                        ['SEO', 'services.index'],
+                        ['Marketing de Diferenciação', 'marketing.diferenciacao'],
+                        ['Marketing de Conteúdo', 'marketing.conteudo'],
+                        ['Marketing Digital', 'marketing.digital'],
+                        ['SEO', 'marketing.seo'],
                     ] as [$label, $route])
                         <li>
                             <a href="{{ route($route) }}"
@@ -41,7 +41,7 @@
                 <h4 class="font-sans text-xs font-semibold uppercase tracking-widest text-white mb-5">
                     {{ __('nav.services') }}</h4>
                 <ul class="space-y-3">
-                    @foreach (\App\Models\Service::where('is_active', true)->orderBy('display_order')->get() as $footerService)
+                    @foreach (\App\Models\Service::orderBy('display_order')->get() as $footerService)
                         <li>
                             <a href="{{ route('services.show', $footerService->slug) }}"
                                 class="text-white hover:text-white text-sm transition-colors duration-200">

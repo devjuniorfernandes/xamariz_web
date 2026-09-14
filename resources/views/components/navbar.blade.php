@@ -2,20 +2,27 @@
     $isDarkNav = $isDarkNav ?? request()->routeIs('home');
 
     $navLinks = [
+        ['label' => __('nav.home'), 'pattern' => 'home', 'name' => 'home', 'url' => route('home')],
         ['label' => __('nav.services'), 'pattern' => 'services.*', 'name' => 'services.index', 'url' => route('services.index')],
         ['label' => __('nav.portfolio'), 'pattern' => 'work.*', 'name' => 'work.index', 'url' => route('work.index')],
-        ['label' => __('nav.about'), 'pattern' => 'about', 'name' => 'about', 'url' => route('about')],
+        ['label' => __('nav.about'), 'pattern' => 'about', 'name' => 'about', 'url' => route('about'), 'children' => [
+            ['label' => 'Equipa', 'url' => route('team.index')],
+            ['label' => 'Clientes', 'url' => route('clients.index')],
+        ]],
         ['label' => __('nav.insights'), 'pattern' => 'insights.*', 'name' => 'insights.index', 'url' => route('insights.index')],
-        ['label' => __('nav.contacts'), 'pattern' => 'contactos.*', 'name' => 'contactos.index', 'url' => route('contact')],
+        ['label' => __('nav.contacts'), 'pattern' => 'contact', 'name' => 'contact', 'url' => route('contact')],
     ];
 
     $mobileNavLinks = [
         ['label' => __('nav.home'), 'pattern' => 'home', 'name' => 'home', 'url' => route('home')],
         ['label' => __('nav.services'), 'pattern' => 'services.*', 'name' => 'services.index', 'url' => route('services.index')],
         ['label' => __('nav.portfolio'), 'pattern' => 'work.*', 'name' => 'work.index', 'url' => route('work.index')],
-        ['label' => __('nav.about'), 'pattern' => 'about', 'name' => 'about', 'url' => route('about')],
+        ['label' => __('nav.about'), 'pattern' => 'about', 'name' => 'about', 'url' => route('about'), 'children' => [
+            ['label' => 'Equipa', 'url' => route('team.index')],
+            ['label' => 'Clientes', 'url' => route('clients.index')],
+        ]],
         ['label' => __('nav.insights'), 'pattern' => 'insights.*', 'name' => 'insights.index', 'url' => route('insights.index')],
-        ['label' => __('nav.contacts'), 'pattern' => 'contactos.*', 'name' => 'contactos.index', 'url' => route('contact')],
+        ['label' => __('nav.contacts'), 'pattern' => 'contact', 'name' => 'contact', 'url' => route('contact')],
     ];
 @endphp
 
@@ -70,21 +77,53 @@
             <div class="hidden md:flex items-center gap-1.5 h-full">
                 @foreach ($navLinks as $link)
                     @php
-                        $isActive = request()->routeIs($link['pattern']) || request()->routeIs($link['name']);
+                        $hasChildren = !empty($link['children']);
+                        $isActive = request()->routeIs($link['pattern']) || request()->routeIs($link['name'])
+                            || ($hasChildren && request()->routeIs('team.index', 'clients.index'));
                     @endphp
-                    <a href="{{ $link['url'] }}" :class="(isDarkNav && !scrolled) ?
-                                '{{ $isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white' }}' :
-                                '{{ $isActive ? 'text-gray-900 font-bold' : 'text-gray-700 hover:text-gray-900' }}'"
-                        class="relative font-sans text-[0.9375rem] font-medium px-3.5 py-6 transition-colors duration-200 flex flex-col items-center justify-center group">
-                        <span>{{ $link['label'] }}</span>
-                        @if ($isActive)
-                            <span
-                                class="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] absolute bottom-3 left-1/2 -translate-x-1/2"></span>
-                        @else
-                            <span
-                                class="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] absolute bottom-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-60 transition-all duration-200"></span>
-                        @endif
-                    </a>
+
+                    @if ($hasChildren)
+                        {{-- Item com dropdown (Quem Somos) --}}
+                        <div x-data="{ dd: false }" @mouseenter="dd = true" @mouseleave="dd = false" class="relative h-full flex items-center">
+                            <a href="{{ $link['url'] }}" :class="(isDarkNav && !scrolled) ?
+                                        '{{ $isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white' }}' :
+                                        '{{ $isActive ? 'text-gray-900 font-bold' : 'text-gray-700 hover:text-gray-900' }}'"
+                                class="relative font-sans text-[0.9375rem] font-medium px-3.5 py-6 transition-colors duration-200 flex items-center gap-1.5 group">
+                                <span>{{ $link['label'] }}</span>
+                                <svg class="w-3.5 h-3.5 transition-transform duration-200" :class="dd ? 'rotate-180' : ''" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                @if ($isActive)
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] absolute bottom-3 left-1/2 -translate-x-1/2"></span>
+                                @endif
+                            </a>
+
+                            {{-- Painel do dropdown --}}
+                            <div x-show="dd" x-cloak
+                                x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 translate-y-1" x-transition:enter-end="opacity-100 translate-y-0"
+                                x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                                class="absolute top-full left-0 min-w-[210px] bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-[999999]">
+                                @foreach ($link['children'] as $child)
+                                    <a href="{{ $child['url'] }}"
+                                        class="block px-4 py-2.5 font-sans text-sm font-medium text-gray-700 hover:text-[var(--color-brand-accent)] hover:bg-gray-50 transition-colors">
+                                        {{ $child['label'] }}
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @else
+                        <a href="{{ $link['url'] }}" :class="(isDarkNav && !scrolled) ?
+                                    '{{ $isActive ? 'text-white font-bold' : 'text-white/80 hover:text-white' }}' :
+                                    '{{ $isActive ? 'text-gray-900 font-bold' : 'text-gray-700 hover:text-gray-900' }}'"
+                            class="relative font-sans text-[0.9375rem] font-medium px-3.5 py-6 transition-colors duration-200 flex flex-col items-center justify-center group">
+                            <span>{{ $link['label'] }}</span>
+                            @if ($isActive)
+                                <span
+                                    class="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] absolute bottom-3 left-1/2 -translate-x-1/2"></span>
+                            @else
+                                <span
+                                    class="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] absolute bottom-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-60 transition-all duration-200"></span>
+                            @endif
+                        </a>
+                    @endif
                 @endforeach
             </div>
 
@@ -135,10 +174,12 @@
             <div class="space-y-1">
                 @foreach ($mobileNavLinks as $link)
                     @php
-                        $isActive = request()->routeIs($link['pattern']) || request()->routeIs($link['name']);
+                        $hasChildren = !empty($link['children']);
+                        $isActive = request()->routeIs($link['pattern']) || request()->routeIs($link['name'])
+                            || ($hasChildren && request()->routeIs('team.index', 'clients.index'));
                     @endphp
                     <a href="{{ $link['url'] }}" @click="mobileOpen = false"
-                        class="flex items-center justify-between py-3.5 text-lg sm:text-xl font-medium transition-colors border-b border-gray-100/80 {{ $isActive ? 'text-[var(--color-brand-accent)] font-bold' : 'text-gray-700 hover:text-[var(--color-brand-accent)]' }}">
+                        class="flex items-center justify-between py-3.5 text-lg sm:text-xl font-medium transition-colors {{ $hasChildren ? '' : 'border-b border-gray-100/80' }} {{ $isActive ? 'text-[var(--color-brand-accent)] font-bold' : 'text-gray-700 hover:text-[var(--color-brand-accent)]' }}">
                         <div class="flex items-center gap-3">
                             @if ($isActive)
                                 <span class="w-2 h-2 rounded-full bg-[var(--color-brand-accent)] inline-block"></span>
@@ -152,6 +193,17 @@
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
+
+                    @if ($hasChildren)
+                        <div class="pl-6 border-b border-gray-100/80">
+                            @foreach ($link['children'] as $child)
+                                <a href="{{ $child['url'] }}" @click="mobileOpen = false"
+                                    class="block py-2.5 text-base font-medium text-gray-500 hover:text-[var(--color-brand-accent)] transition-colors">
+                                    {{ $child['label'] }}
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
                 @endforeach
             </div>
 

@@ -152,6 +152,24 @@
         </div>
     </div>
 
+    {{-- Lightbox global (imagem de projeto do portfólio) --}}
+    <div x-data="{ open: false, img: '', alt: '' }"
+        x-on:open-lightbox.window="img = $event.detail.src; alt = $event.detail.alt || ''; open = true"
+        x-on:keydown.escape.window="open = false"
+        x-show="open" x-cloak x-transition.opacity
+        @click="open = false"
+        class="fixed inset-0 z-[9999999] bg-black/90 flex items-center justify-center p-4 cursor-zoom-out">
+        <button @click.stop="open = false"
+            class="absolute top-6 right-6 text-white hover:text-[var(--color-brand-accent)] transition-colors"
+            aria-label="Fechar">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+        </button>
+        <img :src="img" :alt="alt" @click.stop
+            class="max-w-[92vw] max-h-[90vh] object-contain shadow-2xl cursor-default">
+    </div>
+
     @stack('scripts')
 </body>
 </html>

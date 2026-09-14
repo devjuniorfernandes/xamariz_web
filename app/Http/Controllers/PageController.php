@@ -25,7 +25,7 @@ class PageController extends Controller
             ->take(5)
             ->get();
         
-        $servicesList = Service::where('is_active', true)->orderBy('display_order')->take(5)->get();
+        $servicesList = Service::orderBy('display_order')->take(5)->get();
         $brandLogos = Client::where('show_in_marquee', true)->orderBy('display_order')->get();
         $teamMembers = TeamMember::where('is_active', true)->orderBy('display_order')->take(4)->get();
         $latestInsights = Post::where('status', 'published')->latest('published_at')->take(3)->get();
@@ -90,14 +90,14 @@ class PageController extends Controller
 
     public function servicesIndex()
     {
-        $servicesList = Service::where('is_active', true)->orderBy('display_order')->get();
+        $servicesList = Service::orderBy('display_order')->get();
         return view('services.index', compact('servicesList'));
     }
 
     public function servicesShow(string $slug)
     {
         $service = Service::where('slug', $slug)->first();
-        $allServices = Service::where('is_active', true)->orderBy('display_order')->get();
+        $allServices = Service::orderBy('display_order')->get();
         return view('services.show', compact('service', 'slug', 'allServices'));
     }
 
@@ -120,9 +120,29 @@ class PageController extends Controller
         return view('insights.index', compact('insights'));
     }
 
-    public function insightsShow(string $slug)
+    public function insightsShow(string $category, string $slug)
     {
+        // A categoria vive no URL por SEO (/blog/{categoria}/{slug}); a
+        // pesquisa é feita pelo slug, que é único.
         $insight = Post::with('author')->where('slug', $slug)->first();
+        return view('insights.show', compact('insight', 'slug'));
+    }
+
+    /**
+     * Artigos com URL de raiz (/{slug}/) — resolvidos pela rota catch-all.
+     * Só respondem posts marcados como root_level e publicados; caso
+     * contrário, 404 (não capturar URLs desconhecidas).
+     */
+    public function insightsRoot(string $slug)
+    {
+        $insight = Post::with('author')
+            ->where('slug', $slug)
+            ->where('root_level', true)
+            ->where('status', 'published')
+            ->first();
+
+        abort_if(!$insight, 404);
+
         return view('insights.show', compact('insight', 'slug'));
     }
 
@@ -174,6 +194,42 @@ class PageController extends Controller
         return redirect()->route('contact')->with('success', __('contact.success_message'));
     }
 
+    // ─── Páginas SEO /marketing (editáveis no CMS » Páginas » Marketing SEO) ───
+
+    public function marketingDigital()
+    {
+        return view('marketing.marketing-digital');
+    }
+
+    public function marketingSeo()
+    {
+        return view('marketing.seo');
+    }
+
+    public function marketingDiferenciacao()
+    {
+        return view('marketing.marketing-de-diferenciacao');
+    }
+
+    public function marketingConteudo()
+    {
+        return view('marketing.marketing-de-conteudo');
+    }
+
+    // ─── Versão inglesa (estrutura /en/ do sitemap) ───
+
+    public function homeEn()
+    {
+        app()->setLocale('en');
+        return $this->home();
+    }
+
+    public function contactEn()
+    {
+        app()->setLocale('en');
+        return $this->contact();
+    }
+
     public function privacy()
     {
         return view('legal.privacy');
@@ -200,7 +256,7 @@ class PageController extends Controller
     public function sitemap()
     {
         $works = Work::where('status', 'published')->get();
-        $services = Service::where('is_active', true)->get();
+        $services = Service::orderBy('display_order')->get();
         $clients = Client::all();
         $insights = Post::where('status', 'published')->get();
 

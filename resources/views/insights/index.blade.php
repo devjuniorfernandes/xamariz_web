@@ -6,25 +6,8 @@
 @section('content')
 
     {{-- Header --}}
-    <section class="pt-40 pb-16 bg-white text-gray-900 border-b border-gray-100">
-        <div class="container-myriad">
-            <div class="reveal flex items-center gap-3 text-xs uppercase font-sans tracking-widest mb-6 sm:mb-8">
-                <a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-900 transition-colors">Xamariz</a>
-                <span class="text-gray-300">/</span>
-                <span class="text-gray-400">Insights & Artigos</span>
-            </div>
-
-            <div class="max-w-3xl reveal">
-                <h1
-                    class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
-                    Pensar melhor. Comunicar melhor.
-                </h1>
-                <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed">
-                    Ideias e perspectivas da Xamariz sobre comunicação, marketing, tecnologia e os desafios que estão a transformar as empresas.
-                </p>
-            </div>
-        </div>
-    </section>
+    <x-page-hero :title="\App\Models\SiteSetting::get('insights_hero_title', 'Artigos')"
+        :subtitle="\App\Models\SiteSetting::get('insights_hero_subtitle', 'Pensar melhor. Comunicar melhor.')" />
 
     {{-- Articles Grid --}}
     <section class="py-20 bg-white">
@@ -38,6 +21,11 @@
                             $itemCategory = is_object($item)
                                 ? $item->category ?? 'Insights'
                                 : $item['category'] ?? 'Insights';
+                            $itemCatSlug = \Illuminate\Support\Str::slug($itemCategory ?: 'geral') ?: 'geral';
+                            // Post real usa o accessor ->url (respeita root_level); demo cai para /blog/{cat}/{slug}.
+                            $itemUrl = is_object($item)
+                                ? $item->url
+                                : route('insights.show', ['category' => $itemCatSlug, 'slug' => $itemSlug]);
                             $coverPath = is_object($item) ? $item->cover_image : $item['cover'] ?? null;
                             $itemCover = $coverPath
                                 ? (Str::startsWith($coverPath, 'http')
@@ -46,7 +34,7 @@
                                 : 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&auto=format&fit=crop&q=80';
                         @endphp
 
-                        <a href="{{ route('insights.show', $itemSlug) }}" class="group block reveal">
+                        <a href="{{ $itemUrl }}" class="group block reveal">
                             {{-- Square Image Container --}}
                             <div class="aspect-square w-full overflow-hidden bg-gray-100 rounded-none mb-5 relative">
                                 <img src="{{ $itemCover }}" alt="{{ $itemTitle }}"

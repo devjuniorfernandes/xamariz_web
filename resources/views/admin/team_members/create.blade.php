@@ -63,6 +63,15 @@
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">E-mail Profissional</label>
                 <input type="email" name="email" value="{{ old('email') }}" placeholder="nome@xamariz.ao" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:border-[#fe3d0a] text-sm">
             </div>
+
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Estado</label>
+                <input type="hidden" name="is_active" value="0">
+                <label class="inline-flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" name="is_active" value="1" {{ old('is_active', true) ? 'checked' : '' }} class="w-5 h-5 rounded bg-slate-950 border-slate-700 text-[#fe3d0a] focus:ring-[#fe3d0a]">
+                    <span class="text-sm text-slate-300">Membro ativo (visível no site)</span>
+                </label>
+            </div>
         </div>
 
         <div class="pt-6 border-t border-slate-800 flex items-center justify-end gap-4">

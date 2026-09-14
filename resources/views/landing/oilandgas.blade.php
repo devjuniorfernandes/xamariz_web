@@ -45,11 +45,9 @@
             ['name' => 'Famar',        'logo' => 'famar.png'],
             ['name' => 'ETU Energias',  'logo' => 'ETU ENERGIAS.png'],
             ['name' => 'ILS',           'logo' => 'ILS.png'],
-            ['name' => 'Kaminho',       'logo' => 'KAMINHO.png'],
              ['name' => 'Pumangol',       'logo' => 'Pumangol.png'],
             ['name' => 'Sonagalp',       'logo' => 'Sonagalp.png'],
             ['name' => 'Sonangol',       'logo' => 'Sonangol.png'],
-            ['name' => 'Stylus',       'logo' => 'stylus.png'],
         ];
 
         // Secção "Focus" — imagens gratuitas do Unsplash alinhadas a cada serviço.
@@ -142,9 +140,10 @@
      2b. IMPACTO — duas colunas: conteúdo (gradiente) + imagem
     ══════════════════════════════════════════════════════════════ --}}
     <section class="relative w-full font-barlow overflow-hidden bg-[#0f1f4a]">
-        {{-- Gradiente + malha apenas na metade do texto (esquerda); a direita é a imagem --}}
-        <div class="absolute inset-0 lg:right-1/2 z-0 bg-[#0f1f4a]"
-            style="background-image:url('{{ asset('grad.jfif') }}');background-size:cover;background-position:center;background-repeat:no-repeat;">
+        {{-- Gradiente + malha apenas na metade do texto (esquerda); a direita é a imagem.
+             background-size:100% 100% garante que o gradiente aparece por completo na coluna. --}}
+        <div class="absolute inset-y-0 left-0 w-full lg:w-1/2 z-0 bg-[#0f1f4a]"
+            style="background-image:url('{{ asset('grad.jfif') }}');background-size:100% 100%;background-position:center;background-repeat:no-repeat;">
             <x-blue-mesh />
         </div>
         {{-- Imagem: metade direita a preencher todo o espaço (mobile: bloco no topo) --}}
@@ -205,9 +204,9 @@
                 <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-40 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
                 <div class="flex items-center gap-10 sm:gap-14 w-max animate-oil-marquee hover:[animation-play-state:paused]">
                     @foreach (array_merge($oilGasLogos, $oilGasLogos) as $client)
-                        <div class="shrink-0 flex items-center justify-center h-20 px-2">
+                        <div class="shrink-0 flex items-center justify-center h-24 px-2">
                             <img src="{{ asset(rawurlencode($client['logo'])) }}" alt="{{ $client['name'] }}"
-                                class="oil-logo max-h-14 sm:max-h-16 w-auto object-contain"
+                                class="oil-logo max-h-16 sm:max-h-[4.5rem] w-auto object-contain"
                                 style="filter: grayscale(1); opacity: .55;">
                         </div>
                     @endforeach
@@ -228,13 +227,6 @@
                 <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-gray-900 tracking-tight leading-[1.15] max-w-3xl">
                     {{ __('oilandgas.areas.title') }}
                 </h2>
-                <a href="#aog"
-                    class="shrink-0 inline-flex items-center gap-2 text-sm font-bold text-[#ff5e14] hover:text-[#e04e0b] transition-colors uppercase tracking-wide lg:mt-3">
-                    <span>{{ __('oilandgas.areas.approach_link') }}</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
             </div>
 
             {{-- Intro paragraph --}}
@@ -247,7 +239,7 @@
                 @foreach ($areaTabs as $i => $tab)
                     <button type="button" @click="tab = {{ $i }}"
                         class="-mt-px border-t-2 py-4 text-left text-sm sm:text-[0.95rem] font-bold uppercase tracking-wide transition-colors duration-200 max-w-[10rem] leading-tight"
-                        :class="tab === {{ $i }} ? 'border-[#ff5e14] text-[#ff5e14]' : 'border-transparent text-gray-400 hover:text-gray-700'">
+                        :class="tab === {{ $i }} ? 'border-[#0f1f4a] text-[#0f1f4a]' : 'border-transparent text-gray-400 hover:text-gray-700'">
                         {{ __("oilandgas.areas.items.{$tab['key']}.title") }}
                     </button>
                 @endforeach
@@ -264,19 +256,17 @@
                                 class="w-full h-[380px] sm:h-[460px] lg:h-[540px] object-cover">
 
                             {{-- Overlay card --}}
-                            <div class="absolute top-0 left-0 bg-[#ff5e14] text-white p-8 sm:p-10 w-72 sm:w-96 min-h-[240px] sm:min-h-[300px] flex flex-col">
+                            <div class="absolute top-0 left-0 overflow-hidden bg-[#0f1f4a] text-white p-8 sm:p-10 w-72 sm:w-96 min-h-[240px] sm:min-h-[300px] flex flex-col"
+                                style="background-image:url('{{ asset('grad.jfif') }}');background-size:cover;background-position:center;background-repeat:no-repeat;">
+                                <x-blue-mesh />
+                                <div class="relative z-10 flex flex-col h-full">
                                 <h3 class="text-xl sm:text-2xl font-bold leading-snug mb-3">
                                     {{ __("oilandgas.areas.items.{$tab['key']}.title") }}
                                 </h3>
                                 <p class="font-roboto text-xs sm:text-sm text-white/90 leading-relaxed mb-auto">
                                     {{ __("oilandgas.areas.items.{$tab['key']}.desc") }}
                                 </p>
-                                <a href="#aog" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider group mt-6">
-                                    <span>{{ __('oilandgas.areas.explore') }}</span>
-                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -321,7 +311,7 @@
                                 : null;
                         @endphp
 
-                        <a href="{{ route('insights.show', $post->slug) }}" class="group flex flex-col h-full">
+                        <a href="{{ $post->url }}" class="group flex flex-col h-full">
                             {{-- Imagem --}}
                             <div class="aspect-[4/3] w-full overflow-hidden bg-gray-100 mb-5">
                                 <img src="{{ $cover }}" alt="{{ $post->title }}"
@@ -369,17 +359,6 @@
                     <p class="font-roboto text-lg text-white/90 leading-relaxed mb-10">
                         {{ __('oilandgas.aog.lead') }}
                     </p>
-
-                    <div class="space-y-4 pt-6 border-t border-white/25 font-roboto">
-                        <div class="flex items-center gap-4 text-sm text-white">
-                            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5e14] shrink-0"></span>
-                            <span>{{ __('oilandgas.aog.point_meetings') }}</span>
-                        </div>
-                        <div class="flex items-center gap-4 text-sm text-white">
-                            <span class="w-2.5 h-2.5 rounded-full bg-[#ff5e14] shrink-0"></span>
-                            <span>{{ __('oilandgas.aog.point_contact') }}</span>
-                        </div>
-                    </div>
                 </div>
 
                 {{-- Right: Form --}}
@@ -402,30 +381,16 @@
                         @csrf
                         <input type="hidden" name="sectors[]" value="Angola Oil &amp; Gas – Reunião AOG">
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-roboto">
-                            <div>
-                                <label class="block text-xs uppercase tracking-wider font-semibold text-gray-700 mb-2 font-barlow">{{ __('oilandgas.aog.form.first_name') }} *</label>
-                                <input type="text" name="first_name" required placeholder="{{ __('oilandgas.aog.form.first_name_ph') }}"
-                                    class="w-full bg-white border border-gray-300 focus:border-[#141518] text-gray-900 placeholder-gray-400 text-sm px-4 py-3 outline-none transition-colors">
-                            </div>
-                            <div>
-                                <label class="block text-xs uppercase tracking-wider font-semibold text-gray-700 mb-2 font-barlow">{{ __('oilandgas.aog.form.last_name') }} *</label>
-                                <input type="text" name="last_name" required placeholder="{{ __('oilandgas.aog.form.last_name_ph') }}"
-                                    class="w-full bg-white border border-gray-300 focus:border-[#141518] text-gray-900 placeholder-gray-400 text-sm px-4 py-3 outline-none transition-colors">
-                            </div>
+                        <div class="font-roboto">
+                            <label class="block text-xs uppercase tracking-wider font-semibold text-gray-700 mb-2 font-barlow">{{ __('oilandgas.aog.form.first_name') }} *</label>
+                            <input type="text" name="first_name" required placeholder="{{ __('oilandgas.aog.form.first_name_ph') }}"
+                                class="w-full bg-white border border-gray-300 focus:border-[#141518] text-gray-900 placeholder-gray-400 text-sm px-4 py-3 outline-none transition-colors">
                         </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-roboto">
-                            <div>
-                                <label class="block text-xs uppercase tracking-wider font-semibold text-gray-700 mb-2 font-barlow">{{ __('oilandgas.aog.form.email') }} *</label>
-                                <input type="email" name="email" required placeholder="{{ __('oilandgas.aog.form.email_ph') }}"
-                                    class="w-full bg-white border border-gray-300 focus:border-[#141518] text-gray-900 placeholder-gray-400 text-sm px-4 py-3 outline-none transition-colors">
-                            </div>
-                            <div>
-                                <label class="block text-xs uppercase tracking-wider font-semibold text-gray-700 mb-2 font-barlow">{{ __('oilandgas.aog.form.company') }} *</label>
-                                <input type="text" name="company" required placeholder="{{ __('oilandgas.aog.form.company_ph') }}"
-                                    class="w-full bg-white border border-gray-300 focus:border-[#141518] text-gray-900 placeholder-gray-400 text-sm px-4 py-3 outline-none transition-colors">
-                            </div>
+                        <div class="font-roboto">
+                            <label class="block text-xs uppercase tracking-wider font-semibold text-gray-700 mb-2 font-barlow">{{ __('oilandgas.aog.form.email') }} *</label>
+                            <input type="email" name="email" required placeholder="{{ __('oilandgas.aog.form.email_ph') }}"
+                                class="w-full bg-white border border-gray-300 focus:border-[#141518] text-gray-900 placeholder-gray-400 text-sm px-4 py-3 outline-none transition-colors">
                         </div>
 
                         <div class="font-roboto">

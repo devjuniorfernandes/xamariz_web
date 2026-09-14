@@ -9,23 +9,40 @@ use Illuminate\Support\Str;
 class TeamMemberSeeder extends Seeder
 {
     /**
-     * Cadastra os membros da equipa a partir das fotos em public/equipa.
-     * Cada ficheiro tem o formato "Nome - Função.jpg".
+     * Equipa da Xamariz, alinhada com a Knowledge Base "Quem Somos" 2026.
+     *
+     * As fotos vivem em public/equipa/<primeiro-nome>.jpg (nomes de ficheiro
+     * curtos e sem acentos, para URLs seguros). Como o nome do ficheiro já não
+     * contém a função, o nome completo, o cargo e o departamento são definidos
+     * explicitamente no mapa abaixo (evita perder os cargos ao re-semear).
+     *
      * A equipa existente é apagada e recriada a cada execução.
      */
     public function run(): void
     {
-        // Apagar equipa existente e recriar a partir das fotos
         TeamMember::query()->delete();
 
-        $dir = public_path('equipa');
-
-        $files = array_merge(
-            glob($dir . '/*.jpg') ?: [],
-            glob($dir . '/*.jpeg') ?: [],
-            glob($dir . '/*.png') ?: [],
-        );
-        sort($files, SORT_NATURAL | SORT_FLAG_CASE);
+        // [ ficheiro em public/equipa, Nome completo, Função, Departamento ]
+        // Departamentos: ceo | direction | specialist
+        $members = [
+            ['Edson',     'Edson Azevedo',       'Director Geral',                        'ceo'],
+            ['Junior',    'Júnior Fernandes',    'Director de Arte',                      'direction'],
+            ['Ernesto',   'Ernesto Longa',       'Coordenador de Operações',              'direction'],
+            ['Adriano',   'Adriano Faria',       'Designer Gráfico',                      'specialist'],
+            ['Claudio',   'Cláudio Gonçalves',   'Designer Gráfico',                      'specialist'],
+            ['Agostinho', 'Agostinho Raimundo',  'Videomaker',                            'specialist'],
+            ['Paulo',     'Paulo Ambrósio',      'Videomaker',                            'specialist'],
+            ['Erickson',  'Erickson Lelo',       'Fotógrafo',                             'specialist'],
+            ['Daniel',    'Daniel Samassumba',   'Web Designer',                          'specialist'],
+            ['Isaias',    'Isaías Adão',         'Web Designer',                          'specialist'],
+            ['Joelson',   'Joelson Fortunato',   'Web Designer',                          'specialist'],
+            ['Benjamim',  'Benjamim Maiato',     'Gestor de Projectos Digitais',         'specialist'],
+            ['Fredy',     'Fredy Yange',         'Gestor de Projectos Digitais',         'specialist'],
+            ['Estefania', 'Estefânia António',   'Gestora de Projectos Digitais',        'specialist'],
+            ['Julio',     'Júlio Adriano',       'Social Media',                          'specialist'],
+            ['Anaureth',  'Anaureth Missula',    'Analista de Processos Internos',        'specialist'],
+            ['Franio',    'Frânio António',      'Assistente Administrativo e Financeiro', 'specialist'],
+        ];
 
         $edsonBio = implode("\n\n", [
             'Edson Azevedo é o fundador e Director Geral da Xamariz.',
@@ -35,35 +52,28 @@ class TeamMemberSeeder extends Seeder
             'Hoje, lidera a Xamariz com a ambição de construir uma empresa de comunicação capaz de ajudar organizações angolanas a comunicar ao nível daquilo que representam.',
         ]);
 
-        $order = 2; // Edson (CEO) fica em 1º
+        $dir = public_path('equipa');
+        $order = 1;
 
-        foreach ($files as $file) {
-            $filename = basename($file);
-            $base = pathinfo($filename, PATHINFO_FILENAME); // "Nome - Função"
-
-            // Separa "Nome - Função" (tolera "Nome -Função" / "Nome- Função")
-            $parts = preg_split('/\s*-\s*/', $base, 2);
-            $name = trim($parts[0] ?? $base);
-            $role = trim($parts[1] ?? '');
-
-            $isEdson = Str::startsWith(Str::lower($name), 'edson');
-            if ($isEdson) {
-                $role = 'Director Geral';
+        foreach ($members as [$file, $name, $role, $department]) {
+            // Encontra a foto (tolera .jpg/.jpeg/.png); se não existir, fica sem foto.
+            $photo = null;
+            foreach (['jpg', 'jpeg', 'png', 'webp'] as $ext) {
+                if (is_file($dir . '/' . $file . '.' . $ext)) {
+                    $photo = 'equipa/' . $file . '.' . $ext;
+                    break;
+                }
             }
 
-            $department = $isEdson
-                ? 'ceo'
-                : (Str::contains($role, ['Director', 'Diretor', 'Coordenador']) ? 'direction' : 'specialist');
-
             TeamMember::create([
-                'name' => $name,
-                'slug' => Str::slug($name),
-                'role' => $role,
-                'department' => $department,
-                'bio' => $isEdson ? $edsonBio : null,
-                'photo_path' => 'equipa/' . $filename,
-                'display_order' => $isEdson ? 1 : $order++,
-                'is_active' => true,
+                'name'          => $name,
+                'slug'          => Str::slug($name),
+                'role'          => $role,
+                'department'    => $department,
+                'bio'           => $department === 'ceo' ? $edsonBio : null,
+                'photo_path'    => $photo,
+                'display_order' => $order++,
+                'is_active'     => true,
             ]);
         }
     }

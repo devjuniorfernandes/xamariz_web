@@ -8,7 +8,7 @@ return [
         'areas' => 'Áreas',
         'thinking' => 'Como pensamos',
         'aog' => 'Contacto',
-        'cta' => 'Agende uma conversa no AOG',
+        'cta' => 'Agende uma conversa',
     ],
 
     // ─── 1. Hero ───────────────────────────────────
@@ -17,7 +17,7 @@ return [
         'title_line1' => 'A sua empresa não precisa de mais marketing.',
         'title_line2' => 'Precisa de comunicar melhor.',
         'subtitle' => "Num sector onde confiança, reputação e clareza influenciam decisões, a comunicação deixou de ser um complemento.\nTornou-se um activo estratégico.",
-        'cta' => 'Agende uma conversa durante o AOG',
+        'cta' => 'Agende uma conversa',
         'scroll' => 'Descer',
     ],
 
@@ -138,12 +138,12 @@ return [
     'aog' => [
         'eyebrow' => 'Angola Oil & Gas',
         'title' => 'Da comunicação nasce a confiança que move a energia.',
-        'lead' => 'Encontre-se connosco no Angola Oil & Gas. Estaremos presentes no Angola Oil & Gas e teremos todo o gosto em conversar consigo.',
+        'lead' => 'Estaremos presentes no Angola Oil & Gas e teremos todo o gosto em conversar consigo.',
         'point_meetings' => 'Reuniões executivas presenciais durante o evento em Luanda',
         'point_contact' => 'Contacto directo da equipa de energia: aog@xamariz.ao',
         'form' => [
-            'title' => 'Agendar conversa durante o AOG',
-            'subtitle' => 'Preencha os dados abaixo para coordenarmos o horário mais conveniente durante o AOG.',
+            'title' => 'Agendar conversa',
+            'subtitle' => 'Preencha os dados abaixo para coordenarmos o horário mais conveniente.',
             'first_name' => 'Nome',
             'first_name_ph' => 'ex: Manuel',
             'last_name' => 'Sobrenome',
@@ -153,8 +153,8 @@ return [
             'company' => 'Organização / Empresa',
             'company_ph' => 'ex: Operadora, Prestador de Serviços...',
             'message' => 'Tema de interesse ou disponibilidade',
-            'message_ph' => 'Indique o dia preferencial durante o AOG ou os principais desafios de comunicação da sua organização...',
-            'submit' => 'Agendar conversa durante o AOG',
+            'message_ph' => 'Indique os principais desafios de comunicação da sua organização...',
+            'submit' => 'Agendar conversa',
             'error' => 'Ocorreu um erro ao enviar. Verifique os dados e tente novamente.',
         ],
     ],
@@ -165,7 +165,7 @@ return [
         'areas_title' => 'Links',
         'contact_title' => 'Contactos',
         'energy_team' => 'Equipa de Energia',
-        'back_to_site' => 'Voltar ao site Xamariz',
+        'back_to_site' => 'WEBSITE XAMARIZ',
     ],
 
 ];

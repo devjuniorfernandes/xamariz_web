@@ -122,8 +122,6 @@
                 <a href="{{ route('home') }}" class="text-xs text-white/60 hover:text-[#ff5e14] transition-colors">
                     {{ __('oilandgas.footer.back_to_site') }}
                 </a>
-                <a href="{{ route('privacy') }}" class="text-xs text-white/60 hover:text-[#ff5e14] transition-colors">{{ __('common.privacy_policy') }}</a>
-                <a href="{{ route('cookies') }}" class="text-xs text-white/60 hover:text-[#ff5e14] transition-colors">{{ __('common.cookie_policy') }}</a>
             </div>
         </div>
     </div>

@@ -17,75 +17,9 @@
 ════════════════════════════════════════════════ --}}
 
 <section
-    class="relative overflow-hidden py-32 text-white bg-gradient-to-br from-[#09297a] via-[#132058] to-[#281b45]"
+    class="relative overflow-hidden py-32 text-white bg-[#0f1f4a]"
+    style="background-image:url('{{ asset('grad.jfif') }}');background-size:cover;background-position:center;background-repeat:no-repeat;"
 >
-
-    {{-- DECORAÇÕES DE FUNDO --}}
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-
-        {{-- Linhas geométricas --}}
-        <svg
-            class="absolute right-0 top-0 h-full w-1/2"
-            viewBox="0 0 600 600"
-            preserveAspectRatio="xMidYMid slice"
-            fill="none"
-            stroke="#EE5129"
-        >
-            <g stroke-width="1.2">
-
-                <path d="M100 0 L600 500" opacity="0.40" />
-                <path d="M200 0 L600 400" opacity="0.50" />
-                <path d="M300 0 L600 300" opacity="0.60" />
-                <path d="M400 0 L600 200" opacity="0.70" />
-                <path d="M500 0 L600 100" opacity="0.80" />
-
-                <path d="M600 0 L100 500" opacity="0.40" />
-                <path d="M600 100 L200 500" opacity="0.50" />
-                <path d="M600 200 L300 500" opacity="0.60" />
-                <path d="M600 300 L400 500" opacity="0.70" />
-
-                {{-- Círculos --}}
-                <circle
-                    cx="450"
-                    cy="200"
-                    r="180"
-                    stroke-dasharray="4 4"
-                    opacity="0.35"
-                />
-
-                <circle
-                    cx="450"
-                    cy="200"
-                    r="300"
-                    stroke-dasharray="6 6"
-                    opacity="0.25"
-                />
-
-            </g>
-        </svg>
-
-
-        {{-- Linhas curvas --}}
-        <svg
-            class="absolute -right-20 -bottom-20 w-[600px] h-[600px]"
-            viewBox="0 0 400 400"
-            preserveAspectRatio="xMidYMid meet"
-            fill="none"
-            stroke="#EE5129"
-        >
-            <path
-                d="
-                    M0,400 Q200,200 400,0
-                    M0,350 Q200,150 400,-50
-                    M0,300 Q200,100 400,-100
-                    M0,250 Q200,50 400,-150
-                "
-                stroke-width="1"
-                opacity="0.35"
-            />
-        </svg>
-
-    </div>
 
 
     {{-- CONTEÚDO --}}

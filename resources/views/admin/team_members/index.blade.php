@@ -32,12 +32,8 @@
                     <tr class="hover:bg-slate-800/40 transition-colors">
                         <td class="py-4 px-6">
                             <div class="flex items-center gap-3">
-                                @php
-                                    $pPath = $member->photo_path;
-                                    $pUrl = $pPath ? (Str::startsWith($pPath, ['http://', 'https://']) ? $pPath : asset(ltrim($pPath, '/'))) : null;
-                                @endphp
-                                @if($pUrl)
-                                    <img src="{{ $pUrl }}" alt="{{ $member->name }}" class="w-10 h-10 rounded-full object-cover bg-slate-800 border border-slate-700">
+                                @if($member->photo_src)
+                                    <img src="{{ $member->photo_src }}" alt="{{ $member->name }}" class="w-10 h-10 rounded-full object-cover bg-slate-800 border border-slate-700">
                                 @else
                                     <div class="w-10 h-10 rounded-full bg-slate-800 text-white font-bold flex items-center justify-center text-xs">
                                         {{ substr($member->name, 0, 1) }}

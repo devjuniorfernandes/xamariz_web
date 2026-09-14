@@ -230,18 +230,20 @@
                                     : asset(ltrim($wCover, '/')))
                                 : 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=700&auto=format&fit=crop&q=80';
                         @endphp
-                        <a href="{{ route('work.show', $wSlug) }}"
-                            class="work-card h-[420px] rounded-none overflow-hidden block relative group reveal">
+                        <div x-data role="button" tabindex="0"
+                            @click="$dispatch('open-lightbox', { src: @js($wImg), alt: @js($wTitle) })"
+                            @keydown.enter="$dispatch('open-lightbox', { src: @js($wImg), alt: @js($wTitle) })"
+                            class="work-card h-[420px] rounded-none overflow-hidden block relative group reveal cursor-zoom-in">
                             <img src="{{ $wImg }}" alt="{{ $wTitle }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div
                                 class="card-overlay absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent">
                                 <div
-                                    class="card-arrow absolute top-6 right-6 text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+                                    class="card-arrow absolute top-6 right-6 text-white group-hover:scale-110 transition-transform">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2.5">
-                                        <path d="M7 17L17 7" />
-                                        <path d="M7 7h10v10" />
+                                        <circle cx="11" cy="11" r="7" />
+                                        <path d="M21 21l-4.3-4.3" />
                                     </svg>
                                 </div>
                                 <p class="font-sans text-gray-300 text-xs mb-1 font-semibold uppercase tracking-wider">
@@ -250,7 +252,7 @@
                                 </h3>
                                 <p class="font-sans text-gray-300 text-sm leading-relaxed">{{ $wDesc }}</p>
                             </div>
-                        </a>
+                        </div>
                     @endforeach
                 </div>
             @else

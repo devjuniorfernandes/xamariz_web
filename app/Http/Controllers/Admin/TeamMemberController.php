@@ -42,8 +42,13 @@ class TeamMemberController extends Controller
         $validated['slug'] = Str::slug($request->name);
 
         if ($request->hasFile('photo_path')) {
-            $path = $request->file('photo_path')->store('team', 'public');
-            $validated['photo_path'] = Storage::url($path);
+            // Guarda diretamente em public/team (servido via asset()), sem depender
+            // do symlink "storage" — evita imagens partidas em produção.
+            $file = $request->file('photo_path');
+            $filename = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME))
+                . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('team'), $filename);
+            $validated['photo_path'] = 'team/' . $filename;
         } elseif ($request->filled('photo_url')) {
             $validated['photo_path'] = $request->photo_url;
         }
@@ -83,13 +88,18 @@ class TeamMemberController extends Controller
         }
 
         if ($request->hasFile('photo_path')) {
-            $path = $request->file('photo_path')->store('team', 'public');
-            $validated['photo_path'] = Storage::url($path);
+            // Guarda diretamente em public/team (servido via asset()), sem depender
+            // do symlink "storage" — evita imagens partidas em produção.
+            $file = $request->file('photo_path');
+            $filename = Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME))
+                . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('team'), $filename);
+            $validated['photo_path'] = 'team/' . $filename;
         } elseif ($request->filled('photo_url')) {
             $validated['photo_path'] = $request->photo_url;
         }
 
-        $validated['is_active'] = $request->boolean('is_active');
+        $validated['is_active'] = $request->boolean('is_active', $teamMember->is_active);
 
         $teamMember->update($validated);
 

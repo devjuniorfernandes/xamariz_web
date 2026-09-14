@@ -10,12 +10,16 @@
 @section('content')
 
     {{-- Header --}}
-    <section class="pt-40 pb-20 bg-white text-gray-900">
+    <x-page-hero :title="\App\Models\SiteSetting::get('contact_hero_title', 'Contactos')"
+        :subtitle="\App\Models\SiteSetting::get('contact_hero_subtitle', 'Vamos conversar sobre o próximo passo da comunicação da sua marca.')" />
+
+    {{-- Título editorial da página --}}
+    <section class="py-16 sm:py-20 bg-white text-gray-900 border-b border-gray-100">
         <div class="container-myriad">
             <div class="max-w-3xl reveal">
-                <h1 class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
+                <h2 class="font-sans text-3xl sm:text-5xl font-normal text-gray-900 tracking-tight leading-[1.12] mb-6">
                     {{ __('contact.hero_title') }}
-                </h1>
+                </h2>
                 <p class="font-sans text-gray-600 text-lg sm:text-xl leading-relaxed">
                     {{ __('contact.hero_subtitle') }}
                 </p>
@@ -140,7 +144,9 @@
 
         <div class="w-full h-[500px] overflow-hidden leading-none border-t border-b border-gray-200">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d947.7799826607414!2d13.22004904995043!3d-8.827960672144876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f3bf03a151ed%3A0xebfa0891c7ef7dc1!2sXamariz%20Marketing!5e1!3m2!1spt-PT!2sao!4v1786881385788!5m2!1spt-PT!2sao"
+                title="Localização da Xamariz — Rua Francisco Sotto Mayor 18, Bairro Azul, Luanda"
+                src="https://maps.google.com/maps?q=-8.827960672144876,13.22004904995043&z=16&hl=pt-PT&output=embed"
+                width="600" height="500"
                 class="w-full h-full border-0 block" allowfullscreen="" loading="lazy"
                 referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>

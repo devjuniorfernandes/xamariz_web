@@ -212,7 +212,8 @@
     WHAT WE DO
     ════════════════════════════════════════════════ --}}
     <section
-        class="relative bg-gradient-to-br from-[#09297a] via-[#132058] to-[#281b45] py-28 md:py-36 overflow-hidden text-white"
+        class="relative bg-[#0f1f4a] py-28 md:py-36 overflow-hidden text-white"
+        style="background-image:url('{{ asset('grad.jfif') }}');background-size:cover;background-position:center;background-repeat:no-repeat;"
         id="whoweare">
 
         {{-- Overlay Mesh SVG --}}
@@ -400,20 +401,14 @@
             " class="relative aspect-[16/10] select-none overflow-hidden rounded-none bg-gray-900 shadow-2xl group cursor-ew-resize">
 
                         {{-- Imagem Base (Depois / Resultado Real) --}}
-                        <img src="{{ \App\Models\SiteSetting::get(
-        'home_slider_after_img',
-        'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&auto=format&fit=crop&q=80'
-    ) }}" alt="Depois — Experiência Real"
+                        <img src="{{ asset('home2.png') }}" alt="Depois — Experiência Real"
                             class="absolute inset-0 w-full h-full object-cover pointer-events-none">
 
 
                         {{-- Tag Badge: Depois / Resultados --}}
                         <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-black/70 backdrop-blur-md rounded-full text-[10px] font-sans font-bold tracking-widest text-white uppercase pointer-events-none transition-opacity duration-200"
                             :class="position > 85 ? 'opacity-0' : 'opacity-100'">
-                            {{ \App\Models\SiteSetting::get(
-        'home_slider_result_tag',
-        'Resultado'
-    ) }}
+                            Depois
                         </div>
 
 
@@ -421,20 +416,14 @@
                         <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden"
                             :style="`clip-path: inset(0 calc(100% - ${position}%) 0 0);`">
 
-                            <img src="{{ \App\Models\SiteSetting::get(
-        'home_slider_before_img',
-        'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200&auto=format&fit=crop&q=80'
-    ) }}" alt="Antes — Conceito & Estrutura"
+                            <img src="{{ asset('home1.png') }}" alt="Antes — Conceito & Estrutura"
                                 class="absolute inset-0 w-full h-full object-cover grayscale brightness-90 contrast-125">
 
 
                             {{-- Tag Badge: Antes / Conceito --}}
                             <div class="absolute top-4 left-4 z-10 px-3 py-1 bg-black/70 backdrop-blur-md rounded-full text-[10px] font-sans font-bold tracking-widest text-white uppercase pointer-events-none transition-opacity duration-200"
                                 :class="position < 15 ? 'opacity-0' : 'opacity-100'">
-                                {{ \App\Models\SiteSetting::get(
-        'home_slider_concept_tag',
-        'Conceito'
-    ) }}
+                                Antes
                             </div>
 
                         </div>
@@ -480,103 +469,116 @@
     </section>
 
     {{-- ══════════════════════════════════════════════
-    O QUE MUDA — 4 PILARES DE RESULTADO
+    CLAREZA EXIGE MÉTODO — 3 PASSOS
     ════════════════════════════════════════════════ --}}
-    <section class="border-t border-b-2 border-[var(--color-brand-accent)] bg-[#fbfbfb]/80 py-16 sm:py-20 text-gray-900">
-        <div class="container-myriad">
-            <style>
-                .pillars-grid>.pillar-item {
-                    border-right: 1px solid #d1d5db !important;
-                }
+    <section
+        class="relative overflow-hidden py-20 sm:py-28 text-gray-900"
+        style="background: linear-gradient(160deg, #ffffff 0%, #fdf1ea 55%, #fbe6da 100%);">
 
-                .pillars-grid>.pillar-item:last-child {
-                    border-right: none !important;
-                }
+        {{-- Flourish decorativo (canto inferior esquerdo) --}}
+        <svg class="absolute -left-24 bottom-0 w-[520px] h-[520px] text-[var(--color-brand-accent)] opacity-[0.12] pointer-events-none"
+            viewBox="0 0 400 400" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M0,400 Q220,240 400,60 M-20,360 Q200,200 380,20 M-40,320 Q180,160 360,-20 M-60,280 Q160,120 340,-60 M-80,240 Q140,80 320,-100"
+                stroke-width="1.1" />
+        </svg>
 
-                @media (max-width: 1023px) {
-                    .pillars-grid>.pillar-item {
-                        border-right: none !important;
-                    }
-                }
-            </style>
+        <div class="container-myriad relative z-10">
 
+            {{-- Cabeçalho --}}
+            <div class="text-center max-w-3xl mx-auto reveal">
+                <p class="font-sans text-xs sm:text-sm font-bold uppercase tracking-[0.22em] text-[var(--color-brand-accent)] mb-4">
+                    {{ \App\Models\SiteSetting::get('home_method_kicker', 'Clareza exige método.') }}
+                </p>
 
-            <div class="pillars-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
+                <h2 class="font-sans font-extrabold text-[#0f1f4a] tracking-tight leading-[1.1]"
+                    style="font-size: clamp(1.75rem, 3.6vw, 3rem);">
+                    {{ \App\Models\SiteSetting::get('home_method_title', 'É assim que transformamos clareza em impacto.') }}
+                </h2>
 
-                {{-- 01 --}}
-                <div class="pillar-item reveal border-r border-gray-600 lg:px-8 first:lg:pl-0 pb-8 lg:pb-0">
-
-                    <span
-                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
-                        01
-                    </span>
-
-                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
-                        {{ \App\Models\SiteSetting::get('home_pillar1_title', 'Deixa de lutar pela atenção') }}
-                    </h3>
-
-                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
-                        {{ \App\Models\SiteSetting::get('home_pillar1_desc', 'A mensagem certa chega às pessoas certas sem esforço desperdiçado.') }}
-                    </p>
-
-                </div>
+                <div class="w-14 h-[3px] bg-[var(--color-brand-accent)] mx-auto mt-6"></div>
+            </div>
 
 
-                {{-- 02 --}}
-                <div class="pillar-item reveal delay-100 lg:px-8 pb-8 lg:pb-0">
+            {{-- 3 Passos --}}
+            @php
+                $methodSteps = [
+                    [
+                        'num' => '01',
+                        'title' => \App\Models\SiteSetting::get('home_method_step1_title', 'Compreender'),
+                        'desc' => \App\Models\SiteSetting::get('home_method_step1_desc', 'Analisamos o seu negócio, o mercado, o público e a concorrência para identificar oportunidades reais de diferenciação.'),
+                        'icon' => 'search',
+                    ],
+                    [
+                        'num' => '02',
+                        'title' => \App\Models\SiteSetting::get('home_method_step2_title', 'Clarificar'),
+                        'desc' => \App\Models\SiteSetting::get('home_method_step2_desc', 'Encontramos o posicionamento, a mensagem e a estratégia que tornam o valor da sua empresa mais claro e relevante para as pessoas certas.'),
+                        'icon' => 'bulb',
+                    ],
+                    [
+                        'num' => '03',
+                        'title' => \App\Models\SiteSetting::get('home_method_step3_title', 'Comunicar'),
+                        'desc' => \App\Models\SiteSetting::get('home_method_step3_desc', 'Criamos e executamos comunicação, conteúdos e experiências que chegam às pessoas certas e geram resultados para o seu negócio.'),
+                        'icon' => 'megaphone',
+                    ],
+                ];
+            @endphp
 
-                    <span
-                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
-                        02
-                    </span>
+            <div class="grid grid-cols-1 md:grid-cols-3 mt-16 sm:mt-20">
 
-                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
-                        {{ \App\Models\SiteSetting::get('home_pillar2_title', 'Os clientes certos aproximam-se') }}
-                    </h3>
+                @foreach ($methodSteps as $i => $step)
+                    <div class="reveal delay-{{ $i * 100 }} px-0 md:px-10 py-8 md:py-0 {{ $i > 0 ? 'md:border-l md:border-[#e7d6cb] border-t md:border-t-0 border-[#e7d6cb]' : '' }}">
 
-                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
-                        {{ \App\Models\SiteSetting::get('home_pillar2_desc', 'Quando entendem o que faz, os que precisam de si procuram-no.') }}
-                    </p>
+                        {{-- Ícone + Número/Título --}}
+                        <div class="flex items-center gap-5">
 
-                </div>
+                            <div class="shrink-0 w-16 h-16 rounded-full bg-[var(--color-brand-accent)]/10 flex items-center justify-center">
+                                @switch($step['icon'])
+                                    @case('search')
+                                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="text-[var(--color-brand-accent)]">
+                                            <circle cx="11" cy="11" r="7"></circle>
+                                            <path d="m21 21-4.3-4.3"></path>
+                                        </svg>
+                                        @break
+                                    @case('bulb')
+                                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="text-[var(--color-brand-accent)]">
+                                            <path d="M9 18h6"></path>
+                                            <path d="M10 22h4"></path>
+                                            <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"></path>
+                                        </svg>
+                                        @break
+                                    @case('megaphone')
+                                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                                            class="text-[var(--color-brand-accent)]">
+                                            <path d="m3 11 18-5v12L3 14v-3z"></path>
+                                            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path>
+                                        </svg>
+                                        @break
+                                @endswitch
+                            </div>
 
+                            <div>
+                                <span class="font-mono text-lg font-bold text-[var(--color-brand-accent)] tracking-wide block leading-none mb-2">
+                                    {{ $step['num'] }}
+                                </span>
+                                <h3 class="font-sans font-bold text-[#0f1f4a] text-2xl leading-none tracking-tight">
+                                    {{ $step['title'] }}
+                                </h3>
+                            </div>
 
-                {{-- 03 --}}
-                <div class="pillar-item reveal delay-200 lg:px-8 pb-8 lg:pb-0">
+                        </div>
 
-                    <span
-                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
-                        03
-                    </span>
+                        {{-- Descrição --}}
+                        <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed mt-6">
+                            {{ $step['desc'] }}
+                        </p>
 
-                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
-                        {{ \App\Models\SiteSetting::get('home_pillar3_title', 'A concorrência fica para trás') }}
-                    </h3>
-
-                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
-                        {{ \App\Models\SiteSetting::get('home_pillar3_desc', 'Uma mensagem clara é a vantagem que a maioria não tem coragem de construir.') }}
-                    </p>
-
-                </div>
-
-
-                {{-- 04 --}}
-                <div class="pillar-item reveal delay-300 lg:px-8 last:lg:pr-0">
-
-                    <span
-                        class="font-mono text-2xl sm:text-xl font-bold text-[var(--color-brand-accent)] tracking-widest block mb-4">
-                        04
-                    </span>
-
-                    <h3 class="font-sans font-bold text-gray-900 text-lg sm:text-xl leading-snug tracking-tight mb-3">
-                        {{ \App\Models\SiteSetting::get('home_pillar4_title', 'O crescimento torna-se previsível') }}
-                    </h3>
-
-                    <p class="font-sans text-gray-500 text-sm sm:text-base leading-relaxed">
-                        {{ \App\Models\SiteSetting::get('home_pillar4_desc', 'Com uma base sólida, cada acção gera mais resultado.') }}
-                    </p>
-
-                </div>
+                    </div>
+                @endforeach
 
             </div>
 
@@ -606,7 +608,7 @@
                     <div class="lg:col-span-7 reveal">
 
                         <h2 class="font-sans text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.06]">
-                            {{ \App\Models\SiteSetting::get('home_services_heading', 'Transformamos ideias em comunicação que faz sentido.') }}
+                            {{ \App\Models\SiteSetting::get('home_services_heading', 'Da estratégia à execução, tudo começa pela clareza.') }}
                         </h2>
 
                     </div>
@@ -614,8 +616,8 @@
 
                     <div class="flex flex-col items-start sm:items-end gap-5 max-w-lg">
 
-                        <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight text-left sm:text-right">
-                            {!! nl2br(e(\App\Models\SiteSetting::get('home_services_title', "COMUNICAÇÃO CLARA.\nIMPACTO REAL."))) !!}
+                        <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight text-left sm:text-right whitespace-nowrap">
+                            {{ \App\Models\SiteSetting::get('home_services_title', 'Como podemos ajudar') }}
                         </h2>
 
 
@@ -859,24 +861,26 @@
                             $clientName = $work->client ? $work->client->name : '';
                             $categoryFilter = $work->category ? $work->category->filter_key : 'all';
                             $colSpan = match ($index) {
-                                0 => 'lg:col-span-7 h-[500px]',
-                                1 => 'lg:col-span-5 h-[500px]',
-                                default => 'lg:col-span-4 h-[380px]',
+                                0, 1, 2 => 'lg:col-span-4 h-[380px]',
+                                default => 'lg:col-span-6 h-[500px]',
                             };
                             $cover = $work->cover_image
                                 ? asset($work->cover_image)
                                 : 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=900&auto=format&fit=crop&q=80';
                         @endphp
 
-                        <a href="{{ route('work.show', $work->slug) }}" class="work-card {{ $colSpan }}"
+                        <div x-data role="button" tabindex="0"
+                            @click="$dispatch('open-lightbox', { src: @js($cover), alt: @js($work->title) })"
+                            @keydown.enter="$dispatch('open-lightbox', { src: @js($cover), alt: @js($work->title) })"
+                            class="work-card {{ $colSpan }} cursor-zoom-in"
                             data-sector="{{ $categoryFilter }}">
                             <img src="{{ $cover }}" alt="{{ $work->title }}">
                             <div class="card-overlay">
                                 <div class="card-arrow">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2">
-                                        <path d="M7 17L17 7" />
-                                        <path d="M7 7h10v10" />
+                                        <circle cx="11" cy="11" r="7" />
+                                        <path d="M21 21l-4.3-4.3" />
                                     </svg>
                                 </div>
                                 @if ($clientName)
@@ -890,7 +894,7 @@
                                     {{ Str::limit($work->summary ?? $work->description, 120) }}
                                 </p>
                             </div>
-                        </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -906,8 +910,8 @@
 
                 <div class="reveal max-w-4xl mb-16 sm:mb-20">
                     <h2
-                        class="font-sans text-2xl sm:text-4xl font-normal text-gray-900 tracking-tight leading-[1.12]">
-                        {{ \App\Models\SiteSetting::get('home_brands_title', 'Trabalhamos com marcas audazes impulsionando o seu próximo grande salto.') }}
+                        class="font-sans text-xl sm:text-3xl font-normal text-gray-900 tracking-tight leading-[1.12]">
+                        Empresas que confiam na Xamariz
                     </h2>
                 </div>
 
@@ -926,7 +930,7 @@
                     $duplicatedLogos = $brandLogos->concat($brandLogos);
                 @endphp
 
-                <div class="flex items-center gap-6 sm:gap-10 w-max animate-marquee hover:[animation-play-state:paused]">
+                <div class="flex items-center gap-12 sm:gap-20 w-max animate-marquee hover:[animation-play-state:paused]">
                     @foreach ($duplicatedLogos as $logoItem)
                         @php
                             $lPath = is_object($logoItem) ? $logoItem->logo_path : $logoItem['logo_path'] ?? '';
@@ -938,35 +942,22 @@
                                     : asset(ltrim($lPath, '/')))
                                 : null;
                         @endphp
-                        <a href="{{ route('clients.show', $lSlug) }}" title="{{ $lName }}"
-                            class="shrink-0 w-40 sm:w-52 h-20 flex items-center justify-center cursor-pointer opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:scale-110 hover:-translate-y-1 transition-all duration-300 ease-out">
+                        <div title="{{ $lName }}"
+                            class="shrink-0 w-44 sm:w-44 h-26 flex items-center justify-center opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:scale-110 hover:-translate-y-1 transition-all duration-300 ease-out">
                             @if (Str::startsWith($lPath, '<svg'))
                                 {!! $lPath !!}
                             @elseif($lUrl)
                                 <img src="{{ $lUrl }}" alt="{{ $lName }}"
-                                    class="max-w-full max-h-16 object-contain pointer-events-none">
+                                    class="max-w-full max-h-12 object-contain pointer-events-none">
                             @else
                                 <span class="font-sans font-bold text-gray-800 text-sm">{{ $lName }}</span>
                             @endif
-                        </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
 
-            <div class="container-myriad">
-                <div class="reveal delay-200 flex justify-start">
-                    <a href="{{ route('about') }}"
-                        class="inline-flex items-center gap-3 px-7 py-3 rounded-full border border-gray-900 text-gray-900 hover:border-[var(--color-brand-accent)] hover:text-[var(--color-brand-accent)] text-xs font-semibold uppercase tracking-wider transition-all duration-300 group">
-                        <span>{{ \App\Models\SiteSetting::get('home_brands_cta', 'VER CLIENTES') }}</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                            stroke-linecap="round" stroke-linejoin="round"
-                            class="text-[var(--color-brand-accent)] group-hover:translate-x-1 transition-transform">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+          
         </section>
     @endif
 
@@ -979,10 +970,10 @@
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12 sm:mb-16 reveal">
                     <div>
                         <h2 class="font-sans text-3xl sm:text-5xl font-bold text-gray-900 tracking-tight">
-                            {{ \App\Models\SiteSetting::get('home_insights_title', 'Aprenda a comunicar melhor') }}
+                            Ideias para empresas que querem fazer a diferença.
                         </h2>
                         <p class="font-sans text-gray-700 text-lg sm:text-xl leading-relaxed max-w-lg mt-2">
-                            {{ \App\Models\SiteSetting::get('home_insights_subtitle', 'Ideias simples para melhorar a sua comunicação.') }}
+                            Comunicação, estratégia e transformação digital para um mercado em constante mudança.
                         </p>
                     </div>
                     <a href="{{ route('insights.index') }}"
@@ -1004,7 +995,7 @@
                                 ? asset($post->cover_image)
                                 : 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop&q=80';
                         @endphp
-                        <a href="{{ route('insights.show', $post->slug) }}" class="group block">
+                        <a href="{{ $post->url }}" class="group block">
                             <div class="aspect-[16/10] overflow-hidden bg-gray-200 mb-4">
                                 <img src="{{ $cover }}" alt="{{ $post->title }}"
                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">

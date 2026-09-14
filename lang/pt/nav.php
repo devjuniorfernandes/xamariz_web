@@ -7,7 +7,7 @@ return [
     'clients' => 'Clientes',
     'team' => 'Equipa',
     'about' => 'Quem Somos',
-    'insights' => 'Insights',
+    'insights' => 'Artigos',
     'contacts' => 'Contactos',
     'start_project' => 'Fale Connosco',
     'schedule_meeting' => 'Agendar Reunião',

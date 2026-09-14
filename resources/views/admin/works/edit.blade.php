@@ -4,15 +4,12 @@
 @section('header_title', 'Editar Projeto: '.$work->title)
 
 @section('content')
-@php
-    $galleryData = ! empty($work->gallery) ? $work->gallery : [
+<div class="max-w-4xl mx-auto space-y-6" x-data="{
+    gallery: @json($work->gallery ?? [
         ['url' => 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=1200&auto=format&fit=crop&q=80', 'size' => 'full', 'caption' => ''],
         ['url' => 'https://images.unsplash.com/photo-1604187351574-c75ca79f5807?w=900&auto=format&fit=crop&q=80', 'size' => 'half', 'caption' => ''],
-        ['url' => 'https://images.unsplash.com/photo-1601924921557-45e6dea0a157?w=900&auto=format&fit=crop&q=80', 'size' => 'half', 'caption' => ''],
-    ];
-@endphp
-<div class="max-w-4xl mx-auto space-y-6" x-data="{
-    gallery: @json($galleryData),
+        ['url' => 'https://images.unsplash.com/photo-1601924921557-45e6dea0a157?w=900&auto=format&fit=crop&q=80', 'size' => 'half', 'caption' => '']
+    ]),
     addImage() {
         this.gallery.push({ url: '', size: 'full', caption: '' });
     },

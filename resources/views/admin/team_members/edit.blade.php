@@ -42,7 +42,16 @@
 
             <div class="md:col-span-2">
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Ou URL de Foto Externa</label>
-                <input type="url" name="photo_url" value="{{ old('photo_url', $teamMember->photo_path) }}" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-[#fe3d0a] text-sm">
+                @php
+                    // Só pré-preenche quando a foto atual é um URL externo. Se for um
+                    // caminho local (ex.: equipa/Adriano.jpg), deixa vazio — senão o
+                    // type="url" do navegador bloqueava a submissão a pedir um URL válido.
+                    $externalPhoto = \Illuminate\Support\Str::startsWith($teamMember->photo_path ?? '', ['http://', 'https://'])
+                        ? $teamMember->photo_path
+                        : '';
+                @endphp
+                <input type="url" name="photo_url" value="{{ old('photo_url', $externalPhoto) }}" placeholder="https://…" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-[#fe3d0a] text-sm">
+                <p class="mt-1 text-[11px] text-slate-500">A foto atual mantém-se se deixares este campo vazio e não carregares um novo ficheiro.</p>
             </div>
 
             <div class="md:col-span-2">
@@ -63,6 +72,15 @@
             <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">E-mail Profissional</label>
                 <input type="email" name="email" value="{{ old('email', $teamMember->email) }}" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-[#fe3d0a] text-sm">
+            </div>
+
+            <div class="md:col-span-2">
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Estado</label>
+                <input type="hidden" name="is_active" value="0">
+                <label class="inline-flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" name="is_active" value="1" {{ old('is_active', $teamMember->is_active) ? 'checked' : '' }} class="w-5 h-5 rounded bg-slate-950 border-slate-700 text-[#fe3d0a] focus:ring-[#fe3d0a]">
+                    <span class="text-sm text-slate-300">Membro ativo (visível no site)</span>
+                </label>
             </div>
         </div>
 
