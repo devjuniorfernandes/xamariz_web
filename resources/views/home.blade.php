@@ -607,7 +607,7 @@
 
                     <div class="lg:col-span-7 reveal">
 
-                        <h2 class="font-sans text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
+                        <h2 class="font-sans text-2xl sm:text-3xl md:text-[2rem] font-bold text-white tracking-tight leading-tight">
                             {{ \App\Models\SiteSetting::get('home_services_heading', 'Da estratégia à execução, tudo começa pela clareza.') }}
                         </h2>
 
