@@ -53,7 +53,7 @@ class HomeContentSeeder extends Seeder
         SiteSetting::set('insights_hero_subtitle', 'Pensar melhor. Comunicar melhor.', 'page_content');
 
         SiteSetting::set('contact_hero_title', 'Contactos', 'page_content');
-        SiteSetting::set('contact_hero_subtitle', 'Vamos conversar sobre o próximo passo da comunicação da sua marca.', 'page_content');
+        SiteSetting::set('contact_hero_subtitle', '', 'page_content');
 
         // ── Serviços (título + subtexto), preservando restantes campos ──
         $services = [

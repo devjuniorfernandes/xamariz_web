@@ -607,7 +607,7 @@
 
                     <div class="lg:col-span-7 reveal">
 
-                        <h2 class="font-sans text-4xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.06]">
+                        <h2 class="font-sans text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
                             {{ \App\Models\SiteSetting::get('home_services_heading', 'Da estratégia à execução, tudo começa pela clareza.') }}
                         </h2>
 
@@ -943,12 +943,12 @@
                                 : null;
                         @endphp
                         <div title="{{ $lName }}"
-                            class="shrink-0 w-44 sm:w-44 h-26 flex items-center justify-center opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:scale-110 hover:-translate-y-1 transition-all duration-300 ease-out">
+                            class="shrink-0 w-52 sm:w-56 h-28 flex items-center justify-center opacity-60 grayscale hover:opacity-100 hover:grayscale-0 hover:scale-110 hover:-translate-y-1 transition-all duration-300 ease-out">
                             @if (Str::startsWith($lPath, '<svg'))
                                 {!! $lPath !!}
                             @elseif($lUrl)
                                 <img src="{{ $lUrl }}" alt="{{ $lName }}"
-                                    class="max-w-full max-h-12 object-contain pointer-events-none">
+                                    class="max-w-full max-h-16 object-contain pointer-events-none">
                             @else
                                 <span class="font-sans font-bold text-gray-800 text-sm">{{ $lName }}</span>
                             @endif

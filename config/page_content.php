@@ -424,7 +424,7 @@ return [
                 'title'  => 'Cabeçalho (Banner azul no topo)',
                 'fields' => [
                     'contact_hero_title'    => ['type' => 'text', 'label' => 'Título do Banner', 'default' => 'Contactos'],
-                    'contact_hero_subtitle' => ['type' => 'text', 'label' => 'Subtítulo do Banner', 'default' => 'Vamos conversar sobre o próximo passo da comunicação da sua marca.'],
+                    'contact_hero_subtitle' => ['type' => 'text', 'label' => 'Subtítulo do Banner (opcional)', 'help' => 'Deixe vazio para não mostrar subtítulo.', 'default' => ''],
                 ],
             ],
         ],

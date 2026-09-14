@@ -11,7 +11,7 @@
 
     {{-- Header --}}
     <x-page-hero :title="\App\Models\SiteSetting::get('contact_hero_title', 'Contactos')"
-        :subtitle="\App\Models\SiteSetting::get('contact_hero_subtitle', 'Vamos conversar sobre o próximo passo da comunicação da sua marca.')" />
+        :subtitle="\App\Models\SiteSetting::get('contact_hero_subtitle', '')" />
 
     {{-- Título editorial da página --}}
     <section class="py-16 sm:py-20 bg-white text-gray-900 border-b border-gray-100">
