@@ -149,8 +149,9 @@
         {{-- Imagem: metade direita a preencher todo o espaço (mobile: bloco no topo) --}}
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             @php $impactImg = \App\Models\SiteSetting::get('landing_impact_image', 'luanda_picture.jpg'); @endphp
-            <img src="{{ \Illuminate\Support\Str::startsWith($impactImg, ['http://','https://','/']) ? $impactImg : asset($impactImg) }}" alt="Xamariz Energy"
-                class="w-full h-72 sm:h-96 lg:h-full object-cover">
+           <img src="{{ asset('luanda-xamariz.jpg.jpeg') }}"
+     alt="Xamariz Energy"
+     class="w-full h-72 sm:h-96 lg:h-full object-cover">
         </div>
 
         <div class="container-myriad relative z-10">
@@ -204,9 +205,9 @@
                 <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-40 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
                 <div class="flex items-center gap-10 sm:gap-14 w-max animate-oil-marquee hover:[animation-play-state:paused]">
                     @foreach (array_merge($oilGasLogos, $oilGasLogos) as $client)
-                        <div class="shrink-0 flex items-center justify-center h-24 px-2">
+                        <div class="shrink-0 flex items-center justify-center px-2">
                             <img src="{{ asset(rawurlencode($client['logo'])) }}" alt="{{ $client['name'] }}"
-                                class="oil-logo max-h-16 sm:max-h-[4.5rem] w-auto object-contain"
+                                class="oil-logo  h-28 w-auto object-contain"
                                 style="filter: grayscale(1); opacity: .55;">
                         </div>
                     @endforeach
