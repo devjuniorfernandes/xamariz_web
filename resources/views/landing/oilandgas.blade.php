@@ -76,14 +76,14 @@
 
         <div class="container-myriad relative z-10 pt-12 sm:pt-20 lg:pt-24 my-auto">
             <div class="max-w-4xl reveal">
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-[1.1] mb-6 max-w-3xl">
-                    {{ __('oilandgas.hero.title_line1') }}<br>
-                    <span class="text-white">{{ __('oilandgas.hero.title_line2') }}</span>
-                </h1>
+             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white tracking-tight leading-[1.1] max-w-3xl" style="margin-top: 0 !important; margin-bottom: 8px !important;">
+    {{ __('oilandgas.hero.title_line1') }}<br>
+    <span class="text-white">{{ __('oilandgas.hero.title_line2') }}</span>
+</h1>
 
-                <p class="text-base sm:text-lg text-gray-200 font-normal leading-relaxed mb-10 max-w-xl font-roboto">
-                    {!! nl2br(e(__('oilandgas.hero.subtitle'))) !!}
-                </p>
+<p class="text-base sm:text-lg text-gray-200 font-normal leading-relaxed mb-10 max-w-xl font-roboto" style="margin-top: 10px !important;">
+    {!! nl2br(e(__('oilandgas.hero.subtitle'))) !!}
+</p>
 
                 <a href="#aog"
                     class="inline-flex items-center gap-3.5 px-8 py-4 bg-[#ff5e14] text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:bg-[#e04e0b] group">
@@ -139,52 +139,63 @@
     {{-- ══════════════════════════════════════════════════════════════
      2b. IMPACTO — duas colunas: conteúdo (gradiente) + imagem
     ══════════════════════════════════════════════════════════════ --}}
-    <section class="relative w-full font-barlow overflow-hidden bg-[#0f1f4a]">
-        {{-- Gradiente + malha apenas na metade do texto (esquerda); a direita é a imagem.
-             background-size:100% 100% garante que o gradiente aparece por completo na coluna. --}}
-        <div class="absolute inset-y-0 left-0 w-full lg:w-1/2 z-0 bg-[#0f1f4a]"
-            style="background-image:url('{{ asset('grad.jfif') }}');background-size:100% 100%;background-position:center;background-repeat:no-repeat;">
-            <x-blue-mesh />
-        </div>
-        {{-- Imagem: metade direita a preencher todo o espaço (mobile: bloco no topo) --}}
-        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            @php $impactImg = \App\Models\SiteSetting::get('landing_impact_image', 'luanda_picture.jpg'); @endphp
-           <img src="{{ asset('luanda-xamariz.jpg.jpeg') }}"
-     alt="Xamariz Energy"
-     class="w-full h-72 sm:h-96 lg:h-full object-cover">
-        </div>
+<section class="relative w-full font-barlow overflow-hidden bg-[#0f1f4a]">
+    {{-- Background Gradiente + Malha (Desktop: 50% esquerda | Mobile: Fundo total) --}}
+    <div class="absolute inset-y-0 left-0 w-full lg:w-1/2 z-0 bg-[#0f1f4a]"
+        style="background-image:url('{{ asset('grad.jfif') }}');background-size:100% 100%;background-position:center;background-repeat:no-repeat;">
+        <x-blue-mesh />
+    </div>
 
-        <div class="container-myriad relative z-10">
-            <div class="lg:grid lg:grid-cols-2">
-                {{-- Esquerda: conteúdo no container --}}
-                <div class="py-16 lg:py-28 lg:pr-16 text-white reveal">
-                    <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-4">
-                        {{ __('oilandgas.noise.eyebrow') }}
-                    </span>
-                    <h2 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15] mb-8">
-                        {{ __('oilandgas.noise.title') }}
-                    </h2>
+    {{-- 1. Imagem no Mobile: Ocupa 100% da largura da tela (w-full sem margens) --}}
+    <div class="w-full h-48 sm:h-64 lg:hidden relative z-10">
+        @php $impactImg = \App\Models\SiteSetting::get('landing_impact_image', 'luanda_picture.jpg'); @endphp
+        <img src="{{ asset('luanda-xamariz.jpg.jpeg') }}"
+             alt="Xamariz Energy"
+             class="w-full h-full object-cover">
+    </div>
 
-                    <div class="space-y-2 font-roboto text-lg sm:text-xl text-white/90 leading-relaxed mb-6">
-                        @foreach (__('oilandgas.noise.lines') as $line)
-                            <p>{{ $line }}</p>
-                        @endforeach
-                    </div>
+    {{-- Conteúdo principal dentro do container --}}
+    <div class="container-myriad relative z-10">
+        <div class="lg:grid lg:grid-cols-2">
+            
+            {{-- 2. Conteúdo de Texto: Justificado no Mobile (text-justify), Esquerda no Desktop --}}
+            <div class="py-6 sm:py-8 lg:py-28 lg:pr-16 text-justify lg:text-left text-white reveal">
+                <span class="text-[#ff5e14] text-xs font-bold uppercase tracking-widest block mb-2 sm:mb-4 text-left">
+                    {{ __('oilandgas.noise.eyebrow') }}
+                </span>
+                
+                <h2 class="text-xl sm:text-3xl lg:text-[2.75rem] font-bold text-white tracking-tight leading-tight mb-3 sm:mb-8 text-left">
+                    {{ __('oilandgas.noise.title') }}
+                </h2>
 
-                    <p class="text-2xl sm:text-3xl font-bold text-white mb-6">
-                        {{ __('oilandgas.noise.highlight') }}
-                    </p>
-                    <p class="text-lg sm:text-xl text-[#ff5e14] font-semibold">
-                        {{ __('oilandgas.noise.closing') }}
-                    </p>
+                <div class="space-y-2 font-roboto text-sm sm:text-base lg:text-xl text-white/90 leading-relaxed mb-4 sm:mb-6">
+                    @foreach (__('oilandgas.noise.lines') as $line)
+                        <p class="m-0 text-justify lg:text-left">{{ $line }}</p>
+                    @endforeach
                 </div>
 
-                {{-- Espaçador para a metade direita (onde entra a imagem absoluta) --}}
-                <div class="hidden lg:block" aria-hidden="true"></div>
+                <p class="text-base sm:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-6 text-left">
+                    {{ __('oilandgas.noise.highlight') }}
+                </p>
+                
+                <p class="text-sm sm:text-lg lg:text-xl text-[#ff5e14] font-semibold text-left">
+                    {{ __('oilandgas.noise.closing') }}
+                </p>
             </div>
-        </div>
-    </section>
 
+            {{-- Espaçador transparente para a metade direita no Desktop --}}
+            <div class="hidden lg:block" aria-hidden="true"></div>
+
+        </div>
+    </div>
+
+    {{-- Imagem no Desktop: Absoluta à direita, ocupa 50% da tela --}}
+    <div class="hidden lg:block lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 z-0">
+        <img src="{{ asset('luanda-xamariz.jpg.jpeg') }}"
+             alt="Xamariz Energy"
+             class="w-full h-full object-cover">
+    </div>
+</section>
     {{-- ══════════════════════════════════════════════════════════════
      3. EXPERIÊNCIA REAL NA INDÚSTRIA — logos discretos
     ══════════════════════════════════════════════════════════════ --}}
@@ -207,7 +218,7 @@
                     @foreach (array_merge($oilGasLogos, $oilGasLogos) as $client)
                         <div class="shrink-0 flex items-center justify-center px-2">
                             <img src="{{ asset(rawurlencode($client['logo'])) }}" alt="{{ $client['name'] }}"
-                                class="oil-logo  h-28 w-auto object-contain"
+                                class="oil-logo  h-16 w-auto object-contain"
                                 style="filter: grayscale(1); opacity: .55;">
                         </div>
                     @endforeach
@@ -257,7 +268,7 @@
                                 class="w-full h-[380px] sm:h-[460px] lg:h-[540px] object-cover">
 
                             {{-- Overlay card --}}
-                            <div class="absolute top-0 left-0 overflow-hidden bg-[#0f1f4a] text-white p-8 sm:p-10 w-72 sm:w-96 min-h-[240px] sm:min-h-[300px] flex flex-col"
+                            <div class="absolute top-0 left-0 overflow-hidden bg-[#0f1f4a] text-white p-8 sm:p-10 w-72 sm:w-96  flex flex-col"
                                 style="background-image:url('{{ asset('grad.jfif') }}');background-size:cover;background-position:center;background-repeat:no-repeat;">
                                 <x-blue-mesh />
                                 <div class="relative z-10 flex flex-col h-full">
@@ -279,7 +290,7 @@
     {{-- ══════════════════════════════════════════════════════════════
      6. COMO PENSAMOS — mini-artigos
     ══════════════════════════════════════════════════════════════ --}}
-    <section id="como-pensamos" class="py-20 lg:py-28 bg-white border-b border-gray-100 font-barlow scroll-mt-20">
+    <section id="como-pensamos" class="py-20 lg:py-10 bg-white border-b border-gray-100 font-barlow scroll-mt-20">
         <div class="container-myriad">
             {{-- Heading + link "ver todas" --}}
             <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 lg:mb-16 reveal">
@@ -403,7 +414,7 @@
                         <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"></div>
 
                         <button type="submit" id="aog-submit"
-                            class="w-full py-4 bg-[#141518] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#ff5e14] transition-colors duration-300 cursor-pointer disabled:opacity-70 disabled:cursor-wait flex items-center justify-center gap-3">
+                            class="w-full py-4  text-white text-xs font-bold uppercase tracking-wider bg-[#ff5e14] transition-colors duration-300 cursor-pointer disabled:opacity-70 disabled:cursor-wait flex items-center justify-center gap-3">
                             <svg data-spinner class="hidden animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
