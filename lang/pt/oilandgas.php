@@ -16,7 +16,9 @@ return [
         'eyebrow' => 'Xamariz Energy',
         'title_line1' => 'A sua empresa não precisa de mais marketing.',
         'title_line2' => 'Precisa de comunicar melhor.',
-        'subtitle' => "Num sector onde confiança, reputação e clareza influenciam decisões, a comunicação deixou de ser um complemento.\nTornou-se um activo estratégico.",
+        'subtitle' => "
+        
+        Comunicação clara para organizações que actuam no sector de petróleo, gás e energia.",
         'cta' => 'Agende uma conversa',
         'scroll' => 'Descer',
     ],
@@ -24,7 +26,8 @@ return [
     // ─── 2. A indústria energética ─────────────────
     'industry' => [
         'eyebrow' => 'A realidade do sector',
-        'title' => 'A indústria energética não comunica como as outras.',
+        'title' => 'A indústria petróleo e gás
+ não comunica como as outras.',
         'lead' => 'Hoje a comunicação já não serve apenas para divulgar projectos. Serve para:',
         'items' => [
             'criar confiança',
@@ -67,8 +70,10 @@ return [
     // ─── 4. Onde ajudamos ──────────────────────────
     'areas' => [
         'eyebrow' => 'Focus',
-        'title' => 'Onde ajudamos empresas da indústria energética.',
-        'intro' => 'Criamos e aplicamos a comunicação necessária para posicionar, proteger e fazer crescer organizações do sector — do primeiro concurso à operação, das comunidades aos reguladores.',
+        'title' => 'Como ajudamos empresas da indústria de Oil & Gas
+',
+        'intro' => 'Combinamos estratégia, conteúdo e criatividade para responder aos desafios de comunicação do sector.
+',
         'approach_link' => 'Explorar a nossa abordagem',
         'explore' => 'Explorar',
         'deliverables_label' => 'O que entregamos',
@@ -138,23 +143,23 @@ return [
     'aog' => [
         'eyebrow' => 'Angola Oil & Gas',
         'title' => 'Da comunicação nasce a confiança que move a energia.',
-        'lead' => 'Estaremos presentes no Angola Oil & Gas e teremos todo o gosto em conversar consigo.',
+        'lead' => 'Se a sua organização tem um desafio de comunicação, gostaríamos de o conhecer. Vamos conversar sobre como podemos ajudar.',
         'point_meetings' => 'Reuniões executivas presenciais durante o evento em Luanda',
         'point_contact' => 'Contacto directo da equipa de energia: aog@xamariz.ao',
         'form' => [
             'title' => 'Agendar conversa',
             'subtitle' => 'Preencha os dados abaixo para coordenarmos o horário mais conveniente.',
             'first_name' => 'Nome',
-            'first_name_ph' => 'ex: Manuel',
+            'first_name_ph' => 'ex: Manuel Santos',
             'last_name' => 'Sobrenome',
             'last_name_ph' => 'ex: Santos',
             'email' => 'E-mail corporativo',
             'email_ph' => 'ex: m.santos@operadora.com',
             'company' => 'Organização / Empresa',
             'company_ph' => 'ex: Operadora, Prestador de Serviços...',
-            'message' => 'Tema de interesse ou disponibilidade',
+            'message' => 'Tema de interesse ',
             'message_ph' => 'Indique os principais desafios de comunicação da sua organização...',
-            'submit' => 'Agendar conversa',
+            'submit' => 'Agende uma conversa ',
             'error' => 'Ocorreu um erro ao enviar. Verifique os dados e tente novamente.',
         ],
     ],

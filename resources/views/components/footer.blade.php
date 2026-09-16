@@ -147,7 +147,7 @@
         {{-- Bottom bar --}}
         <div class="mt-8 pt-8 border-t border-white/10 text-center">
             <p class="text-xs text-white">
-                &copy; {{ date('Y') }} Xamariz (Visualclick, Lda). {{ __('common.all_rights_reserved') }}
+                &copy; {{ date('Y') }} Xamariz. {{ __('common.all_rights_reserved') }}
             </p>
         </div>
     </div>

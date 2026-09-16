@@ -23,7 +23,7 @@
                             $logoRaw = $client->logo_path ?? '';
                             $logoUrl = $logoRaw ? (Str::startsWith($logoRaw, ['http://', 'https://']) ? $logoRaw : asset(ltrim($logoRaw, '/'))) : null;
                         @endphp
-                        <a href="{{ route('clients.show', $client->slug) }}" title="{{ $client->name }}" class="group flex items-center justify-center h-36 p-6 select-none">
+                        <a href="#" title="{{ $client->name }}" class="group flex items-center justify-center h-36 p-6 select-none">
                             <div class="filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 flex items-center justify-center">
                                 @if (Str::startsWith($logoRaw, '<svg'))
                                     {!! $logoRaw !!}

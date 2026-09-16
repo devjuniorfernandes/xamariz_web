@@ -16,7 +16,7 @@ return [
         'eyebrow' => 'Xamariz Energy',
         'title_line1' => 'Your company does not need more marketing.',
         'title_line2' => 'It needs to communicate better.',
-        'subtitle' => "In a sector where trust, reputation and clarity shape decisions, communication is no longer an add-on.\nIt has become a strategic asset.",
+        'subtitle' => "Clear communication for organizations operating in the oil, gas, and energy sector.",
         'cta' => 'Schedule a conversation during AOG',
         'scroll' => 'Scroll',
     ],
@@ -24,7 +24,9 @@ return [
     // ─── 2. The energy industry ────────────────────
     'industry' => [
         'eyebrow' => 'The reality of the sector',
-        'title' => 'The energy industry does not communicate like the others.',
+        'title' => 'The oil and gas industry
+
+does not communicate like other industries.',
         'lead' => 'Today, communication is no longer only about promoting projects. It serves to:',
         'items' => [
             'build trust',
@@ -67,8 +69,8 @@ return [
     // ─── 4. Where we help ──────────────────────────
     'areas' => [
         'eyebrow' => 'Focus',
-        'title' => 'Where we help energy industry companies.',
-        'intro' => 'We create and apply the communication needed to position, protect and grow organisations in the sector — from the first tender to operation, from communities to regulators.',
+        'title' => 'How we help companies in the Oil and Gas industry.',
+        'intro' => 'We combine strategy, content, and creativity to address the communication challenges of the industry.',
         'approach_link' => 'Explore our approach',
         'explore' => 'Explore',
         'deliverables_label' => 'What we deliver',
@@ -111,7 +113,7 @@ return [
     // ─── 6. How we think ───────────────────────────
     'thinking' => [
         'eyebrow' => 'How we think',
-        'title' => 'Latest news and perspectives.',
+        'title' => 'Ideas that help you communicate better.',
         'all_link' => 'See all news',
         'empty' => 'No articles published at the moment.',
         'articles' => [
@@ -138,23 +140,23 @@ return [
     'aog' => [
         'eyebrow' => 'Angola Oil & Gas',
         'title' => 'From communication comes the trust that moves energy.',
-        'lead' => 'Meet us at Angola Oil & Gas. We will be present at Angola Oil & Gas and would be glad to talk with you.',
+        'lead' => 'If your organization is facing a communication challenge, we would like to hear from you. Let´s discuss how we can help.',
         'point_meetings' => 'In-person executive meetings during the event in Luanda',
         'point_contact' => 'Direct contact with the energy team: aog@xamariz.ao',
         'form' => [
             'title' => 'Schedule a conversation during AOG',
             'subtitle' => 'Fill in the details below so we can arrange the most convenient time during AOG.',
             'first_name' => 'First name',
-            'first_name_ph' => 'e.g. Manuel',
+            'first_name_ph' => 'e.g. Manuel Santos',
             'last_name' => 'Last name',
             'last_name_ph' => 'e.g. Santos',
             'email' => 'Corporate e-mail',
             'email_ph' => 'e.g. m.santos@operator.com',
             'company' => 'Organisation / Company',
             'company_ph' => 'e.g. Operator, Service Provider...',
-            'message' => 'Topic of interest or availability',
+            'message' => 'Topic of interest',
             'message_ph' => 'Let us know your preferred day during AOG or your organisation\'s main communication challenges...',
-            'submit' => 'Schedule a conversation during AOG',
+            'submit' => 'Schedule a conversation',
             'error' => 'Something went wrong. Please check your details and try again.',
         ],
     ],

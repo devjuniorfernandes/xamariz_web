@@ -64,42 +64,48 @@
                 {{-- A NOSSA OFERTA --}}
                 <div>
                     <h2 class="font-sans text-3xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-6">
-                        A Nossa Oferta.
+                        A Nossa Causa.
                     </h2>
                     <p class="font-sans text-gray-700 text-lg leading-relaxed mb-6">
-                        Oferecemos um ecossistema completo de soluções, com foco em gerar autoridade e vendas:
+                      Vivemos numa era com tanta informação e distracções que cada vez torna-se mais dificil às empresas e instituições transmitirem a sua mensagem. com sucesso.
+
+ 
+
+Neste contexto, é imperativo que as empresas que almejam ser bem sucedidas tenham uma forte presença online e comuniquem de uma forme cativante.
+
+Na Xamariz acreditamos no talento e valor das empresas, instituições e comunidades angolanas e esmeramo-nos por contribuir para o seu crescimento.
                     </p>
-                    <ul class="space-y-3">
-                        @foreach (['Marketing 360°', 'Branding', 'Produção Audiovisual', 'Estratégia Digital'] as $oferta)
-                            <li class="flex items-center gap-3 font-sans text-gray-800 text-lg">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] shrink-0"></span>
-                                {{ $oferta }}
-                            </li>
-                        @endforeach
-                    </ul>
+                  
                 </div>
 
                 {{-- A NOSSA PROMESSA --}}
                 <div class="pt-12 border-t border-gray-200">
                     <h2 class="font-sans text-3xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-6">
+                        A Nossa Oferta.
+                    </h2>
+                    <p class="font-sans text-gray-700 text-lg leading-relaxed mb-6">
+                    Nos dias de hoje, os consumidores têm um novo percurso para adquirir os productos e serviços que desejam. Este novo caminho inicia chamando a atenção dos consumidores para que estes desenvolvam atracção pela oferta comercial ou marca apresentadas.
+
+ 
+
+A XAMARIZ elabora um plano de comunicação digital para cada empresa e implementa metodologias para criar, gerir a analisar conteudos relevantes para os seus clientes alvo.
+                    </p>
+                   
+                </div>
+                <div class="pt-12 border-t border-gray-200">
+                    <h2 class="font-sans text-3xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-6">
                         A Nossa Promessa.
                     </h2>
                     <p class="font-sans text-gray-700 text-lg leading-relaxed mb-6">
-                        Comprometemo-nos com:
+                       Os desafios audaciosos são a ignição que nos faz trabalhar arduamente para superar as expectativas dos nossos clientes e parceiros.
+
+ 
+
+                    Exploramos constantemente novos horizontes e culturas com o objectivo de contribuir para a sua promoção. Na nossa estrada para a excelência através dos serviços que prestamos, temos a satisfação dos clientes como objectivo primordial.
                     </p>
-                    <ul class="space-y-3">
-                        @foreach ([
-                            'Excelência criativa.',
-                            'Cumprimento rigoroso de prazos.',
-                            'Métricas transparentes que comprovam o retorno do seu investimento.',
-                        ] as $promessa)
-                            <li class="flex items-start gap-3 font-sans text-gray-800 text-lg">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-brand-accent)] shrink-0 mt-3"></span>
-                                {{ $promessa }}
-                            </li>
-                        @endforeach
-                    </ul>
+                   
                 </div>
+             
 
             </div>
         </div>
